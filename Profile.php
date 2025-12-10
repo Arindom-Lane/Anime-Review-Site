@@ -13,14 +13,13 @@
         
         <div class="topbar-right">
             <img src="download.png" id="logo">
-            <span class="material-symbols-rounded icon menu">menu</span>
-            <span class="material-symbols-rounded icon mail">mail</span>
+            <span class="material-symbols-rounded icon menu" id="s1">menu</span>
+            <span class="material-symbols-rounded icon mail" id="s2">mail</span>
         
-            <span class="material-symbols-rounded icon bell">notifications</span>
-            <span class="badge">1</span>
+            <span class="material-symbols-rounded icon bell" id="s3">notifications</span>
         <div class="profile">
             <img src="your-image.png" alt="">
-            <span class="username">Arino_99</span>
+            <span class="username" id="s4">Arino_99</span>
         </div>
         </div>
     
