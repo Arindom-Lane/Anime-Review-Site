@@ -1,50 +1,58 @@
+/* --- MAL PRIMARY COLOR VARIABLES --- */
 :root {
-    --color-primary: #7380ec;
-    --color-danger: #ff7782;
-    --color-success: #41f1b6;
-    --color-warning: #ffbb55;
-    --color-white: #fff;
-    --color-info-dark: #7d8da1;
-    --color-info-light: #dceleb;
-    --color-dark: #363949;
-    --color-light: rgba(132, 139, 200, 0.18);
-    --color-primary-variant: #111e88;
-    --color-dark-variant: #677483;
-    --color-background: #f6f6f9;
+    /* --- BRAND PRIMARY COLOR (The signature MAL Blue - Generally Consistent) --- */
+    --color-primary_brand: #2e51a2;     /* The iconic MAL blue for links/header/CTAs */
+    --color-primary_brand-variant: #1a3272; /* Darker blue for hover/active states */
 
-    --card-border-radius: 2rem;
-    --border-radius-1: 0.4rem;
-    --border-radius-2: 0.8rem;
-    --border-radius-3: 1.2rem;
 
-    --card-padding: 1.8rem;
-    --padding-1: 1.2rem;
 
-    --box-shadow: 0 2rem 3rem var(--color-light);
+
+    /* --- 🌙 DARK MODE COLORS --- */
+    
+    /* Backgrounds */
+    --color-background_dark: #1b212c;      /* Main page background (Deep dark gray/blue) */
+    --color-card-bg_dark: #222933;         /* Card/Box background (Lighter dark gray/blue, for contrast) */
+    --color-card-bg-variant_dark: #2a313c; /* Darker card background (e.g., striped table rows, nested panels) */
+    
+    /* Text (Invert colors for dark mode) */
+    --color-text-dark_dark: #e8e8e8;       /* Main text color (Very light white/gray) */
+    --color-text-medium_dark: #b0b0b0;     /* Secondary text (subtle gray) */
+    --color-text-light_dark: #707070;      /* Placeholder text, very subtle info */
+    
+    /* Borders & Accents */
+    --color-border_dark: #3a424a;          /* Main dividing lines and borders */
+
+
+
+
+    /* --- ☀️ LIGHT MODE (WHITE) COLORS --- */
+    
+    /* Backgrounds */
+    --color-background_white: #ffffff;  /* Main page background (pure white) */
+    --color-card-bg_white: #f7f7f7;     /* Card/Box background (subtle light gray) */
+    
+    /* Text */
+    --color-text-dark_white: #333333;   /* Main text color (headings, body copy) */
+    --color-text-medium_white: #666666; /* Secondary text (timestamps, subtext) */
+    --color-text-light_white: #999999;  /* Placeholder text, very subtle info */
+    
+    /* Borders & Accents */
+    --color-border_white: #e0e0e0;      /* Main dividing lines and borders */
+    
+
+    /* --- MAL BORDER/RADIUS VARIABLES --- */
+    --card-border-radius: 0.35rem;  /* MAL uses slightly rounded corners */
+    --border-radius-1: 0.2rem;
+    --border-radius-2: 0.4rem;
+    --border-radius-3: 0.8rem;
 }
-
-.image1{
-    filter: invert(100%);
-}
-*{
-    margin:0;
-    padding: 0;
-    outline: 0;
-    appearance: none;
-    text-decoration: none;
-    box-sizing: border-box;
-    list-style: none;
-
-}
-
-html{
-    font-size: 14px;
-}
-
 body{
-    width: 100vw;
-    height: 100vh;
-    font-size: 0.88rem;
-    background-color: var(--color-background);
-
+    background-color:var(--color-background_dark);
+}
+header{
+    display: flex;
+    height: 60px;
+    width:auto;
+    margin:0;
+    
 }
