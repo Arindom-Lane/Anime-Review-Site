@@ -10,7 +10,7 @@
     /* --- 🌙 DARK MODE COLORS --- */
     
     /* Backgrounds */
-    --color-background_White: #1b212c;      /* Main page background (Deep dark gray/blue) */
+    --color-background_dark: #1b212c;      /* Main page background (Deep dark gray/blue) */
     --color-card-bg_dark: #222933;         /* Card/Box background (Lighter dark gray/blue, for contrast) */
     --color-card-bg-variant_dark: #2a313c; /* Darker card background (e.g., striped table rows, nested panels) */
     
@@ -51,11 +51,21 @@ body{
     color: var(--color-text-dark_white)
 }
 header{
-    display: flex;
+    background-color: var(--color-background_white);
+    position: relative;
     height: 60px;
-    width:auto;
+    width:100%;
     margin:0;
 
+}
+.header-inner{
+    width: 100%;
+    margin: 0 auto;
+    height:  100%;
+    display: flex;
+    align-items: center;
+    justify-self: space-between;
+    padding: 0 10px;
 }
 #s1{
     position: absolute;
