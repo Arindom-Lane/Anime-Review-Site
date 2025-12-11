@@ -4,11 +4,7 @@
     --color-primary_brand: #2e51a2;     /* The iconic MAL blue for links/header/CTAs */
     --color-primary_brand-variant: #1a3272; /* Darker blue for hover/active states */
 
-
-
-
     /* --- 🌙 DARK MODE COLORS --- */
-    
     /* Backgrounds */
     --color-background_dark: #1b212c;      /* Main page background (Deep dark gray/blue) */
     --color-card-bg_dark: #222933;         /* Card/Box background (Lighter dark gray/blue, for contrast) */
@@ -23,10 +19,7 @@
     --color-border_dark: #3a424a;          /* Main dividing lines and borders */
 
 
-
-
     /* --- ☀️ LIGHT MODE (WHITE) COLORS --- */
-    
     /* Backgrounds */
     --color-background_white: #F6F6F6;  /* Main page background (pure white) */
     --color-card-bg_white: #f7f7f7;     /* Card/Box background (subtle light gray) */
@@ -51,11 +44,14 @@ body{
     color: var(--color-text-dark_white)
 }
 header{
-    background-color: var(--color-background_white);
+    background-color: var(--color-primary_brand);
     position: relative;
     height: 60px;
     width:100%;
     margin:0;
+    color:var(--color-text-dark_white);
+    border-top-left-radius: var(--border-radius-2);
+    border-top-right-radius: var(--border-radius-2);
 }
 
 .header-inner{
@@ -70,17 +66,34 @@ header{
 
 .logo{
     font-size: 24px;
-    color: var(--color-text-dark_white);
+    color: var(--color-text-dark_dark);
     font-weight: bold;
     margin-right: 20px;
     text-shadow: 1px 1px 2px grey;
 }
 
-.search{
+#search{
     padding: 4px 6px;
     border-radius: var(--card-border-radius);
     font-size: 11px;
     width: 250px;
     align-items: center;
+}
+
+.profile{
+    display: flex;
+    align-items: right;
+    color:var(--color-text-dark_white);
+    font-weight: bold;
+    cursor: pointer;
+
+}
+.profile img{
+    width: 30px;
+    height: 30px;
+    border-radius: var(--border-radius-1);
+    margin-left: 10px;
+    border: 1px solid var(--color-border_white);
+
 }
 

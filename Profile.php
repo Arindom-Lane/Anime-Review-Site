@@ -12,11 +12,12 @@
     <header>
         <div class="header-inner">
             <div class="logo">MyAnimeList</div>
-            <div class="search">
-                <input type="text" placeholder="Search...">
+            <div>
+                <input id="search" type="text" placeholder="Search...">
             </div>
             <dic class="profile">
-                <span class="profile-name"></span><img src="https://avatars.githubusercontent.com/u/143287515?v=4" alt="Profile">
+                <span class="profile-name">Hamim</span>
+                <img src="https://avatars.githubusercontent.com/u/143287515?v=4" alt="Profile">
             </dic>
         </div>      
     </header>
