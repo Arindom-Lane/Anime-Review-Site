@@ -10,7 +10,7 @@
     /* --- 🌙 DARK MODE COLORS --- */
     
     /* Backgrounds */
-    --color-background_dark: #1b212c;      /* Main page background (Deep dark gray/blue) */
+    --color-background_White: #1b212c;      /* Main page background (Deep dark gray/blue) */
     --color-card-bg_dark: #222933;         /* Card/Box background (Lighter dark gray/blue, for contrast) */
     --color-card-bg-variant_dark: #2a313c; /* Darker card background (e.g., striped table rows, nested panels) */
     
@@ -28,11 +28,11 @@
     /* --- ☀️ LIGHT MODE (WHITE) COLORS --- */
     
     /* Backgrounds */
-    --color-background_white: #ffffff;  /* Main page background (pure white) */
+    --color-background_white: #F6F6F6;  /* Main page background (pure white) */
     --color-card-bg_white: #f7f7f7;     /* Card/Box background (subtle light gray) */
     
     /* Text */
-    --color-text-dark_white: #333333;   /* Main text color (headings, body copy) */
+    --color-text-dark_white: #323232;   /* Main text color (headings, body copy) */
     --color-text-medium_white: #666666; /* Secondary text (timestamps, subtext) */
     --color-text-light_white: #999999;  /* Placeholder text, very subtle info */
     
@@ -47,14 +47,15 @@
     --border-radius-3: 0.8rem;
 }
 body{
-    background-color:var(--color-background_dark);
+    background-color:var(--color-background_white);
+    color: var(--color-text-dark_white)
 }
 header{
     display: flex;
     height: 60px;
     width:auto;
     margin:0;
-    
+
 }
 #s1{
     position: absolute;
