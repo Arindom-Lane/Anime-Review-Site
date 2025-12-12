@@ -39,8 +39,9 @@
     --border-radius-2: 0.4rem;
     --border-radius-3: 0.8rem;
 }
+
 body{
-    background-color:var(--color-background_white);
+    background-color: var(--color-background_white);
     color: var(--color-text-dark_white)
 }
 header{
@@ -56,11 +57,10 @@ header{
 
 .header-inner{
     width: 100%;
-    margin: 0 auto;
     height:  100%;
     display: flex;
     align-items: center;
-    justify-self: space-between;
+    justify-content: space-between;
     padding: 0 10px;
 }
 
@@ -74,15 +74,17 @@ header{
 
 #search{
     padding: 4px 6px;
-    border-radius: var(--card-border-radius);
+    border-radius: var(--border-radius-2);
     font-size: 11px;
     width: 250px;
-    align-items: center;
+    margin: 0 auto;
+    
 }
 
 .profile{
     display: flex;
-    align-items: right;
+    position: relative;
+    right: 0;
     color:var(--color-text-dark_white);
     font-weight: bold;
     cursor: pointer;
@@ -91,7 +93,7 @@ header{
 .profile img{
     width: 30px;
     height: 30px;
-    border-radius: var(--border-radius-1);
+    border-radius: var(--border-radius-2);
     margin-left: 10px;
     border: 1px solid var(--color-border_white);
 

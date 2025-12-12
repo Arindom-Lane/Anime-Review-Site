@@ -15,10 +15,10 @@
             <div>
                 <input id="search" type="text" placeholder="Search...">
             </div>
-            <dic class="profile">
+            <div class="profile">
                 <span class="profile-name">Hamim</span>
                 <img src="https://avatars.githubusercontent.com/u/143287515?v=4" alt="Profile">
-            </dic>
+            </div>
         </div>      
     </header>
     
