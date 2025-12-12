@@ -18,8 +18,8 @@
                 <input id="search" type="text" placeholder="Search...">
             </div>
             <div class="profile">
-                <span class="profile-name">Hamim</span>
                 <div class="devider1"></div>
+                <span class="profile-name">Hamim</span>
                 <img src="https://avatars.githubusercontent.com/u/143287515?v=4" alt="Profile">
             </div>
         </div>      

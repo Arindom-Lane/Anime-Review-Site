@@ -103,10 +103,11 @@ header{
     top: 50%
 }
 .devider1{
-    width: 2px;
-    height: 70%;
-    color: white;
+    width: .08px;
+    height: 50px;
+    background-color: var(--color-border_white);
     margin: 5px;
+    border: 1px solid;
 
 }
 
@@ -115,6 +116,6 @@ header{
     height: 30px;
     border-radius: var(--border-radius-1);
     border: 1px solid var(--color-border_white);
-
+    margin-left: 10px;
 }
 
