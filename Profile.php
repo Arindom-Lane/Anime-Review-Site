@@ -11,12 +11,15 @@
 <body>
     <header>
         <div class="header-inner">
-            <div class="logo">MyAnimeList</div>
+            <div class="logo">
+                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall-white@2x.png?v=1634263200">
+            </div>
             <div>
                 <input id="search" type="text" placeholder="Search...">
             </div>
             <div class="profile">
                 <span class="profile-name">Hamim</span>
+                <div class="devider1"></div>
                 <img src="https://avatars.githubusercontent.com/u/143287515?v=4" alt="Profile">
             </div>
         </div>      

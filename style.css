@@ -40,16 +40,22 @@
     --border-radius-3: 0.8rem;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
 body{
     background-color: var(--color-background_white);
     color: var(--color-text-dark_white)
 }
+
 header{
     background-color: var(--color-primary_brand);
-    position: relative;
+    position: fixed;
     height: 60px;
     width:100%;
-    margin:0;
     color:var(--color-text-dark_white);
     border-top-left-radius: var(--border-radius-2);
     border-top-right-radius: var(--border-radius-2);
@@ -65,11 +71,12 @@ header{
 }
 
 .logo{
-    font-size: 24px;
-    color: var(--color-text-dark_dark);
-    font-weight: bold;
-    margin-right: 20px;
-    text-shadow: 1px 1px 2px grey;
+    display: flex;
+    align-content: center;
+    margin-left: 1%;
+    width: 1px;
+    height: 60%;
+    margin-right: 100px;
 }
 
 #search{
@@ -78,22 +85,35 @@ header{
     font-size: 11px;
     width: 250px;
     margin: 0 auto;
-    
 }
 
 .profile{
-    display: inline-block;
-    right: 10%;
-    color:var(--color-text-dark_white);
+    display: flex;
+    align-items: center;   
+    position: relative;
+    margin-right: 2%;
+    color:white;
     font-weight: bold;
     cursor: pointer;
     color: var(--color-text-dark_dark);
 }
+
+.profile span{
+    position: relative;
+    top: 50%
+}
+.devider1{
+    width: 2px;
+    height: 70%;
+    color: white;
+    margin: 5px;
+
+}
+
 .profile img{
     width: 30px;
     height: 30px;
     border-radius: var(--border-radius-1);
-    margin-left: 10px;
     border: 1px solid var(--color-border_white);
 
 }
