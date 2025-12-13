@@ -10,19 +10,37 @@
 </head>
 <body>
     <header>
-        <div class="header-inner">
+        <section>
+            <div class="header-upper">
             <div class="logo">
-                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall-white@2x.png?v=1634263200">
-            </div>
-            <div>
-                <input id="search" type="text" placeholder="Search...">
+                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
             </div>
             <div class="profile">
                 <div class="devider1"></div>
                 <span class="profile-name">Hamim</span>
                 <img src="https://avatars.githubusercontent.com/u/143287515?v=4" alt="Profile">
             </div>
-        </div>      
+        </div>
+        </section>
+        <section>
+            <div class="header-middle">
+                    <div class="topButton">
+                        <span>TOP ANIME</span>
+                        <span>TOP MANGA</span>
+                    </div>
+
+                <div class="search-bar">
+                <input class="search" type="text" placeholder="Search...">
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="header-lower">
+
+            </div>
+        </section>
+        
+
     </header>
     
     
