@@ -42,6 +42,17 @@
         
 
     </header>
+
+    <main>
+        <section class="leftSection">
+            <div></div>
+
+        </section>
+        <section class="rightSection">
+            <div></div>
+
+        </section>
+    </main>
     
     
 </body>

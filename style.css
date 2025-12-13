@@ -129,8 +129,8 @@ header {
     border-top-left-radius:var(--border-radius-1) ;
     border-top-right-radius:var(--border-radius-1) ;
     position: fixed;
+    top:7%;
     align-items: center;
-    height: 40px;
     left: 13%;
     right: 13%;
     color:var(--color-text-dark_white);
@@ -143,17 +143,15 @@ header {
 .topButton{
     display: flex;
     align-items: center;
-    height: 100px;
     margin-left: -8px;
 }
 
 .topButton span{
     color: white;
-    font-size: 13px;
+    padding: 10px 15px;
+    font-size: 12px;
     font-weight: bold;
-    cursor: pointer;
-    padding: 9px 5px;
-    
+    display: block;
     
 
 }
@@ -173,6 +171,7 @@ header {
     border-radius: var(--border-radius-1);
     border: .5px solid var(--color-border_white);
     font-size: 11px;
+    position: relative;
     width: 250px;
 }
 
@@ -187,7 +186,7 @@ header {
 .header-lower{
     background-color: var(--color-primary_brand-light-variant);
     position: fixed;
-    top: 92px;
+    top: 12%;
     align-items: center;
     height: 30px;
     left: 13%;
@@ -198,3 +197,10 @@ header {
     padding: 0 11px;
     border-bottom: .5px solid var(--color-primary_brand);
 }
+
+
+
+
+
+
+
