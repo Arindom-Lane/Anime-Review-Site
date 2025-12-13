@@ -58,12 +58,12 @@ body{
     letter-spacing: .8px;
 }
 
-header {
-    position: fixed;
-    left: 13%;
-    right: 13%;
+#header {
+    position: relative;
+    display: flex;
+    margin-left: 13%;
+    margin-right: 13%;
     height: 50px;
-
     background-color: var(--color-background_white);
     color: var(--color-text-dark_white);
 
@@ -71,8 +71,9 @@ header {
 
 
 .header-upper{
-    
-    width: 100%;
+    left: 13%;
+    right: 13%;
+    width: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -172,7 +173,6 @@ header {
     border-radius: var(--border-radius-1);
     border: .5px solid var(--color-border_white);
     font-size: 11px;
-    position: relative;
     width: 250px;
 }
 
@@ -198,7 +198,6 @@ header {
     padding: 0 11px;
     border-bottom: .5px solid var(--color-primary_brand);
 }
-
 
 
 

@@ -9,9 +9,9 @@
     
 </head>
 <body>
-    <header>
-        <section>
-            <div class="header-upper">
+    <div class="header">
+        
+        <div class="header-upper">
             <div class="logo">
                 <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
             </div>
@@ -21,8 +21,6 @@
                 <img src="https://avatars.githubusercontent.com/u/143287515?v=4" alt="Profile">
             </div>
         </div>
-        </section>
-        <section>
             <div class="header-middle">
                     <div class="topButton">
                         <span>TOP ANIME</span>
@@ -33,15 +31,11 @@
                 <input class="search" type="text" placeholder="Search...">
                 </div>
             </div>
-        </section>
-        <section>
             <div class="header-lower">
 
-            </div>
-        </section>
-        
+            </div>       
 
-    </header>
+    </div>
 
     <main>
         <section class="leftSection">
