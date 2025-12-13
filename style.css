@@ -59,20 +59,21 @@ body{
 }
 
 #header {
-    position: relative;
-    display: flex;
-    margin-left: 13%;
-    margin-right: 13%;
-    height: 50px;
+    position: fixed;
+    left: 13%;
+    right: 13%;
     background-color: var(--color-background_white);
     color: var(--color-text-dark_white);
+    top:0;
+    z-index: 100;
 
 }
 
 
 .header-upper{
-    left: 13%;
-    right: 13%;
+    position: relative;
+    margin-left: 13%;
+    margin-right: 13%;
     width: auto;
     display: flex;
     align-items: center;
@@ -131,7 +132,7 @@ body{
     border-top-left-radius:var(--border-radius-1) ;
     border-top-right-radius:var(--border-radius-1) ;
     position: fixed;
-    top:7%;
+    top:50px;
     align-items: center;
     left: 13%;
     right: 13%;
@@ -187,7 +188,7 @@ body{
 .header-lower{
     background-color: var(--color-primary_brand-light-variant);
     position: fixed;
-    top: 12%;
+    top: 90px;
     align-items: center;
     height: 30px;
     left: 13%;
@@ -199,8 +200,24 @@ body{
     border-bottom: .5px solid var(--color-primary_brand);
 }
 
+main{
+    margin: 67px 13% 0 13%;
+    display: flex;
 
+}
 
+.leftSection{
+    width: 75%;
+    min-height: 500px;
+    background-color: var(--color-card-bg-variant_dark);
+    border-right: .5px solid var(--color-border_white);
+    padding: 10px;
 
+}
 
-
+.rightSection{
+    width: 25%;
+    min-height: 500px;
+    background-color: lightgray;
+    padding: 10px;
+}
