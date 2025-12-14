@@ -41,11 +41,11 @@
 
     <main>
         <div class="leftSection">
-            <div></div>
+            <div>HIii</div>
 
         </div>
         <div class="rightSection">
-            <div></div>
+            <div>Hellow</div>
 
         </div>
     </main>

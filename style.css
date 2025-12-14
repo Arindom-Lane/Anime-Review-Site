@@ -189,17 +189,22 @@ main {
     display: grid;
     grid-template-columns: 70% 30%;
     overflow: auto;
+    margin-bottom: 150px;
+    border-bottom: 1.5px solid var(--color-border_white);
+    border-left: 1.5px solid var(--color-border_white);
+    border-right: 1.5px solid var(--color-border_white);
+    font-size: small;
+    font-weight: 600;
 
 }
 
 .leftSection {
-    min-height: 500px;
-    background-color: var(--color-card-bg-variant_dark); 
-    border-right: .5px solid var(--color-border_white);
+    padding: 10px;
+    min-height: 800px;
+    border-right: 2px solid var(--color-border_white);
 }
 
 .rightSection {
-
-    min-height: 500px;
-    background-color: lightgray;
+    padding: 10px;
+    min-height: 800px;
 }
