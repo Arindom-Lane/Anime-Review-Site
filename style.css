@@ -218,7 +218,7 @@ main {
 .fallList span{
     position: absolute;
     top:0;
-    width: 0px;
+    width: 30px;
     height: 95%;
     background-color: rgba(0,0,0,0.5);
     color: white;
@@ -230,12 +230,13 @@ main {
     justify-content: center;
     align-items: center;
     
+    opacity: 0;
+    transition: opacity 400ms ease-out; 
     
-    transition: width 200ms ease-out;
 }
-.fallList:hover .left-arrow,
-.fallList:hover .right-arrow {
-    width: 30px;
+.fallList:hover .left-arrow, .fallList:hover .right-arrow {
+    opacity: 1;
+    
 }
 
 .left-arrow{
