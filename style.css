@@ -230,7 +230,7 @@ main {
     justify-content: center;
     align-items: center;
     
-    overflow: hidden;
+    
     transition: width 200ms ease-out;
 }
 .fallList:hover .left-arrow,
