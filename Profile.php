@@ -34,7 +34,7 @@
             <span>My Panel</span>
             <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png">
             <!-- <img src="https://cdn-icons-png.freepik.com/512/14627/14627394.png"> --> 
-            <!-- for dark mode to bright mode converting logo -->
+            <!-- for dark mode to bright mode converting logo img link-->
             
         </div>
     </header>
