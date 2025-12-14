@@ -229,18 +229,13 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    visibility: hidden;
-    transition: width 500ms ease-out 0s;
+    
+    overflow: hidden;
+    transition: width 200ms ease-out;
 }
-.left-arrow:hover{
-    visibility: visible;
-    width: 40px;
-}
-
-
-.right-arrow:hover{
-    visibility: visible;
-    width: 40px;
+.fallList:hover .left-arrow,
+.fallList:hover .right-arrow {
+    width: 30px;
 }
 
 .left-arrow{
