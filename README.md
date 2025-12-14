@@ -9,7 +9,7 @@ A html CSS clone of MyAnimeList, the most popular anime/manga review site simila
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| primary_brand Color | ![#2e51a2](https://placehold.co/100x40/2e51a2/000) #2e51a2 |
+| primary_brand Color | ![#2e51a2](https://placehold.co/100x40/2e51a2/2e51a2) #2e51a2 |
 | brand-dark | ![#1a3274](https://via.placeholder.com/10/1a3274?text=+) #1a3274 |
 | brand-light | ![#E1E7F5](https://via.placeholder.com/10/E1E7F5?text=+) #E1E7F5 |
 | background_dark | ![#1b212c](https://via.placeholder.com/10/1b212c?text=+) #1b212c |
