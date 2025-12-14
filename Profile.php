@@ -8,7 +8,7 @@
     
 </head>
 <body>
-    <div class="header">
+    <header class="header">
         
         <div class="header-upper">
             <div class="logo">
@@ -20,7 +20,7 @@
                 <img src="https://avatars.githubusercontent.com/u/143287515?v=4" alt="Profile">
             </div>
         </div>
-            <div class="header-middle">
+        <div class="header-middle">
                     <div class="topButton">
                         <span>TOP ANIME</span>
                         <span>TOP MANGA</span>
@@ -29,12 +29,11 @@
                 <div class="search-bar">
                 <input class="search" type="text" placeholder="Search...">
                 </div>
-            </div>
-            <div class="header-lower">
+        </div>
+        <div class="header-lower">
 
-            </div>       
-
-    </div>
+        </div>
+    </header>
 
     <main>
         <section class="leftSection">
