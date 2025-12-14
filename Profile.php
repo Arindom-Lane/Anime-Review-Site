@@ -31,7 +31,8 @@
                 </div>
         </div>
         <div class="header-lower">
-
+            <span>My Panel</span>
+            <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png">
         </div>
     </header>
 
