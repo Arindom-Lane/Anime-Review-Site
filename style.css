@@ -1,89 +1,69 @@
-/* --- MAL PRIMARY COLOR VARIABLES --- */
+/* --- MAL PRIMARY COLOR VARIABLES (Kept same) --- */
 :root {
-    /* --- BRAND PRIMARY COLOR (The signature MAL Blue - Generally Consistent) --- */
-    --color-primary_brand: #2e51a2;     /* The iconic MAL blue for links/header/CTAs */
-    --color-primary_brand-dark-variant: #1a3274; /* Darker blue for hover/active states */
-    --color-primary_brand-light-variant: #E1E7F5; /* Darker blue for hover/active states */
-
-    /* --- 🌙 DARK MODE COLORS --- */
-    /* Backgrounds */
-    --color-background_dark: #1b212c;      /* Main page background (Deep dark gray/blue) */
-    --color-card-bg_dark: #222933;         /* Card/Box background (Lighter dark gray/blue, for contrast) */
-    --color-card-bg-variant_dark: #2a313c; /* Darker card background (e.g., striped table rows, nested panels) */
-    
-    /* Text (Invert colors for dark mode) */
-    --color-text-dark_dark: #e8e8e8;       /* Main text color (Very light white/gray) */
-    --color-text-medium_dark: #b0b0b0;     /* Secondary text (subtle gray) */
-    --color-text-light_dark: #707070;      /* Placeholder text, very subtle info */
-    
-    /* Borders & Accents */
-    --color-border_dark: #3a424a;          /* Main dividing lines and borders */
-
-
-    /* --- ☀️ LIGHT MODE (WHITE) COLORS --- */
-    /* Backgrounds */
-    --color-background_white: #F6F6F6;  /* Main page background (pure white) */
-    --color-card-bg_white: #f7f7f7;     /* Card/Box background (subtle light gray) */
-    
-    /* Text */
-    --color-text-dark_white: #323232;   /* Main text color (headings, body copy) */
-    --color-text-medium_white: #666666; /* Secondary text (timestamps, subtext) */
-    --color-text-light_white: #999999;  /* Placeholder text, very subtle info */
-    
-    /* Borders & Accents */
-    --color-border_white: #e0e0e0;      /* Main dividing lines and borders */
-    
+    --color-primary_brand: #2e51a2;
+    --color-primary_brand-dark-variant: #1a3274;
+    --color-primary_brand-light-variant: #E1E7F5;
+    --color-background_dark: #1b212c;
+    --color-card-bg_dark: #222933;
+    --color-card-bg-variant_dark: #2a313c;
+    --color-text-dark_dark: #e8e8e8;
+    --color-text-medium_dark: #b0b0b0;
+    --color-text-light_dark: #707070;
+    --color-border_dark: #3a424a;
+    --color-background_white: #F6F6F6;
+    --color-card-bg_white: #f7f7f7;
+    --color-text-dark_white: #323232;
+    --color-text-medium_white: #666666;
+    --color-text-light_white: #999999;
+    --color-border_white: #e0e0e0;
     --color-devider:#4a6fc7;
-
-    /* --- MAL BORDER/RADIUS VARIABLES --- */
-    --card-border-radius: 0.35rem;  /* MAL uses slightly rounded corners */
+    --card-border-radius: 0.35rem;
     --border-radius-1: 0.2rem;
     --border-radius-2: 0.4rem;
     --border-radius-3: 0.8rem;
-    --font-main: -apple-system, BlinkMacSystemFont,
-                 "Segoe UI", Roboto, Helvetica, Arial,
-                 sans-serif;
+    --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box; 
 }
 
-
-body{
+body {
     background-color: var(--color-background_white);
     color: var(--color-text-dark_white);
     font-family: var(--font-main);
     letter-spacing: .8px;
 }
 
-#header {
-    position: fixed;
-    left: 13%;
-    right: 13%;
-    background-color: var(--color-background_white);
-    color: var(--color-text-dark_white);
-    top:0;
-    z-index: 100;
 
+
+header {
+    margin: 0 13%;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-background_white);
 }
 
 
-.header-upper{
-    position: relative;
-    margin-left: 13%;
-    margin-right: 13%;
-    width: auto;
+
+
+
+.header-upper {
+    width: 100%;
+    height: auto; 
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
 
 .logo {
     width: 200px;
-    height: 100%;
+    height: 50px;
     display: flex;
     align-items: center;
 }
@@ -94,32 +74,22 @@ body{
     object-fit: contain;   
 }
 
-
-.profile{
+.profile {
     display: flex;
     align-items: center;   
-    position: relative;
-
-    color:white;
-    font-weight: bold;
     cursor: pointer;
     color: var(--color-text-dark_white);
+    font-weight: bold;
 }
 
-.profile span{
-    position: relative;
-    top: 50%
-}
-.devider1{
- 
+.devider1 {
     height: 30px;
     color: var(--color-devider);
     margin: 10px;
     border: 1px solid;
-
 }
 
-.profile img{
+.profile img {
     width: 30px;
     height: 30px;
     border-radius: var(--border-radius-1);
@@ -127,95 +97,106 @@ body{
     margin-left: 10px;
 }
 
-.header-middle{
+
+
+
+
+.header-middle {
     background-color: var(--color-primary_brand);
-    border-top-left-radius:var(--border-radius-1) ;
-    border-top-right-radius:var(--border-radius-1) ;
-    position: fixed;
-    top:50px;
-    align-items: center;
-    left: 13%;
-    right: 13%;
-    color:var(--color-text-dark_white);
+    border-top-left-radius: var(--border-radius-1);
+    border-top-right-radius: var(--border-radius-1);
+    color: var(--color-text-dark_white);
+    
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0 11px;
-    
+    height: 40px;
 }
 
-.topButton{
+.topButton {
     display: flex;
     align-items: center;
-    margin-left: -8px;
+    margin-left: -10px;
+    height: 10px;
 }
 
-.topButton span{
+.topButton span {
     color: white;
-    padding: 10px 15px;
+    padding: 10px 13px;
     font-size: 12px;
     font-weight: bold;
     display: block;
-    
-
+    cursor: pointer;
 }
-.topButton span:hover{
+
+.topButton span:hover {
     background-color: var(--color-primary_brand-dark-variant);
     border-radius: var(--border-radius-1);
 }
-.topButton span:active{
+
+.topButton span:active {
     background-color: var(--color-primary_brand-light-variant);
     color: var(--color-text-dark_white);
     border-radius: var(--border-radius-1);
 }
 
-
-.search{
-    padding: 4px 6px;
+.search {
+    padding: 0 6px;
     border-radius: var(--border-radius-1);
     border: .5px solid var(--color-border_white);
     font-size: 11px;
-    width: 250px;
+    width: 300px;
+    height: 25px;
 }
 
 
-.header-lower span{
-    font-size: large; 
-    font-weight: bold;
-    color: white;
-}
 
 
-.header-lower{
+
+.header-lower {
+
     background-color: var(--color-primary_brand-light-variant);
-    position: fixed;
-    top: 90px;
-    align-items: center;
-    height: 30px;
-    left: 13%;
-    right: 13%;
-    color:var(--color-text-dark_white);
+    color: var(--color-text-dark_white);
+    border-bottom: .5px solid var(--color-primary_brand);
+
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 40px;
     padding: 0 11px;
-    border-bottom: .5px solid var(--color-primary_brand);
 }
 
-main{
-    margin: 67px 13% 0 13%;
+.header-lower span {
+    font-size: large; 
+    font-weight: bold;
+    color: black; 
+}
+
+.header-lower img{
+    height: 30px;
+    width: 30px;
+}
+
+.header-lower img:hover{
+    cursor: pointer;
+}
+main {
+
+    margin: 20px 13% 0 13%; 
     display: flex;
-
+    gap: 10px; 
 }
 
-.leftSection{
+.leftSection {
     width: 75%;
     min-height: 500px;
-    background-color: var(--color-card-bg-variant_dark);
+    background-color: var(--color-card-bg-variant_dark); 
     border-right: .5px solid var(--color-border_white);
     padding: 10px;
-
 }
 
-.rightSection{
+.rightSection {
     width: 25%;
     min-height: 500px;
     background-color: lightgray;

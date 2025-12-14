@@ -8,7 +8,7 @@
     
 </head>
 <body>
-    <header class="header">
+    <header>
         
         <div class="header-upper">
             <div class="logo">
