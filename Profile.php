@@ -40,14 +40,14 @@
     </header>
 
     <main>
-        <section class="leftSection">
+        <div class="leftSection">
             <div></div>
 
-        </section>
-        <section class="rightSection">
+        </div>
+        <div class="rightSection">
             <div></div>
 
-        </section>
+        </div>
     </main>
         
     
