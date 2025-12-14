@@ -218,16 +218,36 @@ main {
 .fallList span{
     position: absolute;
     top:0;
-    width: 40px;
+    width: 0px;
     height: 95%;
     background-color: rgba(0,0,0,0.5);
     color: white;
     cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    visibility: hidden;
+    transition: width 500ms ease-out 0s;
+}
+.left-arrow:hover{
+    visibility: visible;
+    width: 40px;
+}
 
+
+.right-arrow:hover{
+    visibility: visible;
+    width: 40px;
+}
+
+.left-arrow{
+    left: 0;
+}
+.right-arrow{
+    right:0;
 }
 .fallList img{
     width: 134px;
