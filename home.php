@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="style.css">    
+    <link rel="stylesheet" href="homeStyle.css">    
 
     
 </head>
@@ -76,6 +76,6 @@
         </div>
     </main>
         
-    <script src="jsScript.js"></script>
+    <script src="homeJSCRIPT.js"></script>
 </body>
 </html>
