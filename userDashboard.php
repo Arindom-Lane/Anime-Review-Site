@@ -39,6 +39,23 @@
             
         </div>
     </header>
+    <main>
+        <div class="sidebar">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJI_DopBdbcgF7IJix80AH8Red7J1UtoDOaw&s">
+
+            <ul>
+                <li class="active">Dashboard</li>
+                <li>Anime List</li>
+                <li>Manga List</li>
+                <li>Friends</li>
+                <li>Clubs</li>
+                <li>Reviews</li>
+                <li>Recommendations</li>
+                <li>Settings</li>
+            </ul>
+        </div>
+
+    </main>
 
 </body>
 </html>
