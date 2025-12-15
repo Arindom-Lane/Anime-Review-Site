@@ -154,7 +154,6 @@
                 </div>
             </div>
 
-
             <div class="topUpcoming">
                 <div class="topUpcomingHeading">
                     <h3>Top Upcoming Anime</h3>
@@ -183,7 +182,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="mostPopuar">
                 <div class="mostPopuarHeading">
