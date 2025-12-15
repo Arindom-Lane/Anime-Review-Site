@@ -250,6 +250,12 @@ main {
     width: 134px;
     height: 188px;
 }
+.fallList img:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: .7;
+
+}
 
 .rightSection {
     padding: 10px;
