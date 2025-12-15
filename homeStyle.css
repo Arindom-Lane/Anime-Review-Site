@@ -404,7 +404,7 @@ main {
 
     display: grid;
     align-items: center;
-    /* grid-template-columns: 4% 40% 60%; */
+    
     grid-template-columns: .03fr 2fr 3fr;
     gap: 5px;
     padding: 2% 0;
@@ -413,4 +413,8 @@ main {
     height: 100%;
     width: 80px;
     margin: 0 auto;
+}
+.topAiringAnimeImagesGrid div span{
+    font-size: medium;
+    color: black;
 }
