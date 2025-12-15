@@ -41,10 +41,18 @@
     </header>
 
     <main>
+        
         <div class="leftSection">
-        <h3>Fall 2025 Anime</h3>
-            <hr>
-            <br>
+
+        <h3>MALxJapan -More than just anime-</h3><hr><br>
+        <div class="MALxJAPAN">
+            <div>
+                <img src="https://cdn.myanimelist.net/resources/mxj_panel/2025/20251118015053_MxJ%20exposure-354x220@2x.png">
+                <link 
+            </div>
+        </div>
+
+        <h3>Fall 2025 Anime</h3><hr>
         <div class="fallList-wrapper">
             <span class="left-arrowfallList">&lt;</span>
             <span class="right-arrowfallList">&gt;</span>
@@ -71,9 +79,7 @@
                 </div>
         </div>
         <br>
-        <h3>Latest Updated Episode Videos</h3>
-            <hr>
-            <br>
+        <h3>Latest Updated Episode Videos</h3><hr>
         <div class="latest-wrapper">
             <span class="left-arrowlatest">&lt;</span>
             <span class="right-arrowlatest">&gt;</span>
@@ -100,7 +106,7 @@
                 </div>
         </div><br><hr>
         
-        
+
 
         </div>
         <div class="rightSection">
