@@ -98,11 +98,8 @@
                     <img src="https://cdn.myanimelist.net/images/anime/1264/152012.jpg">
                     <img src="https://cdn.myanimelist.net/images/anime/1257/152233.jpg">
                 </div>
-        </div>
-        <br>
-
+        </div><br><hr>
         
-        <hr>
         
 
         </div>
