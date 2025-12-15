@@ -124,7 +124,38 @@
 
         </div>
         <div class="rightSection">
-            <div>Hellow</div>
+            <div class="MyStats"></div>
+            <div class="topAiringAnime">
+                <div class="topAiringAnimeHeading">
+                    <h3>Top Airing Anime</h3>
+                    <span>More</span>
+                </div>
+                <div class="topAiringAnimeImagesGrid">
+                    <div>
+                        <h2>1</h2>
+                        <img src="https://cdn.myanimelist.net/r/100x140/images/anime/1064/152251.webp?s=922394da72dc89aaca1e482d3700a90c">
+                        <span>Sousou no Frieren 2nd Season</span>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="topUpcoming">
+                <div class="topUpcomingHeading">
+                    <h3>Top Upcoming Anime</h3>
+                    <span>More</span>
+                </div>
+                <div class="topUpcomingImagesGrid">
+
+                </div>
+            </div>
+            <div class="mostPopuar">
+                <div class="mostPopuarHeading">
+                    <h3>Most Popular Anime</h3>
+                    <span>More</span>
+                </div>
+                <div class="mostPopuarImagesGrid">
+
+                </div>
+            </div> -->
 
         </div>
     </main>

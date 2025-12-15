@@ -13,7 +13,7 @@
     --color-border_dark: #3a424a;
 
     --color-background_white: #F6F6F6;
-    --color-card-bg_white: #f7f7f7;
+    --color-card-bg_white: #f1f1f1;
     --color-text-dark_white: #323232;
     --color-text-medium_white: #666666;
     --color-text-light_white: #999999;
@@ -378,4 +378,39 @@ main {
 .rightSection {
     padding: 10px;
     min-height: 2000px;
+}
+
+.topAiringAnimeHeading{
+
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--color-primary_brand-light-variant);
+    padding: 2% 2%;
+    border-radius: var(--border-radius-1);
+}
+.topAiringAnimeImagesGrid{
+
+    display: grid;
+    grid-auto-flow: row;
+
+    align-content: center;
+    gap: 5px;
+    padding-top: 2%;
+    background-color: var(--color-card-bg_white);
+}
+
+.topAiringAnimeImagesGrid div{
+
+    display: grid;
+    align-items: center;
+    /* grid-template-columns: 4% 40% 60%; */
+    grid-template-columns: .03fr 2fr 3fr;
+    gap: 5px;
+    padding: 2% 0;
+}
+.topAiringAnimeImagesGrid div img{
+    height: 100%;
+    width: 80px;
+    margin: 0 auto;
 }
