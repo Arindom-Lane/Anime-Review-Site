@@ -136,26 +136,83 @@
                         <img src="https://cdn.myanimelist.net/r/100x140/images/anime/1064/152251.webp?s=922394da72dc89aaca1e482d3700a90c">
                         <span>Sousou no Frieren 2nd Season</span>
                     </div>
+                    <div>
+                        <h2>3</h2>
+                        <img src="https://cdn.myanimelist.net/images/anime/1982/153900.jpg">
+                        <span>Jigokuraku 2nd Season</span>
+                    </div>
+                    <div>
+                        <h2>3</h2>
+                        <img src="https://cdn.myanimelist.net/images/anime/1653/153899.jpg">
+                        <span>Youjo Senki II</span>
+                    </div>
+                    <div>
+                        <h2>4</h2>
+                        <img src="https://cdn.myanimelist.net/images/anime/1180/153379.jpg">
+                        <span>Jujutsu Kaisen: Shimetsu Kaiyuu - Zenpen</span>
+                    </div>
                 </div>
             </div>
-            <!-- <div class="topUpcoming">
+
+
+            <div class="topUpcoming">
                 <div class="topUpcomingHeading">
                     <h3>Top Upcoming Anime</h3>
                     <span>More</span>
                 </div>
                 <div class="topUpcomingImagesGrid">
-
+                    <div>
+                        <h2>1</h2>
+                        <img src="https://cdn.myanimelist.net/images/anime/1706/144725.jpg">
+                        <span>Re:Zero kara Hajimeru Isekai Seikatsu 3rd Season</span>
+                    </div>
+                    <div>
+                        <h2>2</h2>
+                        <img src="https://cdn.myanimelist.net/images/anime/1026/146459.jpg">
+                        <span>Sakamoto Days</span>
+                    </div>
+                    <div>
+                        <h2>3</h2>
+                        <img src="https://cdn.myanimelist.net/images/anime/1584/143719.jpg">
+                        <span>Dandadan</span>
+                    </div>
+                    <div>
+                        <h2>4</h2>
+                        <img src="https://m.media-amazon.com/images/M/MV5BNWFlNmJkN2YtNGRiZS00NjExLTlmNmEtYzdiMTdiZmMzYzAwXkEyXkFqcGc@._V1_FMjpg_UY3000_.jpg">
+                        <span>Blue Lock 2nd Season</span>
+                    </div>
                 </div>
             </div>
+
+
             <div class="mostPopuar">
                 <div class="mostPopuarHeading">
                     <h3>Most Popular Anime</h3>
                     <span>More</span>
                 </div>
                 <div class="mostPopuarImagesGrid">
-
+                    <div>
+                        <h2>1</h2>
+                        <img src="https://cdn.myanimelist.net/images/anime/10/47347.jpg">
+                        <span>Shingeki no Kyojin</span>
+                    </div>
+                    <div>
+                        <h2>2</h2>
+                        <img src="https://cdn.myanimelist.net/images/anime/1223/96541.jpg">
+                        <span>Fullmetal Alchemist: Brotherhood</span>
+                    </div>
+                    <div>
+                        <h2>3</h2>
+                        <img src="https://cdn.myanimelist.net/images/anime/11/39717.jpg">
+                        <span>Sword Art Online</span>
+                    </div>
+                    <div>
+                        <h2>4</h2>
+                        <img src="https://cdn.myanimelist.net/images/anime/6/73245.jpg">
+                        <span>One Punch Man</span>
+                    </div>
                 </div>
-            </div> -->
+            </div>
 
         </div>
     </main>
