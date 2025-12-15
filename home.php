@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
     <link rel="stylesheet" href="style.css">    
+
     
 </head>
 <body>
@@ -45,7 +46,6 @@
                 <span class="left-arrow"><</span>
                 <span class="right-arrow">></span>
 
-
                 <img src="https://cdn.myanimelist.net/images/anime/1168/148347.jpg">
                 <img src="https://cdn.myanimelist.net/images/anime/1697/151793.jpg">
                 <img src="https://cdn.myanimelist.net/images/anime/1959/151055.jpg">
@@ -73,6 +73,6 @@
         </div>
     </main>
         
-    
+    <script src="jsScript.js"></script>
 </body>
 </html>

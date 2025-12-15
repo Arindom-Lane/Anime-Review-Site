@@ -214,6 +214,8 @@ main {
     overflow-y: hidden;
     height: 199px;
     width: 100%;
+    scroll-behavior: smooth;
+    
 }
 .fallList span{
     position: absolute;
