@@ -43,9 +43,11 @@
     <main>
         
         <div class="leftSection">
-
-        <h4>MALxJapan -More than just anime-</h3>
-        <a href="https://mxj.myanimelist.net/">Visit MALxJAPAN</a><hr><br>
+        
+        <div class="MALxJAPANdiv">
+            <h3>MALxJapan -More than just anime-</h3>
+            <a href="https://mxj.myanimelist.net/">Visit MALxJAPAN</a>
+        </div><hr><br>
         <div class="MALxJAPAN">
             <div>
                 <img src="https://mxj.myanimelist.net/img/projects/Sparks_of_Tomorrow/354x220.png">

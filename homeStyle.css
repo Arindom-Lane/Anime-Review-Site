@@ -19,7 +19,7 @@
     --color-text-light_white: #999999;
     --color-border_white: #e0e0e0;
     --color-devider:#4a6fc7;
-    
+
     --card-border-radius: 0.35rem;
     --border-radius-1: 0.2rem;
     --border-radius-2: 0.4rem;
@@ -205,7 +205,7 @@ main {
     padding: 10px;
     min-height: 2000px;
     border-right: 2px solid var(--color-border_white);
-    
+    position: relative;
 }
 
 .fallList {
@@ -240,7 +240,8 @@ main {
     font-size: 24px;
     font-weight: bold;
     z-index: 100;
-
+    margin-top: 5px;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -305,6 +306,7 @@ main {
     font-size: 24px;
     font-weight: bold;
     z-index: 100;
+    margin-top: 5px;
 
     display: flex;
     justify-content: center;
@@ -332,6 +334,31 @@ main {
     opacity: .7;
 
 }
+
+
+.MALxJAPANdiv{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .rightSection {
     padding: 10px;
