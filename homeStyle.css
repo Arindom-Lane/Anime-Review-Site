@@ -46,7 +46,7 @@ header {
     grid-template-columns: 100%;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
     background-color: var(--color-background_white);
 }
 
@@ -206,27 +206,30 @@ main {
 }
 
 .fallList {
-    position: relative;
-    gap:5px;
     display: grid;
     grid-auto-flow: column;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    height: 199px;
-    width: 100%;
-    scroll-behavior: smooth;
+    grid-auto-columns: 190px; /*  controls the width */
+    gap: 5px;
+
+    overflow: hidden;
+    scroll-behavior:smooth;
+    height: 100%;
     
+}
+.fallList img{
+    width: 100%;
+    height: 260px; /* controls the heidth */
 }
 .fallList-wrapper{
     position: relative;
     width: 100%;
-    height: 199px;
+    height: 260px; /* controls the heidth of the sroll bar and shoul de same */
 }
-.fallList span{
+.fallList-wrapper span{
     position: absolute;
     top:0;
     width: 30px;
-    height: 95%;
+    height: 100%;
     background-color: rgba(0,0,0,0.5);
     color: white;
     cursor: pointer;
@@ -242,22 +245,83 @@ main {
     transition: opacity 400ms ease-out; 
     
 }
-.fallList:hover .left-arrow, .fallList:hover .right-arrow {
+.fallList-wrapper:hover .left-arrowfallList, .fallList-wrapper:hover .right-arrowfallList {
     opacity: 1;
     
 }
 
-.left-arrow{
+.left-arrowfallList{
     left: 0;
 }
-.right-arrow{
+.right-arrowfallList{
     right:0;
 }
-.fallList img{
-    width: 134px;
-    height: 188px;
-}
+
 .fallList img:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: .7;
+
+}
+
+
+
+
+.latestList {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 120px;
+    gap: 5px;
+
+    overflow: hidden;
+    scroll-behavior:smooth;
+    height: 100%;
+    
+}
+.latestList img{
+    width: 100% ;
+    height: 160px;
+}
+
+
+.latest-wrapper{
+    position: relative;
+    width: 100%;
+    height: 160px;
+}
+.latest-wrapper span{
+    position: absolute;
+    top:0;
+    width: 30px;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 100;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    opacity: 0;
+    transition: opacity 400ms ease-out; 
+    
+}
+.latest-wrapper:hover .left-arrowlatest, .latest-wrapper:hover .right-arrowlatest {
+    opacity: 1;
+    
+}
+
+.left-arrowlatest{
+    left: 0;
+}
+.right-arrowlatest{
+    right:0;
+}
+
+.latestList img:hover{
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.5);
     opacity: .7;
