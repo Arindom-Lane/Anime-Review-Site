@@ -41,18 +41,29 @@
     </header>
     <main>
         <div class="sidebar">
+            <fieldset style="width: 200px; height: auto;">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJI_DopBdbcgF7IJix80AH8Red7J1UtoDOaw&s">
-
-            <ul>
-                <li class="active">Dashboard</li>
-                <li>Anime List</li>
-                <li>Manga List</li>
-                <li>Friends</li>
-                <li>Clubs</li>
-                <li>Reviews</li>
-                <li>Recommendations</li>
-                <li>Settings</li>
-            </ul>
+            <div class="meta-row">
+                <br>
+                            <span style="position:absolute;">Last Online</span>
+                            <span style="color:green; position:relative;left:155px;">Now</span>
+                            <br>
+                            <span style="position:absolute;">joined</span>
+                            <span style="position:relative;left:110px;">Aug 11, 2023</span>
+                            <br></br>
+                            <input type="button" value="Anime List" class="animebtn">
+                            <input type="button" value="Manga List" class="mangabtn">
+                            <div style="border-bottom: 1px solid black ; width: 23%; padding: 3px;"></div>
+                            <input type="button" value="Statistics" class="statbtn">
+                            <br>
+                            <input type="button" value="History" class="statbtn">
+                            <br>
+                            <input type="button" value="Favorites" class="statbtn">
+                            <br><br>
+                            reviews-------<span style="color:blue;">0</span>
+                            
+                        </div>
+            </fieldset>
         </div>
 
     </main>

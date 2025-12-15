@@ -268,3 +268,19 @@ main {
     padding: 10px;
     min-height: 2000px;
 }
+.animebtn{
+    
+    padding:10px;
+}
+.mangabtn{
+    
+    padding:10px;
+}
+.statbtn {
+  color: blue; /* A nice blue color */
+  padding: 5px;     
+  border: none;              /* Remove default border */
+  cursor: pointer;           /* Makes the mouse cursor a hand */
+  width:20%;
+  text-align:left;
+}
