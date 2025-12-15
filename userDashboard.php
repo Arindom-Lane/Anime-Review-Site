@@ -40,27 +40,33 @@
         </div>
     </header>
     <main>
-        <div class="sidebar">
-            <fieldset style="width: 200px; height: auto;">
+        <div class="sidebar" >
+            <fieldset style="width: 200px; height: auto; padding:5px;">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJI_DopBdbcgF7IJix80AH8Red7J1UtoDOaw&s">
             <div class="meta-row">
                 <br>
                             <span style="position:absolute;">Last Online</span>
-                            <span style="color:green; position:relative;left:155px;">Now</span>
+                            <span style="color:green; position:relative;left:160px;">Now</span>
                             <br>
                             <span style="position:absolute;">joined</span>
                             <span style="position:relative;left:110px;">Aug 11, 2023</span>
                             <br></br>
                             <input type="button" value="Anime List" class="animebtn">
                             <input type="button" value="Manga List" class="mangabtn">
-                            <div style="border-bottom: 1px solid black ; width: 23%; padding: 3px;"></div>
+                            <div style="border-bottom: 1px solid black ; width: auto; padding: 3px;"></div>
                             <input type="button" value="Statistics" class="statbtn">
                             <br>
                             <input type="button" value="History" class="statbtn">
                             <br>
                             <input type="button" value="Favorites" class="statbtn">
                             <br><br>
-                            reviews-------<span style="color:blue;">0</span>
+                            reviews<span style="color:blue;position:relative;left:127px;">0</span>
+                            <br>
+                            recommendations<span style="color:blue;position:relative;left:58px;">0</span>
+                            <br>
+                        <h1>Friends <span style="color:blue;position:relative;left:40px;">(0)</span></h1>
+                        <div class="friendcheck"></div>
+                        
                             
                         </div>
             </fieldset>
