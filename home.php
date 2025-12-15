@@ -42,10 +42,12 @@
 
     <main>
         <div class="leftSection">
-
+        <h3>Fall 2025 Anime</h3>
+            <hr>
+            <br>
         <div class="fallList-wrapper">
-            <span class="left-arrow">&lt;</span>
-            <span class="right-arrow">&gt;</span>
+            <span class="left-arrowfallList">&lt;</span>
+            <span class="right-arrowfallList">&gt;</span>
                 <div class="fallList">
 
                     <img src="https://cdn.myanimelist.net/images/anime/1168/148347.jpg">
@@ -68,6 +70,40 @@
                     <img src="https://cdn.myanimelist.net/images/anime/1257/152233.jpg">
                 </div>
         </div>
+        <br>
+        <h3>Latest Updated Episode Videos</h3>
+            <hr>
+            <br>
+        <div class="latest-wrapper">
+            <span class="left-arrowlatest">&lt;</span>
+            <span class="right-arrowlatest">&gt;</span>
+                <div class="latestList">
+
+                    <img src="https://cdn.myanimelist.net/images/anime/1168/148347.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1697/151793.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1959/151055.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1140/152364.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1190/151754.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1276/151118.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1206/151772.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1699/151694.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1364/151767.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1830/145051.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1163/151246.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1721/151097.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1011/152084.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1651/152063.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1864/151837.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1015/151233.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1264/152012.jpg">
+                    <img src="https://cdn.myanimelist.net/images/anime/1257/152233.jpg">
+                </div>
+        </div>
+        <br>
+
+        
+        <hr>
+        
 
         </div>
         <div class="rightSection">
