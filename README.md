@@ -22,6 +22,7 @@ A html CSS clone of MyAnimeList, the most popular anime/manga review site simila
     --color-primary_brand: #2e51a2;
     --color-primary_brand-dark-variant: #1a3274;
     --color-primary_brand-light-variant: #E1E7F5;
+    
     --color-background_dark: #1b212c;
     --color-card-bg_dark: #222933;
     --color-card-bg-variant_dark: #2a313c;
@@ -29,6 +30,7 @@ A html CSS clone of MyAnimeList, the most popular anime/manga review site simila
     --color-text-medium_dark: #b0b0b0;
     --color-text-light_dark: #707070;
     --color-border_dark: #3a424a;
+    
     --color-background_white: #F6F6F6;
     --color-card-bg_white: #f7f7f7;
     --color-text-dark_white: #323232;
@@ -36,6 +38,7 @@ A html CSS clone of MyAnimeList, the most popular anime/manga review site simila
     --color-text-light_white: #999999;
     --color-border_white: #e0e0e0;
     --color-devider:#4a6fc7;
+    
     --card-border-radius: 0.35rem;
     --border-radius-1: 0.2rem;
     --border-radius-2: 0.4rem;
