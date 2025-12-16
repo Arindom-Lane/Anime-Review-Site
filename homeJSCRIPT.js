@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+
     const fallList = document.querySelector(".fallList");
     const rightArrowFallList = document.querySelector(".right-arrowfallList"); // Changed to match CSS
     const leftArrowFallList = document.querySelector(".left-arrowfallList"); // Changed to match CSS
@@ -7,8 +7,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightArrowLatest = document.querySelector(".right-arrowlatest");
     const leftArrowLatest = document.querySelector(".left-arrowlatest");
     
-
     const scrollAmmountFall = 600;
+
+    const goTOprofilePage = document.querySelector(".profile");
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    if(goTOprofilePage){
+        goTOprofilePage.addEventListener('click', () =>{
+            window.location.href = "userDashboard.php"
+        })
+    }
+    
     if(rightArrowFallList){
         rightArrowFallList.addEventListener('click', () => { // Fixed variable name
             fallList.scrollLeft += scrollAmmountFall;
