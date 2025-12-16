@@ -118,18 +118,18 @@
                     <img src="https://cdn.myanimelist.net/images/anime/1264/152012.jpg">
                     <img src="https://cdn.myanimelist.net/images/anime/1257/152233.jpg">
                 </div>
-        </div><br><hr>
-        
+        </div>
+        <br>
         <h3>Most Popular Anime Trailers</h3><hr>
         <div class="Trailers-wrapper">
             <span class="left-arrowTrailers">&lt;</span>
             <span class="right-arrowTrailers">&gt;</span>
                 <div class="TrailersList">
 
-                    <img src="https://cdn.myanimelist.net/images/anime/1168/148347.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1697/151793.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1959/151055.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1140/152364.jpg">
+                    <img src="https://i.ytimg.com/vi/WJkJTb8T-8E/maxresdefault.jpg">
+                    <img src="https://i.ytimg.com/vi/ATJYac_dORw/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCFg_a8bomx8r7HLZEPf_HriNAkhA">
+                    <img src="https://img.youtube.com/vi/pv8A7eubPQQ/maxresdefault.jpg">
+                    <img src="https://img.youtube.com/vi/FHgm89hKpXU/maxresdefault.jpg">
                     <img src="https://cdn.myanimelist.net/images/anime/1190/151754.jpg">
                     <img src="https://cdn.myanimelist.net/images/anime/1276/151118.jpg">
                     <img src="https://cdn.myanimelist.net/images/anime/1206/151772.jpg">

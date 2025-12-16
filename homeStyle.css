@@ -221,12 +221,12 @@ main {
 }
 .TrailersList img{
     width: 100%;
-    height: 90px; /* controls the heidth */
+    height:130px; /* controls the heidth */
 }
 .Trailers-wrapper{
     position: relative;
     width: 100%;
-    height: 90px; /* controls the heidth of the sroll bar and shoul de same */
+    height: 130px; /* controls the heidth of the sroll bar and shoul de same */
     padding-top: 5px;
 }
 
