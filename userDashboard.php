@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
     <link rel="stylesheet" href="userDash.css">    
-
-    
 </head>
 <body>
     <header>
-        
         <div class="header-upper">
             <div class="logo">
-                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
+                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200" alt="MAL Logo">
             </div>
             <div class="profile">
                 <div class="devider1"></div>
@@ -22,120 +19,122 @@
             </div>
         </div>
         <div class="header-middle">
-                    <div class="topButton">
-                        <span>TOP ANIME</span>
-                        <span>TOP MANGA</span>
-                    </div>
-
-                <div class="search-bar">
+            <div class="topButton">
+                <span>TOP ANIME</span>
+                <span>TOP MANGA</span>
+            </div>
+            <div class="search-bar">
                 <input class="search" type="text" placeholder="Search...">
-                </div>
+            </div>
         </div>
         <div class="header-lower">
             <span>My Panel</span>
-            <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png">
-            <!-- <img src="https://cdn-icons-png.freepik.com/512/14627/14627394.png"> --> 
-            <!-- for dark mode to bright mode converting logo img link-->
-            
+            <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png" alt="Menu">
         </div>
     </header>
+
     <main>
+        <!-- LEFT SIDEBAR -->
         <div class="leftSection">
-            <fieldset style="width: 100%; height: auto; padding:15px; border: 1px solid var(--color-border_white); background-color: white;">
-                <div style="display: flex; justify-content: center; margin-bottom: 10px;">
-                    <img src="https://avatars.githubusercontent.com/u/143287515?v=4" style="width: 100%; max-width: 200px; border-radius: 4px;">
+            <fieldset class="sidebar-fieldset">
+                <div class="user-avatar-container">
+                    <img src="https://avatars.githubusercontent.com/u/143287515?v=4" class="user-avatar-img" alt="User Avatar">
                 </div>
                 
-                <div style="font-size: 12px;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <div class="sidebar-content">
+                    <div class="sidebar-row">
                         <span>Last Online</span>
-                        <span style="color:green;">Now</span>
+                        <span class="status-online">Now</span>
                     </div>
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <div class="sidebar-row joined-row">
                         <span>Joined</span>
                         <span>Aug 11, 2023</span>
                     </div>
 
-                    <div style="display: flex; gap: 5px; margin-bottom: 10px;">
-                        <input type="button" value="Anime List" class="animebtn" style="flex: 1; background-color: var(--color-primary_brand); color: white; border: none; cursor: pointer; border-radius: 3px;">
-                        <input type="button" value="Manga List" class="mangabtn" style="flex: 1; background-color: var(--color-primary_brand); color: white; border: none; cursor: pointer; border-radius: 3px;">
+                    <div class="list-btn-row">
+                        <input type="button" value="Anime List" class="list-btn">
+                        <input type="button" value="Manga List" class="list-btn">
                     </div>
 
-                    <div style="border-bottom: 1px solid var(--color-border_white); margin: 10px 0;"></div>
+                    <div class="sidebar-divider"></div>
                     
-                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <div class="sidebar-menu">
                         <input type="button" value="Statistics" class="statbtn">
                         <input type="button" value="History" class="statbtn">
                         <input type="button" value="Favorites" class="statbtn">
                     </div>
 
                     <br>
-                    <div style="display: flex; justify-content: space-between;">
+                    <div class="sidebar-row">
                         <span>Reviews</span>
-                        <span style="color:blue;">0</span>
+                        <span class="text-blue">0</span>
                     </div>
-                    <div style="display: flex; justify-content: space-between;">
+                    <div class="sidebar-row">
                         <span>Recommendations</span>
-                        <span style="color:blue;">0</span>
+                        <span class="text-blue">0</span>
                     </div>
 
-                    <h1 style="font-size: 14px; margin-top: 15px; border-bottom: 1px solid #ccc; padding-bottom: 5px;">Friends <span style="color:blue;">(0)</span></h1>
-                    <div class="friendcheck" style="height: 50px; background-color: #f9f9f9; margin-top: 5px;"></div> 
+                    <h1 class="friends-header">Friends <span class="text-blue">(0)</span></h1>
+                    <div class="friend-box"></div> 
                 </div>
                 
-                <div style="margin-top: 20px; text-align: center;">
-                    <input type="button" value="Edit Profile" class="editbtn" style="padding: 5px 15px;">
+                <div class="edit-profile-wrapper">
+                    <input type="button" value="Edit Profile" class="editbtn">
                 </div>
             </fieldset>
         </div>
-            <div class="rightsection">
-    <div class="content-block">
-        <p class="biography-text">No biography yet. <a href="#">Write it now.</a></p>
-    </div>
 
-    <h2 class="main-header">Statistics</h2>
-
-    <div class="stats-container">
-        <div class="stats-data-col">
-            <div class="stats-header-row">
-                <h3>Anime Stats</h3>
-                <a href="#">All Anime Stats</a>
-            </div>
-            
-            <div class="days-score-row">
-                <span>Days: <strong>0.0</strong></span>
-                <span>Mean Score: <strong>0.00</strong></span>
+        <!-- RIGHT MAIN CONTENT -->
+        <div class="rightsection">
+            <div class="content-block">
+                <p class="biography-text">No biography yet. <a href="#">Write it now.</a></p>
             </div>
 
-            <div class="main-progress-bar">
-                <div class="bar-fill green" style="width: 100%;"></div>
-            </div>
+            <h2 class="main-header">Statistics</h2>
 
-            <div class="stats-grid">
-                <ul class="status-legend">
-                    <li><span class="dot watching"></span> Watching <span class="count">0</span></li>
-                    <li><span class="dot completed"></span> Completed <span class="count">0</span></li>
-                    <li><span class="dot onhold"></span> On-Hold <span class="count">0</span></li>
-                    <li><span class="dot dropped"></span> Dropped <span class="count">0</span></li>
-                    <li><span class="dot plan"></span> Plan to Watch <span class="count">0</span></li>
-                </ul>
-                <ul class="status-totals">
-                    <li><span>Total Entries</span> <span>0</span></li>
-                    <li><span>Rewatched</span> <span>0</span></li>
-                    <li><span>Episodes</span> <span>0</span></li>
-                </ul>
-            </div>
-        </div>
+            <!-- Anime Stats -->
+            <div class="stats-container">
+                <div class="stats-data-col">
+                    <div class="stats-header-row">
+                        <h3>Anime Stats</h3>
+                        <a href="#">All Anime Stats</a>
+                    </div>
+                    
+                    <div class="days-score-row">
+                        <span>Days: <strong>0</strong></span>
+                        <span>Mean Score: <strong>0.00</strong></span>
+                    </div>
 
-        <div class="stats-updates-col">
-            <div class="stats-header-row">
-                <h3>Last Anime Updates</h3>
-                <a href="#">Anime History</a>
-            </div>
+                    <div class="main-progress-bar">
+                        <div class="bar-fill green width-100"></div>
+                    </div>
 
-            <div class="update-item">
-                   No updates yet. <a href="#">Edit list now.</a> 
-                   <!--
+                    <div class="stats-grid">
+                        <ul class="status-legend">
+                            <li><span class="dot watching"></span> Watching <span class="count">0</span></li>
+                            <li><span class="dot completed"></span> Completed <span class="count">0</span></li>
+                            <li><span class="dot onhold"></span> On-Hold <span class="count">0</span></li>
+                            <li><span class="dot dropped"></span> Dropped <span class="count">0</span></li>
+                            <li><span class="dot plan"></span> Plan to Watch <span class="count">0</span></li>
+                        </ul>
+                        <ul class="status-totals">
+                            <li><span>Total Entries</span> <span>0</span></li>
+                            <li><span>Rewatched</span> <span>0</span></li>
+                            <li><span>Episodes</span> <span>0</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="stats-updates-col">
+                    <div class="stats-header-row">
+                        <h3>Last Anime Updates</h3>
+                        <a href="#">Anime History</a>
+                    </div>
+
+                    <div class="update-item">
+                        <div class="no-updates">
+                            No updates yet. <a href="#">Edit list now.</a> 
+                            <!--
                 <img src="https://cdn.myanimelist.net/images/anime/1697/151793.jpg" alt="Anime Image">
                 <div class="update-info">
                     <a href="#" class="title-link">Spy x Family Season 3</a>
@@ -148,58 +147,57 @@
                     </div> 
                 </div>
 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manga Stats -->
+
+            <div class="stats-container manga-section">
+                <div class="stats-data-col">
+                    <div class="stats-header-row">
+                        <h3>Manga Stats</h3>
+                        <a href="#">All Manga Stats</a>
+                    </div>
+                    
+                    <div class="days-score-row">
+                        <span>Days: <strong>0.0</strong></span>
+                        <span>Mean Score: <strong>0.00</strong></span>
+                    </div>
+
+                    <div class="main-progress-bar">
+                        <div class="bar-fill grey width-100"></div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <ul class="status-legend">
+                            <li><span class="dot watching"></span> Reading <span class="count">0</span></li>
+                            <li><span class="dot completed"></span> Completed <span class="count">0</span></li>
+                            <li><span class="dot onhold"></span> On-Hold <span class="count">0</span></li>
+                            <li><span class="dot dropped"></span> Dropped <span class="count">0</span></li>
+                            <li><span class="dot plan"></span> Plan to Read <span class="count">0</span></li>
+                        </ul>
+                        <ul class="status-totals">
+                            <li><span>Total Entries</span> <span>0</span></li>
+                            <li><span>Reread</span> <span>0</span></li>
+                            <li><span>Chapters</span> <span>0</span></li>
+                            <li><span>Volumes</span> <span>0</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="stats-updates-col">
+                    <div class="stats-header-row">
+                        <h3>Last Manga Updates</h3>
+                        <a href="#">Manga History</a>
+                    </div>
+                    <div class="no-updates">
+                        No updates yet. <a href="#">Edit list now.</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="stats-container manga-section">
-        <div class="stats-data-col">
-            <div class="stats-header-row">
-                <h3>Manga Stats</h3>
-                <a href="#">All Manga Stats</a>
-            </div>
-            
-            <div class="days-score-row">
-                <span>Days: <strong>0.0</strong></span>
-                <span>Mean Score: <strong>0.00</strong></span>
-            </div>
-
-            <div class="main-progress-bar">
-                <div class="bar-fill grey" style="width: 100%;"></div>
-            </div>
-
-            <div class="stats-grid">
-                <ul class="status-legend">
-                    <li><span class="dot watching"></span> Reading <span class="count">0</span></li>
-                    <li><span class="dot completed"></span> Completed <span class="count">0</span></li>
-                    <li><span class="dot onhold"></span> On-Hold <span class="count">0</span></li>
-                    <li><span class="dot dropped"></span> Dropped <span class="count">0</span></li>
-                    <li><span class="dot plan"></span> Plan to Read <span class="count">0</span></li>
-                </ul>
-                <ul class="status-totals">
-                    <li><span>Total Entries</span> <span>0</span></li>
-                    <li><span>Reread</span> <span>0</span></li>
-                    <li><span>Chapters</span> <span>0</span></li>
-                    <li><span>Volumes</span> <span>0</span></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="stats-updates-col">
-            <div class="stats-header-row">
-                <h3>Last Manga Updates</h3>
-                <a href="#">Manga History</a>
-            </div>
-            <div class="no-updates">
-                No updates yet. <a href="#">Edit list now.</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-            </div>
-
     </main>
-
 </body>
 </html>
