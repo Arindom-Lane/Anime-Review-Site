@@ -87,7 +87,8 @@
         <!-- RIGHT MAIN CONTENT -->
         <div class="rightsection">
             <div class="content-block">
-                <p class="biography-text">No biography yet. <a href="#">Write it now.</a></p>
+                <span class="biography-text">No biography yet. </span>
+                <a href="#">Write it now.</a>
             </div>
 
             <h2 class="main-header">Statistics</h2>

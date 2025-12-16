@@ -196,9 +196,12 @@ main {
     border-radius: 3px;
     font-size: 11px;
 }
-
+.content-block{
+    display: flex;
+    justify-content: space-between;
+}
 .rightsection {
-    padding: 10px 0 10px 20px;
+    padding: 10px 10px;
     width: 100%;
 }
 
@@ -209,6 +212,7 @@ main {
 .biography-text a {
     color: var(--color-primary_brand);
     text-decoration: none;
+    
 }
 .biography-text a:hover { text-decoration: underline; }
 
