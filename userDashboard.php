@@ -198,6 +198,7 @@
                 </div>
             </div>
         </div>
+        <script src="userDashboard.js"></script>
     </main>
 </body>
 </html>
