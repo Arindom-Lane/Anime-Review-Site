@@ -38,6 +38,7 @@ body {
     color: var(--color-text-dark_white);
     font-family: var(--font-main);
     letter-spacing: .8px;
+    scroll-behavior:smooth;
 }
 
 
@@ -190,7 +191,7 @@ main {
     position: relative;
     margin: 0 13%; 
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 75% 25%;
     
     margin-bottom: 150px;
     border-bottom: 1.5px solid var(--color-border_white);
@@ -207,13 +208,31 @@ main {
     border-right: 2px solid var(--color-border_white);
     position: relative;
 }
+.TrailersList{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 250px; /*  controls the width */
+    gap: 5px;
+    overflow: hidden;
+    scroll-behavior:smooth;
+    height: 100%;
+}
+.TrailersList img{
+    width: 100%;
+    height: 90px; /* controls the heidth */
+}
+.Trailers-wrapper{
+    position: relative;
+    width: 100%;
+    height: 90px; /* controls the heidth of the sroll bar and shoul de same */
+    padding-top: 5px;
+}
 
 .fallList {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 190px; /*  controls the width */
     gap: 5px;
-
     overflow: hidden;
     scroll-behavior:smooth;
     height: 100%;
@@ -229,47 +248,6 @@ main {
     height: 260px; /* controls the heidth of the sroll bar and shoul de same */
     padding-top: 5px;
 }
-.fallList-wrapper span{
-    position: absolute;
-    top:0;
-    width: 30px;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    cursor: pointer;
-    font-size: 24px;
-    font-weight: bold;
-    z-index: 100;
-    margin-top: 5px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    opacity: 0;
-    transition: opacity 400ms ease-out; 
-    
-}
-.fallList-wrapper:hover .left-arrowfallList, .fallList-wrapper:hover .right-arrowfallList {
-    opacity: 1;
-    
-}
-
-.left-arrowfallList{
-    left: 0;
-}
-.right-arrowfallList{
-    right:0;
-}
-
-.fallList img:hover{
-    cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.5);
-    opacity: .7;
-
-}
-
-
 
 
 .latestList {
@@ -277,25 +255,21 @@ main {
     grid-auto-flow: column;
     grid-auto-columns: 120px;
     gap: 5px;
-
     overflow: hidden;
     scroll-behavior:smooth;
     height: 100%;
-    
 }
 .latestList img{
     width: 100% ;
     height: 160px;
 }
-
-
 .latest-wrapper{
     position: relative;
     width: 100%;
     height: 160px;
     padding-top: 5px;
 }
-.latest-wrapper span{
+.fallList-wrapper span, .latest-wrapper span, .Trailers-wrapper span{
     position: absolute;
     top:0;
     width: 30px;
@@ -316,24 +290,30 @@ main {
     transition: opacity 400ms ease-out; 
     
 }
-.latest-wrapper:hover .left-arrowlatest, .latest-wrapper:hover .right-arrowlatest {
+
+.fallList-wrapper:hover .left-arrowfallList, .fallList-wrapper:hover  .right-arrowfallList, 
+.latest-wrapper:hover .left-arrowlatest,.latest-wrapper:hover .right-arrowlatest,
+.Trailers-wrapper:hover .left-arrowTrailers,.Trailers-wrapper:hover .right-arrowTrailers
+ {
     opacity: 1;
     
 }
 
-.left-arrowlatest{
+.left-arrowfallList, .left-arrowlatest, .left-arrowTrailers{
     left: 0;
 }
-.right-arrowlatest{
+.right-arrowfallList,.right-arrowlatest,  .right-arrowTrailers{
     right:0;
 }
 
-.latestList img:hover{
+.fallList img:hover, .latestList img:hover{
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.5);
     opacity: .7;
 
 }
+
+
 
 
 .MALxJAPANHeadLine{
@@ -420,12 +400,12 @@ main {
     color: black;
 } */
 
-.topAiringAnime, .topUpcoming, .mostPopuar{
+.topAiringAnime, .topUpcoming, .mostPopuar, .mostPopularManga{
     padding: 10px 0;
 }
 .topAiringAnimeHeading, 
 .topUpcomingHeading, 
-.mostPopuarHeading {
+.mostPopuarHeading,.mostPopuarMangaHeading {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -437,7 +417,7 @@ main {
 
 .topAiringAnimeImagesGrid, 
 .topUpcomingImagesGrid, 
-.mostPopuarImagesGrid {
+.mostPopuarImagesGrid, .mostPopularMangaImagesGrid {
     display: grid;
     grid-auto-flow: row;
     align-content: center;
@@ -451,7 +431,7 @@ main {
 
 .topAiringAnimeImagesGrid div,
 .topUpcomingImagesGrid div,
-.mostPopuarImagesGrid div {
+.mostPopuarImagesGrid div, .mostPopularMangaImagesGrid div {
     display: grid;
     align-items: center;
     grid-template-columns: .03fr 2fr 5fr;
@@ -462,7 +442,7 @@ main {
 
 .topAiringAnimeImagesGrid div img,
 .topUpcomingImagesGrid div img,
-.mostPopuarImagesGrid div img {
+.mostPopuarImagesGrid div img, .mostPopularMangaImagesGrid div img {
     height: 100%;
     width: 60px;
     margin: 0 auto;
@@ -472,7 +452,7 @@ main {
 
 .topAiringAnimeImagesGrid div span,
 .topUpcomingImagesGrid div span,
-.mostPopuarImagesGrid div span {
-    font-size: medium;
+.mostPopuarImagesGrid div span, .mostPopularMangaImagesGrid div span {
+    font-size: 100;
     color: black;
 }
