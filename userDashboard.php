@@ -40,37 +40,65 @@
         </div>
     </header>
     <main>
-        <div class="sidebar" >
-            <fieldset style="width: 200px; height: auto; padding:5px;">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJI_DopBdbcgF7IJix80AH8Red7J1UtoDOaw&s">
-            <div class="meta-row">
-                <br>
-                            <span style="position:absolute;">Last Online</span>
-                            <span style="color:green; position:relative;left:160px;">Now</span>
-                            <br>
-                            <span style="position:absolute;">joined</span>
-                            <span style="position:relative;left:110px;">Aug 11, 2023</span>
-                            <br></br>
-                            <input type="button" value="Anime List" class="animebtn">
-                            <input type="button" value="Manga List" class="mangabtn">
-                            <div style="border-bottom: 1px solid black ; width: auto; padding: 3px;"></div>
-                            <input type="button" value="Statistics" class="statbtn">
-                            <br>
-                            <input type="button" value="History" class="statbtn">
-                            <br>
-                            <input type="button" value="Favorites" class="statbtn">
-                            <br><br>
-                            reviews<span style="color:blue;position:relative;left:127px;">0</span>
-                            <br>
-                            recommendations<span style="color:blue;position:relative;left:58px;">0</span>
-                            <br>
-                        <h1>Friends <span style="color:blue;position:relative;left:40px;">(0)</span></h1>
-                        <div class="friendcheck"></div>
-                        
-                            
-                        </div>
+        <div class="leftSection">
+            <fieldset style="width: 100%; height: auto; padding:15px; border: 1px solid var(--color-border_white); background-color: white;">
+                <div style="display: flex; justify-content: center; margin-bottom: 10px;">
+                    <img src="https://avatars.githubusercontent.com/u/143287515?v=4" style="width: 100%; max-width: 200px; border-radius: 4px;">
+                </div>
+                
+                <div style="font-size: 12px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span>Last Online</span>
+                        <span style="color:green;">Now</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                        <span>Joined</span>
+                        <span>Aug 11, 2023</span>
+                    </div>
+
+                    <div style="display: flex; gap: 5px; margin-bottom: 10px;">
+                        <input type="button" value="Anime List" class="animebtn" style="flex: 1; background-color: var(--color-primary_brand); color: white; border: none; cursor: pointer; border-radius: 3px;">
+                        <input type="button" value="Manga List" class="mangabtn" style="flex: 1; background-color: var(--color-primary_brand); color: white; border: none; cursor: pointer; border-radius: 3px;">
+                    </div>
+
+                    <div style="border-bottom: 1px solid var(--color-border_white); margin: 10px 0;"></div>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <input type="button" value="Statistics" class="statbtn">
+                        <input type="button" value="History" class="statbtn">
+                        <input type="button" value="Favorites" class="statbtn">
+                    </div>
+
+                    <br>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Reviews</span>
+                        <span style="color:blue;">0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Recommendations</span>
+                        <span style="color:blue;">0</span>
+                    </div>
+
+                    <h1 style="font-size: 14px; margin-top: 15px; border-bottom: 1px solid #ccc; padding-bottom: 5px;">Friends <span style="color:blue;">(0)</span></h1>
+                    <div class="friendcheck" style="height: 50px; background-color: #f9f9f9; margin-top: 5px;"></div> 
+                </div>
+                
+                <div style="margin-top: 20px; text-align: center;">
+                    <input type="button" value="Edit Profile" class="editbtn" style="padding: 5px 15px;">
+                </div>
             </fieldset>
         </div>
+            <div class="rightsection" >
+                <div class="biography">
+                    <h3>Biography</h3>
+                    <p>No biography has been added.<a href="home.php" style="color: blue; text-decoration: underline;">click here to add</a></p>
+                    <br>
+                </div>
+                <div class="stats">
+                    <h2 style="border-bottom: 1px solid var(--color-border_white); margin: 10px 0;">Statistics</h2>
+                </div>
+
+            </div>
 
     </main>
 
