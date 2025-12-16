@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if(goTOprofilePage){
         goTOprofilePage.addEventListener('click', () =>{
-            window.location.href = "userDashboard.php"
+            window.location.href = "userDashboard.php";
         })
     }
     
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (leftArrowFallList){
         leftArrowFallList.addEventListener('click', () => { // Fixed variable name
             fallList.scrollLeft -= scrollAmmountFall;  
-        });
+        })
     }
 
 
@@ -37,12 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if(rightArrowLatest){
         rightArrowLatest.addEventListener('click', () => { // Fixed variable name
             latestList.scrollLeft += scrollAmmountLatest;
-        });
+        })
     }
 
     if (leftArrowLatest){
         leftArrowLatest.addEventListener('click', () => { // Fixed variable name
             latestList.scrollLeft -= scrollAmmountLatest;  
-        });
+        })
     }
-});
+})
