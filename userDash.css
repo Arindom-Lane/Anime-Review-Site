@@ -1,4 +1,4 @@
-/* --- MAL PRIMARY COLOR VARIABLES (Kept same) --- */
+/* --- MAL PRIMARY COLOR VARIABLES --- */
 :root {
     --color-primary_brand: #2e51a2;
     --color-primary_brand-dark-variant: #1a3274;
@@ -16,7 +16,7 @@
     --color-text-medium_white: #666666;
     --color-text-light_white: #999999;
     --color-border_white: #e0e0e0;
-    --color-devider:#4a6fc7;
+    --color-devider: #4a6fc7;
     --card-border-radius: 0.35rem;
     --border-radius-1: 0.2rem;
     --border-radius-2: 0.4rem;
@@ -27,7 +27,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 body {
@@ -37,26 +37,21 @@ body {
     letter-spacing: .8px;
 }
 
-
-
 header {
     margin: 0 13%;
     display: grid;
     grid-template-rows: auto auto auto;
     grid-template-columns: 100%;
-    position: sticky;
+    /* Keep header sticky if desired, otherwise remove sticky */
+    position: sticky; 
     top: 0;
     z-index: 100;
     background-color: var(--color-background_white);
 }
 
-
-
-
-
 .header-upper {
     width: 100%;
-    height: auto; 
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -72,12 +67,12 @@ header {
 .logo img {
     width: 100%;
     height: 100%;
-    object-fit: contain;   
+    object-fit: contain;
 }
 
 .profile {
     display: flex;
-    align-items: center;   
+    align-items: center;
     cursor: pointer;
     color: var(--color-text-dark_white);
     font-weight: bold;
@@ -98,16 +93,11 @@ header {
     margin-left: 10px;
 }
 
-
-
-
-
 .header-middle {
     background-color: var(--color-primary_brand);
     border-top-left-radius: var(--border-radius-1);
     border-top-right-radius: var(--border-radius-1);
     color: var(--color-text-dark_white);
-    
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -149,19 +139,13 @@ header {
     font-size: 11px;
     width: 100%;
     height: 25px;
-    margin-right:90px ;
+    margin-right: 90px;
 }
 
-
-
-
-
 .header-lower {
-
     background-color: var(--color-primary_brand-light-variant);
     color: var(--color-text-dark_white);
     border-bottom: .5px solid var(--color-primary_brand);
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -170,24 +154,30 @@ header {
 }
 
 .header-lower span {
-    font-size: large; 
+    font-size: large;
     font-weight: bold;
-    color: black; 
+    color: black;
 }
 
-.header-lower img{
+.header-lower img {
     height: 30px;
     width: 30px;
 }
 
-.header-lower img:hover{
+.header-lower img:hover {
     cursor: pointer;
 }
+
+/* --- MAIN LAYOUT FIXES START HERE --- */
+
 main {
     position: relative;
-    margin: 0 13%; 
+    margin: 0 13%;
     display: grid;
-    grid-template-columns: 70% 30%;
+    /* CHANGE: Sidebar is 300px, Content is remaining space (1fr) */
+    grid-template-columns: 300px 1fr; 
+    gap: 15px; /* Adds space between sidebar and content */
+    align-items: start; /* Prevents sidebar from stretching to full height */
     
     margin-bottom: 150px;
     border-bottom: 1.5px solid var(--color-border_white);
@@ -195,19 +185,33 @@ main {
     border-right: 1.5px solid var(--color-border_white);
     font-size: small;
     font-weight: 600;
-
 }
 
 .leftSection {
     padding: 10px;
-    min-height: 2000px;
+    /* CHANGE: Sticky Positioning */
+    position: sticky;
+    top: 150px; /* Adjust this value based on your header height */
+    height: fit-content;
     border-right: 2px solid var(--color-border_white);
-    
 }
+
+/* CHANGE: This overrides the inline "style='width: 30%'" in your HTML */
+.leftSection fieldset {
+    width: 100% !important; 
+}
+
+.rightSection {
+    padding: 10px;
+    /* Removed min-height so it grows with content */
+    width: 100%;
+}
+
+/* --- END MAIN LAYOUT FIXES --- */
 
 .fallList {
     position: relative;
-    gap:5px;
+    gap: 5px;
     display: grid;
     grid-auto-flow: column;
     overflow-x: hidden;
@@ -215,73 +219,69 @@ main {
     height: 199px;
     width: 100%;
     scroll-behavior: smooth;
-    
 }
-.fallList-wrapper{
+
+.fallList-wrapper {
     position: relative;
     width: 100%;
     height: 199px;
 }
-.fallList span{
+
+.fallList span {
     position: absolute;
-    top:0;
+    top: 0;
     width: 30px;
     height: 95%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
     cursor: pointer;
     font-size: 24px;
     font-weight: bold;
     z-index: 100;
-
     display: flex;
     justify-content: center;
     align-items: center;
-    
     opacity: 0;
-    transition: opacity 400ms ease-out; 
-    
-}
-.fallList:hover .left-arrow, .fallList:hover .right-arrow {
-    opacity: 1;
-    
+    transition: opacity 400ms ease-out;
 }
 
-.left-arrow{
+.fallList:hover .left-arrow,
+.fallList:hover .right-arrow {
+    opacity: 1;
+}
+
+.left-arrow {
     left: 0;
 }
-.right-arrow{
-    right:0;
+
+.right-arrow {
+    right: 0;
 }
-.fallList img{
+
+.fallList img {
     width: 134px;
     height: 188px;
 }
-.fallList img:hover{
+
+.fallList img:hover {
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.5);
     opacity: .7;
-
 }
 
-.rightSection {
+.animebtn {
     padding: 10px;
-    min-height: 2000px;
 }
-.animebtn{
-    
-    padding:10px;
+
+.mangabtn {
+    padding: 10px;
 }
-.mangabtn{
-    
-    padding:10px;
-}
+
 .statbtn {
-  color: blue; 
-  padding: 7px 10px;
-  border: none;         
-  cursor: pointer;           
-  width:20%;
-  text-align:left;
-  width:auto;
+    color: blue;
+    padding: 7px 10px;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    width: auto;
 }
