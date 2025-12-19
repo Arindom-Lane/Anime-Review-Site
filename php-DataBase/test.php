@@ -1,6 +1,7 @@
 <?php
 include("db.php");
 
+// CREATE (Insert)
 if(isset($_POST['submit'])){
     $name = $_POST['name'];
     $qualification = $_POST['qualification'];
@@ -15,10 +16,10 @@ if(isset($_POST['submit'])){
               VALUES ('$name', '$qualification', '$mobile', '$email', '$age', '$references', '$gender', '$profile_image')";
 
     if(mysqli_query($con, $query)){     
-        header("Location: test.php?");
+        header("Location: test.php?"); // PRG pattern to avoid duplicate insert on refresh
         exit();
     } else {
-        echo "Error:";
+        echo "Error: " . mysqli_error($con);
     }
 }
 ?>
@@ -31,6 +32,7 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Form -->
     <form method="POST" action="" style="display:grid;">
         <label>Name</label>
         <input type="text" name="name" placeholder="enter your name *" required>
@@ -65,38 +67,50 @@ if(isset($_POST['submit'])){
         <input type="submit" name="submit" value="Save" style="background-color: aquamarine;">
     </form>
 
+    <!-- READ (Display Table) -->
     <?php
-$result = mysqli_query($con, "SELECT * FROM applicants");
-?>
+    $result = mysqli_query($con, "SELECT * FROM applicants");
+    ?>
 
-<table border="1" cellpadding="10" style="margin-top:20px;">
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Qualification</th>
-        <th>Mobile</th>
-        <th>Email</th>
-        <th>Age</th>
-        <th>References</th>
-        <th>Gender</th>
-        <th>Profile Image</th>
-    </tr>
+    <table border="1" cellpadding="10" style="margin-top:20px;">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Qualification</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>References</th>
+            <th>Gender</th>
+            <th>Profile Image</th>
+            <th>Actions</th>
+        </tr>
 
-    <?php while($row = mysqli_fetch_assoc($result)){ ?>
-    <tr>
-        <td><?php echo $row['id']; ?></td>
-        <td><?php echo $row['name']; ?></td>
-        <td><?php echo $row['qualification']; ?></td>
-        <td><?php echo $row['mobile']; ?></td>
-        <td><?php echo $row['email']; ?></td>
-        <td><?php echo $row['age']; ?></td>
-        <td><?php echo $row['reference_name']; ?></td>
-        <td><?php echo $row['gender']; ?></td>
-        <td><img src="<?php echo $row['profile_image']; ?>" width="80" height="80"></td>
-    </tr>
-    <?php } ?>
-</table>
-
+        <?php 
+        while($row = mysqli_fetch_assoc($result)){ ?>
+        <tr>
+            <td><?php echo $row['id']; ?></td>
+            <td><?php echo $row['name']; ?></td>
+            <td><?php echo $row['qualification']; ?></td>
+            <td><?php echo $row['mobile']; ?></td>
+            <td><?php echo $row['email']; ?></td>
+            <td><?php echo $row['age']; ?></td>
+            <td><?php echo $row['reference_name']; ?></td>
+            <td><?php echo $row['gender']; ?></td>
+            <td><img src="<?php echo $row['profile_image']; ?>" width="80" height="80"></td>
+            <td>
+                <form method="POST" action="edit.php">
+                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                    <input type="submit" name="update" value="Edit">
+                </form>
+                <form method="POST" action="edit.php">
+                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                    <input type="submit" name="delete" value="Delete">
+                </form>
+            </td>
+        </tr>
+        <?php } ?>
+    </table>
 
 </body>
 </html>
