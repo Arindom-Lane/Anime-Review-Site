@@ -1,0 +1,109 @@
+CREATE TABLE Users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('admin','registered') DEFAULT 'registered',
+    profile_image_link VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Media (
+    media_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    type ENUM('movie','tvshow','manga') NOT NULL,
+    poster_image_link VARCHAR(255),
+    score DECIMAL(3,1), -- average rating 1–10
+    status ENUM('airing','upcoming','completed') DEFAULT 'upcoming',
+    aired_date DATE,
+    producer VARCHAR(100),
+    studio VARCHAR(100),
+    source VARCHAR(100),
+    genre VARCHAR(100),
+    duration VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Watchlist (
+    watchlist_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    media_id INT,
+    status ENUM('completed','watching','plan_to_watch','dropped'),
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (media_id) REFERENCES Media(media_id)
+);
+
+CREATE TABLE Favorites (
+    favorite_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    media_id INT,
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (media_id) REFERENCES Media(media_id)
+);
+
+CREATE TABLE Reviews (
+    review_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    media_id INT,
+    review_text TEXT,
+    rating INT CHECK (rating BETWEEN 1 AND 10),
+    status ENUM('pending','approved','rejected') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (media_id) REFERENCES Media(media_id)
+);
+
+CREATE TABLE Actors (
+    actor_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    image_link VARCHAR(255)
+);
+
+CREATE TABLE Media_Actors (
+    media_id INT,
+    actor_id INT,
+    PRIMARY KEY (media_id, actor_id),
+    FOREIGN KEY (media_id) REFERENCES Media(media_id),
+    FOREIGN KEY (actor_id) REFERENCES Actors(actor_id)
+);
+
+CREATE TABLE Relations (
+    relation_id INT PRIMARY KEY AUTO_INCREMENT,
+    media_id INT,
+    related_media_id INT,
+    relation_type ENUM('sequel','prequel'),
+    FOREIGN KEY (media_id) REFERENCES Media(media_id),
+    FOREIGN KEY (related_media_id) REFERENCES Media(media_id)
+);
+CREATE TABLE Top_Airing (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    media_id INT,
+    FOREIGN KEY (media_id) REFERENCES Media(media_id)
+);
+
+CREATE TABLE Top_Upcoming (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    media_id INT,
+    FOREIGN KEY (media_id) REFERENCES Media(media_id)
+);
+
+CREATE TABLE Top_TVSeries (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    media_id INT,
+    FOREIGN KEY (media_id) REFERENCES Media(media_id)
+);
+
+CREATE TABLE Top_Movies (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    media_id INT,
+    FOREIGN KEY (media_id) REFERENCES Media(media_id)
+);
+
+CREATE TABLE Top_Mangas (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    media_id INT,
+    FOREIGN KEY (media_id) REFERENCES Media(media_id)
+);
