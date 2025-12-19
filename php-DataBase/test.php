@@ -1,7 +1,7 @@
 <?php
 include("db.php");
 
-// CREATE (Insert)
+// CREATE: Handle new entry
 if(isset($_POST['submit'])){
     $name = $_POST['name'];
     $qualification = $_POST['qualification'];
@@ -10,107 +10,68 @@ if(isset($_POST['submit'])){
     $age = $_POST['age'];
     $references = $_POST['references'];
     $gender = $_POST['gender'];
-    $profile_image = $_POST['profile_image']; // storing image link
+    $profile_image = $_POST['profile_image'];
 
-    $query = "INSERT INTO applicants (name, qualification, mobile, email, age, reference_name, gender, profile_image) 
+    // Using backticks for 'reference_name' to avoid reserved word issues
+    $query = "INSERT INTO applicants (`name`, `qualification`, `mobile`, `email`, `age`, `reference_name`, `gender`, `profile_image`) 
               VALUES ('$name', '$qualification', '$mobile', '$email', '$age', '$references', '$gender', '$profile_image')";
 
-    if(mysqli_query($con, $query)){     
-        header("Location: test.php?"); // PRG pattern to avoid duplicate insert on refresh
+    if(mysqli_query($con, $query)){ 
+        header("Location: test.php?success=1");
         exit();
-    } else {
-        echo "Error: " . mysqli_error($con);
     }
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Web Developer Application</title>
+    <title>CRUD Application</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Form -->
-    <form method="POST" action="" style="display:grid;">
-        <label>Name</label>
-        <input type="text" name="name" placeholder="enter your name *" required>
-
-        <label>Qualification</label>
-        <input type="text" name="qualification" placeholder="enter your qualification *" required>
-
-        <label>Mobile</label>
-        <input type="text" name="mobile" placeholder="mobile number *" required>
-
-        <label>Email</label>
-        <input type="email" name="email" placeholder="email id *" required>
-
-        <label>Age</label>
-        <input type="number" name="age" placeholder="age *" required>
-
-        <label>References</label>
-        <input type="text" name="references" placeholder="Any references *" required>
-
-        <label>Gender</label>
+    <h2>Add New Applicant</h2>
+    <form method="POST" style="display:grid; width: 300px;">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="qualification" placeholder="Qualification" required>
+        <input type="text" name="mobile" placeholder="Mobile" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="number" name="age" placeholder="Age" required>
+        <input type="text" name="references" placeholder="Reference" required>
         <select name="gender" required>
-            <option value="">Select</option>
+            <option value="">Select Gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
-            <option value="Others">Others</option>
         </select>
-
-        <label>Profile Image Link</label>
-        <input type="text" name="profile_image" placeholder="Paste image URL *" required>
-
-        <br>
+        <input type="text" name="profile_image" placeholder="Image URL" required>
         <input type="submit" name="submit" value="Save" style="background-color: aquamarine;">
     </form>
 
-    <!-- READ (Display Table) -->
-    <?php
-    $result = mysqli_query($con, "SELECT * FROM applicants");
-    ?>
-
     <table border="1" cellpadding="10" style="margin-top:20px;">
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Qualification</th>
-            <th>Mobile</th>
-            <th>Email</th>
-            <th>Age</th>
-            <th>References</th>
-            <th>Gender</th>
-            <th>Profile Image</th>
-            <th>Actions</th>
+            <th>ID</th><th>Name</th><th>Email</th><th>Image</th><th>Actions</th>
         </tr>
-
         <?php 
+        $result = mysqli_query($con, "SELECT * FROM applicants");
         while($row = mysqli_fetch_assoc($result)){ ?>
         <tr>
             <td><?php echo $row['id']; ?></td>
             <td><?php echo $row['name']; ?></td>
-            <td><?php echo $row['qualification']; ?></td>
-            <td><?php echo $row['mobile']; ?></td>
             <td><?php echo $row['email']; ?></td>
-            <td><?php echo $row['age']; ?></td>
-            <td><?php echo $row['reference_name']; ?></td>
-            <td><?php echo $row['gender']; ?></td>
-            <td><img src="<?php echo $row['profile_image']; ?>" width="80" height="80"></td>
+            <td><img src="<?php echo $row['profile_image']; ?>" width="50"></td>
             <td>
-                <form method="POST" action="edit.php">
+                <form method="POST" action="edit.php" style="display:inline;">
                     <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                    <input type="submit" name="update" value="Edit">
+                    <input type="submit" name="edit_btn" value="Edit">
                 </form>
-                <form method="POST" action="edit.php">
+                
+                <form method="POST" action="delete.php" style="display:inline;" onsubmit="return confirm('Delete this record?');">
                     <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                    <input type="submit" name="delete" value="Delete">
+                    <input type="submit" name="delete_btn" value="Delete">
                 </form>
             </td>
         </tr>
         <?php } ?>
     </table>
-
 </body>
 </html>
