@@ -135,7 +135,7 @@
                     <div class="update-item">
                         <div class="no-updates">
                             No updates yet. <a href="#">Edit list now.</a> 
-                            
+                            <!--
                 <img src="https://cdn.myanimelist.net/images/anime/1697/151793.jpg" alt="Anime Image">
                 <div class="update-info">
                     <a href="#" class="title-link">Spy x Family Season 3</a>
@@ -147,7 +147,7 @@
                         <span class="date">Dec 5, 9:37 AM</span>
                     </div> 
                 </div>
-
+-->
                         </div>
                     </div>
                 </div>
