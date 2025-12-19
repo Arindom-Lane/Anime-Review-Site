@@ -73,5 +73,14 @@ if(isset($_POST['submit'])){
         </tr>
         <?php } ?>
     </table>
+    <?php
+if (isset($_GET['success'])) {
+    echo "<p style='color: green;'>Record added successfully!</p>";
+}
+if (isset($_GET['updated'])) {
+    echo "<p style='color: blue;'>Record updated successfully!</p>";
+}
+// How would you write the code for the 'deleted' message?
+?>
 </body>
 </html>
