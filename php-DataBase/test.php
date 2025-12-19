@@ -2,13 +2,23 @@
 $username ="root";
 $password = "";
 $server = 'localhost';
-$db = 'user';
+$db = 'crud';
 
-$con = mysqli_connect($server, $username, $password,$db);
+$con = mysqli_connect(
+    $server, 
+    $username, 
+    $password,
+    $db);
 
 if ($con) {
-    
+    ?>
+        <script>
+            alert('connection Successful!')
+        </script>
+    <?php 
 }
+else {
+    die('No connection').mysqli_connect_error();}
 
 
 
@@ -22,9 +32,13 @@ if(isset($_POST["sumit"])){
     $age = $_POST["age"];
 
     $insertquery = "INSERT INTO `user`(`name`, `age`, `degree`, `mobile`, `email`, `reference`) VALUES ('$name','$age','$degree','$mobile','$email','$reference')";
-    mysqli_query()
+    mysqli_query($con,$insertquery);
 }
-
+$result = mysqli_query($con,$insertquery);
+if($result){   
+    ?>
+    <?php
+}
 ?>
 
 <!DOCTYPE html>
@@ -73,11 +87,11 @@ if(isset($_POST["sumit"])){
                 <th>Action</th>
             </tr>
             <?php
-            $result = $conn->query("SELECT * FROM applicants");
+            $result = $con->query("SELECT * FROM user");
             while($row = $result->fetch_assoc()): ?>
             <tr>
                 <td><?= $row['name'] ?></td>
-                <td><?= $row['qualification'] ?></td>
+                <td><?= $row['degree'] ?></td>
                 <td><?= $row['email'] ?></td>
                 <td>
                     <a href="index.php?delete=<?= $row['id'] ?>" style="color:red;">Delete</a>
