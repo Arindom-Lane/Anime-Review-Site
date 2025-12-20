@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
               VALUES ('$name', '$qualification', '$mobile', '$email', '$age', '$references', '$gender', '$profile_image')";
 
     if(mysqli_query($con, $query)){ 
-        header("Location: test.php?success=1");
+        header("Location: welcome.php?");
         exit();
     }
 }
