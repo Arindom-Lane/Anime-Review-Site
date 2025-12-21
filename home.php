@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +20,12 @@
                 <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
             </div>
             <div class="profile">
-                <?php if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true): ?>
+                <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
                 <div class="devider1"></div>
                 <span class="profile-name">
                     <?php echo $_SESSION['username']; ?>
                 </span>
-                <img src="<?php echo $_SESSION['profile_image_link']; ?>" alt="Profile">
+                <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile">
                 <?php else: ?>
                     <a href="signUp.php" class="login-link">Sign Up</a>
                     <a href="login.php" class="login-link">Login</a>
