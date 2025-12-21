@@ -165,7 +165,7 @@ $exists = false;
 
     <div class="divider">
         Already have an account?<br>
-        <a href="login.html" class="login-link">Login</a>
+        <a href="login.php" class="login-link">Login</a>
     </div>
 </div>
     
