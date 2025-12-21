@@ -12,6 +12,11 @@ if(isset($_POST['submit'])){
     $gender = $_POST['gender'];
     $profile_image = $_POST['profile_image'];
 
+    if($profile_image = ''){
+        $profile_image = "https://cdn-icons-png.freepik.com/512/13686/13686701.png?ga=GA1.1.1919339346.1765706138";
+
+    }
+
     // Using backticks for 'reference_name' to avoid reserved word issues
     $query = "INSERT INTO applicants (`name`, `qualification`, `mobile`, `email`, `age`, `reference_name`, `gender`, `profile_image`) 
               VALUES ('$name', '$qualification', '$mobile', '$email', '$age', '$references', '$gender', '$profile_image')";
@@ -20,6 +25,7 @@ if(isset($_POST['submit'])){
         header("Location: welcome.php?");
         exit();
     }
+    
 }
 ?>
 
