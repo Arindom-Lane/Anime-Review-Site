@@ -1,5 +1,6 @@
 <?php 
 include("db.php");
+$exists = false;
     if(isset($_POST["btn-create"])){
         $name = $_POST["username"];
         $email = $_POST["email"];
@@ -8,11 +9,11 @@ include("db.php");
 
  
         if(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `username` = '$name'")) > 0){
-        echo "<script>alert('Username already exists! Please choose another.');</script>";
+            $exists = true;
         }
         
         elseif(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `email` = '$email'")) > 0){
-        echo "<script>alert('Email already exists! Please choose another.');</script>";
+            $exists = true;
         }
 
         else{
@@ -37,12 +38,23 @@ include("db.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sing Up</title>
     <style>
+        .error-bar {
+            background-color: #f8d7da; /* Light red background */
+            color: #721c24;            /* Dark red text */
+            border: 1px solid #f5c6cb; /* Soft red border */
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 0.5em;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
         body{
             font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #F6F6F6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            grid-auto-rows: auto;
+            justify-items: center;
+            align-content: center;
             min-height: 100vh;
             margin: 0;
         }
@@ -120,6 +132,11 @@ include("db.php");
     </style>
 </head>
 <body>
+    <?php if($exists == true){ ?>
+        <div class="error-bar">
+            Username/email already exists! Please choose another.
+        </div>
+    <?php } ?>
     <div class="signup-box">
     <h2>Start Using MyAnimeList</h2>
 
