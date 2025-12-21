@@ -5,8 +5,6 @@ $error = false;
     if(isset($_POST["btn-create"])){
         $name = $_POST["username"];
         $password = $_POST["password"];
-
-
         $query ="SELECT * FROM users WHERE username = '$name' AND password = '$password'";
         try{
             $result = mysqli_query($conn, $query);
@@ -14,7 +12,10 @@ $error = false;
                 session_start();
                 $_SESSION['loggedIn'] = true;
                 $_SESSION['username'] = $name;
+                $row = mysqli_fetch_assoc($result);
+                $_SESSION['role'] = $row['role'];
                 header("Location: home.php");
+
             } else {
                 $error = true;
             }
