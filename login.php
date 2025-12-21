@@ -3,14 +3,16 @@ include("db.php");
 $login = false;
 $error = false;
     if(isset($_POST["btn-create"])){
-        $email = $_POST["email"];
+        $name = $_POST["username"];
         $password = $_POST["password"];
 
 
-        $query ="SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+        $query ="SELECT * FROM users WHERE username = '$name' AND password = '$password'";
         try{
             $result = mysqli_query($conn, $query);
             if($result && mysqli_num_rows($result) > 0) {
+                session_start();
+                $_SESSION['$name'];
                 header("Location: home.php");
             } else {
                 $error = true;
