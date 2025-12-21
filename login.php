@@ -12,7 +12,8 @@ $error = false;
             $result = mysqli_query($conn, $query);
             if($result && mysqli_num_rows($result) > 0) {
                 session_start();
-                $_SESSION['$name'];
+                $_SESSION['loggedIn'] = true;
+                $_SESSION['username'] = $name;
                 header("Location: home.php");
             } else {
                 $error = true;
@@ -88,7 +89,7 @@ $error = false;
             outline: none;
         }
         .btn-create {
-            width: 60%;
+            width: 64%;
             padding: 10px;
             background-color: #ebebeb;
             border: 1px solid #2f48a1ff;
@@ -150,6 +151,7 @@ $error = false;
     <div class="divider">
         Doesn't have an account?<br>
         <a href="signUp.php" class="login-link">Sign Up</a>
+        <a href="home.php" class="login-link">Go to home</a>
     </div>
 </div>
     
