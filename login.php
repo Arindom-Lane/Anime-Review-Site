@@ -8,12 +8,14 @@ $error = false;
         $query ="SELECT * FROM users WHERE username = '$name' AND password = '$password'";
         try{
             $result = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($result); 
+            //this fetches the entire row data and can used liek $row['username'] or $row['role']
             if($result && mysqli_num_rows($result) > 0) {
                 session_start();
                 $_SESSION['loggedIn'] = true;
                 $_SESSION['username'] = $name;
-                $row = mysqli_fetch_assoc($result);
                 $_SESSION['role'] = $row['role'];
+                $_SESSION['userId'] = $row['user_id'];
                 header("Location: home.php");
 
             } else {

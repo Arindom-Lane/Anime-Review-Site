@@ -16,9 +16,16 @@
                 <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
             </div>
             <div class="profile">
+                <?php if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true): ?>
                 <div class="devider1"></div>
-                <span class="profile-name">Hamim</span>
-                <img src="https://avatars.githubusercontent.com/u/143287515?v=4" alt="Profile">
+                <span class="profile-name">
+                    <?php echo $_SESSION['username']; ?>
+                </span>
+                <img src="<?php echo $_SESSION['profile_image_link']; ?>" alt="Profile">
+                <?php else: ?>
+                    <a href="signUp.php" class="login-link">Sign Up</a>
+                    <a href="login.php" class="login-link">Login</a>
+                <?php endif; ?>
             </div>
         </div>
         <div class="header-middle">
