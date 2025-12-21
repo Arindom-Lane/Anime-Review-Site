@@ -16,6 +16,7 @@ $error = false;
                 $_SESSION['username'] = $name;
                 $_SESSION['role'] = $row['role'];
                 $_SESSION['userId'] = $row['user_id'];
+                $_SESSION['profileImage'] = $row['profile_image_link'];
                 header("Location: home.php");
 
             } else {
@@ -131,7 +132,7 @@ $error = false;
 <body>
     <?php if($error == true){ ?>
         <div class="error-bar">
-            <?php echo "'$email' or '$password' wasn't found" ; ?>
+            <?php echo "User not found" ; ?>
         </div>
     <?php } ?>
     <div class="signup-box">
@@ -140,8 +141,8 @@ $error = false;
     <form method="POST">
         <img  src="download.png">
         <div class="feild">
-            <label>Email</label>
-            <input type="email" name="email" placeholder="e.g. abc@email.com" required>
+            <label>User name</label>
+            <input type="text" name="username" required>
         </div>
         
         <div class="feild">
