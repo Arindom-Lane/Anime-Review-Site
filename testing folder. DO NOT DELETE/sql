@@ -29,7 +29,7 @@ CREATE TABLE Watchlist (
     watchlist_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT,
     media_id INT,
-    status ENUM('completed','watching','plan_to_watch','dropped'),
+    status ENUM('completed','watching','plan_to_watch','dropped') DEFAULT 'plan_to_watch',
     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (media_id) REFERENCES Media(media_id)
