@@ -198,6 +198,16 @@
                     </div>
                 </div>
             </div>
+            <div>
+                <!--
+                <h2>Comments</h2>
+                <textarea class="comment-box" placeholder="Add a comment..." rows="4"></textarea>
+            </div>
+-->
+            
+            
+            </div>
+        </div>
             
         <script src="userDashboard.js"></script>
     </main>
