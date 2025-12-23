@@ -296,3 +296,9 @@ main {
 
 .no-updates { font-size: 12px; }
 .no-updates a { color: var(--color-primary_brand); text-decoration: none; }
+
+.comment-box {
+    width: 5000px;
+    height: 300px;
+   
+}
