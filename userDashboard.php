@@ -198,6 +198,9 @@
                     </div>
                 </div>
             </div>
+            <div><h2>Comments</h2>
+            <input type ="text" class="comment-box" placeholder="Add a comment...">
+            </div>
         </div>
         <script src="userDashboard.js"></script>
     </main>
