@@ -159,7 +159,7 @@ $exists = false;
         
         <div class="feild">
             <label>Profile Image Link (Optional)</label>
-            <input type="url"name="profile_image_link" placeholder="Plase use a direct image link" required>
+            <input type="url"name="profile_image_link" placeholder="Plase use a direct image link">
         </div><br>
         <button type="submit" name="btn-create" class="btn-create">Create Account</button>
     </form>

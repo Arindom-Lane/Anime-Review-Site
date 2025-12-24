@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -9,8 +10,6 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
     <link rel="stylesheet" href="homeStyle.css">    
-
-    
 </head>
 <body>
     <header>
@@ -21,11 +20,23 @@ session_start();
             </div>
             <div class="profile">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true):?>
-                <div class="devider1" onclick="window.location.href='userDashboard.php'"></div>
-                <span class="profile-name" onclick="window.location.href='userDashboard.php'">
-                    <?php echo $_SESSION['username']; ?>
-                </span>
-                <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='userDashboard.php'">
+                    <?php if($_SESSION['role'] ==  'registered'): ?>
+                        <div class="devider1"></div>
+                        <span class="profile-name"  onclick="window.location.href='userDashboard.php'">   
+                                <?php echo $_SESSION['username']; ?>
+                        </span>
+                        <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='userDashboard.php'">
+            
+                            <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
+                        
+                    <?php else: ?>
+                        <a href="admin.php" class="login-link">Dashboard</a>
+                        <div class="devider1"></div>
+                        <span class="profile-name" onclick="window.location.href='userDashboard.php'">
+                            <?php echo $_SESSION['username']; ?>
+                        </span>
+                        <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='userDashboard.php'">
+                    <?php endif; ?>
                 <?php else: ?>
                     <a href="signUp.php" class="login-link">Sign Up</a>
                     <a href="login.php" class="login-link">Login</a>
