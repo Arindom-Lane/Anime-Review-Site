@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="userDash.css">    
+    <link rel="stylesheet" href="UserEditProfile.css">    
 </head>
 <body>
     <header>
@@ -51,22 +51,26 @@
         <div class="feild">
             <label>Change User Name</label>
             <input type="text" name="username" required>
+            <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
         </div>
         
         <div class="feild">
             <label>Change Password</label>
             <input type="password"name="password" minlength="8" placeholder="minimum 8 character" required>
+            <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
         </div>
         <div class="feild">
             <label>Change Profile Image URL</label>
             <input type="text" name="profileImage" required>
+            <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
             
         </div>
         <div class="feild">
             <label>Change Email</label>
             <input type="text" name="email" required>
+            <button type="submit" name="btn-create" class="btn-create">Edit</button>
         
-        <button type="submit" name="btn-create" class="btn-create">Edit</button>
+        
     </form>
     </main>
 
