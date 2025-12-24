@@ -1,5 +1,11 @@
 <?php
-session_start();
+    session_start();
+    
+ if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
+    header('Location: login.php');
+ }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +19,7 @@ session_start();
 <body>
     <header>
         <div class="header-upper">
-            <div class="logo">
+            <div class="logo" action="home.php">
                 <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
             </div>
             <div class="profile">
@@ -23,9 +29,6 @@ session_start();
                     <?php echo $_SESSION['username']; ?>
                 </span>
                 <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile">
-                <?php else: ?>
-                    <a href="signUp.php" class="login-link">Sign Up</a>
-                    <a href="login.php" class="login-link">Login</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -88,7 +91,7 @@ session_start();
                     </div>
                 </div>
                 
-                <div class="edit-profile-wrapper">
+                <div class="edit-profile-wrapper" action="UserEditProfile.php">
                     <input type="button" value="Edit Profile" class="editbtn">
                 </div>
             </fieldset>
@@ -209,11 +212,11 @@ session_start();
                 </div>
             </div>
             <div>
-                <!--
+                
                 <h2>Comments</h2>
                 <textarea class="comment-box" placeholder="Add a comment..." rows="4"></textarea>
             </div>
--->
+
             
             
             </div>
