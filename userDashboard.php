@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +14,19 @@
     <header>
         <div class="header-upper">
             <div class="logo">
-                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200" alt="MAL Logo">
+                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
             </div>
             <div class="profile">
+                <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
                 <div class="devider1"></div>
-                <span class="profile-name">Hamim</span>
-                <img src="https://avatars.githubusercontent.com/u/143287515?v=4" alt="Profile">
+                <span class="profile-name">
+                    <?php echo $_SESSION['username']; ?>
+                </span>
+                <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile">
+                <?php else: ?>
+                    <a href="signUp.php" class="login-link">Sign Up</a>
+                    <a href="login.php" class="login-link">Login</a>
+                <?php endif; ?>
             </div>
         </div>
         <div class="header-middle">
@@ -37,9 +48,14 @@
         <!-- LEFT SIDEBAR -->
         <div class="leftSection">
             <fieldset class="sidebar-fieldset">
+                <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
                 <div class="user-avatar-container">
-                    <img src="https://avatars.githubusercontent.com/u/143287515?v=4" class="user-avatar-img" alt="User Avatar">
+                    <img src="<?php echo $_SESSION['profileImage']; ?>" class="user-avatar-img" alt="User Avatar">
                 </div>
+                <?php else: ?>
+                    <a href="signUp.php" class="login-link">Sign Up</a>
+                    <a href="login.php" class="login-link">Login</a>
+                <?php endif; ?>
                 
                 <div class="sidebar-content">
                     <div class="sidebar-row">
@@ -73,9 +89,6 @@
                         <span>Recommendations</span>
                         <span class="text-blue">0</span>
                     </div>
-
-                    <h1 class="friends-header">Friends <span class="text-blue">(0)</span></h1>
-                    <div class="friend-box"></div> 
                 </div>
                 
                 <div class="edit-profile-wrapper">

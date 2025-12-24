@@ -189,12 +189,14 @@ main {
 }
 
 .editbtn {
-    background-color: #ebebeb; 
-    border: 1px solid #ccc;
-    padding: 5px 15px;
+    flex: 1;
+    background-color: var(--color-primary_brand);
+    color: white;
+    border: none;
     cursor: pointer;
     border-radius: 3px;
-    font-size: 11px;
+    padding: 8px; 
+    font-weight: bold;
 }
 .content-block{
     display: flex;
