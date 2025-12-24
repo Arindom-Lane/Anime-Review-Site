@@ -94,3 +94,26 @@ main {
     margin-bottom: 30px;
     align-items: center;
 }
+
+.feild label {
+    font-size: 18px; 
+    font-weight: bold;
+    color: #333;
+    text-align: right;
+}
+
+.feild input {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.feild input:focus {
+    border-color: var(--color-primary_brand);
+    box-shadow: 0 0 5px rgba(46, 81, 162, 0.2);
+}
+
+
