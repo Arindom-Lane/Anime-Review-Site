@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include("db.php");
 $login = false;
 $error = false;
@@ -11,7 +12,6 @@ $error = false;
             $row = mysqli_fetch_assoc($result); 
             //this fetches the entire row data and can used liek $row['username'] or $row['role']
             if($result && mysqli_num_rows($result) > 0) {
-                session_start();
                 $_SESSION['loggedIn'] = true;
                 $_SESSION['username'] = $name;
                 $_SESSION['role'] = $row['role'];

@@ -14,12 +14,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    if(goTOprofilePage){
-        goTOprofilePage.addEventListener('click', () =>{
-            window.location.href = "userDashboard.php";
-        })
-    }
-    
     if(rightArrowFallList){
         rightArrowFallList.addEventListener('click', () => { // Fixed variable name
             fallList.scrollLeft += scrollAmmountFall;
