@@ -4,9 +4,9 @@ $password = "";
 $server = 'localhost';
 $db = 'myanimelist';
 
-$con = mysqli_connect($server, $username, $password, $db);
+$conn = mysqli_connect($server, $username, $password, $db);
 
-if ($con) {
+if ($conn) {
 } else {
     echo "could not connect!<br><br>";}
 ?>
