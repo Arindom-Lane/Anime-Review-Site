@@ -310,3 +310,20 @@ main {
     margin-top: 10px;
 }
 
+.login-link-Log-out {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 25px;
+    background-color: var(--color-primary_brand);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+    border-radius: .5em;
+    margin: 10px;
+}
+
+.login-link-Log-out:hover {
+    background-color: rgb(255, 210, 210);
+    color: #4f0909;
+}
