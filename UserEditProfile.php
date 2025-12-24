@@ -78,12 +78,12 @@
 
     <div class="show-details">
             <form method="POST">
-                <input type="submit" name="btn-show-details" class="show details-btn" value="Show Details" style="padding: 10px 20px; cursor: pointer; background-color: #2e51a2; color: white; border: none; border-radius: 4px; font-weight: bold;">
+                <input type="submit" name="btn-show-details" class="show details-btn" value="Show Details" >
             </form>
         </div>
 
         <?php if ($showDetails && isset($_SESSION['username'])): ?>
-            <div class="user-details-box" style="margin-top: 20px; padding: 20px; border: 1px solid #ddd; background: #f9f9f9; text-align: center;">
+            <div class="user-details-box" >
                 <h3>Your Profile Details</h3>
                 <p><strong>Username:</strong> <?php echo htmlspecialchars($_SESSION['username']); ?></p>
                 
@@ -93,11 +93,10 @@
 
                 <div style="margin-top: 10px;">
                     <p><strong>Profile Image:</strong></p>
-                    <img src="<?php echo htmlspecialchars($_SESSION['profileImage']); ?>" alt="Profile" style="max-width: 150px; border: 1px solid #ccc; padding: 5px;">
+                    <img src="<?php echo htmlspecialchars($_SESSION['profileImage']); ?>" alt="Profile" >
                 </div>
             </div>
         <?php endif; ?>
-
     </main>
 
     
