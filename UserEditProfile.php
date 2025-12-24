@@ -4,6 +4,10 @@
  if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
     header('Location: login.php');
  }
+ $showDetails = false;
+    if (isset($_POST['btn-show-details'])) {
+        $showDetails = true;
+    }
 
 
 ?>
@@ -69,9 +73,31 @@
             <label>Change Email</label>
             <input type="text" name="email" required>
             <button type="submit" name="btn-create" class="btn-create">Edit</button>
-        
-        
+        </div>  
     </form>
+
+    <div class="show-details">
+            <form method="POST">
+                <input type="submit" name="btn-show-details" class="show details-btn" value="Show Details" style="padding: 10px 20px; cursor: pointer; background-color: #2e51a2; color: white; border: none; border-radius: 4px; font-weight: bold;">
+            </form>
+        </div>
+
+        <?php if ($showDetails && isset($_SESSION['username'])): ?>
+            <div class="user-details-box" style="margin-top: 20px; padding: 20px; border: 1px solid #ddd; background: #f9f9f9; text-align: center;">
+                <h3>Your Profile Details</h3>
+                <p><strong>Username:</strong> <?php echo htmlspecialchars($_SESSION['username']); ?></p>
+                
+                <?php if (isset($_SESSION['email'])): ?>
+                    <p><strong>Email:</strong> <?php echo htmlspecialchars($_SESSION['email']); ?></p>
+                <?php endif; ?>
+
+                <div style="margin-top: 10px;">
+                    <p><strong>Profile Image:</strong></p>
+                    <img src="<?php echo htmlspecialchars($_SESSION['profileImage']); ?>" alt="Profile" style="max-width: 150px; border: 1px solid #ccc; padding: 5px;">
+                </div>
+            </div>
+        <?php endif; ?>
+
     </main>
 
     
