@@ -62,7 +62,11 @@
             <input type="text" name="profileImage" required>
             
         </div>
+        <div class="feild">
+            <label>Change Email</label>
+            <input type="text" name="email" required>
         
+        <button type="submit" name="btn-create" class="btn-create">Edit</button>
     </form>
     </main>
 
