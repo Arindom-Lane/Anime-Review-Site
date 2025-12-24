@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -26,9 +25,7 @@ session_start();
                                 <?php echo $_SESSION['username']; ?>
                         </span>
                         <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='userDashboard.php'">
-            
                             <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
-                        
                     <?php else: ?>
                         <a href="admin.php" class="login-link">Dashboard</a>
                         <div class="devider1"></div>
@@ -36,6 +33,7 @@ session_start();
                             <?php echo $_SESSION['username']; ?>
                         </span>
                         <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='userDashboard.php'">
+                        <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
                     <?php endif; ?>
                 <?php else: ?>
                     <a href="signUp.php" class="login-link">Sign Up</a>

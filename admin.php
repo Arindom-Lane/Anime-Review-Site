@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="userDash.css">    
+    <link rel="stylesheet" href="admin.css">    
 </head>
 <body>
     <header>
@@ -32,6 +32,7 @@
                     <?php echo $_SESSION['username']; ?>
                 </span>
                 <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile">
+                <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
             </div>
         </div>
         <div class="header-middle">
