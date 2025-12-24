@@ -52,9 +52,6 @@ session_start();
                 <div class="user-avatar-container">
                     <img src="<?php echo $_SESSION['profileImage']; ?>" class="user-avatar-img" alt="User Avatar">
                 </div>
-                <?php else: ?>
-                    <a href="signUp.php" class="login-link">Sign Up</a>
-                    <a href="login.php" class="login-link">Login</a>
                 <?php endif; ?>
                 
                 <div class="sidebar-content">
