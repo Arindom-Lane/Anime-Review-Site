@@ -116,4 +116,19 @@ main {
     box-shadow: 0 0 5px rgba(46, 81, 162, 0.2);
 }
 
+.btn-create-name, .btn-create {
+    width: 100%; 
+    padding: 12px 0;
+    background-color: var(--color-primary_brand);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+}
 
+.btn-create-name:hover, .btn-create:hover {
+    background-color: var(--color-primary_brand-dark-variant);
+}
