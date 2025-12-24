@@ -16,16 +16,16 @@ session_start();
     <header>
         
         <div class="header-upper">
-            <div class="logo" action="home.php">
+            <div class="logo" onclick="window.location.href='userDashboard.php'">
                 <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
             </div>
             <div class="profile">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true):?>
-                <div class="devider1" action="userDashboard.php"></div>
-                <span class="profile-name">
+                <div class="devider1" onclick="window.location.href='userDashboard.php'"></div>
+                <span class="profile-name" onclick="window.location.href='userDashboard.php'">
                     <?php echo $_SESSION['username']; ?>
                 </span>
-                <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" action="userDashboard.php">
+                <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='userDashboard.php'">
                 <?php else: ?>
                     <a href="signUp.php" class="login-link">Sign Up</a>
                     <a href="login.php" class="login-link">Login</a>

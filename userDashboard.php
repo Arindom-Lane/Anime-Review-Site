@@ -19,7 +19,7 @@
 <body>
     <header>
         <div class="header-upper">
-            <div class="logo" action="home.php">
+            <div class="logo" onclick="window.location.href='home.php'">
                 <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
             </div>
             <div class="profile">
