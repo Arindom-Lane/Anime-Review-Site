@@ -53,6 +53,15 @@
             <input type="text" name="username" required>
         </div>
         
+        <div class="feild">
+            <label>Change Password</label>
+            <input type="password"name="password" minlength="8" placeholder="minimum 8 character" required>
+        </div>
+        <div class="feild">
+            <label>Change Profile Image URL</label>
+            <input type="text" name="profileImage" required>
+            
+        </div>
         
     </form>
     </main>
