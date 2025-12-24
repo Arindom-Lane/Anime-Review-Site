@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded',() =>{
     }
 
 
-})
+
 
 const EditBtn = document.querySelector(".editbtn");
 
@@ -18,4 +18,4 @@ document.addEventListener('DOMContentLoaded',() =>{
             window.location.href = "UserEditProfile.php";
         })
     }
-})
+});
