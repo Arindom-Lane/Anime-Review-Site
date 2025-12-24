@@ -9,3 +9,13 @@ document.addEventListener('DOMContentLoaded',() =>{
 
 
 })
+
+const EditBtn = document.querySelector(".editbtn");
+
+document.addEventListener('DOMContentLoaded',() =>{
+    if(EditBtn){
+        EditBtn.addEventListener('click', () =>{
+            window.location.href = "UserEditProfile.php";
+        })
+    }
+})
