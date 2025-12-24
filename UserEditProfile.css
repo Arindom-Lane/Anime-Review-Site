@@ -132,3 +132,13 @@ main {
 .btn-create-name:hover, .btn-create:hover {
     background-color: var(--color-primary_brand-dark-variant);
 }
+.edit-profile-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.show-details{
+    margin-top: 30px;
+     text-align: center;
+}
