@@ -4,8 +4,10 @@
  if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
     header('Location: login.php');
  }
+ elseif($_SESSION['role']=='registered'){
+    header('Location: home.php');
+ }
  
-
 
 ?>
 
@@ -24,13 +26,12 @@
                 <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
             </div>
             <div class="profile">
-                <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
+                <a href="admin.php" class="login-link">Dashboard</a>
                 <div class="devider1"></div>
                 <span class="profile-name">
                     <?php echo $_SESSION['username']; ?>
                 </span>
                 <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile">
-                <?php endif; ?>
             </div>
         </div>
         <div class="header-middle">
