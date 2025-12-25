@@ -75,8 +75,14 @@
 
         <div class="rightsection">
 
-        <div>
-            
+        <div class="admin-box">
+            <h2>Meida Overview</h2>
+            <div class="media-overview">
+                <spwn>Users</spwn>
+                <spwn>Media</spwn>
+                <spwn>Anime</spwn>
+                <spwn>Manga</spwn>
+            </div>
         </div>
             
             <div class="admin-box">
