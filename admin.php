@@ -8,6 +8,8 @@
     header('Location: home.php');
  }
  
+ 
+
 
 ?>
 
@@ -77,13 +79,13 @@
                             <option>TV Show</option>
                             <option>Manga</option>
                         </select>
-                        <input placeholder="Poster URL" class="Poster">
-                        <input placeholder="Studio" class="Studio">
-                        <input placeholder="Producer" class="Producer">
-                        <input placeholder="Genre" class="Genre">
-                        <input placeholder="Duration" class="Duration">
-                        <input placeholder="Source" class="Source">
-                        <textarea placeholder="Description" class="Description"></textarea>
+                        <input name="poster" placeholder="Poster URL" class="Poster">
+                        <input name="Studio" placeholder="Studio" class="Studio">
+                        <input name="Producer" placeholder="Producer" class="Producer">
+                        <input name="Genre" placeholder="Genre" class="Genre">
+                        <input name="Duration" placeholder="Duration" class="Duration">
+                        <input name="Source" placeholder="Source" class="Source">
+                        <textarea name="Description" placeholder="Description" class="Description"></textarea>
                         <button type="submit" class="admin-save">Save Media</button> 
                     </form>
                 </div>
