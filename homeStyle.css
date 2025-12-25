@@ -206,7 +206,7 @@ main {
 
 .leftSection {
     padding: 10px;
-    min-height: 2000px;
+    min-height: auto;
     border-right: 2px solid var(--color-border_white);
     position: relative;
 }
