@@ -1,7 +1,7 @@
 
     const fallList = document.querySelector(".fallList");
-    const rightArrowFallList = document.querySelector(".right-arrowfallList"); // Changed to match CSS
-    const leftArrowFallList = document.querySelector(".left-arrowfallList"); // Changed to match CSS
+    const rightArrowFallList = document.querySelector(".right-arrowfallList"); 
+    const leftArrowFallList = document.querySelector(".left-arrowfallList"); 
 
     const latestList = document.querySelector(".latestList");
     const rightArrowLatest = document.querySelector(".right-arrowlatest");
@@ -15,13 +15,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     if(rightArrowFallList){
-        rightArrowFallList.addEventListener('click', () => { // Fixed variable name
+        rightArrowFallList.addEventListener('click', () => { 
             fallList.scrollLeft += scrollAmmountFall;
         });
     }
 
     if (leftArrowFallList){
-        leftArrowFallList.addEventListener('click', () => { // Fixed variable name
+        leftArrowFallList.addEventListener('click', () => { 
             fallList.scrollLeft -= scrollAmmountFall;  
         })
     }
@@ -29,13 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const scrollAmmountLatest = 600;
     if(rightArrowLatest){
-        rightArrowLatest.addEventListener('click', () => { // Fixed variable name
+        rightArrowLatest.addEventListener('click', () => { 
             latestList.scrollLeft += scrollAmmountLatest;
         })
     }
 
     if (leftArrowLatest){
-        leftArrowLatest.addEventListener('click', () => { // Fixed variable name
+        leftArrowLatest.addEventListener('click', () => { 
             latestList.scrollLeft -= scrollAmmountLatest;  
         })
     }
