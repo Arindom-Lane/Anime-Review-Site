@@ -8,6 +8,12 @@
     header('Location: home.php');
  }
  
+ if($_SESSION['CreateError'] == true){
+    echo '<script>alert("Media Creation Error!");</script>';
+    $_SESSION['CreateError'] = false;
+}
+
+ 
  
 
 
@@ -68,24 +74,28 @@
 
 
         <div class="rightsection">
+
+        <div>
+            
+        </div>
             
             <div class="admin-box">
                 <h2 class="main-header">Create Media</h2>
                 <div class="media-overview">
-                    <form method="POST">
-                       <input placeholder="Title">
-                        <select>
-                            <option>Movie</option>
-                            <option>TV Show</option>
-                            <option>Manga</option>
+                    <form method="POST" action="adminCreate.php">
+                       <input name="title" placeholder="Title">
+                        <select name="type">
+                            <option value="movie">Movie</option>
+                            <option value="tbshow">TV Show</option>
+                            <option value="manga">Manga</option>
                         </select>
                         <input name="poster" placeholder="Poster URL" class="Poster">
-                        <input name="Studio" placeholder="Studio" class="Studio">
-                        <input name="Producer" placeholder="Producer" class="Producer">
-                        <input name="Genre" placeholder="Genre" class="Genre">
-                        <input name="Duration" placeholder="Duration" class="Duration">
-                        <input name="Source" placeholder="Source" class="Source">
-                        <textarea name="Description" placeholder="Description" class="Description"></textarea>
+                        <input name="studio" placeholder="Studio" class="Studio">
+                        <input name="producer" placeholder="Producer" class="Producer">
+                        <input name="genre" placeholder="Genre" class="Genre">
+                        <input name="duration" placeholder="Duration" class="Duration">
+                        <input name="source" placeholder="Source" class="Source">
+                        <textarea name="description" placeholder="Description. HTMl syntax (Optional)" class="Description"></textarea>
                         <button type="submit" class="admin-save">Save Media</button> 
                     </form>
                 </div>
