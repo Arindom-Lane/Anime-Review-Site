@@ -148,7 +148,7 @@
 
         <?php if ($showDetails && isset($_SESSION['username'])): ?>
             <div class="user-details-box" >
-                <h3>Your Profile Details</h3>
+                <h3 style="color: #37e50cff;">Your Profile Details</h3>
                 <p><strong>Username:</strong> 
                 <?php
                  echo htmlspecialchars($_SESSION['username']); 
