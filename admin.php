@@ -1,7 +1,7 @@
 <?php
     session_start();
     $_SESSION['CreateError'] = false;
-    
+
  if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
     header('Location: login.php');
  }
@@ -69,7 +69,6 @@
             </div>
         </div>
 
-
         <div class="rightsection">
 
         <div class="admin-box">
@@ -82,58 +81,47 @@
             </div>
         </div>
             
-            <div class="admin-box">
-                <h2 class="main-header">Create Media</h2>
-                <div class="media-overview">
-                    <form method="POST" action="adminCreate.php">
-                       <input name="title" placeholder="Title">
-                        <select name="type">
-                            <option value="movie">Movie</option>
-                            <option value="tbshow">TV Show</option>
-                            <option value="manga">Manga</option>
-                        </select>
-                        <input name="poster" placeholder="Poster URL" class="Poster">
-                        <input name="studio" placeholder="Studio" class="Studio">
-                        <input name="producer" placeholder="Producer" class="Producer">
-                        <input name="genre" placeholder="Genre" class="Genre">
-                        <input name="duration" placeholder="Duration" class="Duration">
-                        <input name="source" placeholder="Source" class="Source">
-                        <textarea name="description" placeholder="Description. HTMl syntax (Optional)" class="Description"></textarea>
-                        <button type="submit" class="admin-save">Save Media</button> 
-                    </form>
-                </div>
+        <div class="admin-box">
+            <h2 class="main-header">Create Media</h2>
+            <div class="media-overview">
+                <form method="POST" action="adminCreate.php">
+                   <input name="title" placeholder="Title">
+                    <select name="type">
+                        <option value="movie">Movie</option>
+                        <option value="tbshow">TV Show</option>
+                        <option value="manga">Manga</option>
+                    </select>
+                    <input name="poster" placeholder="Poster URL" class="Poster">
+                    <input name="studio" placeholder="Studio" class="Studio">
+                    <input name="producer" placeholder="Producer" class="Producer">
+                    <input name="genre" placeholder="Genre" class="Genre">
+                    <input name="duration" placeholder="Duration" class="Duration">
+                    <input name="source" placeholder="Source" class="Source">
+                    <textarea name="description" placeholder="Description. HTMl syntax (Optional)" class="Description"></textarea>
+                    <button type="submit" class="admin-save">Save Media</button> 
+                </form>
             </div>
-            <div class="admin-box">
-                <h2 class="main-header">User Management</h2>
-                <input type="text" placeholder="type user name" class="adminFindsUser">
-                <div id="searchResult"></div>
-                <div id="userDetails"></div>
-                <button class="admin-save">Look Up</button>
-            </div>
+        </div>
 
-            <div class="admin-box">
-                <h2 class="main-header">Create Media</h2>
-                <div class="media-overview">
-                    <form method="POST">
-                       <input placeholder="Title">
-                        <select>
-                            <option>Movie</option>
-                            <option>TV Show</option>
-                            <option>Manga</option>
-                        </select>
-                        <input placeholder="Poster URL" class="Poster">
-                        <input placeholder="Studio" class="Studio">
-                        <input placeholder="Producer" class="Producer">
-                        <input placeholder="Genre" class="Genre">
-                        <input placeholder="Duration" class="Duration">
-                        <input placeholder="Source" class="Source">
-                        <textarea placeholder="Description" class="Description"></textarea>
-                        <button type="submit" class="admin-save">Save Media</button> 
-                    </form>
-                </div>
-            </div>
+        <div class="admin-box">
+            <h2 class="main-header">User Management</h2>
+                <form method="GET">
+                    <input type="search" name="search" style="min-width:400px;" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>">
+                    <button type="submit" class="lookUp" style="margin-left:15px;">Look Up</button>
+                </form>
+
+                <table>
+                    <thead>
+                        <tr style="background:#f2f2f2;">
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Mail</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                </table>
+        </div>
             
-
             
             
         <script src="userDashboard.js"></script>

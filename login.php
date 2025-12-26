@@ -15,6 +15,7 @@ $error = false;
                 $_SESSION['loggedIn'] = true;
                 $_SESSION['username'] = $name;
                 $_SESSION['role'] = $row['role'];
+                $_SESSION['email'] = $row['email'];
                 $_SESSION['userId'] = $row['user_id'];
                 $_SESSION['profileImage'] = $row['profile_image_link'];
                 $_SESSION['email'] = $row['email'];
