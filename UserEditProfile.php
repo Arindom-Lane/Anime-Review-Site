@@ -142,8 +142,12 @@
     <div class="show-details">
             <form method="POST">
                 <input type="submit" name="btn-show-details" class="show details-btn" value="Show Details" >
+<<<<<<< HEAD
 
                 <input type="submit" name="btn-hide-details" class="show details-btn" value="Hide Details" >
+=======
+                 <input type="submit" name="btn-hide-details" class="show details-btn" value="Hide Details" >
+>>>>>>> ArkoTest
             </form>
         </div>
 
