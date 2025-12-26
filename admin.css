@@ -321,7 +321,7 @@ main {
 grid-column: span 2;
 height: 300px;
 }
-.admin-save {
+.admin-save, .lookUp {
 grid-column: span 2;
 width: 200px;
 height: 40px;
@@ -345,3 +345,4 @@ input, select, textarea {
     display: flex;
     margin-right: 15px ;
 }
+
