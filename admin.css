@@ -31,6 +31,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box; 
+    font-size: large;
 }
 
 body {
@@ -304,6 +305,19 @@ main {
   min-height: 20px;
   padding: 20px;
 }
+.admin-box .media-overview{
+    padding-top: 15px;
+    margin-top: 10px;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 10px;
+    border-top: .5px solid var(--color-primary_brand);
+}
+.media-overview div{
+    text-align: center; 
+    padding: 10px;
+}
+
 
 .Description {
 grid-column: span 2;
