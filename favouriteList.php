@@ -105,7 +105,8 @@
             <br></br>
             <div class="favourite-list">
                 <p>Your favourite list is currently empty.</p>
-                </div>  
+                </div> 
+                 
                 
         </div>
             
