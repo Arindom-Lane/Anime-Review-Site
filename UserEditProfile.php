@@ -56,7 +56,6 @@
 
         $query = "UPDATE `users` SET 
                   `username` = '$name', 
-                  `email` = '$email', 
                   `password` = '$password', 
                   `profile_image_link` = '$profileImage' 
                   WHERE `user_id` = '$targetUserId'";
@@ -141,11 +140,7 @@
             <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
             
         </div>
-        <div class="feild">
-            <label>Change Email</label>
-            <input type="text" name="email" >
-            <button type="submit" name="btn-create" class="btn-create">Edit</button>
-        </div>  
+        
     </form>
 
     <?php if(!$_SESSION['role'] == 'admin'): ?>
