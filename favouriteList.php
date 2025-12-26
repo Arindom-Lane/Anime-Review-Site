@@ -98,7 +98,16 @@
         </div>
 
         <!-- RIGHT MAIN CONTENT -->
-        
+        <div class="rightsection">
+            <div class="Edit">
+                <a href="#">Edit Favourites</a>
+            </div>
+            <br></br>
+            <div class="favourite-list">
+                <p>Your favourite list is currently empty.</p>
+                </div>  
+                
+        </div>
             
         <script src="userDashboard.js"></script>
     </main>
