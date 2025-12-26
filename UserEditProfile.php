@@ -9,6 +9,15 @@
 
     $message = "";
     $error = "";
+    $showDetails = false;
+
+    if (isset($_POST['btn-show-details'])) {
+        $showDetails = true;
+    }
+    
+    if (isset($_POST['btn-hide-details'])) {
+        $showDetails = false;
+    }
 
     if(isset($_POST["btn-create"])){
         $currentUser = $_SESSION['username']; 
@@ -127,6 +136,8 @@
     <div class="show-details">
             <form method="POST">
                 <input type="submit" name="btn-show-details" class="show details-btn" value="Show Details" >
+
+                <input type="submit" name="btn-hide-details" class="show details-btn" value="Hide Details" >
             </form>
         </div>
 
@@ -145,6 +156,8 @@
                 </div>
             </div>
         <?php endif; ?>
+
+        
     </main>
 
     
