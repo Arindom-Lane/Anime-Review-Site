@@ -75,8 +75,6 @@
                     <div class="sidebar-divider"></div>
                     
                     <div class="sidebar-menu">
-                        <input type="button" value="Statistics" class="statbtn">
-                        <input type="button" value="History" class="statbtn">
                         <input type="button" value="Favorites" class="statbtn">
                     </div>
 
