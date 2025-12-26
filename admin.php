@@ -105,10 +105,21 @@
 
         <div class="admin-box">
             <h2 class="main-header">User Management</h2>
-                <form method="POST">
-                    <input type="searchUser" style="min-width:400px;" value="">
-                    <button type="submit" class="admin-save" style="margin-left:15px;">Look Up</button>
+                <form method="GET">
+                    <input type="search" name="search" style="min-width:400px;" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>">
+                    <button type="submit" class="lookUp" style="margin-left:15px;">Look Up</button>
                 </form>
+
+                <table>
+                    <thead>
+                        <tr style="background:#f2f2f2;">
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Mail</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                </table>
         </div>
             
             
