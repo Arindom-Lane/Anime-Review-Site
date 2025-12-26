@@ -220,9 +220,7 @@ main {
     border-bottom: 1.5px solid var(--color-border_white);
     border-left: 1.5px solid var(--color-border_white);
     border-right: 1.5px solid var(--color-border_white);
-    font-size: small;
     font-weight: 600;
-
 }
 
 .leftSection {
@@ -243,7 +241,7 @@ main {
     gap:15px;
     padding: 5%;
     background-color: var(--color-background_white);
-    font-size: medium;
+    font-size: small;
     font-weight: bold;
     border-radius: var(--border-radius-2);
 }
@@ -258,7 +256,7 @@ main {
     color: rgb(255, 255, 255);
     text-decoration: none;
     font-weight: bold;
-    font-size: 17px;
+    font-size: 15px;
     border-radius: .5em;
 
 }
@@ -323,11 +321,12 @@ main {
 grid-column: span 2;
 height: 300px;
 }
-.admin-save {
+.admin-save, .lookUp {
 grid-column: span 2;
 width: 200px;
-height: 30px;
-font-size: 17px;
+height: 40px;
+font-size: 18px;
+font-weight: 400;
 border-radius: var(--border-radius-2);
 margin: 0 auto;
 margin-top: 15px;
@@ -341,3 +340,9 @@ input, select, textarea {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+.media-overview .adminFindsUser{
+    display: flex;
+    margin-right: 15px ;
+}
+
