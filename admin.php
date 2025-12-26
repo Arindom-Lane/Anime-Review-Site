@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $_SESSION['CreateError'] = false;
+    include("db.php");
 
  if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
     header('Location: login.php');
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="header-lower">
-            <span>Welcome <?PHP echo $_SESSION['username'];?></span>
+            <span>Welcome <?php echo $_SESSION['username'];?></span>
             <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png" alt="Menu">
         </div>
     </header>
@@ -74,13 +74,61 @@
         <div class="admin-box">
             <h2>Meida Overview</h2>
             <div class="media-overview">
-                <spwn>Users</spwn>
-                <spwn>Media</spwn>
-                <spwn>Anime</spwn>
-                <spwn>Manga</spwn>
+                <span>Users</span>
+                <span>Media</span>
+                <span>Anime</span>
+                <span>Manga</span>
             </div>
         </div>
-            
+        <div class="admin-box">
+            <h2 class="main-header">User Management</h2>
+                <form method="GET">
+                    <input type="search" name="search" style="min-width:400px;" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>">
+                    <button type="submit" class="lookUp" style="margin-left:15px;">Look Up</button>
+                </form>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Mail</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            <?php 
+                                if(isset($_GET['search'])){
+                                    $filterValue = $_GET['search']; 
+                                    $result = mysqli_query($conn,"SELECT * FROM users WHERE CONCAT(username,email,user_id) LIKE '%$filterValue%'");
+                                    
+                                    if(mysqli_num_rows($result) > 0){
+                                        foreach($result as $row){
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $row['user_id'] ?></td>    
+                                                <td><?php echo $row['username'] ?></td>    
+                                                <td><?php echo $row['email'] ?></td> 
+                                                <td> 
+                                                    <a href="edit.php?id=<?php echo $row['user_id']; ?>">Edit</a> 
+                                                    <a href="delete.php?id=<?php echo $row['user_id']; ?>" onclick="return confirm('Delete this user?')">Delete</a> 
+                                                </td>   
+                                            </tr>
+                                        <?php 
+                                        }}
+                                    else{
+                                        ?>
+                                        <tr>
+                                            <td colspan="4">No record is found</td>    
+                                        </tr>
+                                        <?php 
+                                        }
+                                    }
+                            ?>
+                    </tbody>
+                </table>
+        </div>    
         <div class="admin-box">
             <h2 class="main-header">Create Media</h2>
             <div class="media-overview">
@@ -88,7 +136,7 @@
                    <input name="title" placeholder="Title">
                     <select name="type">
                         <option value="movie">Movie</option>
-                        <option value="tbshow">TV Show</option>
+                        <option value="tvshow">TV Show</option>
                         <option value="manga">Manga</option>
                     </select>
                     <input name="poster" placeholder="Poster URL" class="Poster">
@@ -103,24 +151,7 @@
             </div>
         </div>
 
-        <div class="admin-box">
-            <h2 class="main-header">User Management</h2>
-                <form method="GET">
-                    <input type="search" name="search" style="min-width:400px;" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>">
-                    <button type="submit" class="lookUp" style="margin-left:15px;">Look Up</button>
-                </form>
-
-                <table>
-                    <thead>
-                        <tr style="background:#f2f2f2;">
-                            <th>User ID</th>
-                            <th>Name</th>
-                            <th>Mail</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                </table>
-        </div>
+        
             
             
             
