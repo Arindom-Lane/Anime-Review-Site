@@ -268,7 +268,7 @@ main {
 
 .bar-fill { height: 100%; }
 .bar-fill.green { background-color: #2db039; }
-.bar-fill.grey { background-color: #f6f6f6; }
+.bar-fill.grey { background-color: #2db039; }
 .width-100 { width: 100%; }
 
 .stats-grid {
