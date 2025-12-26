@@ -13,10 +13,25 @@
     if(isset($_POST["btn-create"])){
         $currentUser = $_SESSION['username']; 
         
-        $name = $_POST["username"];
-        $email = $_POST["email"];
+        if (!empty($_POST["username"])) {
+            $name = $_POST["username"];
+        } else {
+            $name = $_SESSION['username']; 
+        }
+
+        if (!empty($_POST["email"])) {
+            $email = $_POST["email"];
+        } else {
+            $email = $_SESSION['email']; 
+        }
+
+        if (!empty($_POST['profileImage'])) {
+            $profileImage = $_POST['profileImage'];
+        } else {
+            $profileImage = $_SESSION['profileImage']; 
+        }
+
         $password = $_POST["password"];
-        $profileImage = $_POST['profileImage'];
 
         $query = "UPDATE `users` SET 
                   `username` = '$name', 
@@ -87,24 +102,24 @@
         <form method="POST">
         <div class="feild">
             <label>Change User Name</label>
-            <input type="text" name="username" required>
+            <input type="text" name="username" >
             <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
         </div>
         
         <div class="feild">
             <label>Change Password</label>
-            <input type="password"name="password" minlength="8" placeholder="minimum 8 character" required>
+            <input type="password"name="password" minlength="8" placeholder="minimum 8 character" >
             <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
         </div>
         <div class="feild">
             <label>Change Profile Image URL</label>
-            <input type="text" name="profileImage" required>
+            <input type="text" name="profileImage" >
             <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
             
         </div>
         <div class="feild">
             <label>Change Email</label>
-            <input type="text" name="email" required>
+            <input type="text" name="email" >
             <button type="submit" name="btn-create" class="btn-create">Edit</button>
         </div>  
     </form>
