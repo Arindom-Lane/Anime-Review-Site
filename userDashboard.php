@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 
-                <div class="edit-profile-wrapper" action="UserEditProfile.php">
+                <div class="edit-profile-wrapper" onclick="window.location.href='UserEditProfile.php'">
                     <input type="button" value="Edit Profile" class="editbtn">
                 </div>
             </fieldset>
