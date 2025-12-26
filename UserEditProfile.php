@@ -31,7 +31,7 @@
         if (!empty($_POST["email"])) {
             $email = $_POST["email"];
         } else {
-            $email = $_SESSION['email']; 
+            $email = isset($_SESSION['email']) ? $_SESSION['email'] : '';  
         }
 
         if (!empty($_POST['profileImage'])) {
@@ -40,7 +40,13 @@
             $profileImage = $_SESSION['profileImage']; 
         }
 
-        $password = $_POST["password"];
+        if (!empty($_POST["password"])) {
+             $password = $_POST["password"];
+             $passwordQueryPart = ", `password` = '$password'";
+        } else {
+             $passwordQueryPart = ""; 
+        }
+
 
         $query = "UPDATE `users` SET 
                   `username` = '$name', 
@@ -146,9 +152,10 @@
                 <h3>Your Profile Details</h3>
                 <p><strong>Username:</strong> <?php echo htmlspecialchars($_SESSION['username']); ?></p>
                 
-                <?php if (isset($_SESSION['email'])): ?>
-                    <p><strong>Email:</strong> <?php echo htmlspecialchars($_SESSION['email']); ?></p>
-                <?php endif; ?>
+                <p><strong>Email:</strong> 
+                    <?php echo htmlspecialchars($_SESSION['email']); ?>
+                </p>
+
 
                 <div style="margin-top: 10px;">
                     <p><strong>Profile Image:</strong></p>
@@ -157,7 +164,7 @@
             </div>
         <?php endif; ?>
 
-        
+
     </main>
 
     
