@@ -75,7 +75,7 @@
                     <div class="sidebar-divider"></div>
                     
                     <div class="sidebar-menu">
-                        <input type="button" value="Favorites" class="statbtn">
+                        <input type="button" value="Favorites" class="statbtn" onclick="window.location.href='favouriteList.php'">
                     </div>
 
                     <br>
