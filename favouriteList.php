@@ -25,7 +25,7 @@
             <div class="profile">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
                 <div class="devider1"></div>
-                <span class="profile-name">
+                <span class="profile-name" onclick="window.location.href='userDashboard.php'">
                     <?php echo $_SESSION['username']; ?>
                 </span>
                 <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile">
