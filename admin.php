@@ -9,7 +9,7 @@
     header('Location: home.php');
  }
  
- if($_SESSION['CreateError'] == true){
+ if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
     echo '<script>alert("Media Creation Error!");</script>';
     $_SESSION['CreateError'] = false;
 }
@@ -83,7 +83,7 @@
         <div class="admin-box">
             <h2 class="main-header">User Management</h2>
                 <form method="GET">
-                    <input type="search" name="search" style="min-width:400px;" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>">
+                    <input type="search" name="search" style="min-width:400px;" placeholder="User name, Email.." required value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>">
                     <button type="submit" class="lookUp" style="margin-left:15px;">Look Up</button>
                 </form>
 
