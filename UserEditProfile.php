@@ -98,7 +98,7 @@
             <div class="logo" onclick="window.location.href='home.php'">
                 <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
             </div>
-            <div class="profile">
+            <div class="profile" onclick="window.location.href='userDashboard.php'">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
                 <div class="devider1"></div>
                 <span class="profile-name">
@@ -163,7 +163,7 @@
                     
         <?php if ($showDetails && isset($_SESSION['username'])): ?>
             <div class="user-details-box" >
-                <h3>Your Profile Details</h3>
+                <h3 style="color: #37e50cff;">Your Profile Details</h3>
                 <p><strong>Username:</strong> 
                 <?php
                  echo htmlspecialchars($_SESSION['username']); 
