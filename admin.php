@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $_SESSION['CreateError'] = false;
     
  if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
     header('Location: login.php');
@@ -12,10 +13,6 @@
     echo '<script>alert("Media Creation Error!");</script>';
     $_SESSION['CreateError'] = false;
 }
-
- 
- 
-
 
 ?>
 
@@ -109,9 +106,11 @@
             <div class="admin-box">
                 <h2 class="main-header">User Management</h2>
                 <input type="text" placeholder="type user name" class="adminFindsUser">
+                <div id="searchResult"></div>
+                <div id="userDetails"></div>
                 <button class="admin-save">Look Up</button>
-                
             </div>
+
             <div class="admin-box">
                 <h2 class="main-header">Create Media</h2>
                 <div class="media-overview">
