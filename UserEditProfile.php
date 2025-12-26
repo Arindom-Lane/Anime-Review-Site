@@ -1,15 +1,48 @@
 <?php
     session_start();
-    
- if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
-    header('Location: login.php');
- }
- $showDetails = false;
+    include("db.php"); 
+
+    if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
+       header('Location: login.php');
+       exit();
+    }
+
+    $message = "";
+    $error = "";
+
+    if(isset($_POST["btn-create"])){
+        $currentUser = $_SESSION['username']; 
+        
+        $name = $_POST["username"];
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $profileImage = $_POST['profileImage'];
+
+        $query = "UPDATE `users` SET 
+                  `username` = '$name', 
+                  `email` = '$email', 
+                  `password` = '$password', 
+                  `profile_image_link` = '$profileImage' 
+                  WHERE `username` = '$currentUser'";
+
+        $result = mysqli_query($conn, $query);
+
+        if($result){
+            $_SESSION['username'] = $name;
+            $_SESSION['email'] = $email;
+            $_SESSION['profileImage'] = $profileImage;
+            
+            $message = "Profile updated successfully!";
+        }
+        else {
+            $error = "Query Failed: " . mysqli_error($conn);
+        }     
+    }
+
+    $showDetails = false;
     if (isset($_POST['btn-show-details'])) {
         $showDetails = true;
     }
-
-
 ?>
 
 <!DOCTYPE html>
