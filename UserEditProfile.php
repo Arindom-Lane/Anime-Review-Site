@@ -31,7 +31,7 @@
         if (!empty($_POST["email"])) {
             $email = $_POST["email"];
         } else {
-            $email = isset($_SESSION['email']) ? $_SESSION['email'] : '';  
+             $email = $_SESSION['email'];   
         }
 
         if (!empty($_POST['profileImage'])) {
@@ -150,10 +150,15 @@
         <?php if ($showDetails && isset($_SESSION['username'])): ?>
             <div class="user-details-box" >
                 <h3>Your Profile Details</h3>
-                <p><strong>Username:</strong> <?php echo htmlspecialchars($_SESSION['username']); ?></p>
+                <p><strong>Username:</strong> 
+                <?php
+                 echo htmlspecialchars($_SESSION['username']); 
+                ?>
+                </p>
                 
                 <p><strong>Email:</strong> 
-                    <?php echo htmlspecialchars($_SESSION['email']); ?>
+                    <?php echo htmlspecialchars($_SESSION['email']); 
+                    ?>
                 </p>
 
 
