@@ -1,11 +1,22 @@
 <?php
     session_start();
-    include("db.php"); 
+    include("db.php");
+    
+    
 
     if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
        header('Location: login.php');
        exit();
     }
+    
+    if (isset($_GET['id']) && $_SESSION['role'] === 'admin') {
+        $targetUserId = mysqli_real_escape_string($conn, $_GET['id']);
+    } else {
+        $targetUserId = $_SESSION['userId']; 
+    }
+
+    $fetchTarget = mysqli_query($conn, "SELECT * FROM users WHERE user_id = '$targetUserId'");
+    $targetData = mysqli_fetch_assoc($fetchTarget);
 
     $message = "";
     $error = "";
@@ -20,7 +31,7 @@
     }
 
     if(isset($_POST["btn-create"])){
-        $currentUser = $_SESSION['username']; 
+        $currentUser = $targetData['username']; 
         
         if (!empty($_POST["username"])) {
             $name = $_POST["username"];
@@ -28,12 +39,7 @@
             $name = $_SESSION['username']; 
         }
 
-        if (!empty($_POST["email"])) {
-            $email = $_POST["email"];
-        } else {
-             $email = $_SESSION['email'];   
-        }
-
+        
         if (!empty($_POST['profileImage'])) {
             $profileImage = $_POST['profileImage'];
         } else {
@@ -53,21 +59,24 @@
                   `email` = '$email', 
                   `password` = '$password', 
                   `profile_image_link` = '$profileImage' 
-                  WHERE `username` = '$currentUser'";
+                  WHERE `user_id` = '$targetUserId'";
 
         $result = mysqli_query($conn, $query);
 
         if($result){
+           if($targetData == intval($_SESSION["userId"])) {
             $_SESSION['username'] = $name;
             $_SESSION['email'] = $email;
             $_SESSION['profileImage'] = $profileImage;
             
             $message = "Profile updated successfully!";
+            $fetchTarget = mysqli_query($conn, "SELECT * FROM users WHERE id = '$targetUserId'");
+            $targetData = mysqli_fetch_assoc($fetchTarget);
         }
         else {
             $error = "Query Failed: " . mysqli_error($conn);
         }     
-    }
+    }}
 
     $showDetails = false;
     if (isset($_POST['btn-show-details'])) {
@@ -139,13 +148,19 @@
         </div>  
     </form>
 
-    <div class="show-details">
+    <?php if(!$_SESSION['role'] == 'admin'): ?>
+        <div class="show-details">
             <form method="POST">
                 <input type="submit" name="btn-show-details" class="show details-btn" value="Show Details" >
                  <input type="submit" name="btn-hide-details" class="show details-btn" value="Hide Details" >
             </form>
         </div>
-
+    <?php else: ?>
+        <div class="show-details" >
+                <a href="admin.php" class="show details-btn" style="text-decoration:none; text-align:center; display:inline-block;">Go Back</a>            </form>
+        </div>
+    <?php endif; ?>
+                    
         <?php if ($showDetails && isset($_SESSION['username'])): ?>
             <div class="user-details-box" >
                 <h3>Your Profile Details</h3>
@@ -166,8 +181,7 @@
                     <img src="<?php echo htmlspecialchars($_SESSION['profileImage']); ?>" alt="Profile" >
                 </div>
             </div>
-        <?php endif; ?>
-
+        <?php endif;?>
 
     </main>
 
