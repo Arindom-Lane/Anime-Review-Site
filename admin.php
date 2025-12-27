@@ -124,9 +124,9 @@ if(isset($_SESSION['DeleteMediaSuccess'])){
                                                 <td><?php echo $row['user_id'] ?></td>    
                                                 <td><?php echo $row['username'] ?></td>    
                                                 <td><?php echo $row['email'] ?></td> 
-                                                <td> 
-                                                    <a href="AdminUserEditProfile.php?id=<?php echo $row['user_id']; ?>">Edit</a> 
-                                                    <a href="adminDeleteUser.php?id=<?php echo $row['user_id']; ?>" onclick="return confirm('Delete this user?')">Delete</a> 
+                                                <td style="display: flex;"> 
+                                                    <a href="AdminUserEditProfile.php?id=<?php echo $row['user_id']; ?>" class="editProfileHREF" style="width: 150px; height: auto; text-align: center; margin-right: 10px;">Edit</a> 
+                                                    <a href="adminDeleteUser.php?id=<?php echo $row['user_id']; ?>" class="editProfileHREF" style="width: 150px; height: auto; text-align: center;" onclick="return confirm('Delete this user?')">Delete</a> 
                                                 </td>   
                                             </tr>
                                         <?php 
@@ -155,7 +155,6 @@ if(isset($_SESSION['DeleteMediaSuccess'])){
                     <thead>
                         <tr>
                             <th>Title</th>
-                            <th>Source</th>
                             <th>Poster</th>
                             <th>Actions</th>
                         </tr>
@@ -165,18 +164,17 @@ if(isset($_SESSION['DeleteMediaSuccess'])){
                             <?php 
                                 if(isset($_GET['searchMedia'])){
                                     $filterValue = $_GET['searchMedia']; 
-                                    $result = mysqli_query($conn,"SELECT * FROM media WHERE CONCAT(title,source,media_id) LIKE '%$filterValue%'");
+                                    $result = mysqli_query($conn,"SELECT * FROM media WHERE CONCAT(title,media_id) LIKE '%$filterValue%'");
                                     
                                     if(mysqli_num_rows(result: $result) > 0){
                                         foreach($result as $row){
                                         ?>
                                             <tr>
-                                                <td><?php echo $row['title'] ?></td>    
-                                                <td><?php echo $row['source'] ?></td>
+                                                <td><?php echo $row['title'] ?></td>
                                                 <td><img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:200px; height:auto;"></td>
-                                                <td> 
-                                                    <a href="AdminUserEditProfile.php?id=<?php echo $row['media_id']; ?>">Edit</a> 
-                                                    <a href="adminDeleteMedia.php?id=<?php echo $row['media_id']; ?>" onclick="return confirm('Delete this media?')">Delete</a> 
+                                                <td style="display: flex;"> 
+                                                    <a href="AdminUserEditProfile.php?id=<?php echo $row['media_id']; ?>" class="editProfileHREF" style="width: 150px; height: auto; text-align: center; margin-right: 10px;">Edit</a> 
+                                                    <a href="adminDeleteMedia.php?id=<?php echo $row['media_id']; ?>" class="editProfileHREF" style="width: 150px; height: auto; text-align: center;" onclick="return confirm('Delete this media?')">Delete</a> 
                                                 </td>   
                                             </tr>
                                         <?php 
