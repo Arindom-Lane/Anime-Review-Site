@@ -94,7 +94,7 @@ if(isset($_SESSION['editMediaMessage'])){
 
         <div class="rightsection">
 
-        <div class="admin-box">
+        <div class="admin-box"> <!-- show media count -->
             <h2>Meida Overview</h2>
             <div class="media-overview">
                 <span>Users</span>
@@ -103,7 +103,7 @@ if(isset($_SESSION['editMediaMessage'])){
                 <span>Manga</span>
             </div>
         </div>
-        <div class="admin-box">
+        <div class="admin-box"><!-- User Management -->
             <h2 class="main-header">User Management</h2>
                 <form method="GET">
                     <input type="search" name="search" style="min-width:400px;" placeholder="User name, Email.." required value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>">
@@ -153,7 +153,7 @@ if(isset($_SESSION['editMediaMessage'])){
                 </table>
         </div>    
 
-        <div class="admin-box">
+        <div class="admin-box"><!-- Media Management -->
             <h2 class="main-header">Media Management</h2>
                 <form method="GET">
                     <input type="search" name="searchMedia" style="min-width:400px;" placeholder="Movie, TV-show, Manga.." required value="<?php if(isset($_GET['searchMedia'])){echo $_GET['searchMedia'];} ?>">
@@ -180,7 +180,7 @@ if(isset($_SESSION['editMediaMessage'])){
                                         ?>
                                             <tr>
                                                 <td><?php echo $row['title'] ?></td>
-                                                <td><img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:200px; height:auto;"></td>
+                                                <td><img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:100px; height:auto;"></td>
                                                 <td style="display: flex;"> 
                                                     <a href="adminEditMedia.php?id=<?php echo $row['media_id']; ?>" name="editMediaData" class="editProfileHREF" style="width: 150px; height: auto; text-align: center; margin-right: 10px;">Edit</a> 
                                                     <a href="adminDeleteMedia.php?id=<?php echo $row['media_id']; ?>" class="editProfileHREF" style="width: 150px; height: auto; text-align: center;" onclick="return confirm('Delete this media?')">Delete</a> 
@@ -201,7 +201,7 @@ if(isset($_SESSION['editMediaMessage'])){
                 </table>
         </div>  
 
-        <div class="admin-box">
+        <div class="admin-box"><!-- Create media form -->
             <h2 class="main-header">Create Media</h2>
             <div class="media-overview">
                 <form method="POST" action="adminCreate.php">
