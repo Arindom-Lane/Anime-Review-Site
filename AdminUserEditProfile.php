@@ -4,6 +4,7 @@ include("db.php");
 
 
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
+    
     header('Location: login.php');
     exit();
 }
@@ -12,7 +13,8 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
 if (isset($_GET['id']) && isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
     $targetUserId = mysqli_real_escape_string($conn, $_GET['id']);
 } else {
-    $targetUserId = $_SESSION['userId'];
+    header('Location: admin.php');
+    exit();
 }
 
 
@@ -21,15 +23,6 @@ $targetData = mysqli_fetch_assoc($fetchTarget);
 
 $message = "";
 $error = "";
-$showDetails = false;
-
-
-if (isset($_POST['btn-show-details'])) {
-    $showDetails = true;
-}
-if (isset($_POST['btn-hide-details'])) {
-    $showDetails = false;
-}
 
 
 if (isset($_POST["btn-create"])) {
@@ -144,28 +137,7 @@ if (isset($_POST["btn-create"])) {
                 <a href="admin.php" class="show details-btn" style="text-decoration:none; text-align:center; display:inline-block;">Go Back</a>            </form>
         </div>
     <?php endif; ?>
-                    
-        <?php if ($showDetails && isset($_SESSION['username'])): ?>
-            <div class="user-details-box" >
-                <h3 style="color: #37e50cff;">Your Profile Details</h3>
-                <p><strong>Username:</strong> 
-                <?php
-                 echo htmlspecialchars($_SESSION['username']); 
-                ?>
-                </p>
-                
-                <p><strong>Email:</strong> 
-                    <?php echo htmlspecialchars($_SESSION['email']); 
-                    ?>
-                </p>
-
-
-                <div style="margin-top: 10px;">
-                    <p><strong>Profile Image:</strong></p>
-                    <img src="<?php echo htmlspecialchars($_SESSION['profileImage']); ?>" alt="Profile" >
-                </div>
-            </div>
-        <?php endif;?>
+       
 
     </main>
 

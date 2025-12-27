@@ -8,6 +8,9 @@ $exists = false;
         $password = $_POST["password"];
         $profileImage = $_POST['profile_image_link'];
 
+        if($profileImage == ''){
+            $profileImage = "https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg";
+        }
  
         if(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `username` = '$name'")) > 0){
             $exists = true;

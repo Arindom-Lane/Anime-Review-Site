@@ -111,7 +111,7 @@
                                                 <td><?php echo $row['username'] ?></td>    
                                                 <td><?php echo $row['email'] ?></td> 
                                                 <td> 
-                                                    <a href="UserEditProfile.php?id=<?php echo $row['user_id']; ?>">Edit</a> 
+                                                    <a href="AdminUserEditProfile.php?id=<?php echo $row['user_id']; ?>">Edit</a> 
                                                     <a href="adminDeleteUser.php?id=<?php echo $row['user_id']; ?>" onclick="return confirm('Delete this user?')">Delete</a> 
                                                 </td>   
                                             </tr>
