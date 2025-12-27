@@ -5,9 +5,6 @@
  if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
     header('Location: login.php');
  }
- elseif($_SESSION['role']=='registered'){
-    header('Location: home.php');
- }
  
  if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
     echo '<script>alert("Media Creation Error!");</script>';
