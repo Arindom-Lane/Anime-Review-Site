@@ -64,7 +64,7 @@
                         <span class="status-online" style="color: GREEN;">ONLINE</span>
                 </div>
                 <div class="editProfile">
-                    <a href="wdad" class="editProfileHREF">Edit Profile</a>
+                    <a href="UserEditProfile.php" class="editProfileHREF">Edit Profile</a>
                 </div>
             </div>
         </div>
@@ -103,7 +103,7 @@
                                     $filterValue = $_GET['search']; 
                                     $result = mysqli_query($conn,"SELECT * FROM users WHERE CONCAT(username,email,user_id) LIKE '%$filterValue%'");
                                     
-                                    if(mysqli_num_rows($result) > 0){
+                                    if(mysqli_num_rows(result: $result) > 0){
                                         foreach($result as $row){
                                         ?>
                                             <tr>
@@ -112,7 +112,7 @@
                                                 <td><?php echo $row['email'] ?></td> 
                                                 <td> 
                                                     <a href="UserEditProfile.php?id=<?php echo $row['user_id']; ?>">Edit</a> 
-                                                    <a href="delete.php?id=<?php echo $row['user_id']; ?>" onclick="return confirm('Delete this user?')">Delete</a> 
+                                                    <a href="adminDeleteUser.php?id=<?php echo $row['user_id']; ?>" onclick="return confirm('Delete this user?')">Delete</a> 
                                                 </td>   
                                             </tr>
                                         <?php 
