@@ -5,6 +5,38 @@
     header('Location: login.php');
  }
 
+ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
+     $commentText = htmlspecialchars(trim($_POST['user_comment']));
+     
+     if (!empty($commentText)) {
+         $newComment = [
+             'id'   => uniqid(),
+             'user' => $_SESSION['username'], 
+             'text' => $commentText,
+             'date' => date('M d, Y H:i')
+         ];
+
+         if (!isset($_SESSION['post_comments'])) {
+             $_SESSION['post_comments'] = [];
+         }
+
+         $_SESSION['post_comments'][] = $newComment;
+     }
+ }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
+     $idToDelete = $_POST['comment_id'];
+     
+     if (isset($_SESSION['post_comments'])) {
+         $_SESSION['post_comments'] = array_filter($_SESSION['post_comments'], function($comment) use ($idToDelete) {
+             return isset($comment['id']) && $comment['id'] !== $idToDelete;
+         });
+         $_SESSION['post_comments'] = array_values($_SESSION['post_comments']);
+     }
+ }
+
+ 
+
 
 ?>
 
@@ -90,10 +122,7 @@
 
         <!-- RIGHT MAIN CONTENT -->
         <div class="rightsection">
-            <div class="content-block">
-                <span class="biography-text">No biography yet. </span>
-                <a href="#">Write it now.</a>
-            </div>
+            
 
             <h2 class="main-header">Statistics</h2>
 
@@ -205,7 +234,38 @@
             <div>
                 
                 <h2>Comments</h2>
-                <textarea class="comment-box" placeholder="Add a comment..." rows="4"></textarea>
+                <form action="" method="POST">
+                    <textarea name="user_comment" class="comment-box" placeholder="Add a comment..." rows="4" required></textarea>
+                    <br>
+                    <button type="submit" name="submit_comment" class="editbtn" style="margin-top: 10px; cursor: pointer;">
+                        Post Comment
+                    </button>
+                </form>
+
+                <div class="comments-display" style="margin-top: 20px;">
+                    <?php 
+                    if (isset($_SESSION['post_comments']) && !empty($_SESSION['post_comments'])) {
+                        $comments = array_reverse($_SESSION['post_comments']);
+                        
+                        foreach ($comments as $comment) {
+                            echo '<div class="comment-item" >';
+                            echo '<div class="comment-header">';
+                            echo '<div><strong>' . $comment['user'] . '</strong> <span class="comment-date">(' . $comment['date'] . ')</span></div>';
+                            
+
+                            if ($comment['user'] === $_SESSION['username']) { 
+                                echo '<form action="" method="POST" class="delete-form">';
+                                echo '<input type="hidden" name="comment_id" value="' . $comment['id'] . '">';
+                                echo '<button type="submit" name="delete_comment" class="delete-btn">Delete</button>';
+                                echo '</form>';
+                            }
+                            echo '</div>';
+                            echo '<p class="comment-text">' . $comment['text'] . '</p>';
+                            echo '</div>';
+                        }
+                    }
+                    ?>
+                </div>
             </div>
 
             
