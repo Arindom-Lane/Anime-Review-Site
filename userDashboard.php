@@ -104,12 +104,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
                         <input type="button" value="Manga List" class="list-btn">
                     </div>
 
-                    <div class="sidebar-divider"></div>
-                    
-                    <div class="sidebar-menu">
+                    <div class="sidebar-divider">
+
+                        <div class="sidebar-menu">
                         <input type="button" value="Favorites" class="statbtn" onclick="window.location.href='favouriteList.php'">
-                        <input type="button" value="Add Media Contribution" class="statbtn" onclick="window.location.href='RequestMedia.php'">
+                        <input type="button" value="Add Media Contribution" class="statbtn" onclick="window.location.href='ReqMed.php'">
                     </div>
+                </div>
+                    
+                    
 
                     <br>
                     
