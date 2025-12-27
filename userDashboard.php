@@ -108,6 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
                     
                     <div class="sidebar-menu">
                         <input type="button" value="Favorites" class="statbtn" onclick="window.location.href='favouriteList.php'">
+                        <input type="button" value="Add Media Contribution" class="statbtn" onclick="window.location.href='RequestMedia.php'">
                     </div>
 
                     <br>
