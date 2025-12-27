@@ -35,6 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
      }
  }
 
+ 
+
 
 ?>
 
@@ -120,10 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
 
         <!-- RIGHT MAIN CONTENT -->
         <div class="rightsection">
-            <div class="content-block">
-                <span class="biography-text">No biography yet. </span>
-                <a href="#">Write it now.</a>
-            </div>
+            
 
             <h2 class="main-header">Statistics</h2>
 
