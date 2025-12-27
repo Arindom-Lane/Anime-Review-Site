@@ -206,6 +206,10 @@
                 
                 <h2>Comments</h2>
                 <textarea class="comment-box" placeholder="Add a comment..." rows="4"></textarea>
+
+                <div style="margin-top: 10px;">
+                    <button type="button" class="list-btn" onclick="addComment()">Post Comment</button>
+                </div>
             </div>
 
             
