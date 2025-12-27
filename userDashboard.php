@@ -75,11 +75,20 @@
                     <div class="sidebar-divider"></div>
                     
                     <div class="sidebar-menu">
-                        <input type="button" value="Favorites" class="statbtn" onclick="window.location.href='favouriteList.php'">
+                        <input type="button" value="Statistics" class="statbtn">
+                        <input type="button" value="History" class="statbtn">
+                        <input type="button" value="Favorites" class="statbtn">
                     </div>
 
                     <br>
-                    
+                    <div class="sidebar-row">
+                        <span>Reviews</span>
+                        <span class="text-blue">0</span>
+                    </div>
+                    <div class="sidebar-row">
+                        <span>Recommendations</span>
+                        <span class="text-blue">0</span>
+                    </div>
                 </div>
                 
                 <div class="edit-profile-wrapper" onclick="window.location.href='UserEditProfile.php'">
