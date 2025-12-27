@@ -124,21 +124,15 @@ if (isset($_POST["btn-create"])) {
         </div>
         
     </form>
-
-    <?php if(!$_SESSION['role'] == 'admin'): ?>
-        <div class="show-details">
-            <form method="POST">
-                <input type="submit" name="btn-show-details" class="show details-btn" value="Show Details" >
-                 <input type="submit" name="btn-hide-details" class="show details-btn" value="Hide Details" >
-            </form>
-        </div>
-    <?php else: ?>
-        <div class="show-details" >
-                <a href="admin.php" class="show details-btn" style="text-decoration:none; text-align:center; display:inline-block;">Go Back</a>            </form>
-        </div>
-    <?php endif; ?>
+        <center>
+            <a href="admin.php" class="editProfileHREF" style="width: 250px; height: auto; font-size: 17px;">Back to Dashboard</a>
+        </center>
+    
        
 
     </main>
+    
+</body>
+</html>
 
     
