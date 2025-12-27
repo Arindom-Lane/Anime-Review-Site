@@ -64,7 +64,7 @@
                         <span class="status-online" style="color: GREEN;">ONLINE</span>
                 </div>
                 <div class="editProfile">
-                    <a href="wdad" class="editProfileHREF">Edit Profile</a>
+                    <a href="UserEditProfile.php" class="editProfileHREF">Edit Profile</a>
                 </div>
             </div>
         </div>
