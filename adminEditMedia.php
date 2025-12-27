@@ -124,28 +124,32 @@ if (mysqli_num_rows($targetUserId) > 0) {
             </div>
         </div>
         <div class="rightsection">
-    <div class="admin-box">
-            <h2 class="main-header">Edit Media</h2>
-            <div class="media-overview">
-                <form method="POST">
-                   <input name="title" placeholder="Title" value="<?php echo $targetData["title"]; ?>">
-                    <select name="type">
-                        <option value="movie" <?php if($targetData['type'] === 'movie'){ echo 'selected'; } ?>>Movie</option>
-                        <option value="tvshow" <?php if($targetData['type'] === 'tvshow'){ echo 'selected'; } ?>>TV Show</option>
-                        <option value="manga" <?php if($targetData['type'] === 'manga'){ echo 'selected'; } ?>>Manga</option>
-                    </select>
-                    <input name="poster_image_link" placeholder="Poster URL" class="Poster" value="<?php echo $targetData["poster_image_link"]; ?>">
-                    <input name="studio" placeholder="Studio" class="Studio" value="<?php echo $targetData["studio"]; ?>">
-                    <input name="producer" placeholder="Producer" class="Producer" value="<?php echo $targetData["producer"]; ?>">
-                    <input name="genre" placeholder="Genre" class="Genre" value="<?php echo $targetData["genre"]; ?>">
-                    <input name="duration" placeholder="Duration" class="Duration" value="<?php echo $targetData["duration"]; ?>">
-                    <input name="source" placeholder="Source" class="Source" value="<?php echo $targetData["source"]; ?>">
-                    <textarea name="description" placeholder="Description. HTMl syntax (Optional)" class="Description"><?php echo $targetData["description"]; ?></textarea>
-                    <button type="submit" class="admin-save" onclick="return confirm('Insert this media?')">Save Media</button> 
-                </form>
+            <div class="admin-box">
+                <h2 class="main-header">Edit Media</h2>
+                <div class="media-overview">
+                    <form method="POST">
+                       <input name="title" placeholder="Title" value="<?php echo $targetData["title"]; ?>">
+                        <select name="type">
+                            <option value="movie" <?php if($targetData['type'] === 'movie'){ echo 'selected'; } ?>>Movie</option>
+                            <option value="tvshow" <?php if($targetData['type'] === 'tvshow'){ echo 'selected'; } ?>>TV Show</option>
+                            <option value="manga" <?php if($targetData['type'] === 'manga'){ echo 'selected'; } ?>>Manga</option>
+                        </select>
+                        <input name="poster_image_link" placeholder="Poster URL" class="Poster" value="<?php echo $targetData["poster_image_link"]; ?>">
+                        <input name="studio" placeholder="Studio" class="Studio" value="<?php echo $targetData["studio"]; ?>">
+                        <input name="producer" placeholder="Producer" class="Producer" value="<?php echo $targetData["producer"]; ?>">
+                        <input name="genre" placeholder="Genre" class="Genre" value="<?php echo $targetData["genre"]; ?>">
+                        <input name="duration" placeholder="Duration" class="Duration" value="<?php echo $targetData["duration"]; ?>">
+                        <input name="source" placeholder="Source" class="Source" value="<?php echo $targetData["source"]; ?>">
+                        <textarea name="description" placeholder="Description. HTMl syntax (Optional)" class="Description"><?php echo $targetData["description"]; ?></textarea>
+                        <button type="submit" class="admin-save" onclick="return confirm('Insert this media?')">Save Media</button> 
+                    </form>
+                </div>
             </div>
+        <center>
+            <a href="admin.php" class="editProfileHREF" style="width: 250px; height: auto; font-size: 17px;">Back to Dashboard</a>
+        </center>
         </div>
-        </div>
+        
 </main>
 </body>
 </html>
