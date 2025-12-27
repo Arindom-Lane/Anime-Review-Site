@@ -1,86 +1,75 @@
 <?php
-    session_start();
-    include("db.php");
-    
-    
+session_start();
+include("db.php");
 
-    if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
-       header('Location: login.php');
-       exit();
-    }
-    
-    if (isset($_GET['id']) && $_SESSION['role'] === 'admin') {
-        $targetUserId = mysqli_real_escape_string($conn, $_GET['id']);
+
+if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
+    header('Location: login.php');
+    exit();
+}
+
+
+if (isset($_GET['id']) && isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+    $targetUserId = mysqli_real_escape_string($conn, $_GET['id']);
+} else {
+    $targetUserId = $_SESSION['userId'];
+}
+
+
+$fetchTarget = mysqli_query($conn, "SELECT * FROM users WHERE user_id = '$targetUserId'");
+$targetData = mysqli_fetch_assoc($fetchTarget);
+
+$message = "";
+$error = "";
+$showDetails = false;
+
+
+if (isset($_POST['btn-show-details'])) {
+    $showDetails = true;
+}
+if (isset($_POST['btn-hide-details'])) {
+    $showDetails = false;
+}
+
+
+if (isset($_POST["btn-create"])) {
+    // Use DB values as defaults
+    $name = isset($_POST["username"]) && $_POST["username"] !== "" ? $_POST["username"] : $targetData['username'];
+    $profileImage = isset($_POST["profileImage"]) && $_POST["profileImage"] !== "" ? $_POST["profileImage"] : $targetData['profile_image_link'];
+
+
+    if (!empty($_POST["password"])) {
+        $password = $_POST["password"];
+        $passwordQueryPart = ", `password` = '$password'";
     } else {
-        $targetUserId = $_SESSION['userId']; 
+        $passwordQueryPart = "";
     }
 
-    $fetchTarget = mysqli_query($conn, "SELECT * FROM users WHERE user_id = '$targetUserId'");
-    $targetData = mysqli_fetch_assoc($fetchTarget);
+    $query = "UPDATE `users` SET
+              `username` = '$name'
+              $passwordQueryPart,
+              `profile_image_link` = '$profileImage'
+              WHERE `user_id` = '$targetUserId'";
 
-    $message = "";
-    $error = "";
-    $showDetails = false;
+    $result = mysqli_query($conn, $query);
 
-    if (isset($_POST['btn-show-details'])) {
-        $showDetails = true;
+    if ($result) {
+        $fetchTarget = mysqli_query($conn, "SELECT * FROM users WHERE user_id = '$targetUserId'");
+        $targetData = mysqli_fetch_assoc($fetchTarget);
+
+        if ((int)$targetUserId === (int)$_SESSION['userId']) {
+            $_SESSION['username'] = $targetData['username'];
+            if (isset($targetData['email'])) {
+                $_SESSION['email'] = $targetData['email'];
+            }
+            $_SESSION['profileImage'] = $targetData['profile_image_link'];
+        }
+
+        $message = "Profile updated successfully!";
+    } else {
+        $error = "Query Failed: " . mysqli_error($conn);
     }
-    
-    if (isset($_POST['btn-hide-details'])) {
-        $showDetails = false;
-    }
-
-    if(isset($_POST["btn-create"])){
-        $currentUser = $targetData['username']; 
-        
-        if (!empty($_POST["username"])) {
-            $name = $_POST["username"];
-        } else {
-            $name = $_SESSION['username']; 
-        }
-
-        
-        if (!empty($_POST['profileImage'])) {
-            $profileImage = $_POST['profileImage'];
-        } else {
-            $profileImage = $_SESSION['profileImage']; 
-        }
-
-        if (!empty($_POST["password"])) {
-             $password = $_POST["password"];
-             $passwordQueryPart = ", `password` = '$password'";
-        } else {
-             $passwordQueryPart = ""; 
-        }
-
-
-        $query = "UPDATE `users` SET 
-                  `username` = '$name', 
-                  `password` = '$password', 
-                  `profile_image_link` = '$profileImage' 
-                  WHERE `user_id` = '$targetUserId'";
-
-        $result = mysqli_query($conn, $query);
-
-        if($result){
-           if($targetData == intval($_SESSION["userId"])) {
-            $_SESSION['username'] = $name;
-            $_SESSION['email'] = $email;
-            $_SESSION['profileImage'] = $profileImage;
-            
-            $message = "Profile updated successfully!";
-            $fetchTarget = mysqli_query($conn, "SELECT * FROM users WHERE id = '$targetUserId'");
-            $targetData = mysqli_fetch_assoc($fetchTarget);
-        }
-        else {
-            $error = "Query Failed: " . mysqli_error($conn);
-        }     
-    }}
-
-    $showDetails = false;
-    if (isset($_POST['btn-show-details'])) {
-        $showDetails = true;
-    }
+}
 ?>
 
 <!DOCTYPE html>
