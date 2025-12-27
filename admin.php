@@ -27,6 +27,15 @@ if(isset($_SESSION['DeleteMediaSuccess'])){
     }
     unset($_SESSION['DeleteMediaSuccess']);
 }
+if(isset($_SESSION['editMediaMessage'])){
+    if($_SESSION['editMediaMessage'] == "success"){
+        echo "<script>alert('Media updated successfully!');</script>";
+    }
+    elseif($_SESSION['editMediaMessage'] == "error"){
+        echo "<script>alert('Error updating media. Please try again later.');</script>";
+    }
+    unset($_SESSION['editMediaMessage']);
+}
 
 ?>
 
@@ -116,7 +125,7 @@ if(isset($_SESSION['DeleteMediaSuccess'])){
                                 if(isset($_GET['search'])){
                                     $filterValue = $_GET['search']; 
                                     $result = mysqli_query($conn,"SELECT * FROM users WHERE CONCAT(username,email,user_id) LIKE '%$filterValue%'");
-                                    
+                                    unset($filterValue);
                                     if(mysqli_num_rows(result: $result) > 0){
                                         foreach($result as $row){
                                         ?>
@@ -166,14 +175,14 @@ if(isset($_SESSION['DeleteMediaSuccess'])){
                                     $filterValue = $_GET['searchMedia']; 
                                     $result = mysqli_query($conn,"SELECT * FROM media WHERE CONCAT(title,media_id) LIKE '%$filterValue%'");
                                     
-                                    if(mysqli_num_rows(result: $result) > 0){
+                                    if(mysqli_num_rows($result) > 0){
                                         foreach($result as $row){
                                         ?>
                                             <tr>
                                                 <td><?php echo $row['title'] ?></td>
                                                 <td><img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:200px; height:auto;"></td>
                                                 <td style="display: flex;"> 
-                                                    <a href="AdminUserEditProfile.php?id=<?php echo $row['media_id']; ?>" class="editProfileHREF" style="width: 150px; height: auto; text-align: center; margin-right: 10px;">Edit</a> 
+                                                    <a href="adminEditMedia.php?id=<?php echo $row['media_id']; ?>" name="editMediaData" class="editProfileHREF" style="width: 150px; height: auto; text-align: center; margin-right: 10px;">Edit</a> 
                                                     <a href="adminDeleteMedia.php?id=<?php echo $row['media_id']; ?>" class="editProfileHREF" style="width: 150px; height: auto; text-align: center;" onclick="return confirm('Delete this media?')">Delete</a> 
                                                 </td>   
                                             </tr>
@@ -214,11 +223,6 @@ if(isset($_SESSION['DeleteMediaSuccess'])){
             </div>
         </div>
 
-        
-            
-            
-            
-        <script src="userDashboard.js"></script>
     </main>
 </body>
 </html>
