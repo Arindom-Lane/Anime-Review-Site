@@ -57,7 +57,7 @@
                 </div>
                 <div class="sidebar-row">
                         <span>ROLE</span>
-                        <span class="status-online" style="color: red;">SITE ADMIN</span>
+                        <span class="status-online" style="color: Green;">Registered User</span>
                 </div>
                 <div class="sidebar-row">
                         <span>STATUS</span>
