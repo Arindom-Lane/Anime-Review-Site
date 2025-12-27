@@ -9,9 +9,23 @@
     header('Location: home.php');
  }
  
- if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
-    echo '<script>alert("Media Creation Error!");</script>';
-    $_SESSION['CreateError'] = false;
+ if(isset($_SESSION['CreateError'])){
+    if($_SESSION['CreateError'] == "success"){
+        echo "<script>alert('Media created successfully!');</script>";
+    }
+    elseif($_SESSION['CreateError'] == "error"){
+        echo "<script>alert('Error creating media. Please try again later.');</script>";
+    }
+    unset($_SESSION['CreateError']);
+}
+if(isset($_SESSION['DeleteMediaSuccess'])){
+    if($_SESSION['DeleteMediaSuccess'] == "deleted"){
+        echo "<script>alert('Media deleted successfully!');</script>";
+    }
+    elseif($_SESSION['DeleteMediaSuccess'] == "error"){
+        echo "<script>alert('Error deleting media. Please try again later.');</script>";
+    }
+    unset($_SESSION['DeleteMediaSuccess']);
 }
 
 ?>
@@ -142,6 +156,7 @@
                         <tr>
                             <th>Title</th>
                             <th>Source</th>
+                            <th>Poster</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -158,6 +173,7 @@
                                             <tr>
                                                 <td><?php echo $row['title'] ?></td>    
                                                 <td><?php echo $row['source'] ?></td>
+                                                <td><img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:200px; height:auto;"></td>
                                                 <td> 
                                                     <a href="AdminUserEditProfile.php?id=<?php echo $row['media_id']; ?>">Edit</a> 
                                                     <a href="adminDeleteMedia.php?id=<?php echo $row['media_id']; ?>" onclick="return confirm('Delete this media?')">Delete</a> 
@@ -195,7 +211,7 @@
                     <input name="duration" placeholder="Duration" class="Duration">
                     <input name="source" placeholder="Source" class="Source">
                     <textarea name="description" placeholder="Description. HTMl syntax (Optional)" class="Description"></textarea>
-                    <button type="submit" class="admin-save">Save Media</button> 
+                    <button type="submit" class="admin-save" onclick="return confirm('Insert this media?')">Save Media</button> 
                 </form>
             </div>
         </div>

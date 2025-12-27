@@ -20,11 +20,12 @@ if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
               VALUES ('$title', '$description', '$type', '$poster', '$producer', '$studio', '$source', '$genre', '$duration')";
 
     if(mysqli_query($conn, $query)){ 
+        $_SESSION['CreateError'] = "success";
         header("Location: admin.php?");
         exit();
     }
     else{
-        $_SESSION["CreateError"] = true;
+        $_SESSION["CreateError"] = "error";
         header("Location: admin.php");
         exit();
     }
