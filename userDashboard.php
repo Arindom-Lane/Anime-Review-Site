@@ -5,6 +5,24 @@
     header('Location: login.php');
  }
 
+ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
+     $commentText = htmlspecialchars(trim($_POST['user_comment']));
+     
+     if (!empty($commentText)) {
+         $newComment = [
+             'user' => $_SESSION['username'], 
+             'text' => $commentText,
+             'date' => date('M d, Y H:i')
+         ];
+
+         if (!isset($_SESSION['post_comments'])) {
+             $_SESSION['post_comments'] = [];
+         }
+
+         $_SESSION['post_comments'][] = $newComment;
+     }
+ }
+
 
 ?>
 
@@ -205,10 +223,27 @@
             <div>
                 
                 <h2>Comments</h2>
-                <textarea class="comment-box" placeholder="Add a comment..." rows="4"></textarea>
+                <form action="" method="POST">
+                    <textarea name="user_comment" class="comment-box" placeholder="Add a comment..." rows="4" required></textarea>
+                    <br>
+                    <button type="submit" name="submit_comment" class="editbtn" style="margin-top: 10px; cursor: pointer;">
+                        Post Comment
+                    </button>
+                </form>
 
-                <div style="margin-top: 10px;">
-                    <button type="button" class="list-btn" onclick="addComment()">Post Comment</button>
+                <div class="comments-display" style="margin-top: 20px;">
+                    <?php 
+                    if (isset($_SESSION['post_comments']) && !empty($_SESSION['post_comments'])) {
+                        $comments = array_reverse($_SESSION['post_comments']);
+                        
+                        foreach ($comments as $comment) {
+                            echo '<div class="comment-item" >';
+                            echo '<strong>' . $comment['user'] . '</strong> <span class="comment-date">(' . $comment['date'] . ')</span>';
+                            echo '<p class="comment-text">' . $comment['text'] . '</p>';
+                            echo '</div>';
+                        }
+                    }
+                    ?>
                 </div>
             </div>
 

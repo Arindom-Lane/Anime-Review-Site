@@ -310,3 +310,23 @@ main {
     margin-top: 10px;
 }
 
+.comments-display {
+    margin-top: 20px;
+}
+
+.comment-item {
+    background: #f4f4f4;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-left: 4px solid #2e51a2;
+}
+
+.comment-date {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.comment-text {
+    margin-top: 5px;
+}
