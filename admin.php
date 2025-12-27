@@ -129,6 +129,57 @@
                     </tbody>
                 </table>
         </div>    
+
+        <div class="admin-box">
+            <h2 class="main-header">User Management</h2>
+                <form method="GET">
+                    <input type="search" name="search" style="min-width:400px;" placeholder="User name, Email.." required value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>">
+                    <button type="submit" class="lookUp" style="margin-left:15px;">Look Up</button>
+                </form>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Mail</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            <?php 
+                                if(isset($_GET['search'])){
+                                    $filterValue = $_GET['search']; 
+                                    $result = mysqli_query($conn,"SELECT * FROM users WHERE CONCAT(username,email,user_id) LIKE '%$filterValue%'");
+                                    
+                                    if(mysqli_num_rows(result: $result) > 0){
+                                        foreach($result as $row){
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $row['user_id'] ?></td>    
+                                                <td><?php echo $row['username'] ?></td>    
+                                                <td><?php echo $row['email'] ?></td> 
+                                                <td> 
+                                                    <a href="AdminUserEditProfile.php?id=<?php echo $row['user_id']; ?>">Edit</a> 
+                                                    <a href="adminDeleteUser.php?id=<?php echo $row['user_id']; ?>" onclick="return confirm('Delete this user?')">Delete</a> 
+                                                </td>   
+                                            </tr>
+                                        <?php 
+                                        }}
+                                    else{
+                                        ?>
+                                        <tr>
+                                            <td colspan="4">No record is found</td>    
+                                        </tr>
+                                        <?php 
+                                        }
+                                    }
+                            ?>
+                    </tbody>
+                </table>
+        </div>  
+          
         <div class="admin-box">
             <h2 class="main-header">Create Media</h2>
             <div class="media-overview">
