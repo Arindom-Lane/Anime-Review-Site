@@ -79,14 +79,7 @@
                     </div>
 
                     <br>
-                    <div class="sidebar-row">
-                        <span>Reviews</span>
-                        <span class="text-blue">0</span>
-                    </div>
-                    <div class="sidebar-row">
-                        <span>Recommendations</span>
-                        <span class="text-blue">0</span>
-                    </div>
+                    
                 </div>
                 
                 <div class="edit-profile-wrapper" onclick="window.location.href='UserEditProfile.php'">
