@@ -131,38 +131,36 @@
         </div>    
 
         <div class="admin-box">
-            <h2 class="main-header">User Management</h2>
+            <h2 class="main-header">Media Management</h2>
                 <form method="GET">
-                    <input type="search" name="search" style="min-width:400px;" placeholder="User name, Email.." required value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>">
+                    <input type="search" name="searchMedia" style="min-width:400px;" placeholder="Movie, TV-show, Manga.." required value="<?php if(isset($_GET['searchMedia'])){echo $_GET['searchMedia'];} ?>">
                     <button type="submit" class="lookUp" style="margin-left:15px;">Look Up</button>
                 </form>
 
                 <table>
                     <thead>
                         <tr>
-                            <th>User ID</th>
-                            <th>Name</th>
-                            <th>Mail</th>
+                            <th>Title</th>
+                            <th>Source</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         
                             <?php 
-                                if(isset($_GET['search'])){
-                                    $filterValue = $_GET['search']; 
-                                    $result = mysqli_query($conn,"SELECT * FROM users WHERE CONCAT(username,email,user_id) LIKE '%$filterValue%'");
+                                if(isset($_GET['searchMedia'])){
+                                    $filterValue = $_GET['searchMedia']; 
+                                    $result = mysqli_query($conn,"SELECT * FROM media WHERE CONCAT(title,source,media_id) LIKE '%$filterValue%'");
                                     
                                     if(mysqli_num_rows(result: $result) > 0){
                                         foreach($result as $row){
                                         ?>
                                             <tr>
-                                                <td><?php echo $row['user_id'] ?></td>    
-                                                <td><?php echo $row['username'] ?></td>    
-                                                <td><?php echo $row['email'] ?></td> 
+                                                <td><?php echo $row['title'] ?></td>    
+                                                <td><?php echo $row['source'] ?></td>
                                                 <td> 
-                                                    <a href="AdminUserEditProfile.php?id=<?php echo $row['user_id']; ?>">Edit</a> 
-                                                    <a href="adminDeleteUser.php?id=<?php echo $row['user_id']; ?>" onclick="return confirm('Delete this user?')">Delete</a> 
+                                                    <a href="AdminUserEditProfile.php?id=<?php echo $row['media_id']; ?>">Edit</a> 
+                                                    <a href="adminDeleteMedia.php?id=<?php echo $row['media_id']; ?>" onclick="return confirm('Delete this media?')">Delete</a> 
                                                 </td>   
                                             </tr>
                                         <?php 
@@ -179,7 +177,7 @@
                     </tbody>
                 </table>
         </div>  
-          
+
         <div class="admin-box">
             <h2 class="main-header">Create Media</h2>
             <div class="media-overview">
