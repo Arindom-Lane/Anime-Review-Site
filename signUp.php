@@ -10,9 +10,10 @@ $exists = false;
         $profileImage = $_POST['profile_image_link'];
 
         if($password !== $password_confirm){
-            die("Passwords do not match.");
+            echo "<script>alert('Passwords do not match. Please try again.');</script>";   
         }
-
+        else{
+            
         $hassPassword = password_hash($password, PASSWORD_DEFAULT);
         if($profileImage == ''){
             $profileImage = "https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg";
@@ -22,7 +23,7 @@ $exists = false;
         elseif(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `email` = '$email'")) > 0){
             $exists = true;
         }
-        elseif()
+        
 
         else{
             $query = "INSERT INTO `users`( `username`, `email`, `password`, `profile_image_link`) VALUES ('$name','$email','$hassPassword','$profileImage')";
@@ -35,8 +36,10 @@ $exists = false;
         else {
             die("Query Failed: " . mysqli_error($conn));
         }
-        }        
-    }
+        }
+        
+        
+    }}
 ?>
 
 <!DOCTYPE html>
