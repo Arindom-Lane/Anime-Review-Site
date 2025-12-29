@@ -1,33 +1,35 @@
 <?php 
 session_start();
+$error=false;
 include("db.php");
-$login = false;
-$error = false;
     if(isset($_POST["btn-create"])){
-        $name = $_POST["username"];
+        $name = $_POST["username"];  
         $password = $_POST["password"];
-        $query ="SELECT * FROM users WHERE username = '$name' AND password = '$password'";
-        try{
-            $result = mysqli_query($conn, $query);
-            $row = mysqli_fetch_assoc($result); 
-            //this fetches the entire row data and can used liek $row['username'] or $row['role']
-            if($result && mysqli_num_rows($result) > 0) {
+        
+        $verifySql = "SELECT * FROM users WHERE username = '$name'";
+        $result = mysqli_query($conn, $verifySql);
+
+        if($result && mysqli_num_rows($result) === 1){
+        $user = mysqli_fetch_assoc($result);
+
+        if(password_verify($password, $user["password"])){
+            
                 $_SESSION['loggedIn'] = true;
                 $_SESSION['username'] = $name;
-                $_SESSION['role'] = $row['role'];
-                $_SESSION['email'] = $row['email'];
-                $_SESSION['userId'] = $row['user_id'];
-                $_SESSION['profileImage'] = $row['profile_image_link'];
-                $_SESSION['email'] = $row['email'];
+                $_SESSION['role'] = $user['role'];
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['userId'] = $user['user_id'];
+                $_SESSION['profileImage'] = $user['profile_image_link'];
+                $_SESSION['email'] = $user['email'];
                 header("Location: home.php");
-
-            } else {
-                $error = true;
+                exit();}
+            else {
+                echo"<script>alert('Password invalid');</script>";
             }
         }
-        catch(mysqli_sql_exception $e){
+        else {
             $error = true;
-        }    
+        }
     }
 ?>
 
