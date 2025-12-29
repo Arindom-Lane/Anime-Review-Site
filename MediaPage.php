@@ -72,10 +72,11 @@
                     <div class="sidebar-row joined-row">
                         <span>Status:</span>
                     <select name="fruits" id="fruits">
-                        <option value="apple">Apple</option>
-                        <option value="banana">Banana</option>
-                        <option value="orange">Orange</option>
-                        <option value="grape" selected>Grape</option>
+                        <option value="Waatching">Watching</option>
+                        <option value="Completed">Completed</option>
+                        <option value="On-Hold">On-Hold</option>
+                        <option value="Dropped">Dropped</option>
+                        <option value="Plan to Watch">Plan to Watch</option>
                     </select>
 
                     </div>
