@@ -6,22 +6,26 @@ $exists = false;
         $name = $_POST["username"];
         $email = $_POST["email"];
         $password = $_POST["password"];
+        $password_confirm = $_POST["confirm_password"];
         $profileImage = $_POST['profile_image_link'];
 
+        if($password !== $password_confirm){
+            die("Passwords do not match.");
+        }
+
+        $hassPassword = password_hash($password, PASSWORD_DEFAULT);
         if($profileImage == ''){
             $profileImage = "https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg";
         }
  
-        if(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `username` = '$name'")) > 0){
-            $exists = true;
-        }
         
         elseif(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `email` = '$email'")) > 0){
             $exists = true;
         }
+        elseif()
 
         else{
-            $query = "INSERT INTO `users`( `username`, `email`, `password`, `profile_image_link`) VALUES ('$name','$email','$password','$profileImage')";
+            $query = "INSERT INTO `users`( `username`, `email`, `password`, `profile_image_link`) VALUES ('$name','$email','$hassPassword','$profileImage')";
         $result = mysqli_query($conn, $query);
 
         if($result){
@@ -158,6 +162,10 @@ $exists = false;
         <div class="feild">
             <label>Password</label>
             <input type="password"name="password" minlength="8" placeholder="minimum 8 character" required>
+        </div>
+        <div class="feild">
+            <label>Confirm Password</label>
+            <input type="password"name="confirm_password" minlength="8" placeholder="minimum 8 character" required>
         </div>
         
         <div class="feild">
