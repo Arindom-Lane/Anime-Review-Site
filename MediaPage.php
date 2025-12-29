@@ -67,8 +67,17 @@
                 
                 <div class="sidebar-content">
                     <div class="sidebar-row">
+                        <h3>Edit Status</h3> 
                     </div>
                     <div class="sidebar-row joined-row">
+                        <span>Status:</span>
+                    <select name="fruits" id="fruits">
+                        <option value="apple">Apple</option>
+                        <option value="banana">Banana</option>
+                        <option value="orange">Orange</option>
+                        <option value="grape" selected>Grape</option>
+                    </select>
+
                     </div>
                 </div>
                     
