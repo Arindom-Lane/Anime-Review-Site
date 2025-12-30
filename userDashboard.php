@@ -1,43 +1,98 @@
 <?php
-    session_start();
+session_start();
+include("db.php"); 
+
+// Initialize default stats
+$animeStats = [
+    'watching' => 0, 'completed' => 0, 'on_hold' => 0, 'dropped' => 0, 'plan_to_watch' => 0, 
+    'total' => 0, 'mean_score' => 0.00
+];
+$mangaStats = [
+    'reading' => 0, 'completed' => 0, 'on_hold' => 0, 'dropped' => 0, 'plan_to_read' => 0, 
+    'total' => 0, 'mean_score' => 0.00
+];
+
+if ($conn) {
+    // We assume we are fetching stats for User ID 1 directly.
+    $userId = 1; 
+
+    function getMediaStats($conn, $uId, $types) {
+        $typeString = "'" . implode("','", $types) . "'";
+        
+        // 1. Get Counts per Status
+        $sql = "SELECT w.status, COUNT(*) as count 
+                FROM Watchlist w 
+                JOIN Media m ON w.media_id = m.media_id 
+                WHERE w.user_id = $uId AND m.type IN ($typeString) 
+                GROUP BY w.status";
+        
+        $result = mysqli_query($conn, $sql);
+        $data = [];
+        
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[$row['status']] = $row['count'];
+            }
+        }
+
+        // 2. Get Mean Score from Reviews
+        $sqlScore = "SELECT AVG(r.rating) as mean_score
+                     FROM Reviews r 
+                     JOIN Media m ON r.media_id = m.media_id 
+                     WHERE r.user_id = $uId AND m.type IN ($typeString)";
+        
+        $resultScore = mysqli_query($conn, $sqlScore);
+        $meanScore = 0;
+        
+        if ($resultScore) {
+            $rowScore = mysqli_fetch_assoc($resultScore);
+            $meanScore = $rowScore['mean_score'];
+        }
+
+        return [
+            'watching'      => isset($data['watching']) ? $data['watching'] : 0,
+            'completed'     => isset($data['completed']) ? $data['completed'] : 0,
+            'on_hold'       => isset($data['on_hold']) ? $data['on_hold'] : 0,
+            'dropped'       => isset($data['dropped']) ? $data['dropped'] : 0,
+            'plan_to_watch' => isset($data['plan_to_watch']) ? $data['plan_to_watch'] : 0,
+            'total'         => array_sum($data),
+            'mean_score'    => number_format((float)$meanScore, 2)
+        ];
+    }
+
+    // --- EXECUTE FOR ANIME ---
+    $animeStats = getMediaStats($conn, $userId, ['movie', 'tvshow']);
+
+    // --- EXECUTE FOR MANGA ---
+    $mangaData = getMediaStats($conn, $userId, ['manga']);
     
- if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
-    header('Location: login.php');
- }
+    // Map keys for Manga
+    $mangaStats = [
+        'reading'      => $mangaData['watching'],
+        'completed'    => $mangaData['completed'],
+        'on_hold'      => $mangaData['on_hold'],
+        'dropped'      => $mangaData['dropped'],
+        'plan_to_read' => $mangaData['plan_to_watch'],
+        'total'        => $mangaData['total'],
+        'mean_score'   => $mangaData['mean_score']
+    ];
+}
 
- if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
-     $commentText = htmlspecialchars(trim($_POST['user_comment']));
-     
-     if (!empty($commentText)) {
-         $newComment = [
-             'id'   => uniqid(),
-             'user' => $_SESSION['username'], 
-             'text' => $commentText,
-             'date' => date('M d, Y H:i')
-         ];
-
-         if (!isset($_SESSION['post_comments'])) {
-             $_SESSION['post_comments'] = [];
-         }
-
-         $_SESSION['post_comments'][] = $newComment;
-     }
- }
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
-     $idToDelete = $_POST['comment_id'];
-     
-     if (isset($_SESSION['post_comments'])) {
-         $_SESSION['post_comments'] = array_filter($_SESSION['post_comments'], function($comment) use ($idToDelete) {
-             return isset($comment['id']) && $comment['id'] !== $idToDelete;
-         });
-         $_SESSION['post_comments'] = array_values($_SESSION['post_comments']);
-     }
- }
-
- 
-
-
+// --- COMMENT LOGIC ---
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
+    $commentText = htmlspecialchars(trim($_POST['user_comment']));
+    if (!empty($commentText)) {
+        $userDisplay = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
+        $newComment = [
+            'id'   => uniqid(),
+            'user' => $userDisplay, 
+            'text' => $commentText,
+            'date' => date('M d, Y H:i')
+        ];
+        if (!isset($_SESSION['post_comments'])) { $_SESSION['post_comments'] = []; }
+        $_SESSION['post_comments'][] = $newComment;
+    }
+}
 ?>
 
 <!DOCTYPE html>
