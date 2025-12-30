@@ -180,9 +180,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
         </div>
 
         <!-- RIGHT MAIN CONTENT -->
+                <!-- RIGHT MAIN CONTENT -->
         <div class="rightsection">
-            
-
             <h2 class="main-header">Statistics</h2>
 
             <!-- Anime Stats -->
@@ -194,8 +193,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
                     </div>
                     
                     <div class="days-score-row">
-                        <span>Days: <strong>0</strong></span>
-                        <span>Mean Score: <strong>0.00</strong></span>
+                        <span>Days: <strong>0.0</strong></span>
+                        <span>Mean Score: <strong><?php echo $animeStats['mean_score']; ?></strong></span>
                     </div>
 
                     <div class="main-progress-bar">
@@ -204,14 +203,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
 
                     <div class="stats-grid">
                         <ul class="status-legend">
-                            <li><span class="dot watching"></span> Watching <span class="count">0</span></li>
-                            <li><span class="dot completed"></span> Completed <span class="count">0</span></li>
-                            <li><span class="dot onhold"></span> On-Hold <span class="count">0</span></li>
-                            <li><span class="dot dropped"></span> Dropped <span class="count">0</span></li>
-                            <li><span class="dot plan"></span> Plan to Watch <span class="count">0</span></li>
+                            <li><span class="dot watching"></span> Watching <span class="count"><?php echo $animeStats['watching']; ?></span></li>
+                            <li><span class="dot completed"></span> Completed <span class="count"><?php echo $animeStats['completed']; ?></span></li>
+                            <li><span class="dot onhold"></span> On-Hold <span class="count"><?php echo $animeStats['on_hold']; ?></span></li>
+                            <li><span class="dot dropped"></span> Dropped <span class="count"><?php echo $animeStats['dropped']; ?></span></li>
+                            <li><span class="dot plan"></span> Plan to Watch <span class="count"><?php echo $animeStats['plan_to_watch']; ?></span></li>
                         </ul>
                         <ul class="status-totals">
-                            <li><span>Total Entries</span> <span>0</span></li>
+                            <li><span>Total Entries</span> <span><?php echo $animeStats['total']; ?></span></li>
                             <li><span>Rewatched</span> <span>0</span></li>
                             <li><span>Episodes</span> <span>0</span></li>
                         </ul>
@@ -223,30 +222,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
                         <h3>Last Anime Updates</h3>
                         <a href="#">Anime History</a>
                     </div>
-
                     <div class="update-item">
                         <div class="no-updates">
                             No updates yet. <a href="#">Edit list now.</a> 
-                            <!--
-                <img src="https://cdn.myanimelist.net/images/anime/1697/151793.jpg" alt="Anime Image">
-                <div class="update-info">
-                    <a href="#" class="title-link">Spy x Family Season 3</a>
-                    <div class="thin-progress-bar">
-                        <div class="fill green" style="width: 100%;"></div>
-                    </div>
-                    <div class="update-meta">
-                        <span>Watching <strong>13</strong>/13 · Scored -</span>
-                        <span class="date">Dec 5, 9:37 AM</span>
-                    </div> 
-                </div>
--->
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Manga Stats -->
-
             <div class="stats-container manga-section">
                 <div class="stats-data-col">
                     <div class="stats-header-row">
@@ -256,7 +240,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
                     
                     <div class="days-score-row">
                         <span>Days: <strong>0.0</strong></span>
-                        <span>Mean Score: <strong>0.00</strong></span>
+                        <span>Mean Score: <strong><?php echo $mangaStats['mean_score']; ?></strong></span>
                     </div>
 
                     <div class="main-progress-bar">
@@ -265,14 +249,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
 
                     <div class="stats-grid">
                         <ul class="status-legend">
-                            <li><span class="dot watching"></span> Reading <span class="count">0</span></li>
-                            <li><span class="dot completed"></span> Completed <span class="count">0</span></li>
-                            <li><span class="dot onhold"></span> On-Hold <span class="count">0</span></li>
-                            <li><span class="dot dropped"></span> Dropped <span class="count">0</span></li>
-                            <li><span class="dot plan"></span> Plan to Read <span class="count">0</span></li>
+                            <li><span class="dot watching"></span> Reading <span class="count"><?php echo $mangaStats['reading']; ?></span></li>
+                            <li><span class="dot completed"></span> Completed <span class="count"><?php echo $mangaStats['completed']; ?></span></li>
+                            <li><span class="dot onhold"></span> On-Hold <span class="count"><?php echo $mangaStats['on_hold']; ?></span></li>
+                            <li><span class="dot dropped"></span> Dropped <span class="count"><?php echo $mangaStats['dropped']; ?></span></li>
+                            <li><span class="dot plan"></span> Plan to Read <span class="count"><?php echo $mangaStats['plan_to_read']; ?></span></li>
                         </ul>
                         <ul class="status-totals">
-                            <li><span>Total Entries</span> <span>0</span></li>
+                            <li><span>Total Entries</span> <span><?php echo $mangaStats['total']; ?></span></li>
                             <li><span>Reread</span> <span>0</span></li>
                             <li><span>Chapters</span> <span>0</span></li>
                             <li><span>Volumes</span> <span>0</span></li>
