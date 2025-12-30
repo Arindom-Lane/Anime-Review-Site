@@ -77,7 +77,7 @@ if(isset($_SESSION['editUserMessage'])){
             </div>
         </div>
         <div class="header-lower">
-            <span>Welcome <?php echo $_SESSION['username'];?></span>
+            <span>Welcome, <?php echo strtoupper($_SESSION['username']); ?></span>
             <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png" alt="Menu" id="theme-toggle">
         </div>
     </header>

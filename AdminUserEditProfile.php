@@ -27,8 +27,11 @@ $error = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
 
-    
-        $query = "UPDATE users SET username = '{$_POST['username']}', email = '{$_POST['email']}', profile_image = '{$_POST['profileImage']}' WHERE user_id = '$targetUserId'";
+    $username = mysqli_real_escape_string($conn, $_POST["username"]);
+    $email = mysqli_real_escape_string($conn, $_POST["email"]);
+    $profileImage = mysqli_real_escape_string($conn, $_POST["profileImage"]);
+
+        $query = "UPDATE users SET username = '$username', email = '$email', profile_image_link = '$profileImage' WHERE user_id = '$targetUserId'";
         $result = mysqli_query($conn, $query);
         if($result){
             $_SESSION['editUserMessage'] = "success";
@@ -84,18 +87,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
         <form method="POST">
         <div class="feild">
             <label>Change User Name</label>
-            <input type="text" name="username" placeholder="<?php echo $targetData['username']?>" >
+            <input type="text" name="username" placeholder="<?php echo $targetData['username']?>" value="<?php echo $targetData['username']?>" >
             <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
         </div>
         
         <div class="feild">
             <label>Change Email</label>
-            <input type="email" name="email" minlength="8" placeholder="<?php echo $targetData['email']; ?>" >
+            <input type="email" name="email" minlength="8" placeholder="<?php echo $targetData['email']; ?>" value="<?php echo $targetData['email']; ?>">
             <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
         </div>
         <div class="feild">
             <label>Change Profile Image URL</label>
-            <input type="text" name="profileImage" >
+            <input type="text" name="profileImage" value="<?php echo $targetData['profile_image_link']; ?>">
             <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
         </div>
         
