@@ -25,6 +25,21 @@
     --border-radius-2: 0.4rem;
     --border-radius-3: 0.8rem;
     --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    --bg-page: var(--color-background_white);
+    --bg-card: white;
+    --bg-sidebar: #e2e5e6;
+    --text-primary: var(--color-text-dark_white);
+    --text-secondary: var(--color-text-medium_white);
+    --border-main: var(--color-border_white);
+}
+body.dark-theme {
+    --bg-page: var(--color-background_dark);
+    --bg-card: var(--color-card-bg_dark);
+    --bg-sidebar: var(--color-card-bg-variant_dark);
+    --text-primary: var(--color-text-dark_dark);
+    --text-secondary: var(--color-text-medium_dark);
+    --border-main: var(--color-border_dark);
 }
 
 * {
@@ -35,7 +50,7 @@
 }
 
 body {
-    background-color: var(--color-background_white);
+    background-color: var(--bg-page);
     color: var(--color-text-dark_white);
     font-family: var(--font-main);
     letter-spacing: .8px;
@@ -53,7 +68,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: var(--color-background_white);
+    background-color: var(--bg-page);
 }
 
 
@@ -86,7 +101,7 @@ header {
     display: flex;
     align-items: center;   
     cursor: pointer;
-    color: var(--color-text-dark_white);
+    color: var(--text-primary);
     font-weight: bold;
 }
 

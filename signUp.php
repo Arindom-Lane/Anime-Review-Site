@@ -2,7 +2,7 @@
 include("db.php");
 $exists = false;
 
-    if(isset($_POST["btn-create"])){
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])){
         $name = $_POST["username"];
         $email = $_POST["email"];
         $password = $_POST["password"];
