@@ -2,7 +2,7 @@
 session_start();
 $error=false;
 include("db.php");
-    if(isset($_POST["btn-create"])){
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])){
         $name = $_POST["username"];  
         $password = $_POST["password"];
         
