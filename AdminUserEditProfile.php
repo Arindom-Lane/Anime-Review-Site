@@ -25,44 +25,20 @@ $message = "";
 $error = "";
 
 
-if (isset($_POST["btn-create"])) {
-    // Use DB values as defaults
-    $name = isset($_POST["username"]) && $_POST["username"] !== "" ? $_POST["username"] : $targetData['username'];
-    $profileImage = isset($_POST["profileImage"]) && $_POST["profileImage"] !== "" ? $_POST["profileImage"] : $targetData['profile_image_link'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
 
-
-    if (!empty($_POST["password"])) {
-        $password = $_POST["password"];
-        $passwordQueryPart = ", `password` = '$password'";
-    } else {
-        $passwordQueryPart = "";
-    }
-
-    $query = "UPDATE `users` SET
-              `username` = '$name'
-              $passwordQueryPart,
-              `profile_image_link` = '$profileImage'
-              WHERE `user_id` = '$targetUserId'";
-
-    $result = mysqli_query($conn, $query);
-
-    if ($result) {
-        $fetchTarget = mysqli_query($conn, "SELECT * FROM users WHERE user_id = '$targetUserId'");
-        $targetData = mysqli_fetch_assoc($fetchTarget);
-
-        if ((int)$targetUserId === (int)$_SESSION['userId']) {
-            $_SESSION['username'] = $targetData['username'];
-            if (isset($targetData['email'])) {
-                $_SESSION['email'] = $targetData['email'];
-            }
-            $_SESSION['profileImage'] = $targetData['profile_image_link'];
+    
+        $query = "UPDATE users SET username = '{$_POST['username']}', email = '{$_POST['email']}', profile_image = '{$_POST['profileImage']}' WHERE user_id = '$targetUserId'";
+        $result = mysqli_query($conn, $query);
+        if($result){
+            $_SESSION['editUserMessage'] = "success";
+            header("Location: admin.php");
+            exit();
+        } else {
+            $_SESSION["editUserMessage"] = "error";
+            die("Error updating profile: " . mysqli_error($conn));
         }
-
-        $message = "Profile updated successfully!";
-    } else {
-        $error = "Query Failed: " . mysqli_error($conn);
     }
-}
 ?>
 
 <!DOCTYPE html>
@@ -72,6 +48,7 @@ if (isset($_POST["btn-create"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
     <link rel="stylesheet" href="UserEditProfile.css">    
+    <script src="admin.js" defer></script> 
 </head>
 <body>
     <header>
@@ -100,27 +77,26 @@ if (isset($_POST["btn-create"])) {
         </div>
         <div class="header-lower">
             <span>Edit Profile</span>
-            <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png" alt="Menu">
+            <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png" alt="Menu" id="theme-toggle">
         </div>
     </header>
     <main>
         <form method="POST">
         <div class="feild">
             <label>Change User Name</label>
-            <input type="text" name="username" >
+            <input type="text" name="username" placeholder="<?php echo $targetData['username']?>" >
             <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
         </div>
         
         <div class="feild">
-            <label>Change Password</label>
-            <input type="password"name="password" minlength="8" placeholder="minimum 8 character" >
+            <label>Change Email</label>
+            <input type="email" name="email" minlength="8" placeholder="<?php echo $targetData['email']; ?>" >
             <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
         </div>
         <div class="feild">
             <label>Change Profile Image URL</label>
             <input type="text" name="profileImage" >
             <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
-            
         </div>
         
     </form>

@@ -36,6 +36,15 @@ if(isset($_SESSION['editMediaMessage'])){
     }
     unset($_SESSION['editMediaMessage']);
 }
+if(isset($_SESSION['editUserMessage'])){
+    if($_SESSION['editUserMessage'] == "success"){
+        echo "<script>alert('User updated successfully!');</script>";
+    }
+    elseif($_SESSION['editUserMessage'] == "error"){
+        echo "<script>alert('Error updating user. Please try again later.');</script>";
+    }
+    unset($_SESSION['editUserMessage']);
+}
 
 ?>
 

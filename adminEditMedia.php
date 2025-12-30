@@ -77,7 +77,8 @@ if (mysqli_num_rows($targetUserId) > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="admin.css">    
+    <link rel="stylesheet" href="admin.css">   
+    <script src="admin.js" defer></script>  
 </head>
 <body>
     <header>
@@ -100,7 +101,7 @@ if (mysqli_num_rows($targetUserId) > 0) {
         </div>
         <div class="header-lower">
             <span>Welcome <?php echo $_SESSION['username'];?></span>
-            <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png" alt="Menu">
+            <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png" alt="Menu" id="theme-toggle">
         </div>
     </header>
 
