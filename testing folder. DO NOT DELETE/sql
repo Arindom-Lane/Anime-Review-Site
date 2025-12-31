@@ -84,3 +84,31 @@ CREATE TABLE Top_Mangas (
     media_id INT,
     FOREIGN KEY (media_id) REFERENCES Media(media_id)
 );
+-------------------if need to insert------------------
+
+-- User 3 Completed 'Spirited Away' (ID 1)
+INSERT INTO Watchlist (user_id, media_id, status) VALUES (3, 1, 'completed');
+
+-- User 3 is Watching 'One Piece' (ID 5)
+INSERT INTO Watchlist (user_id, media_id, status) VALUES (3, 5, 'watching');
+
+-- User 3 Plans to Watch 'Jujutsu Kaisen' (ID 4)
+INSERT INTO Watchlist (user_id, media_id, status) VALUES (3, 4, 'plan_to_watch');
+
+-- User 3 Dropped 'Naruto' Manga (ID 8)
+INSERT INTO Watchlist (user_id, media_id, status) VALUES (3, 8, 'dropped');
+
+-- User 3 is Reading 'Berserk' Manga (ID 6) - Note: DB uses 'watching' enum for active reading usually, or update enum
+INSERT INTO Watchlist (user_id, media_id, status) VALUES (3, 6, 'watching');
+
+-- User 3 reviews Spirited Away (10/10)
+INSERT INTO Reviews (user_id, media_id, review_text, rating, status) 
+VALUES (3, 1, 'Absolute masterpiece!', 10, 'approved');
+
+-- User 3 reviews One Piece (8/10)
+INSERT INTO Reviews (user_id, media_id, review_text, rating, status) 
+VALUES (3, 5, 'Too long but good.', 8, 'approved');
+
+-- User 4 reviews Attack on Titan (9/10)
+INSERT INTO Reviews (user_id, media_id, review_text, rating, status) 
+VALUES (4, 3, 'The ending was shocking.', 9, 'approved');
