@@ -1,9 +1,11 @@
 <?php
 session_start();
-include("db.php");
+include("db.php") ; 
 
-if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
+
+if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true && $_SESSION['role'] != 'admin') {
     header('Location: login.php');
+    exit();
 } elseif ($_SESSION['role'] == 'registered') {
     header('Location: home.php');
 }
@@ -40,8 +42,8 @@ if (isset($_SESSION['editUserMessage'])) {
     }
     unset($_SESSION['editUserMessage']);
 }
-
 ?>
+<script> localStorage.setItem('theme', '<?php echo $_SESSION['theme_mode']; ?>');</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +77,10 @@ if (isset($_SESSION['editUserMessage'])) {
         </div>
         <div class="header-lower">
             <span>Welcome, <?php echo strtoupper($_SESSION['username']); ?></span>
-            <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png" alt="Menu" id="theme-toggle">
+            <form method="POST" action="adminLogic.php">
+                <script> localStorage.setItem('theme', '<?php echo $_SESSION['theme_mode']; ?>');</script>
+                <button type="submit" name="theme-toggle" id="theme-toggle" value="1">Toggle Theme</button>
+            </form>
         </div>
     </header>
     <main>

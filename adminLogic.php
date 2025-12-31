@@ -1,0 +1,35 @@
+<?php 
+session_start();
+include("db.php") ;
+
+$chceckQuery = "SELECT * FROM user_settings WHERE user_id = " . $_SESSION['user_id'];
+$checkResult = mysqli_query($conn, $chceckQuery);
+
+
+if(mysqli_num_rows($checkResult) == 0) {
+    $insertUserSettingQuery = "INSERT INTO user_settings (user_id, theme_mode) VALUES (" . $_SESSION['user_id'] . ", 'light')";
+    mysqli_query($conn, $insertUserSettingQuery);
+    $_SESSION['theme_mode'] = 'light';
+}   
+$_SESSION['theme_mode'] = mysqli_fetch_assoc($checkResult)['theme_mode'];
+
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['theme-toggle'])) {
+    if($_SESSION['theme_mode'] == 'light') {
+        $updateThemeQuery = "UPDATE user_settings SET theme_mode = 'dark' WHERE user_id = " . $_SESSION['user_id'];
+        mysqli_query($conn, $updateThemeQuery);
+        $_SESSION['theme_mode'] = 'dark';
+        
+
+    } else {
+        $updateThemeQuery = "UPDATE user_settings SET theme_mode = 'light' WHERE user_id = " . $_SESSION['user_id'];
+        mysqli_query($conn, $updateThemeQuery);
+        $_SESSION['theme_mode'] = 'light';
+
+    }
+}
+
+header('Location: admin.php');
+exit();
+
+?>
+

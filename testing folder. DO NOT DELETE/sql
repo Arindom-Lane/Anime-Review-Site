@@ -7,6 +7,13 @@ CREATE TABLE Users (
     profile_image_link VARCHAR(255),
 
 );
+CREATE TABLE user_settings (
+    setting_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,                  
+    theme_mode VARCHAR(10) DEFAULT 'light', 
+    accent_color VARCHAR(7) DEFAULT '#2e51a2',
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
 
 CREATE TABLE Media (
     media_id INT PRIMARY KEY AUTO_INCREMENT,
