@@ -1,5 +1,6 @@
 <?php
 session_start();
+<<<<<<< HEAD
 
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
     header('Location: login.php');
@@ -36,8 +37,125 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
 }
 
 
+=======
+include("db.php"); 
 
+// Initialize default stats
+$animeStats = [
+    'watching' => 0, 'completed' => 0, 'on_hold' => 0, 'dropped' => 0, 'plan_to_watch' => 0, 
+    'total' => 0, 'mean_score' => 0.00
+];
+$mangaStats = [
+    'reading' => 0, 'completed' => 0, 'on_hold' => 0, 'dropped' => 0, 'plan_to_read' => 0, 
+    'total' => 0, 'mean_score' => 0.00
+];
 
+if ($conn) {
+    // Check if user is logged in
+    if (!isset($_SESSION['username'])) {
+        // Redirect if not logged in
+        header("Location: login.php");
+        exit();
+    }
+
+    $currentUser = mysqli_real_escape_string($conn, $_SESSION['username']);
+
+    // --- FIX FOR FATAL ERROR ---
+    // We select * (all columns) so we don't crash if 'id' is named differently
+    $user_sql = "SELECT * FROM users WHERE username = '$currentUser'";
+    $user_result = mysqli_query($conn, $user_sql);
+    
+    if($user_row = mysqli_fetch_assoc($user_result)){
+        // Detect the ID column name automatically
+        if(isset($user_row['id'])){
+            $userId = $user_row['id'];
+        } elseif(isset($user_row['user_id'])){
+            $userId = $user_row['user_id'];
+        } else {
+            die("Error: Could not find 'id' or 'user_id' column in your 'users' table. Please check your database structure.");
+        }
+    } else {
+        die("User not found in database.");
+    } 
+
+    function getMediaStats($conn, $uId, $types) {
+        $typeString = "'" . implode("','", $types) . "'";
+        
+        // 1. Get Counts per Status
+        $sql = "SELECT w.status, COUNT(*) as count 
+                FROM Watchlist w 
+                JOIN Media m ON w.media_id = m.media_id 
+                WHERE w.user_id = $uId AND m.type IN ($typeString) 
+                GROUP BY w.status";
+        
+        $result = mysqli_query($conn, $sql);
+        $data = [];
+        
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[$row['status']] = $row['count'];
+            }
+        }
+
+        // 2. Get Mean Score from Reviews
+        $sqlScore = "SELECT AVG(r.rating) as mean_score
+                     FROM Reviews r 
+                     JOIN Media m ON r.media_id = m.media_id 
+                     WHERE r.user_id = $uId AND m.type IN ($typeString)";
+        
+        $resultScore = mysqli_query($conn, $sqlScore);
+        $meanScore = 0;
+        
+        if ($resultScore) {
+            $rowScore = mysqli_fetch_assoc($resultScore);
+            $meanScore = $rowScore['mean_score'];
+        }
+
+        return [
+            'watching'      => isset($data['watching']) ? $data['watching'] : 0,
+            'completed'     => isset($data['completed']) ? $data['completed'] : 0,
+            'on_hold'       => isset($data['on_hold']) ? $data['on_hold'] : 0,
+            'dropped'       => isset($data['dropped']) ? $data['dropped'] : 0,
+            'plan_to_watch' => isset($data['plan_to_watch']) ? $data['plan_to_watch'] : 0,
+            'total'         => array_sum($data),
+            'mean_score'    => number_format((float)$meanScore, 2)
+        ];
+    }
+
+    // --- EXECUTE FOR ANIME ---
+    $animeStats = getMediaStats($conn, $userId, ['movie', 'tvshow']);
+>>>>>>> Arko
+
+    // --- EXECUTE FOR MANGA ---
+    $mangaData = getMediaStats($conn, $userId, ['manga']);
+    
+    // Map keys for Manga
+    $mangaStats = [
+        'reading'      => $mangaData['watching'],
+        'completed'    => $mangaData['completed'],
+        'on_hold'      => $mangaData['on_hold'],
+        'dropped'      => $mangaData['dropped'],
+        'plan_to_read' => $mangaData['plan_to_watch'],
+        'total'        => $mangaData['total'],
+        'mean_score'   => $mangaData['mean_score']
+    ];
+}
+
+// --- COMMENT LOGIC ---
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
+    $commentText = htmlspecialchars(trim($_POST['user_comment']));
+    if (!empty($commentText)) {
+        $userDisplay = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
+        $newComment = [
+            'id'   => uniqid(),
+            'user' => $userDisplay, 
+            'text' => $commentText,
+            'date' => date('M d, Y H:i')
+        ];
+        if (!isset($_SESSION['post_comments'])) { $_SESSION['post_comments'] = []; }
+        $_SESSION['post_comments'][] = $newComment;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -127,9 +245,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
         </div>
 
         <!-- RIGHT MAIN CONTENT -->
+                <!-- RIGHT MAIN CONTENT -->
         <div class="rightsection">
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> Arko
             <h2 class="main-header">Statistics</h2>
 
             <!-- Anime Stats -->
@@ -141,8 +263,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
                     </div>
 
                     <div class="days-score-row">
-                        <span>Days: <strong>0</strong></span>
-                        <span>Mean Score: <strong>0.00</strong></span>
+                        <span>Days: <strong>0.0</strong></span>
+                        <span>Mean Score: <strong><?php echo $animeStats['mean_score']; ?></strong></span>
                     </div>
 
                     <div class="main-progress-bar">
@@ -151,14 +273,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
 
                     <div class="stats-grid">
                         <ul class="status-legend">
-                            <li><span class="dot watching"></span> Watching <span class="count">0</span></li>
-                            <li><span class="dot completed"></span> Completed <span class="count">0</span></li>
-                            <li><span class="dot onhold"></span> On-Hold <span class="count">0</span></li>
-                            <li><span class="dot dropped"></span> Dropped <span class="count">0</span></li>
-                            <li><span class="dot plan"></span> Plan to Watch <span class="count">0</span></li>
+                            <li><span class="dot watching"></span> Watching <span class="count"><?php echo $animeStats['watching']; ?></span></li>
+                            <li><span class="dot completed"></span> Completed <span class="count"><?php echo $animeStats['completed']; ?></span></li>
+                            <li><span class="dot onhold"></span> On-Hold <span class="count"><?php echo $animeStats['on_hold']; ?></span></li>
+                            <li><span class="dot dropped"></span> Dropped <span class="count"><?php echo $animeStats['dropped']; ?></span></li>
+                            <li><span class="dot plan"></span> Plan to Watch <span class="count"><?php echo $animeStats['plan_to_watch']; ?></span></li>
                         </ul>
                         <ul class="status-totals">
-                            <li><span>Total Entries</span> <span>0</span></li>
+                            <li><span>Total Entries</span> <span><?php echo $animeStats['total']; ?></span></li>
                             <li><span>Rewatched</span> <span>0</span></li>
                             <li><span>Episodes</span> <span>0</span></li>
                         </ul>
@@ -170,9 +292,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
                         <h3>Last Anime Updates</h3>
                         <a href="#">Anime History</a>
                     </div>
-
                     <div class="update-item">
                         <div class="no-updates">
+<<<<<<< HEAD
                             No updates yet. <a href="#">Edit list now.</a>
                             <!--
                 <img src="https://cdn.myanimelist.net/images/anime/1697/151793.jpg" alt="Anime Image">
@@ -187,13 +309,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
                     </div> 
                 </div>
 -->
+=======
+                            No updates yet. <a href="#">Edit list now.</a> 
+>>>>>>> Arko
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Manga Stats -->
-
             <div class="stats-container manga-section">
                 <div class="stats-data-col">
                     <div class="stats-header-row">
@@ -203,7 +327,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
 
                     <div class="days-score-row">
                         <span>Days: <strong>0.0</strong></span>
-                        <span>Mean Score: <strong>0.00</strong></span>
+                        <span>Mean Score: <strong><?php echo $mangaStats['mean_score']; ?></strong></span>
                     </div>
 
                     <div class="main-progress-bar">
@@ -212,14 +336,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
 
                     <div class="stats-grid">
                         <ul class="status-legend">
-                            <li><span class="dot watching"></span> Reading <span class="count">0</span></li>
-                            <li><span class="dot completed"></span> Completed <span class="count">0</span></li>
-                            <li><span class="dot onhold"></span> On-Hold <span class="count">0</span></li>
-                            <li><span class="dot dropped"></span> Dropped <span class="count">0</span></li>
-                            <li><span class="dot plan"></span> Plan to Read <span class="count">0</span></li>
+                            <li><span class="dot watching"></span> Reading <span class="count"><?php echo $mangaStats['reading']; ?></span></li>
+                            <li><span class="dot completed"></span> Completed <span class="count"><?php echo $mangaStats['completed']; ?></span></li>
+                            <li><span class="dot onhold"></span> On-Hold <span class="count"><?php echo $mangaStats['on_hold']; ?></span></li>
+                            <li><span class="dot dropped"></span> Dropped <span class="count"><?php echo $mangaStats['dropped']; ?></span></li>
+                            <li><span class="dot plan"></span> Plan to Read <span class="count"><?php echo $mangaStats['plan_to_read']; ?></span></li>
                         </ul>
                         <ul class="status-totals">
-                            <li><span>Total Entries</span> <span>0</span></li>
+                            <li><span>Total Entries</span> <span><?php echo $mangaStats['total']; ?></span></li>
                             <li><span>Reread</span> <span>0</span></li>
                             <li><span>Chapters</span> <span>0</span></li>
                             <li><span>Volumes</span> <span>0</span></li>
