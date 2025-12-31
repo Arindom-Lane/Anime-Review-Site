@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
             $_SESSION['email'] = $user['email'];
             $_SESSION['userId'] = $user['user_id'];
             $_SESSION['profileImage'] = $user['profile_image_link'];
+            $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['email'] = $user['email'];
             header("Location: home.php");
             exit();
