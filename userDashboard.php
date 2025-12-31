@@ -13,8 +13,32 @@ $mangaStats = [
 ];
 
 if ($conn) {
-    // We assume we are fetching stats for User ID 1 directly.
-    $userId = 1; 
+    // Check if user is logged in
+    if (!isset($_SESSION['username'])) {
+        // Redirect if not logged in
+        header("Location: login.php");
+        exit();
+    }
+
+    $currentUser = mysqli_real_escape_string($conn, $_SESSION['username']);
+
+    // --- FIX FOR FATAL ERROR ---
+    // We select * (all columns) so we don't crash if 'id' is named differently
+    $user_sql = "SELECT * FROM users WHERE username = '$currentUser'";
+    $user_result = mysqli_query($conn, $user_sql);
+    
+    if($user_row = mysqli_fetch_assoc($user_result)){
+        // Detect the ID column name automatically
+        if(isset($user_row['id'])){
+            $userId = $user_row['id'];
+        } elseif(isset($user_row['user_id'])){
+            $userId = $user_row['user_id'];
+        } else {
+            die("Error: Could not find 'id' or 'user_id' column in your 'users' table. Please check your database structure.");
+        }
+    } else {
+        die("User not found in database.");
+    } 
 
     function getMediaStats($conn, $uId, $types) {
         $typeString = "'" . implode("','", $types) . "'";
