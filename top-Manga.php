@@ -71,7 +71,7 @@ include("db.php");
                 </thead>
                 <tbody>
                     <?php
-                    $result = mysqli_query($conn, "SELECT * FROM media WHERE type = 'manga' ORDER BY score DESC");
+                    $result = mysqli_query($conn, "SELECT m.* FROM Top_Mangas t INNER JOIN Media m ON t.media_id = m.media_id ORDER BY m.score DESC");
                     if (mysqli_num_rows($result) > 0) {
                         foreach ($result as $row) {
                     ?>
