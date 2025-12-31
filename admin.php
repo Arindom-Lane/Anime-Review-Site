@@ -1,7 +1,6 @@
 <?php
 session_start();
-include("db.php") ; 
-
+include("db.php");
 
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true && $_SESSION['role'] != 'admin') {
     header('Location: login.php');
@@ -43,7 +42,8 @@ if (isset($_SESSION['editUserMessage'])) {
     unset($_SESSION['editUserMessage']);
 }
 ?>
-<script> localStorage.setItem('theme', '<?php echo $_SESSION['theme_mode']; ?>');</script>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,8 +78,18 @@ if (isset($_SESSION['editUserMessage'])) {
         <div class="header-lower">
             <span>Welcome, <?php echo strtoupper($_SESSION['username']); ?></span>
             <form method="POST" action="adminLogic.php">
-                <script> localStorage.setItem('theme', '<?php echo $_SESSION['theme_mode']; ?>');</script>
-                <button type="submit" name="theme-toggle" id="theme-toggle" value="1">Toggle Theme</button>
+                <?php if (isset($_SESSION['theme_mode'])): ?>
+                    <script>
+                        localStorage.setItem('theme', '<?php echo $_SESSION['theme_mode']; ?>');
+                    </script>
+                <?php endif; ?>
+                <button type="submit" name="theme-toggle" id="theme-toggle" class="login-link" value="1">
+                    <?php if (isset($_SESSION['theme_mode']) && $_SESSION['theme_mode'] == 'dark') {
+                        echo '☀️';
+                    } else {
+                        echo '🌙';
+                    } ?>
+                </button>
             </form>
         </div>
     </header>
@@ -181,7 +191,7 @@ if (isset($_SESSION['editUserMessage'])) {
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody  style="font-size: 5px;">
+                    <tbody style="font-size: 5px;">
 
                         <?php
                         if (isset($_GET['searchMedia'])) {
@@ -193,13 +203,15 @@ if (isset($_SESSION['editUserMessage'])) {
                         ?>
                                     <tr>
                                         <td><strong><?php echo $row['title'] ?></strong><br><br>
-                                        <?php echo $row['description'] ?><br><br><hr>
-                                        <strong>type:</strong> <?php echo $row['type'] ?>, 
-                                        <strong>score:</strong> <?php echo $row['score'] ?>,
-                                        <strong>studio:</strong> <?php echo $row['studio'] ?>,
-                                        <strong>source:</strong> <?php echo $row['source'] ?><hr><br><br>
+                                            <?php echo $row['description'] ?><br><br>
+                                            <hr>
+                                            <strong>type:</strong> <?php echo $row['type'] ?>,
+                                            <strong>score:</strong> <?php echo $row['score'] ?>,
+                                            <strong>studio:</strong> <?php echo $row['studio'] ?>,
+                                            <strong>source:</strong> <?php echo $row['source'] ?>
+                                            <hr><br><br>
 
-                                    </td>
+                                        </td>
                                         <td><img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:100px; height:auto;"></td>
                                         <td style="display: flex;">
                                             <a href="adminEditMedia.php?id=<?php echo $row['media_id']; ?>" name="editMediaData" class="editProfileHREF" style="width: 150px; height: auto; text-align: center; margin-right: 10px;">Edit</a>
@@ -243,4 +255,5 @@ if (isset($_SESSION['editUserMessage'])) {
             </div>
     </main>
 </body>
+
 </html>
