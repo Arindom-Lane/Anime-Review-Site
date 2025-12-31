@@ -14,6 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
 
         if (password_verify($password, $user["password"])) {
 
+            
+
             $_SESSION['loggedIn'] = true;
             $_SESSION['username'] = $name;
             $_SESSION['role'] = $user['role'];
@@ -22,6 +24,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
             $_SESSION['profileImage'] = $user['profile_image_link'];
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['email'] = $user['email'];
+
+            $chceckQuery = "SELECT * FROM user_settings WHERE user_id = " . $_SESSION['user_id'];
+            $checkResult = mysqli_query($conn, $chceckQuery);
+
+
+            if (mysqli_num_rows($checkResult) == 0) {
+                $insertUserSettingQuery = "INSERT INTO user_settings (user_id, theme_mode) VALUES (" . $_SESSION['user_id'] . ", 'light')";
+                mysqli_query($conn, $insertUserSettingQuery);
+                $_SESSION['theme_mode'] = 'light';
+            }
+            
             header("Location: home.php");
             exit();
         } else {

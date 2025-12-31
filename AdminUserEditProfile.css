@@ -1,0 +1,78 @@
+/* ===== EDIT USER PROFILE PAGE ===== */
+
+main {
+  margin: 30px auto;
+  padding: 20px;
+  width: 0 13%;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  color: var(--text-primary);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.feild {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feild label {
+  font-weight: bold;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.feild input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-1);
+  background-color: var(--bg-sidebar);
+  color: var(--text-primary);
+}
+
+.feild input::placeholder {
+  color: var(--text-muted);
+}
+
+.btn-create-name {
+  width: 120px;
+  padding: 8px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: var(--mal-blue);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-create-name:hover {
+  background-color: var(--mal-blue-dark);
+}
+
+.editProfileHREF {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 10px 30px;
+  background-color: var(--mal-blue);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: var(--border-radius-2);
+  transition: background-color 0.3s ease;
+}
+
+.editProfileHREF:hover {
+  background-color: #d2dfffff;
+  color: #070943;
+}

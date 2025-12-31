@@ -51,8 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="UserEditProfile.css">
     <script src="admin.js" defer></script>
+    <link rel="stylesheet" href="AdminUserEditProfile.css">
+    <link rel="stylesheet" href="admin.css">
+
 </head>
 
 <body>
@@ -82,7 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
         </div>
         <div class="header-lower">
             <span>Edit Profile</span>
-            <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png" alt="Menu" id="theme-toggle">
         </div>
     </header>
     <main>
