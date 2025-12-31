@@ -18,7 +18,7 @@
     --color-text-medium_white: #666666;
     --color-text-light_white: #999999;
     --color-border_white: #e0e0e0;
-    --color-devider:#4a6fc7;
+    --color-devider: #4a6fc7;
 
     --card-border-radius: 0.35rem;
     --border-radius-1: 0.2rem;
@@ -30,7 +30,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 body {
@@ -38,13 +38,14 @@ body {
     color: var(--color-text-dark_white);
     font-family: var(--font-main);
     letter-spacing: .8px;
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
     text-decoration: none;
 }
 
 
 
 header {
+    margin: 0 13%;
     margin: 0 13%;
     display: grid;
     grid-template-rows: auto auto auto;
@@ -61,7 +62,7 @@ header {
 
 .header-upper {
     width: 100%;
-    height: auto; 
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -78,12 +79,12 @@ header {
 .logo img {
     width: 100%;
     height: 100%;
-    object-fit: contain;   
+    object-fit: contain;
 }
 
 .profile {
     display: flex;
-    align-items: center;   
+    align-items: center;
     cursor: pointer;
     color: var(--color-text-dark_white);
     font-weight: bold;
@@ -113,7 +114,7 @@ header {
     border-top-left-radius: var(--border-radius-1);
     border-top-right-radius: var(--border-radius-1);
     color: var(--color-text-dark_white);
-    
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -155,7 +156,7 @@ header {
     font-size: 11px;
     width: 100%;
     height: 25px;
-    margin-right:90px ;
+    margin-right: 90px;
 }
 
 
@@ -176,25 +177,26 @@ header {
 }
 
 .header-lower span {
-    font-size: large; 
+    font-size: large;
     font-weight: bold;
-    color: black; 
+    color: black;
 }
 
-.header-lower img{
+.header-lower img {
     height: 30px;
     width: 30px;
 }
 
-.header-lower img:hover{
+.header-lower img:hover {
     cursor: pointer;
 }
+
 main {
     position: relative;
-    margin: 0 13%; 
+    margin: 0 13%;
     display: grid;
     grid-template-columns: 75% 25%;
-    
+
     margin-bottom: 150px;
     border-bottom: 1.5px solid var(--color-border_white);
     border-left: 1.5px solid var(--color-border_white);
@@ -210,44 +212,55 @@ main {
     border-right: 2px solid var(--color-border_white);
     position: relative;
 }
-.TrailersList{
+
+.TrailersList {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: 250px; /*  controls the width */
+    grid-auto-columns: 250px;
+    /*  controls the width */
     gap: 5px;
     overflow: hidden;
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
     height: 100%;
 }
-.TrailersList img{
+
+.TrailersList img {
     width: 100%;
-    height:130px; /* controls the heidth */
+    height: 130px;
+    /* controls the heidth */
 }
-.Trailers-wrapper{
+
+.Trailers-wrapper {
     position: relative;
     width: 100%;
-    height: 130px; /* controls the heidth of the sroll bar and shoul de same */
+    height: 130px;
+    /* controls the heidth of the sroll bar and shoul de same */
     padding-top: 5px;
 }
 
 .fallList {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: 190px; /*  controls the width */
+    grid-auto-columns: 190px;
+    /*  controls the width */
     gap: 5px;
     overflow: hidden;
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
     height: 100%;
-    
+
 }
-.fallList img{
+
+.fallList img {
     width: 100%;
-    height: 260px; /* controls the heidth */
+    height: 260px;
+    /* controls the heidth */
 }
-.fallList-wrapper{
+
+.fallList-wrapper {
     position: relative;
     width: 100%;
-    height: 260px; /* controls the heidth of the sroll bar and shoul de same */
+    height: 260px;
+    /* controls the heidth of the sroll bar and shoul de same */
     padding-top: 5px;
 }
 
@@ -258,25 +271,30 @@ main {
     grid-auto-columns: 120px;
     gap: 5px;
     overflow: hidden;
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
     height: 100%;
 }
-.latestList img{
-    width: 100% ;
+
+.latestList img {
+    width: 100%;
     height: 160px;
 }
-.latest-wrapper{
+
+.latest-wrapper {
     position: relative;
     width: 100%;
     height: 160px;
     padding-top: 5px;
 }
-.fallList-wrapper span, .latest-wrapper span, .Trailers-wrapper span{
+
+.fallList-wrapper span,
+.latest-wrapper span,
+.Trailers-wrapper span {
     position: absolute;
-    top:0;
+    top: 0;
     width: 30px;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
     cursor: pointer;
     font-size: 24px;
@@ -287,28 +305,36 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     opacity: 0;
-    transition: opacity 400ms ease-out; 
-    
+    transition: opacity 400ms ease-out;
+
 }
 
-.fallList-wrapper:hover .left-arrowfallList, .fallList-wrapper:hover  .right-arrowfallList, 
-.latest-wrapper:hover .left-arrowlatest,.latest-wrapper:hover .right-arrowlatest,
-.Trailers-wrapper:hover .left-arrowTrailers,.Trailers-wrapper:hover .right-arrowTrailers
- {
+.fallList-wrapper:hover .left-arrowfallList,
+.fallList-wrapper:hover .right-arrowfallList,
+.latest-wrapper:hover .left-arrowlatest,
+.latest-wrapper:hover .right-arrowlatest,
+.Trailers-wrapper:hover .left-arrowTrailers,
+.Trailers-wrapper:hover .right-arrowTrailers {
     opacity: 1;
-    
+
 }
 
-.left-arrowfallList, .left-arrowlatest, .left-arrowTrailers{
+.left-arrowfallList,
+.left-arrowlatest,
+.left-arrowTrailers {
     left: 0;
 }
-.right-arrowfallList,.right-arrowlatest,  .right-arrowTrailers{
-    right:0;
+
+.right-arrowfallList,
+.right-arrowlatest,
+.right-arrowTrailers {
+    right: 0;
 }
 
-.fallList img:hover, .latestList img:hover{
+.fallList img:hover,
+.latestList img:hover {
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.5);
     opacity: .7;
@@ -318,23 +344,26 @@ main {
 
 
 
-.MALxJAPANHeadLine{
+.MALxJAPANHeadLine {
     display: flex;
     justify-content: space-between;
-    
+
 }
-.MALxJAPANmainDiv{
+
+.MALxJAPANmainDiv {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 33%;
     gap: 5px;
     padding-top: 5px;
-    
+
 }
-.MALxJAPANmainDiv a{
+
+.MALxJAPANmainDiv a {
     text-decoration: none;
 }
-.MALxJAPANmainDiv img{
+
+.MALxJAPANmainDiv img {
     width: 100%;
     height: 140px;
     object-fit: cover;
@@ -402,12 +431,17 @@ main {
     color: black;
 } */
 
-.topAiringAnime, .topUpcoming, .mostPopuar, .mostPopularManga{
+.topAiringAnime,
+.topUpcoming,
+.mostPopuar,
+.mostPopularManga {
     padding: 10px 0;
 }
-.topAiringAnimeHeading, 
-.topUpcomingHeading, 
-.mostPopuarHeading,.mostPopuarMangaHeading {
+
+.topAiringAnimeHeading,
+.topUpcomingHeading,
+.mostPopuarHeading,
+.mostPopuarMangaHeading {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -417,23 +451,25 @@ main {
     border-top-right-radius: var(--border-radius-1);
 }
 
-.topAiringAnimeImagesGrid, 
-.topUpcomingImagesGrid, 
-.mostPopuarImagesGrid, .mostPopularMangaImagesGrid {
+.topAiringAnimeImagesGrid,
+.topUpcomingImagesGrid,
+.mostPopuarImagesGrid,
+.mostPopularMangaImagesGrid {
     display: grid;
     grid-auto-flow: row;
     align-content: center;
     gap: 5px;
     padding-top: 2%;
     background-color: var(--color-card-bg_white);
-    border-bottom-left-radius:var(--border-radius-1) ;
-    border-bottom-right-radius:var(--border-radius-1) ;
+    border-bottom-left-radius: var(--border-radius-1);
+    border-bottom-right-radius: var(--border-radius-1);
     border-bottom: 3px solid var(--color-primary_brand);
 }
 
 .topAiringAnimeImagesGrid div,
 .topUpcomingImagesGrid div,
-.mostPopuarImagesGrid div, .mostPopularMangaImagesGrid div {
+.mostPopuarImagesGrid div,
+.mostPopularMangaImagesGrid div {
     display: grid;
     align-items: center;
     grid-template-columns: .03fr 2fr 5fr;
@@ -444,24 +480,25 @@ main {
 
 .topAiringAnimeImagesGrid div img,
 .topUpcomingImagesGrid div img,
-.mostPopuarImagesGrid div img, .mostPopularMangaImagesGrid div img {
+.mostPopuarImagesGrid div img,
+.mostPopularMangaImagesGrid div img {
     height: 100%;
     width: 60px;
     margin: 0 auto;
-    object-fit: cover; 
+    object-fit: cover;
 }
 
 
 .topAiringAnimeImagesGrid div span,
 .topUpcomingImagesGrid div span,
-.mostPopuarImagesGrid div span, .mostPopularMangaImagesGrid div span {
+.mostPopuarImagesGrid div span,
+.mostPopularMangaImagesGrid div span {
     font-size: 100;
     color: black;
 }
 
 .login-link {
     display: inline-block;
-    margin-top: 15px;
     padding: 8px 25px;
     background-color: var(--color-primary_brand);
     color: rgb(255, 255, 255);
@@ -469,16 +506,16 @@ main {
     font-weight: bold;
     font-size: 13px;
     border-radius: .5em;
-    margin: 10px;
+    margin: 10px 10px;
 }
 
 .login-link:hover {
     background-color: #d2dfffff;
     color: #3a424a;
 }
+
 .login-link-Log-out {
     display: inline-block;
-    margin-top: 15px;
     padding: 8px 25px;
     background-color: var(--color-primary_brand);
     color: rgb(255, 255, 255);
@@ -486,7 +523,7 @@ main {
     font-weight: bold;
     font-size: 13px;
     border-radius: .5em;
-    margin: 10px;
+    margin: 10px 0px;
 }
 
 .login-link-Log-out:hover {

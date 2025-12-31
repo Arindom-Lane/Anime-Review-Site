@@ -4,35 +4,37 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="homeStyle.css">    
+    <title>My AnimeList</title>
+    <link rel="stylesheet" href="homeStyle.css">
 </head>
+
 <body>
     <header>
-        
+
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='userDashboard.php'">
                 <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
             </div>
             <div class="profile">
-                <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true):?>
-                    <?php if($_SESSION['role'] ==  'registered'): ?>
-                        <div class="devider1"></div>
-                        <span class="profile-name"  onclick="window.location.href='userDashboard.php'">   
-                                <?php echo $_SESSION['username']; ?>
-                        </span>
-                        <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='userDashboard.php'">
-                            <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
-                    <?php else: ?>
-                        <a href="admin.php" class="login-link">Dashboard</a>
+                <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
+                    <?php if ($_SESSION['role'] ==  'registered'): ?>
                         <div class="devider1"></div>
                         <span class="profile-name" onclick="window.location.href='userDashboard.php'">
                             <?php echo $_SESSION['username']; ?>
                         </span>
                         <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='userDashboard.php'">
+                        <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
+                    <?php else: ?>
+                        <div class="devider1"></div>
+                        <span class="profile-name" onclick="window.location.href='userDashboard.php'">
+                            <?php echo $_SESSION['username']; ?>
+                        </span>
+                        <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='userDashboard.php'">
+                        <a href="admin.php" class="login-link">Dashboard</a>
                         <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
                     <?php endif; ?>
                 <?php else: ?>
@@ -42,54 +44,56 @@ session_start();
             </div>
         </div>
         <div class="header-middle">
-                    <div class="topButton">
-                        <span>TOP ANIME</span>
-                        <span>TOP MANGA</span>
-                    </div>
+            <div class="topButton">
+                <span>TOP ANIME</span>
+                <span>TOP MANGA</span>
+            </div>
 
-                <div class="search-bar">
+            <div class="search-bar">
                 <input class="search" type="text" placeholder="Search...">
-                </div>
+            </div>
         </div>
         <div class="header-lower">
             <span>My Panel</span>
             <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png">
-            <!-- <img src="https://cdn-icons-png.freepik.com/512/14627/14627394.png"> --> 
+            <!-- <img src="https://cdn-icons-png.freepik.com/512/14627/14627394.png"> -->
             <!-- for dark mode to bright mode converting logo img link-->
-            
+
         </div>
     </header>
 
     <main>
-        
+
         <div class="leftSection">
-        
-        <div class="MALxJAPANHeadLine">
-            <h3>MALxJapan -More than just anime-</h3>
-            <a href="https://mxj.myanimelist.net/">Visit MALxJAPAN</a>
-        </div><hr>
-        <div class="MALxJAPANmainDiv">
-            <div>
-                <img src="https://mxj.myanimelist.net/img/projects/Sparks_of_Tomorrow/354x220.png">
-                <a href="https://mxj.myanimelist.net/Sparks_of_Tomorrow">Unveil the World of Sparks of Tomorrow & Win Prizes!</a>
 
+            <div class="MALxJAPANHeadLine">
+                <h3>MALxJapan -More than just anime-</h3>
+                <a href="https://mxj.myanimelist.net/">Visit MALxJAPAN</a>
             </div>
-            <div>
-                <img src="https://cdn.myanimelist.net/resources/mxj_panel/2025/20251027221823_MxJ%20exposure-354x220@2x.png">
-                <a href="https://mhwc.myanimelist.net/202510/?utm_source=MAL&utm_medium=top_mxj_frontierworks&utm_content=announce1">MyAnimeList x Honeyfeed Writing Contest 2025 - Twilight Frontiers Presented by Frontier Works</a>
+            <hr>
+            <div class="MALxJAPANmainDiv">
+                <div>
+                    <img src="https://mxj.myanimelist.net/img/projects/Sparks_of_Tomorrow/354x220.png">
+                    <a href="https://mxj.myanimelist.net/Sparks_of_Tomorrow">Unveil the World of Sparks of Tomorrow & Win Prizes!</a>
 
+                </div>
+                <div>
+                    <img src="https://cdn.myanimelist.net/resources/mxj_panel/2025/20251027221823_MxJ%20exposure-354x220@2x.png">
+                    <a href="https://mhwc.myanimelist.net/202510/?utm_source=MAL&utm_medium=top_mxj_frontierworks&utm_content=announce1">MyAnimeList x Honeyfeed Writing Contest 2025 - Twilight Frontiers Presented by Frontier Works</a>
+
+                </div>
+                <div>
+                    <img src="https://cdn.myanimelist.net/resources/mxj_panel/2024/20241121005050_354x220@2x.png">
+                    <a href="https://mxj.myanimelist.net/conbiz?utm_source=MAL&utm_medium=top_mxj_conbiz">Watch "ConBiz!" ー a new Japanese business entertainment program</a>
+
+                </div>
             </div>
-            <div>
-                <img src="https://cdn.myanimelist.net/resources/mxj_panel/2024/20241121005050_354x220@2x.png">
-                <a href="https://mxj.myanimelist.net/conbiz?utm_source=MAL&utm_medium=top_mxj_conbiz">Watch "ConBiz!" ー a new Japanese business entertainment program</a>
 
-            </div>
-        </div>
-
-        <h3>Fall 2025 Anime</h3><hr>
-        <div class="fallList-wrapper">
-            <span class="left-arrowfallList">&lt;</span>
-            <span class="right-arrowfallList">&gt;</span>
+            <h3>Fall 2025 Anime</h3>
+            <hr>
+            <div class="fallList-wrapper">
+                <span class="left-arrowfallList">&lt;</span>
+                <span class="right-arrowfallList">&gt;</span>
                 <div class="fallList">
 
                     <img src="https://cdn.myanimelist.net/images/anime/1168/148347.jpg">
@@ -111,12 +115,13 @@ session_start();
                     <img src="https://cdn.myanimelist.net/images/anime/1264/152012.jpg">
                     <img src="https://cdn.myanimelist.net/images/anime/1257/152233.jpg">
                 </div>
-        </div>
-        <br>
-        <h3>Latest Updated Episode Videos</h3><hr>
-        <div class="latest-wrapper">
-            <span class="left-arrowlatest">&lt;</span>
-            <span class="right-arrowlatest">&gt;</span>
+            </div>
+            <br>
+            <h3>Latest Updated Episode Videos</h3>
+            <hr>
+            <div class="latest-wrapper">
+                <span class="left-arrowlatest">&lt;</span>
+                <span class="right-arrowlatest">&gt;</span>
                 <div class="latestList">
 
                     <img src="https://cdn.myanimelist.net/images/anime/1168/148347.jpg">
@@ -138,12 +143,13 @@ session_start();
                     <img src="https://cdn.myanimelist.net/images/anime/1264/152012.jpg">
                     <img src="https://cdn.myanimelist.net/images/anime/1257/152233.jpg">
                 </div>
-        </div>
-        <br>
-        <h3>Most Popular Anime Trailers</h3><hr>
-        <div class="Trailers-wrapper">
-            <span class="left-arrowTrailers">&lt;</span>
-            <span class="right-arrowTrailers">&gt;</span>
+            </div>
+            <br>
+            <h3>Most Popular Anime Trailers</h3>
+            <hr>
+            <div class="Trailers-wrapper">
+                <span class="left-arrowTrailers">&lt;</span>
+                <span class="right-arrowTrailers">&gt;</span>
                 <div class="TrailersList">
 
                     <img src="https://i.ytimg.com/vi/WJkJTb8T-8E/maxresdefault.jpg">
@@ -165,8 +171,9 @@ session_start();
                     <img src="https://cdn.myanimelist.net/images/anime/1264/152012.jpg">
                     <img src="https://cdn.myanimelist.net/images/anime/1257/152233.jpg">
                 </div>
-        </div><br><hr>
-        
+            </div><br>
+            <hr>
+
 
 
         </div>
@@ -269,29 +276,30 @@ session_start();
                         <h2>1</h2>
                         <img src="https://cdn.myanimelist.net/images/manga/1/157897.jpg">
                         <span>Berserk</span>
-                    </div>                    
+                    </div>
                     <div>
                         <h2>2</h2>
                         <img src="https://cdn.myanimelist.net/images/manga/2/253146.jpg">
                         <span>One Piece</span>
-                    </div>                    
+                    </div>
                     <div>
                         <h2>3</h2>
                         <img src="https://cdn.myanimelist.net/images/manga/1/259070.jpg">
                         <span>Vagabond</span>
-                    </div>                    
+                    </div>
                     <div>
                         <h2>4</h2>
                         <img src="https://cdn.myanimelist.net/images/manga/3/258224.jpg">
                         <span>Monster</span>
-                    </div>                    
+                    </div>
 
                 </div>
             </div>
 
         </div>
     </main>
-        
+
     <script src="homeJSCRIPT.js"></script>
 </body>
+
 </html>

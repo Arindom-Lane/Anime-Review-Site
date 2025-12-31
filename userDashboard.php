@@ -1,53 +1,55 @@
 <?php
-    session_start();
-    
- if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
+session_start();
+
+if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
     header('Location: login.php');
- }
+}
 
- if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
-     $commentText = htmlspecialchars(trim($_POST['user_comment']));
-     
-     if (!empty($commentText)) {
-         $newComment = [
-             'id'   => uniqid(),
-             'user' => $_SESSION['username'], 
-             'text' => $commentText,
-             'date' => date('M d, Y H:i')
-         ];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
+    $commentText = htmlspecialchars(trim($_POST['user_comment']));
 
-         if (!isset($_SESSION['post_comments'])) {
-             $_SESSION['post_comments'] = [];
-         }
+    if (!empty($commentText)) {
+        $newComment = [
+            'id'   => uniqid(),
+            'user' => $_SESSION['username'],
+            'text' => $commentText,
+            'date' => date('M d, Y H:i')
+        ];
 
-         $_SESSION['post_comments'][] = $newComment;
-     }
- }
+        if (!isset($_SESSION['post_comments'])) {
+            $_SESSION['post_comments'] = [];
+        }
+
+        $_SESSION['post_comments'][] = $newComment;
+    }
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
-     $idToDelete = $_POST['comment_id'];
-     
-     if (isset($_SESSION['post_comments'])) {
-         $_SESSION['post_comments'] = array_filter($_SESSION['post_comments'], function($comment) use ($idToDelete) {
-             return isset($comment['id']) && $comment['id'] !== $idToDelete;
-         });
-         $_SESSION['post_comments'] = array_values($_SESSION['post_comments']);
-     }
- }
+    $idToDelete = $_POST['comment_id'];
 
- 
+    if (isset($_SESSION['post_comments'])) {
+        $_SESSION['post_comments'] = array_filter($_SESSION['post_comments'], function ($comment) use ($idToDelete) {
+            return isset($comment['id']) && $comment['id'] !== $idToDelete;
+        });
+        $_SESSION['post_comments'] = array_values($_SESSION['post_comments']);
+    }
+}
+
+
 
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="userDash.css">    
+    <link rel="stylesheet" href="userDash.css">
 </head>
+
 <body>
     <header>
         <div class="header-upper">
@@ -56,11 +58,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
             </div>
             <div class="profile">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
-                <div class="devider1"></div>
-                <span class="profile-name">
-                    <?php echo $_SESSION['username']; ?>
-                </span>
-                <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile">
+                    <div class="devider1"></div>
+                    <span class="profile-name">
+                        <?php echo $_SESSION['username']; ?>
+                    </span>
+                    <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile">
                 <?php endif; ?>
             </div>
         </div>
@@ -84,11 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
         <div class="leftSection">
             <fieldset class="sidebar-fieldset">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
-                <div class="user-avatar-container">
-                    <img src="<?php echo $_SESSION['profileImage']; ?>" class="user-avatar-img" alt="User Avatar">
-                </div>
+                    <div class="user-avatar-container">
+                        <img src="<?php echo $_SESSION['profileImage']; ?>" class="user-avatar-img" alt="User Avatar">
+                    </div>
                 <?php endif; ?>
-                
+
                 <div class="sidebar-content">
                     <div class="sidebar-row">
                         <span>Last Online</span>
@@ -107,17 +109,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
                     <div class="sidebar-divider">
 
                         <div class="sidebar-menu">
-                        <input type="button" value="Favorites" class="statbtn" onclick="window.location.href='favouriteList.php'">
-                        <input type="button" value="Add Media Contribution" class="statbtn" onclick="window.location.href='ReqMed.php'">
+                            <input type="button" value="Favorites" class="statbtn" onclick="window.location.href='favouriteList.php'">
+                            <input type="button" value="Add Media Contribution" class="statbtn" onclick="window.location.href='ReqMed.php'">
+                        </div>
                     </div>
-                </div>
-                    
-                    
+
+
 
                     <br>
-                    
+
                 </div>
-                
+
                 <div class="edit-profile-wrapper" onclick="window.location.href='UserEditProfile.php'">
                     <input type="button" value="Edit Profile" class="editbtn">
                 </div>
@@ -126,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
 
         <!-- RIGHT MAIN CONTENT -->
         <div class="rightsection">
-            
+
 
             <h2 class="main-header">Statistics</h2>
 
@@ -137,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
                         <h3>Anime Stats</h3>
                         <a href="#">All Anime Stats</a>
                     </div>
-                    
+
                     <div class="days-score-row">
                         <span>Days: <strong>0</strong></span>
                         <span>Mean Score: <strong>0.00</strong></span>
@@ -171,7 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
 
                     <div class="update-item">
                         <div class="no-updates">
-                            No updates yet. <a href="#">Edit list now.</a> 
+                            No updates yet. <a href="#">Edit list now.</a>
                             <!--
                 <img src="https://cdn.myanimelist.net/images/anime/1697/151793.jpg" alt="Anime Image">
                 <div class="update-info">
@@ -198,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
                         <h3>Manga Stats</h3>
                         <a href="#">All Manga Stats</a>
                     </div>
-                    
+
                     <div class="days-score-row">
                         <span>Days: <strong>0.0</strong></span>
                         <span>Mean Score: <strong>0.00</strong></span>
@@ -236,7 +238,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
                 </div>
             </div>
             <div>
-                
+
                 <h2>Comments</h2>
                 <form action="" method="POST">
                     <textarea name="user_comment" class="comment-box" placeholder="Add a comment..." rows="4" required></textarea>
@@ -247,17 +249,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
                 </form>
 
                 <div class="comments-display" style="margin-top: 20px;">
-                    <?php 
+                    <?php
                     if (isset($_SESSION['post_comments']) && !empty($_SESSION['post_comments'])) {
                         $comments = array_reverse($_SESSION['post_comments']);
-                        
+
                         foreach ($comments as $comment) {
                             echo '<div class="comment-item" >';
                             echo '<div class="comment-header">';
                             echo '<div><strong>' . $comment['user'] . '</strong> <span class="comment-date">(' . $comment['date'] . ')</span></div>';
-                            
 
-                            if ($comment['user'] === $_SESSION['username']) { 
+
+                            if ($comment['user'] === $_SESSION['username']) {
                                 echo '<form action="" method="POST" class="delete-form">';
                                 echo '<input type="hidden" name="comment_id" value="' . $comment['id'] . '">';
                                 echo '<button type="submit" name="delete_comment" class="delete-btn">Delete</button>';
@@ -272,12 +274,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
                 </div>
             </div>
 
-            
-            
-            </div>
+
+
         </div>
-            
+        </div>
+
         <script src="userDashboard.js"></script>
     </main>
 </body>
+
 </html>

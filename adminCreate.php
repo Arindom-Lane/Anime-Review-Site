@@ -1,11 +1,11 @@
-<?php 
+<?php
 session_start();
-include ("db.php");
-if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
+include("db.php");
+if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
     header('Location: login.php');
- }
+}
 
- if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST["title"];
     $type = $_POST["type"];
     $poster = $_POST["poster"];
@@ -19,18 +19,13 @@ if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
     $query = "INSERT INTO Media (title, description, type, poster_image_link, producer, studio, source, genre, duration) 
               VALUES ('$title', '$description', '$type', '$poster', '$producer', '$studio', '$source', '$genre', '$duration')";
 
-    if(mysqli_query($conn, $query)){ 
+    if (mysqli_query($conn, $query)) {
         $_SESSION['CreateError'] = "success";
         header("Location: admin.php?");
         exit();
-    }
-    else{
+    } else {
         $_SESSION["CreateError"] = "error";
         header("Location: admin.php");
         exit();
     }
- }
-
-
-
-?>
+}
