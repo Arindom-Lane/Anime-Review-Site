@@ -1,43 +1,5 @@
 <?php
 session_start();
-<<<<<<< HEAD
-
-if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
-    header('Location: login.php');
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
-    $commentText = htmlspecialchars(trim($_POST['user_comment']));
-
-    if (!empty($commentText)) {
-        $newComment = [
-            'id'   => uniqid(),
-            'user' => $_SESSION['username'],
-            'text' => $commentText,
-            'date' => date('M d, Y H:i')
-        ];
-
-        if (!isset($_SESSION['post_comments'])) {
-            $_SESSION['post_comments'] = [];
-        }
-
-        $_SESSION['post_comments'][] = $newComment;
-    }
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
-    $idToDelete = $_POST['comment_id'];
-
-    if (isset($_SESSION['post_comments'])) {
-        $_SESSION['post_comments'] = array_filter($_SESSION['post_comments'], function ($comment) use ($idToDelete) {
-            return isset($comment['id']) && $comment['id'] !== $idToDelete;
-        });
-        $_SESSION['post_comments'] = array_values($_SESSION['post_comments']);
-    }
-}
-
-
-=======
 include("db.php"); 
 
 // Initialize default stats
@@ -51,22 +13,18 @@ $mangaStats = [
 ];
 
 if ($conn) {
-    // Check if user is logged in
     if (!isset($_SESSION['username'])) {
-        // Redirect if not logged in
         header("Location: login.php");
         exit();
     }
 
     $currentUser = mysqli_real_escape_string($conn, $_SESSION['username']);
 
-    // --- FIX FOR FATAL ERROR ---
-    // We select * (all columns) so we don't crash if 'id' is named differently
+
     $user_sql = "SELECT * FROM users WHERE username = '$currentUser'";
     $user_result = mysqli_query($conn, $user_sql);
     
     if($user_row = mysqli_fetch_assoc($user_result)){
-        // Detect the ID column name automatically
         if(isset($user_row['id'])){
             $userId = $user_row['id'];
         } elseif(isset($user_row['user_id'])){
@@ -124,7 +82,6 @@ if ($conn) {
 
     // --- EXECUTE FOR ANIME ---
     $animeStats = getMediaStats($conn, $userId, ['movie', 'tvshow']);
->>>>>>> Arko
 
     // --- EXECUTE FOR MANGA ---
     $mangaData = getMediaStats($conn, $userId, ['manga']);
@@ -247,11 +204,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
         <!-- RIGHT MAIN CONTENT -->
                 <!-- RIGHT MAIN CONTENT -->
         <div class="rightsection">
-<<<<<<< HEAD
-
-
-=======
->>>>>>> Arko
             <h2 class="main-header">Statistics</h2>
 
             <!-- Anime Stats -->
@@ -294,7 +246,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
                     </div>
                     <div class="update-item">
                         <div class="no-updates">
-<<<<<<< HEAD
                             No updates yet. <a href="#">Edit list now.</a>
                             <!--
                 <img src="https://cdn.myanimelist.net/images/anime/1697/151793.jpg" alt="Anime Image">
@@ -309,9 +260,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
                     </div> 
                 </div>
 -->
-=======
-                            No updates yet. <a href="#">Edit list now.</a> 
->>>>>>> Arko
                         </div>
                     </div>
                 </div>

@@ -13,45 +13,65 @@
     if(isset($_POST["btn-create"])){
         $currentUser = $_SESSION['username']; 
         
+        // 1. Handle Username
         if (!empty($_POST["username"])) {
             $name = $_POST["username"];
         } else {
             $name = $_SESSION['username']; 
         }
 
+        // 2. Handle Email
         if (!empty($_POST["email"])) {
             $email = $_POST["email"];
         } else {
             $email = $_SESSION['email']; 
         }
 
+        // 3. Handle Profile Image
         if (!empty($_POST['profileImage'])) {
             $profileImage = $_POST['profileImage'];
         } else {
             $profileImage = $_SESSION['profileImage']; 
         }
 
-        $password = $_POST["password"];
-
-        $query = "UPDATE `users` SET 
-                  `username` = '$name', 
-                  `email` = '$email', 
-                  `password` = '$password', 
-                  `profile_image_link` = '$profileImage' 
-                  WHERE `username` = '$currentUser'";
-
-        $result = mysqli_query($conn, $query);
-
-        if($result){
-            $_SESSION['username'] = $name;
-            $_SESSION['email'] = $email;
-            $_SESSION['profileImage'] = $profileImage;
-            
-            $message = "Profile updated successfully!";
+       
+        $sqlFetch = "SELECT password FROM users WHERE username = '$currentUser'";
+        $resFetch = mysqli_query($conn, $sqlFetch);
+        
+        if($resFetch && mysqli_num_rows($resFetch) > 0){
+            $row = mysqli_fetch_assoc($resFetch);
+            $finalPassword = $row['password']; 
+        } else {
+            $error = "User not found.";
+            $finalPassword = ""; 
         }
-        else {
-            $error = "Query Failed: " . mysqli_error($conn);
-        }     
+
+        if (!empty($_POST["password"])) {
+            $finalPassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        }
+
+       
+        if(empty($error)){
+            $query = "UPDATE `users` SET 
+                    `username` = '$name', 
+                    `email` = '$email', 
+                    `password` = '$finalPassword', 
+                    `profile_image_link` = '$profileImage' 
+                    WHERE `username` = '$currentUser'";
+
+            $result = mysqli_query($conn, $query);
+
+            if($result){
+                $_SESSION['username'] = $name;
+                $_SESSION['email'] = $email;
+                $_SESSION['profileImage'] = $profileImage;
+                
+                $message = "Profile updated successfully!";
+            }
+            else {
+                $error = "Query Failed: " . mysqli_error($conn);
+            }
+        }
     }
 
     $showDetails = false;
