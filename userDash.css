@@ -393,7 +393,7 @@ main {
     height: 100%;
 }
 
-=.bg-watching { background-color: #2db039; } 
+.bg-watching { background-color: #2db039; } 
 .bg-completed { background-color: #26448f; } 
 .bg-onhold { background-color: #f1c83e; }    
 .bg-dropped { background-color: #a12f31; }    
