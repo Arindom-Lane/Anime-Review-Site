@@ -316,9 +316,14 @@ $mangaPct = calculatePercentages($mangaStats);
                         <span>Mean Score: <strong><?php echo $mangaStats['mean_score']; ?></strong></span>
                     </div>
 
+                    <!-- MANGA PROGRESS BAR -->
                     <div class="main-progress-bar">
-                        <div class="bar-fill grey width-100"></div>
-                    </div>
+                       <div class="stat-bar-segment bg-watching" style="width: <?php echo $mangaPct['watching']; ?>%" title="Reading"></div>
+                       <div class="stat-bar-segment bg-completed" style="width: <?php echo $mangaPct['completed']; ?>%" title="Completed"></div>
+                       <div class="stat-bar-segment bg-onhold" style="width: <?php echo $mangaPct['on_hold']; ?>%" title="On-Hold"></div>
+                       <div class="stat-bar-segment bg-dropped" style="width: <?php echo $mangaPct['dropped']; ?>%" title="Dropped"></div>
+                       <div class="stat-bar-segment bg-plan" style="width: <?php echo $mangaPct['plan']; ?>%" title="Plan to Read"></div>
+</div>
 
                     <div class="stats-grid">
                         <ul class="status-legend">
