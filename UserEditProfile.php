@@ -101,6 +101,7 @@
                     <?php echo $_SESSION['username']; ?>
                 </span>
                 <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile">
+                <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
                 <?php endif; ?>
             </div>
         </div>
