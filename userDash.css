@@ -379,3 +379,25 @@ main {
     color: #4f0909;
 }
 
+.main-progress-bar {
+    width: 100%;
+    height: 25px;
+    background-color: #ebebeb; /* Light grey background if empty */
+    border-radius: 4px;
+    display: flex; /* This aligns the colored segments side-by-side */
+    overflow: hidden; /* Ensures the bars stay inside the rounded corners */
+    margin: 10px 0;
+}
+
+/* Common style for all colored segments */
+.stat-bar-segment {
+    height: 100%;
+    /* Width is calculated in PHP and added inline */
+}
+
+/* MyAnimeList Specific Colors */
+.bg-watching { background-color: #2db039; } /* Green */
+.bg-completed { background-color: #26448f; } /* Blue */
+.bg-onhold { background-color: #f1c83e; }    /* Yellow */
+.bg-dropped { background-color: #a12f31; }    /* Red */
+.bg-plan { background-color: #c3c3c3; }      /* Grey */

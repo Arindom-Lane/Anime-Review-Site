@@ -113,6 +113,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
         $_SESSION['post_comments'][] = $newComment;
     }
 }
+
+// --- CALCULATE BAR WIDTHS ---
+
+function calculatePercentages($stats) {
+    $total = $stats['total'];
+    
+    // Avoid division by zero
+    if ($total == 0) {
+        return [
+            'watching' => 0, 'completed' => 0, 'on_hold' => 0, 
+            'dropped' => 0, 'plan' => 0
+        ];
+    }
+
+    // Return an array of percentages
+    return [
+        'watching'  => ($stats['watching'] / $total) * 100,
+        'completed' => ($stats['completed'] / $total) * 100,
+        'on_hold'   => ($stats['on_hold'] / $total) * 100,
+        'dropped'   => ($stats['dropped'] / $total) * 100,
+        // For manga, 'plan_to_read' maps to 'plan_to_watch' key logic here for simplicity
+        'plan'      => ((isset($stats['plan_to_watch']) ? $stats['plan_to_watch'] : $stats['plan_to_read']) / $total) * 100,
+    ];
+}
+
+// Get Anime Percentages
+$animePct = calculatePercentages($animeStats);
+
+// Get Manga Percentages
+$mangaPct = calculatePercentages($mangaStats);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -220,8 +252,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
                         <span>Mean Score: <strong><?php echo $animeStats['mean_score']; ?></strong></span>
                     </div>
 
-                    <div class="main-progress-bar">
-                        <div class="bar-fill green width-100"></div>
+                    <!-- ANIME PROGRESS BAR -->
+                     <div class="main-progress-bar">
+                        <div class="stat-bar-segment bg-watching" style="width: <?php echo $animePct['watching']; ?>%" title="Watching"></div>
+                        <div class="stat-bar-segment bg-completed" style="width: <?php echo $animePct['completed']; ?>%" title="Completed"></div>
+                        <div class="stat-bar-segment bg-onhold" style="width: <?php echo $animePct['on_hold']; ?>%" title="On-Hold"></div>
+                        <div class="stat-bar-segment bg-dropped" style="width: <?php echo $animePct['dropped']; ?>%" title="Dropped"></div>
+                        <div class="stat-bar-segment bg-plan" style="width: <?php echo $animePct['plan']; ?>%" title="Plan to Watch"></div>
                     </div>
 
                     <div class="stats-grid">
