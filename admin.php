@@ -68,8 +68,8 @@ if (isset($_SESSION['editUserMessage'])) {
         </div>
         <div class="header-middle">
             <div class="topButton">
-                <span>TOP ANIME</span>
-                <span>TOP MANGA</span>
+                <span onclick="window.location.href='top-Anime.php'">TOP ANIME</span>
+                <span onclick="window.location.href='top-Manga.php'">TOP MANGA</span>
             </div>
             <div class="search-bar">
                 <input class="search" type="text" placeholder="Search...">

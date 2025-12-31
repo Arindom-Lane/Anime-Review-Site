@@ -54,11 +54,23 @@ session_start();
             </div>
         </div>
         <div class="header-lower">
-            <span>My Panel</span>
-            <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png">
-            <!-- <img src="https://cdn-icons-png.freepik.com/512/14627/14627394.png"> -->
-            <!-- for dark mode to bright mode converting logo img link-->
-
+            <span>Home Page</span>
+            <?php if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true): ?>
+                <form method="POST" action="adminLogic.php">
+                <?php if (isset($_SESSION['theme_mode'])): ?>
+                    <script>
+                        localStorage.setItem('theme', '<?php echo $_SESSION['theme_mode']; ?>');
+                    </script>
+                <?php endif; ?>
+                <button type="submit" name="theme-toggle" id="theme-toggle" class="login-link" value="1">
+                    <?php if (isset($_SESSION['theme_mode']) && $_SESSION['theme_mode'] == 'dark') {
+                        echo '☀️';
+                    } else {
+                        echo '🌙';
+                    } ?>
+                </button>
+            </form>
+            <?php endif; ?>
         </div>
     </header>
 
