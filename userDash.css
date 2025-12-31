@@ -361,3 +361,21 @@ main {
 .delete-btn:hover {
     background-color: #cc0000;
 }
+
+.login-link-Log-out {
+    display: inline-block;
+    padding: 8px 25px;
+    background-color: var(--color-primary_brand);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+    border-radius: .5em;
+    margin: 10px 0px;
+}
+
+.login-link-Log-out:hover {
+    background-color: rgb(255, 210, 210);
+    color: #4f0909;
+}
+
