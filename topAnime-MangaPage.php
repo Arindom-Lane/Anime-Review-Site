@@ -61,6 +61,51 @@ include("db.php");
     </header>
 
     <main>
+        <div class="admin-box">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Poster</th>
+                        <th>Staus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $result = mysqli_query($conn, "SELECT * FROM media WHERE type = 'tvshow' ORDER BY score DESC");
+                    if (mysqli_num_rows($result) > 0) {
+                        foreach ($result as $row) {
+                    ?>
+                            <tr>
+                                <td><strong><?php echo $row['title'] ?></strong><br><br>
+                                    <?php echo $row['description'] ?><br><br>
+                                    <hr>
+                                    <strong>score:</strong> <?php echo $row['score'] ?>,
+                                    <strong>type:</strong> <?php echo $row['type'] ?>,                                
+                                    <strong>studio:</strong> <?php echo $row['studio'] ?>,
+                                    <strong>source:</strong> <?php echo $row['source'] ?>
+                                    <hr>
+                                </td>
+                                <td><img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:100px; height:auto;"></td>
+                                <td style="display: flex;">
+                                    <a href="NONE .php?id=<?php echo $row['media_id']; ?>" name="editMediaData" class="editProfileHREF" style="width: 150px; height: auto; text-align: center; margin-right: 10px;">Edit</a>
+                                    <a href=" .php?id=<?php echo $row['media_id']; ?>" class="editProfileHREF" style="width: 150px; height: auto; text-align: center;" onclick="return confirm('Delete this media?')">Delete</a>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                    } else {
+                        ?>
+                        <tr>
+                            <td colspan="4">No record is found</td>
+                        </tr>
+                    <?php
+                    }
+
+                    ?>
+                </tbody>
+            </table>
+        </div>
 
 
     </main>
