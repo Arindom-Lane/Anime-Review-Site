@@ -181,7 +181,7 @@ if (isset($_SESSION['editUserMessage'])) {
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody  style="font-size: 5px;">
 
                         <?php
                         if (isset($_GET['searchMedia'])) {
@@ -192,7 +192,14 @@ if (isset($_SESSION['editUserMessage'])) {
                                 foreach ($result as $row) {
                         ?>
                                     <tr>
-                                        <td><?php echo $row['title'] ?></td>
+                                        <td><strong><?php echo $row['title'] ?></strong><br><br>
+                                        <?php echo $row['description'] ?><br><br><hr>
+                                        <strong>type:</strong> <?php echo $row['type'] ?>, 
+                                        <strong>score:</strong> <?php echo $row['score'] ?>,
+                                        <strong>studio:</strong> <?php echo $row['studio'] ?>,
+                                        <strong>source:</strong> <?php echo $row['source'] ?><hr><br><br>
+
+                                    </td>
                                         <td><img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:100px; height:auto;"></td>
                                         <td style="display: flex;">
                                             <a href="adminEditMedia.php?id=<?php echo $row['media_id']; ?>" name="editMediaData" class="editProfileHREF" style="width: 150px; height: auto; text-align: center; margin-right: 10px;">Edit</a>
