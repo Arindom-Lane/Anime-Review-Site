@@ -1,49 +1,52 @@
-<?php 
+<?php
 session_start();
-$error=false;
+$error = false;
 include("db.php");
-    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])){
-        $name = $_POST["username"];  
-        $password = $_POST["password"];
-        
-        $verifySql = "SELECT * FROM users WHERE username = '$name'";
-        $result = mysqli_query($conn, $verifySql);
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
+    $name = $_POST["username"];
+    $password = $_POST["password"];
 
-        if($result && mysqli_num_rows($result) === 1){
+    $verifySql = "SELECT * FROM users WHERE username = '$name'";
+    $result = mysqli_query($conn, $verifySql);
+
+    if ($result && mysqli_num_rows($result) === 1) {
         $user = mysqli_fetch_assoc($result);
 
-        if(password_verify($password, $user["password"])){
-            
-                $_SESSION['loggedIn'] = true;
-                $_SESSION['username'] = $name;
-                $_SESSION['role'] = $user['role'];
-                $_SESSION['email'] = $user['email'];
-                $_SESSION['userId'] = $user['user_id'];
-                $_SESSION['profileImage'] = $user['profile_image_link'];
-                $_SESSION['email'] = $user['email'];
-                header("Location: home.php");
-                exit();}
-            else {
-                echo"<script>alert('Password invalid');</script>";
-            }
+        if (password_verify($password, $user["password"])) {
+
+            $_SESSION['loggedIn'] = true;
+            $_SESSION['username'] = $name;
+            $_SESSION['role'] = $user['role'];
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['userId'] = $user['user_id'];
+            $_SESSION['profileImage'] = $user['profile_image_link'];
+            $_SESSION['email'] = $user['email'];
+            header("Location: home.php");
+            exit();
+        } else {
+            echo "<script>alert('Password invalid');</script>";
         }
-        else {
-            $error = true;
-        }
+    } else {
+        $error = true;
     }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sing Up</title>
     <style>
         .error-bar {
-            background-color: #f8d7da; /* Light red background */
-            color: #721c24;            /* Dark red text */
-            border: 1px solid #f5c6cb; /* Soft red border */
+            background-color: #f8d7da;
+            /* Light red background */
+            color: #721c24;
+            /* Dark red text */
+            border: 1px solid #f5c6cb;
+            /* Soft red border */
             padding: 10px;
             margin-bottom: 15px;
             border-radius: 0.5em;
@@ -51,8 +54,9 @@ include("db.php");
             font-weight: bold;
             text-align: center;
         }
-        body{
-            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #F6F6F6;
             grid-auto-rows: auto;
             justify-items: center;
@@ -60,7 +64,8 @@ include("db.php");
             min-height: 100vh;
             margin: 0;
         }
-        .signup-box{
+
+        .signup-box {
             width: 350px;
             border: 1px solid #ddd;
             padding: 20px;
@@ -68,34 +73,40 @@ include("db.php");
             background-color: #2e51a2;
             border-radius: .5em;
         }
-        h2{
+
+        h2 {
             color: #f1f5feff;
             font-size: 18px;
             border-bottom: 1px solid #eee;
             padding-bottom: 10px;
         }
+
         .feild {
             text-align: center;
             margin-bottom: 15px;
         }
-        label{
+
+        label {
             display: block;
             font-weight: bold;
             font-size: 18px;
             margin-bottom: 5px;
             color: #eef2fbff;
         }
-        input{
+
+        input {
             width: 100%;
             padding: 8px;
             border: 1px solid #ccc;
             box-sizing: border-box;
             border-radius: .5em;
         }
+
         input:focus {
             border-color: #4a78e4ff;
             outline: none;
         }
+
         .btn-create {
             width: 64%;
             padding: 10px;
@@ -133,35 +144,37 @@ include("db.php");
         }
     </style>
 </head>
+
 <body>
-    <?php if($error == true){ ?>
+    <?php if ($error == true) { ?>
         <div class="error-bar">
-            <?php echo "User not found" ; ?>
+            <?php echo "User not found"; ?>
         </div>
     <?php } ?>
     <div class="signup-box">
-    <h2>Start Using MyAnimeList</h2>
+        <h2>Start Using MyAnimeList</h2>
 
-    <form method="POST">
-        <img  src="download.png">
-        <div class="feild">
-            <label>User name</label>
-            <input type="text" name="username" required>
+        <form method="POST">
+            <img src="download.png">
+            <div class="feild">
+                <label>User name</label>
+                <input type="text" name="username" required>
+            </div>
+
+            <div class="feild">
+                <label>Password</label>
+                <input type="password" name="password" minlength="8" placeholder="minimum 8 character" required>
+            </div>
+
+            <button type="submit" name="btn-create" class="btn-create">Login</button>
+        </form>
+        <div class="divider">
+            Doesn't have an account?<br>
+            <a href="signUp.php" class="login-link">Sign Up</a>
+            <a href="home.php" class="login-link">Go to home</a>
         </div>
-        
-        <div class="feild">
-            <label>Password</label>
-            <input type="password"name="password" minlength="8" placeholder="minimum 8 character" required>
-        </div>
-        
-        <button type="submit" name="btn-create" class="btn-create">Login</button>
-    </form>
-    <div class="divider">
-        Doesn't have an account?<br>
-        <a href="signUp.php" class="login-link">Sign Up</a>
-        <a href="home.php" class="login-link">Go to home</a>
     </div>
-</div>
-    
+
 </body>
+
 </html>

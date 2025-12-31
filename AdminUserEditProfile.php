@@ -4,7 +4,7 @@ include("db.php");
 
 
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
-    
+
     header('Location: login.php');
     exit();
 }
@@ -31,28 +31,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
     $email = mysqli_real_escape_string($conn, $_POST["email"]);
     $profileImage = mysqli_real_escape_string($conn, $_POST["profileImage"]);
 
-        $query = "UPDATE users SET username = '$username', email = '$email', profile_image_link = '$profileImage' WHERE user_id = '$targetUserId'";
-        $result = mysqli_query($conn, $query);
-        if($result){
-            $_SESSION['editUserMessage'] = "success";
-            header("Location: admin.php");
-            exit();
-        } else {
-            $_SESSION["editUserMessage"] = "error";
-            die("Error updating profile: " . mysqli_error($conn));
-        }
+    $query = "UPDATE users SET username = '$username', email = '$email', profile_image_link = '$profileImage' WHERE user_id = '$targetUserId'";
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+        $_SESSION['editUserMessage'] = "success";
+        header("Location: admin.php");
+        exit();
+    } else {
+        $_SESSION["editUserMessage"] = "error";
+        die("Error updating profile: " . mysqli_error($conn));
     }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="UserEditProfile.css">    
-    <script src="admin.js" defer></script> 
+    <link rel="stylesheet" href="UserEditProfile.css">
+    <script src="admin.js" defer></script>
 </head>
+
 <body>
     <header>
         <div class="header-upper">
@@ -61,11 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
             </div>
             <div class="profile" onclick="window.location.href='userDashboard.php'">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
-                <div class="devider1"></div>
-                <span class="profile-name">
-                    <?php echo $_SESSION['username']; ?>
-                </span>
-                <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile">
+                    <div class="devider1"></div>
+                    <span class="profile-name">
+                        <?php echo $_SESSION['username']; ?>
+                    </span>
+                    <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile">
                 <?php endif; ?>
             </div>
         </div>
@@ -85,33 +87,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
     </header>
     <main>
         <form method="POST">
-        <div class="feild">
-            <label>Change User Name</label>
-            <input type="text" name="username" placeholder="<?php echo $targetData['username']?>" value="<?php echo $targetData['username']?>" >
-            <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
-        </div>
-        
-        <div class="feild">
-            <label>Change Email</label>
-            <input type="email" name="email" minlength="8" placeholder="<?php echo $targetData['email']; ?>" value="<?php echo $targetData['email']; ?>">
-            <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
-        </div>
-        <div class="feild">
-            <label>Change Profile Image URL</label>
-            <input type="text" name="profileImage" value="<?php echo $targetData['profile_image_link']; ?>">
-            <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
-        </div>
-        
-    </form>
+            <div class="feild">
+                <label>Change User Name</label>
+                <input type="text" name="username" placeholder="<?php echo $targetData['username'] ?>" value="<?php echo $targetData['username'] ?>">
+                <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
+            </div>
+
+            <div class="feild">
+                <label>Change Email</label>
+                <input type="email" name="email" minlength="8" placeholder="<?php echo $targetData['email']; ?>" value="<?php echo $targetData['email']; ?>">
+                <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
+            </div>
+            <div class="feild">
+                <label>Change Profile Image URL</label>
+                <input type="text" name="profileImage" value="<?php echo $targetData['profile_image_link']; ?>">
+                <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
+            </div>
+
+        </form>
         <center>
             <a href="admin.php" class="editProfileHREF" style="width: 250px; height: auto; font-size: 17px;">Back to Dashboard</a>
         </center>
-    
-       
+
+
 
     </main>
-    
-</body>
-</html>
 
-    
+</body>
+
+</html>

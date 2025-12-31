@@ -17,7 +17,7 @@
     --color-text-medium_white: #666666;
     --color-text-light_white: #999999;
     --color-border_white: #e0e0e0;
-    --color-devider:#4a6fc7;
+    --color-devider: #4a6fc7;
 
     --card-border-radius: 0.35rem;
     --border-radius-1: 0.2rem;
@@ -29,7 +29,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 body {
@@ -37,7 +37,7 @@ body {
     color: var(--color-text-dark_white);
     font-family: var(--font-main);
     letter-spacing: .8px;
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
     text-decoration: none;
 }
 
@@ -60,7 +60,7 @@ header {
 
 .header-upper {
     width: 100%;
-    height: auto; 
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -77,12 +77,12 @@ header {
 .logo img {
     width: 100%;
     height: 100%;
-    object-fit: contain;   
+    object-fit: contain;
 }
 
 .profile {
     display: flex;
-    align-items: center;   
+    align-items: center;
     cursor: pointer;
     color: var(--color-text-dark_white);
     font-weight: bold;
@@ -112,7 +112,7 @@ header {
     border-top-left-radius: var(--border-radius-1);
     border-top-right-radius: var(--border-radius-1);
     color: var(--color-text-dark_white);
-    
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -154,7 +154,7 @@ header {
     font-size: 11px;
     width: 100%;
     height: 25px;
-    margin-right:90px ;
+    margin-right: 90px;
 }
 
 
@@ -175,17 +175,17 @@ header {
 }
 
 .header-lower span {
-    font-size: large; 
+    font-size: large;
     font-weight: bold;
-    color: black; 
+    color: black;
 }
 
-.header-lower img{
+.header-lower img {
     height: 30px;
     width: 30px;
 }
 
-.header-lower img:hover{
+.header-lower img:hover {
     cursor: pointer;
 }
 
@@ -206,6 +206,7 @@ header {
     background-color: #d2dfffff;
     color: #3a424a;
 }
+
 .login-link-Log-out {
     display: inline-block;
     margin-top: 15px;
@@ -226,9 +227,9 @@ header {
 
 main {
     position: relative;
-    margin: 0 13%; 
+    margin: 0 13%;
     display: grid;
-    grid-template-columns: 250px 1fr; 
+    grid-template-columns: 250px 1fr;
     margin-bottom: 150px;
     border-bottom: 1.5px solid var(--color-border_white);
     border-left: 1.5px solid var(--color-border_white);
@@ -272,10 +273,17 @@ main {
     margin-bottom: 5px;
 }
 
-.joined-row { margin-bottom: 15px; }
+.joined-row {
+    margin-bottom: 15px;
+}
 
-.status-online { color: green; }
-.text-blue { color: blue; }
+.status-online {
+    color: green;
+}
+
+.text-blue {
+    color: blue;
+}
 
 .list-btn-row {
     display: flex;
@@ -290,7 +298,7 @@ main {
     border: none;
     cursor: pointer;
     border-radius: 3px;
-    padding: 8px; 
+    padding: 8px;
     font-weight: bold;
 }
 

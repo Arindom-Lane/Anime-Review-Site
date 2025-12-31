@@ -16,9 +16,9 @@
 
     --border: #d0d7e2;
 
-    --card-border-radius: 0.35rem;
-    --border-radius-1: 0.2rem;
-    --border-radius-2: 0.4rem;
+    --card-border-radius: 0.35rem; 
+    --border-radius-1: 0.2rem; 
+    --border-radius-2: 0.4rem; 
     --border-radius-3: 0.8rem;
 }
 
@@ -40,7 +40,7 @@ body.dark-theme {
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; 
     font-size: medium;
 }
 
@@ -49,7 +49,7 @@ body {
     color: var(--text-primary);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     letter-spacing: .8px;
-    scroll-behavior: smooth;
+    scroll-behavior:smooth;
     text-decoration: none;
     overflow-x: hidden;
 }
@@ -57,7 +57,7 @@ body {
 
 
 header {
-    width: 100%;
+    width: 74%;
     margin: 0 auto;
     display: grid;
     grid-template-rows: auto auto auto;
@@ -71,7 +71,7 @@ header {
 
 .header-upper {
     width: 100%;
-    height: auto;
+    height: auto; 
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -83,19 +83,22 @@ header {
     display: flex;
     align-items: center;
     cursor: pointer;
-    margin-left: 10px;
+    
 }
 
 .logo img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white);
+    object-fit: contain;   
+    filter: drop-shadow(1px 0 0 white) 
+            drop-shadow(-1px 0 0 white) 
+            drop-shadow(0 1px 0 white) 
+            drop-shadow(0 -1px 0 white);
 }
 
 .profile {
     display: flex;
-    align-items: center;
+    align-items: center;   
     cursor: pointer;
     color: var(--text-primary);
     font-weight: bold;
@@ -115,7 +118,6 @@ header {
     border: 1px solid var(--border);
     margin-left: 10px;
 }
-
 .login-link-Log-out {
     display: inline-block;
     padding: 8px 25px;
@@ -125,14 +127,13 @@ header {
     font-weight: bold;
     font-size: 13px;
     border-radius: .5em;
-    margin: 10px 10px 10px 0;
+    margin: 10px 0;
 }
 
 .login-link-Log-out:hover {
     background-color: rgb(255, 210, 210);
     color: #4f0909;
 }
-
 .login-link {
     display: inline-block;
     padding: 8px 25px;
@@ -155,8 +156,7 @@ header {
 
 
 .header-middle {
-    background-color: var(--mal-blue);
-    ;
+    background-color: var(--mal-blue);;
     border-top-left-radius: var(--border-radius-1);
     border-top-right-radius: var(--border-radius-1);
     color: var(--text-primary);
@@ -205,7 +205,7 @@ header {
     font-size: 11px;
     width: 300px;
     height: 25px;
-
+    
 }
 
 .search::placeholder {
@@ -228,20 +228,19 @@ header {
 }
 
 .header-lower span {
-    font-size: large;
+    font-size: large; 
     font-weight: bold;
-    color: var(--text-primary);
+    color: var(--text-primary); 
 }
 
-.header-lower img {
+.header-lower img{
     height: 30px;
     width: 30px;
 }
 
-.header-lower img:hover {
+.header-lower img:hover{
     cursor: pointer;
 }
-
 body.dark-theme .header-lower {
     background: #182033;
 }
@@ -250,11 +249,9 @@ body.dark-theme .header-lower {
 
 main {
     position: relative;
-    margin: 0 1%;
+    margin: 0 1%; 
     margin-bottom: 150px;
     display: grid;
-    grid-template-columns: 250px 1fr;
-    border: 1px solid var(--border);
     background: var(--bg-page);
     font-weight: 600;
 }
@@ -268,31 +265,27 @@ main {
     background: var(--bg-sidebar);
     align-self: start;
 }
-
 .leftSide-Container {
     border: 1px solid var(--border);
     color: var(--text-primary);
 }
-
-.leftSection .leftSide-Container {
+.leftSection .leftSide-Container{
     display: grid;
-    grid-template-rows: repeat(auto-fill, max-content);
+    grid-template-rows: repeat(auto-fill, max-content); 
     grid-auto-rows: max-content;
     height: 100%;
-    gap: 15px;
+    gap:15px;
     padding: 20px;
     background-color: var(--bg-card);
     font-size: small;
     font-weight: bold;
     border-radius: var(--border-radius-2);
 }
-
-.leftSide-Container .editProfile {
-    margin: 0 auto;
-    margin-bottom: 10%;
+.leftSide-Container .editProfile{
+   margin: 0 auto;
+   margin-bottom: 10%;
 }
-
-.editProfileHREF {
+.editProfileHREF{
     display: block;
     padding: 8px 25px;
     background-color: var(--mal-blue);
@@ -303,27 +296,22 @@ main {
     border-radius: .5em;
 
 }
-
 .editProfileHREF:hover {
     background-color: #d2dfffff;
     color: #070943;
 }
-
-.leftSide-Container img {
+.leftSide-Container img{
     width: 100%;
     height: 100%;
     border-radius: var(--border-radius-2);
 }
-
 .sidebar-row {
     color: var(--text-secondary);
 }
-
 .sidebar-row:hover {
     background: var(--bg-hover);
 }
-
-.leftSide-Container .sidebar-row {
+.leftSide-Container .sidebar-row{
     display: flex;
     justify-content: space-between;
 }
@@ -338,14 +326,12 @@ main {
     height: auto;
     background: var(--bg-page);
 }
-
-.admin-grid {
+.admin-grid{
     display: grid;
     grid-template-columns: 1fr;
     gap: 25px;
 }
-
-.admin-box {
+.admin-box{
     background-color: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--border-radius-1);
@@ -353,18 +339,16 @@ main {
     padding: 15px;
     margin-bottom: 20px;
 }
-
 .media-overview form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 40px 40px 40px 40px;
-    gap: 10px;
-    max-width: 100%;
-    min-height: 20px;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 40px 40px 40px 40px; 
+  gap: 10px;
+  max-width: 100%;
+  min-height: 20px;
+  padding: 20px;
 }
-
-.admin-box .media-overview {
+.admin-box .media-overview{
     padding-top: 15px;
     margin-top: 10px;
     display: grid;
@@ -372,88 +356,75 @@ main {
     gap: 10px;
     border-top: .5px solid var(--color-primary_brand);
 }
-
-.media-overview div {
-    text-align: center;
+.media-overview div{
+    text-align: center; 
     padding: 10px;
 }
 
 
 .Description {
-    grid-column: span 2;
-    height: 300px;
+grid-column: span 2;
+height: 300px;
 }
-
-.admin-save,
-.lookUp {
-    grid-column: span 2;
-    width: 200px;
-    height: 40px;
-    font-size: 18px;
-    font-weight: 400;
-    border-radius: var(--border-radius-2);
-    margin: 0 auto;
-    margin-top: 15px;
-    background: var(--mal-blue);
-    color: white;
-    border: none;
-    cursor: pointer;
+.admin-save, .lookUp {
+grid-column: span 2;
+width: 200px;
+height: 40px;
+font-size: 18px;
+font-weight: 400;
+border-radius: var(--border-radius-2);
+margin: 0 auto;
+margin-top: 15px;
+background: var(--mal-blue);
+color: white;
+border: none;
+cursor: pointer;
 }
-
-.admin-save:hover,
-.lookUp:hover {
+.admin-save:hover, .lookUp:hover {
     background-color: var(--mal-blue-dark);
 }
 
 
-input,
-select,
-textarea {
-    background: var(--bg-sidebar);
-    border: 1px solid var(--border);
-    color: var(--text-primary);
-    padding: 8px;
-    border-radius: 4px;
+input, select, textarea {
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 8px;
+  border-radius: 4px;
 }
-
 input::placeholder {
     color: var(--text-muted);
 }
-
-.media-overview .adminFindsUser {
+.media-overview .adminFindsUser{
     display: flex;
-    margin-right: 15px;
+    margin-right: 15px ;
 }
 
-.admin-box table {
+.admin-box table{
     background-color: var(--bg-card);
     color: var(--text-primary);
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top:20px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: bold;
 }
-
-.admin-box table thead {
+.admin-box table thead{
     background-color: var(--mal-blue);
     color: white;
 }
 
-.admin-box table th,
-.admin-box table td {
+.admin-box table th, .admin-box table td{
     padding: 12px 15px;
     text-align: left;
 
 
 }
-
-.admin-box table tbody tr:hover {
-    background-color: var(--mal-blue-dark);
+.admin-box table tbody tr:hover { 
+    background-color: var(--mal-blue-dark); 
     color: white;
 }
-
 .admin-box table tbody tr:nth-child(even) {
-    background-color: var(--bg-hover);
+     background-color: var(--bg-hover);
 }
