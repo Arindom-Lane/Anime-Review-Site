@@ -165,7 +165,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0 11px;
-    height: 40px;
+    height: 35px;
 }
 
 .topButton {
@@ -174,9 +174,12 @@ header {
     margin-left: -10px;
     height: 10px;
 }
-
+.TOPANIME{
+    background-color: var(--mal-blue-light);
+    color: black;
+}
 .topButton span {
-    color: white;
+
     padding: 10px 13px;
     font-size: 12px;
     font-weight: bold;
@@ -194,6 +197,7 @@ header {
     color: var(--text-primary);
     border-radius: var(--border-radius-1);
 }
+
 
 .search {
     padding: 0 6px;
@@ -214,33 +218,6 @@ header {
 
 
 
-.header-lower {
-
-    background: var(--mal-blue-light);
-    color: var(--text-primary);
-    border-bottom: .5px solid var(--mal-blue);
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 40px;
-    padding: 0 11px;
-}
-
-.header-lower span {
-    font-size: large; 
-    font-weight: bold;
-    color: var(--text-primary); 
-}
-
-.header-lower img{
-    height: 30px;
-    width: 30px;
-}
-
-.header-lower img:hover{
-    cursor: pointer;
-}
 body.dark-theme .header-lower {
     background: #182033;
 }
@@ -263,7 +240,7 @@ main {
     color: var(--text-primary);
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+
     font-family: Arial, Helvetica, sans-serif;
     font-size: 5px;
 }

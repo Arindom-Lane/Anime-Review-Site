@@ -50,14 +50,13 @@ include("db.php");
         </div>
         <div class="header-middle">
             <div class="topButton">
-                <span>TOP ANIME</span>
-                <span>TOP MANGA</span>
+                <span onclick="window.location.href='top-Anime.php'">TOP ANIME</span>
+                <span class="TOPANIME">TOP MANGA</span>
             </div>
             <div class="search-bar">
                 <input class="search" type="text" placeholder="Search...">
             </div>
         </div>
-
     </header>
 
     <main>
@@ -72,7 +71,7 @@ include("db.php");
                 </thead>
                 <tbody>
                     <?php
-                    $result = mysqli_query($conn, "SELECT * FROM media WHERE type = 'tvshow' ORDER BY score DESC");
+                    $result = mysqli_query($conn, "SELECT * FROM media WHERE type = 'manga' ORDER BY score DESC");
                     if (mysqli_num_rows($result) > 0) {
                         foreach ($result as $row) {
                     ?>
