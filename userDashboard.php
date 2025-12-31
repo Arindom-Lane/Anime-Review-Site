@@ -127,14 +127,19 @@ function calculatePercentages($stats) {
         ];
     }
 
+    // FIX: Check if 'watching' key exists, otherwise use 'reading' (for Manga)
+    $watchingCount = isset($stats['watching']) ? $stats['watching'] : (isset($stats['reading']) ? $stats['reading'] : 0);
+    
+    // FIX: Check if 'plan_to_watch' key exists, otherwise use 'plan_to_read'
+    $planCount = isset($stats['plan_to_watch']) ? $stats['plan_to_watch'] : (isset($stats['plan_to_read']) ? $stats['plan_to_read'] : 0);
+
     // Return an array of percentages
     return [
-        'watching'  => ($stats['watching'] / $total) * 100,
+        'watching'  => ($watchingCount / $total) * 100,
         'completed' => ($stats['completed'] / $total) * 100,
         'on_hold'   => ($stats['on_hold'] / $total) * 100,
         'dropped'   => ($stats['dropped'] / $total) * 100,
-        // For manga, 'plan_to_read' maps to 'plan_to_watch' key logic here for simplicity
-        'plan'      => ((isset($stats['plan_to_watch']) ? $stats['plan_to_watch'] : $stats['plan_to_read']) / $total) * 100,
+        'plan'      => ($planCount / $total) * 100,
     ];
 }
 
@@ -318,12 +323,12 @@ $mangaPct = calculatePercentages($mangaStats);
 
                     <!-- MANGA PROGRESS BAR -->
                     <div class="main-progress-bar">
-                       <div class="stat-bar-segment bg-watching" style="width: <?php echo $mangaPct['watching']; ?>%" title="Reading"></div>
-                       <div class="stat-bar-segment bg-completed" style="width: <?php echo $mangaPct['completed']; ?>%" title="Completed"></div>
-                       <div class="stat-bar-segment bg-onhold" style="width: <?php echo $mangaPct['on_hold']; ?>%" title="On-Hold"></div>
-                       <div class="stat-bar-segment bg-dropped" style="width: <?php echo $mangaPct['dropped']; ?>%" title="Dropped"></div>
-                       <div class="stat-bar-segment bg-plan" style="width: <?php echo $mangaPct['plan']; ?>%" title="Plan to Read"></div>
-</div>
+                        <div class="stat-bar-segment bg-watching" style="width: <?php echo $mangaPct['watching']; ?>%" title="Reading"></div>
+                        <div class="stat-bar-segment bg-completed" style="width: <?php echo $mangaPct['completed']; ?>%" title="Completed"></div>
+                        <div class="stat-bar-segment bg-onhold" style="width: <?php echo $mangaPct['on_hold']; ?>%" title="On-Hold"></div>
+                        <div class="stat-bar-segment bg-dropped" style="width: <?php echo $mangaPct['dropped']; ?>%" title="Dropped"></div>
+                        <div class="stat-bar-segment bg-plan" style="width: <?php echo $mangaPct['plan']; ?>%" title="Plan to Read"></div>
+                    </div>
 
                     <div class="stats-grid">
                         <ul class="status-legend">
