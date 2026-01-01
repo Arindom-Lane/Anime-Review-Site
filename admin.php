@@ -80,7 +80,7 @@ if (isset($_SESSION['editUserMessage'])) {
                     <input class="search" id="search" type="text" name="search" placeholder="Search...">
                 </form>
                 <div class="search-results" id="search-results">
-                    
+
                 </div>
             </div>
             <script>
@@ -110,7 +110,23 @@ if (isset($_SESSION['editUserMessage'])) {
                 });
             </script>
         </div>
-
+        <div class="header-lower">
+            <span>Welcome, <?php echo strtoupper($_SESSION['username']); ?></span>
+            <form method="POST" action="adminLogic.php">
+                <?php if (isset($_SESSION['theme_mode'])): ?>
+                    <script>
+                        localStorage.setItem('theme', '<?php echo $_SESSION['theme_mode']; ?>');
+                    </script>
+                <?php endif; ?>
+                <button type="submit" name="theme-toggle" id="theme-toggle" class="login-link" value="1">
+                    <?php if (isset($_SESSION['theme_mode']) && $_SESSION['theme_mode'] == 'dark') {
+                        echo '☀️';
+                    } else {
+                        echo '🌙';
+                    } ?>
+                </button>
+            </form>
+        </div>
 
     </header>
     <main>
