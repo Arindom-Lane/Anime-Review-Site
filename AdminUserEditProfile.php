@@ -53,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
     <title>My AnimeList Dashboard</title>
     <script src="admin.js" defer></script>
     <link rel="stylesheet" href="AdminUserEditProfile.css">
+    <link rel="stylesheet" href="searchBar.css">
     <link rel="stylesheet" href="admin.css">
 
 </head>
@@ -79,7 +80,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
                 <span onclick="window.location.href='top-Manga.php'">TOP MANGA</span>
             </div>
             <div class="search-bar">
-                <input class="search" type="text" placeholder="Search...">
+                <div class="search-bar">
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <form method="POST">
+                        <input class="search" id="search" type="text" name="search" placeholder="Search...">
+                    </form>
+                    <div class="search-results" id="search-results">
+
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function() {
+                        $('#search').on('input', function() {
+                            var query = $(this).val();
+                            if (query.length > 2) {
+                                $.ajax({
+                                    url: 'searchBarLogic.php',
+                                    method: 'POST',
+                                    data: {
+                                        search: query
+                                    },
+                                    success: function(data) {
+                                        $('#search-results').html(data).show();
+                                    }
+                                });
+                            } else {
+                                $('#search-results').hide();
+                            }
+                        });
+                    });
+                </script>
             </div>
         </div>
         <div class="header-lower">
@@ -106,14 +136,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
             </div>
 
         </form>
-        
+
 
 
 
     </main>
     <center>
-            <a href="admin.php" class="editProfileHREF" style="width: 250px; height: auto; font-size: 17px;">Back to Dashboard</a>
-        </center>
+        <a href="admin.php" class="editProfileHREF" style="width: 250px; height: auto; font-size: 17px;">Back to Dashboard</a>
+    </center>
 
 </body>
 

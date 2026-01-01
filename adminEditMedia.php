@@ -78,6 +78,7 @@ if (mysqli_num_rows($targetUserId) > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
     <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="searchBar.css">
     <script src="admin.js" defer></script>
 </head>
 
@@ -97,7 +98,36 @@ if (mysqli_num_rows($targetUserId) > 0) {
                 <span onclick="window.location.href='top-Manga.php'">TOP MANGA</span>
             </div>
             <div class="search-bar">
-                <input class="search" type="text" placeholder="Search...">
+                <div class="search-bar">
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <form method="POST">
+                        <input class="search" id="search" type="text" name="search" placeholder="Search...">
+                    </form>
+                    <div class="search-results" id="search-results">
+                        
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function() {
+                        $('#search').on('input', function() {
+                            var query = $(this).val();
+                            if (query.length > 2) {
+                                $.ajax({
+                                    url: 'searchBarLogic.php',
+                                    method: 'POST',
+                                    data: {
+                                        search: query
+                                    },
+                                    success: function(data) {
+                                        $('#search-results').html(data).show();
+                                    }
+                                });
+                            } else {
+                                $('#search-results').hide();
+                            }
+                        });
+                    });
+                </script>
             </div>
         </div>
         <div class="header-lower">

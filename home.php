@@ -10,6 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList</title>
     <link rel="stylesheet" href="homeStyle.css">
+    <link rel="stylesheet" href="searchBar.css">
 </head>
 
 <body>
@@ -50,27 +51,45 @@ session_start();
             </div>
 
             <div class="search-bar">
-                <input class="search" type="text" placeholder="Search...">
+<div class="search-bar">
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <form method="POST">
+                    <input class="search" id="search" type="text" name="search" placeholder="Search...">
+                </form>
+                <div class="search-results" id="search-results">
+                    
+                </div>
             </div>
+            <script>
+                $(document).ready(function() {
+                    $('#search').on('input', function() {
+                        var query = $(this).val();
+                        if (query.length > 2) {
+                            $.ajax({
+                                url: 'searchBarLogic.php',
+                                method: 'POST',
+                                data: {
+                                    search: query
+                                },
+                                success: function(data) {
+                                    $('#search-results').html(data).show();
+                                }
+                            });
+                        } else {
+                            $('#search-results').hide();
+                        }
+                    });
+                    $(body).click(function(e) {
+                        if (!$(e.target).closest('.search-bar').length) {
+                            $('#search-results').hide();
+                        }
+                    });
+                });
+            </script>            </div>
         </div>
         <div class="header-lower">
             <span>Home Page</span>
-            <?php if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true): ?>
-                <form method="POST" action="adminLogic.php">
-                <?php if (isset($_SESSION['theme_mode'])): ?>
-                    <script>
-                        localStorage.setItem('theme', '<?php echo $_SESSION['theme_mode']; ?>');
-                    </script>
-                <?php endif; ?>
-                <button type="submit" name="theme-toggle" id="theme-toggle" class="login-link" value="1">
-                    <?php if (isset($_SESSION['theme_mode']) && $_SESSION['theme_mode'] == 'dark') {
-                        echo '☀️';
-                    } else {
-                        echo '🌙';
-                    } ?>
-                </button>
-            </form>
-            <?php endif; ?>
+            
         </div>
     </header>
 
