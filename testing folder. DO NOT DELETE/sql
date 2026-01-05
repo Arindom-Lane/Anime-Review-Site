@@ -86,29 +86,47 @@ CREATE TABLE Top_Mangas (
 );
 -------------------if need to insert------------------
 
--- User 3 Completed 'Spirited Away' (ID 1)
-INSERT INTO Watchlist (user_id, media_id, status) VALUES (3, 1, 'completed');
+-- WATCHLIST FOR USER ID 8
 
--- User 3 is Watching 'One Piece' (ID 5)
-INSERT INTO Watchlist (user_id, media_id, status) VALUES (3, 5, 'watching');
+-- 1. Completed Anime Classics
+INSERT INTO Watchlist (user_id, media_id, status)
+SELECT 8, media_id, 'completed'
+FROM Media 
+WHERE title IN (
+    'Fullmetal Alchemist: Brotherhood', 
+    'Steins;Gate', 
+    'Hunter x Hunter (2011)', 
+    'Code Geass: Hangyaku no Lelouch R2'
+);
 
--- User 3 Plans to Watch 'Jujutsu Kaisen' (ID 4)
-INSERT INTO Watchlist (user_id, media_id, status) VALUES (3, 4, 'plan_to_watch');
+-- 2. Currently Watching (Using Airing/Long Running titles)
+INSERT INTO Watchlist (user_id, media_id, status)
+SELECT 8, media_id, 'watching'
+FROM Media 
+WHERE title IN (
+    'One Piece', 
+    'Kingdom 6th Season', 
+    'Vinland Saga Season 2',
+    'Sousou no Frieren'
+);
 
--- User 3 Dropped 'Naruto' Manga (ID 8)
-INSERT INTO Watchlist (user_id, media_id, status) VALUES (3, 8, 'dropped');
+-- 3. Plan to Watch (Upcoming or Backlog)
+INSERT INTO Watchlist (user_id, media_id, status)
+SELECT 8, media_id, 'plan_to_watch'
+FROM Media 
+WHERE title IN (
+    'Sousou no Frieren 2nd Season',
+    'Jujutsu Kaisen: Shimetsu Kaiyuu',
+    'Re:Zero kara Hajimeru Isekai Seikatsu 4th Season',
+    'Berserk', -- Manga
+    'Vagabond' -- Manga
+);
 
--- User 3 is Reading 'Berserk' Manga (ID 6) - Note: DB uses 'watching' enum for active reading usually, or update enum
-INSERT INTO Watchlist (user_id, media_id, status) VALUES (3, 6, 'watching');
-
--- User 3 reviews Spirited Away (10/10)
-INSERT INTO Reviews (user_id, media_id, review_text, rating, status) 
-VALUES (3, 1, 'Absolute masterpiece!', 10, 'approved');
-
--- User 3 reviews One Piece (8/10)
-INSERT INTO Reviews (user_id, media_id, review_text, rating, status) 
-VALUES (3, 5, 'Too long but good.', 8, 'approved');
-
--- User 4 reviews Attack on Titan (9/10)
-INSERT INTO Reviews (user_id, media_id, review_text, rating, status) 
-VALUES (4, 3, 'The ending was shocking.', 9, 'approved');
+-- 4. Dropped (Maybe tried and didn't like)
+INSERT INTO Watchlist (user_id, media_id, status)
+SELECT 8, media_id, 'dropped'
+FROM Media 
+WHERE title IN (
+    'Grand Blue',
+    'Chainsaw Man Movie: Reze-hen'
+);
