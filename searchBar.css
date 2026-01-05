@@ -7,7 +7,7 @@
 
 .search-results {
     position: absolute;
-    background-color: var(--mal-blue);
+    background-color: #2e51a2;
     width: 300px;
     top: 15px;
     max-height: 500px;
@@ -15,7 +15,7 @@
     z-index: 2000;
     border-radius: 2px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--mal-blue-dark);
+    border: 1px solid #1a3274;
 
 }
 
@@ -39,7 +39,7 @@
 
 .search-results li {
     padding: 5px;
-    border-bottom: 1px solid var(--mal-blue-dark);
+    border-bottom: 1px solid #1a3274;
     color: white;
     cursor: pointer;
 

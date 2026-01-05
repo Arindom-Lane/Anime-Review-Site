@@ -118,8 +118,7 @@
                     <input class="search" id="search" type="text" name="search" placeholder="Search...">
                 </form>
                 <div class="search-results" id="search-results">
-                    Hii
-                    hello
+                    
                 </div>
             </div>
             <script>
