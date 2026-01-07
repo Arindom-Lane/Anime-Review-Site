@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("db.php");
 ?>
 
 <!DOCTYPE html>
@@ -51,45 +52,46 @@ session_start();
             </div>
 
             <div class="search-bar">
-<div class="search-bar">
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                <form method="POST">
-                    <input class="search" id="search" type="text" name="search" placeholder="Search...">
-                </form>
-                <div class="search-results" id="search-results">
-                    
+                <div class="search-bar">
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <form method="POST">
+                        <input class="search" id="search" type="text" name="search" placeholder="Search...">
+                    </form>
+                    <div class="search-results" id="search-results">
+
+                    </div>
                 </div>
+                <script>
+                    $(document).ready(function() {
+                        $('#search').on('input', function() {
+                            var query = $(this).val();
+                            if (query.length > 2) {
+                                $.ajax({
+                                    url: 'searchBarLogic.php',
+                                    method: 'POST',
+                                    data: {
+                                        search: query
+                                    },
+                                    success: function(data) {
+                                        $('#search-results').html(data).show();
+                                    }
+                                });
+                            } else {
+                                $('#search-results').hide();
+                            }
+                        });
+                        $(body).click(function(e) {
+                            if (!$(e.target).closest('.search-bar').length) {
+                                $('#search-results').hide();
+                            }
+                        });
+                    });
+                </script>
             </div>
-            <script>
-                $(document).ready(function() {
-                    $('#search').on('input', function() {
-                        var query = $(this).val();
-                        if (query.length > 2) {
-                            $.ajax({
-                                url: 'searchBarLogic.php',
-                                method: 'POST',
-                                data: {
-                                    search: query
-                                },
-                                success: function(data) {
-                                    $('#search-results').html(data).show();
-                                }
-                            });
-                        } else {
-                            $('#search-results').hide();
-                        }
-                    });
-                    $(body).click(function(e) {
-                        if (!$(e.target).closest('.search-bar').length) {
-                            $('#search-results').hide();
-                        }
-                    });
-                });
-            </script>            </div>
         </div>
         <div class="header-lower">
             <span>Home Page</span>
-            
+
         </div>
     </header>
 
@@ -120,31 +122,27 @@ session_start();
                 </div>
             </div>
 
-            <h3>Fall 2025 Anime</h3>
+            <h3>??</h3>
             <hr>
             <div class="fallList-wrapper">
                 <span class="left-arrowfallList">&lt;</span>
                 <span class="right-arrowfallList">&gt;</span>
                 <div class="fallList">
-
-                    <img src="https://cdn.myanimelist.net/images/anime/1168/148347.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1697/151793.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1959/151055.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1140/152364.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1190/151754.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1276/151118.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1206/151772.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1699/151694.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1364/151767.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1830/145051.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1163/151246.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1721/151097.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1011/152084.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1651/152063.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1864/151837.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1015/151233.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1264/152012.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1257/152233.jpg">
+                    <?php
+                    $currentQuery = 'SELECT media_id, title, poster_image_link FROM currentlyairingmedia LIMIT 15';
+                    $result = mysqli_query($conn, $currentQuery);
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                        <a href="media.php?id=<?php echo $row['media_id']; ?>">
+                            <img src="<?php echo $row['poster_image_link']; ?>" alt="<?php echo $row['title']; ?>">
+                        </a>
+                    <?php
+                        }
+                    } else {
+                        echo "<p>No media found.</p>";
+                    }
+                    ?>
                 </div>
             </div>
             <br>
