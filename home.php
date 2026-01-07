@@ -19,7 +19,7 @@ include("db.php");
 
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='userDashboard.php'">
-                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
+                <img src="download.png">
             </div>
             <div class="profile">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
@@ -134,7 +134,7 @@ include("db.php");
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                     ?>
-                        <a href="media.php?id=<?php echo $row['media_id']; ?>">
+                        <a href="mediaPageMain.php?id=<?php echo $row['media_id']; ?>">
                             <img src="<?php echo $row['poster_image_link']; ?>" alt="<?php echo $row['title']; ?>">
                         </a>
                     <?php
