@@ -5,7 +5,7 @@ include("db.php");
 /*if (isset($_GET['id'])) {
     $media_id = intval($_GET['id']);
 }*/
-$media_id=9;
+$media_id=9; // for testing purposes
 
 
 $user_id = null;
