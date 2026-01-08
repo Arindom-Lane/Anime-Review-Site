@@ -126,6 +126,7 @@ $reviews_result = mysqli_query($conn, $reviews_query);
                         <option value="watching" <?php if($current_status == 'watching') echo 'selected'; ?>>Watching</option>
                         <option value="completed" <?php if($current_status == 'completed') echo 'selected'; ?>>Completed</option>
                         <option value="dropped" <?php if($current_status == 'dropped') echo 'selected'; ?>>Dropped</option>
+                        <option value="on_hold" <?php if($current_status == 'on_hold') echo 'selected'; ?>>On Hold</option>
                     </select>
                     <button type="submit" name="update_watchlist" class="btn-action btn-blue">Update Status</button>
                 </form>
