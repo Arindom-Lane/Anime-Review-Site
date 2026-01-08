@@ -1,66 +1,108 @@
 <?php
 session_start();
 include("db.php");
-/*
-if (!isset($_GET['id'])) {
-    header("Location: home.php");
-    exit();
-}
 
-$media_id = intval($_GET['id']);
+/*if (isset($_GET['id'])) {
+    $media_id = intval($_GET['id']);
+}*/
+$media_id=9;
 
 
 $user_id = null;
+$username = "";
+$user_profile_pic = "https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg"; 
+
 if (isset($_SESSION['username'])) {
-    $username = $_SESSION['username'];
-    $u_query = mysqli_query($conn, "SELECT user_id FROM Users WHERE username = '$username'");
+    $username = mysqli_real_escape_string($conn, $_SESSION['username']);
+    
+    $u_query = mysqli_query($conn, "SELECT user_id, profile_image_link FROM Users WHERE username = '$username'");
     if ($u_row = mysqli_fetch_assoc($u_query)) {
         $user_id = $u_row['user_id'];
+        if (!empty($u_row['profile_image_link'])) {
+            $user_profile_pic = $u_row['profile_image_link'];
+        }
     }
 }
-*/
-$user_id = 7;
-$media_id = 13; // For testing purposes
+
 $msg = "";
 
+// --- 3. HANDLE WATCHLIST UPDATE ---
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_watchlist'])) {
-    $status = $_POST['status'];
-    $check_wl = mysqli_query($conn, "SELECT watchlist_id FROM Watchlist WHERE user_id = '$user_id' AND media_id = '$media_id'");
-    
-    if (mysqli_num_rows($check_wl) > 0) {
-        $update_wl = "UPDATE Watchlist SET status = '$status' WHERE user_id = '$user_id' AND media_id = '$media_id'";
-        mysqli_query($conn, $update_wl);
+    if ($user_id) {
+        $status = mysqli_real_escape_string($conn, $_POST['status']);
+        
+        $check_wl = mysqli_query($conn, "SELECT watchlist_id FROM Watchlist WHERE user_id = '$user_id' AND media_id = '$media_id'");
+        
+        if (mysqli_num_rows($check_wl) > 0) {
+            $update_wl = "UPDATE Watchlist SET status = '$status' WHERE user_id = '$user_id' AND media_id = '$media_id'";
+            mysqli_query($conn, $update_wl);
+        } else {
+            $insert_wl = "INSERT INTO Watchlist (user_id, media_id, status) VALUES ('$user_id', '$media_id', '$status')";
+            mysqli_query($conn, $insert_wl);
+        }
+        // Redirect with ID
+        header("Location: MediaPage.php?id=" . $media_id);
+        exit();
     } else {
-        $insert_wl = "INSERT INTO Watchlist (user_id, media_id, status) VALUES ('$user_id', '$media_id', '$status')";
-        mysqli_query($conn, $insert_wl);
+        header("Location: login.php");
+        exit();
     }
-    header("Location: MediaPage.php");
-    exit();
 }
 
+// --- 4. HANDLE REVIEW SUBMISSION ---
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_review'])) {
-    $rating = intval($_POST['rating']);
-    $review_text = mysqli_real_escape_string($conn, $_POST['review_text']);
-    
-    $insert_review = "INSERT INTO Reviews (user_id, media_id, review_text, rating, status) VALUES ('$user_id', '$media_id', '$review_text', '$rating', 'approved')";
-    if(mysqli_query($conn, $insert_review)){
-         $msg = "Review added!";
+    if ($user_id) {
+        $rating = intval($_POST['rating']);
+        $review_text = mysqli_real_escape_string($conn, $_POST['review_text']);
+        
+        $insert_review = "INSERT INTO Reviews (user_id, media_id, review_text, rating, status) VALUES ('$user_id', '$media_id', '$review_text', '$rating', 'approved')";
+        if(mysqli_query($conn, $insert_review)){
+             $msg = "Review added!";
+        }
+    } else {
+        header("Location: login.php");
+        exit();
     }
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['toggle_favorite'])) {
-    header("Location: MediaPage.php");
-    exit();
+    if ($user_id) {
+        $check_fav = mysqli_query($conn, "SELECT favorite_id FROM Favorites WHERE user_id = '$user_id' AND media_id = '$media_id'");
+        
+        if (mysqli_num_rows($check_fav) > 0) {
+            mysqli_query($conn, "DELETE FROM Favorites WHERE user_id = '$user_id' AND media_id = '$media_id'");
+        } else {
+            mysqli_query($conn, "INSERT INTO Favorites (user_id, media_id) VALUES ('$user_id', '$media_id')");
+        }
+        header("Location: MediaPage.php?id=" . $media_id);
+    } else {
+        header("Location: login.php");
+        exit();
+    }
 }
 
 $query = "SELECT * FROM Media WHERE media_id = '$media_id'";
 $result = mysqli_query($conn, $query);
+
+if (mysqli_num_rows($result) == 0) {
+    echo "Media not found (ID: $media_id).";
+    exit();
+}
 $media = mysqli_fetch_assoc($result);
 
 $current_status = "plan_to_watch";
-$wl_query = mysqli_query($conn, "SELECT status FROM Watchlist WHERE user_id = '$user_id' AND media_id = '$media_id'");
-if ($row = mysqli_fetch_assoc($wl_query)) {
-    $current_status = $row['status'];
+$is_favorite = false;
+
+if ($user_id) {
+    $wl_query = mysqli_query($conn, "SELECT status FROM Watchlist WHERE user_id = '$user_id' AND media_id = '$media_id'");
+    if ($row = mysqli_fetch_assoc($wl_query)) {
+        $current_status = $row['status'];
+    }
+
+    $fav_query = mysqli_query($conn, "SELECT favorite_id FROM Favorites WHERE user_id = '$user_id' AND media_id = '$media_id'");
+    if (mysqli_num_rows($fav_query) > 0) {
+        $is_favorite = true;
+    }
 }
 
 $reviews_query = "SELECT r.*, u.username, u.profile_image_link 
@@ -87,13 +129,17 @@ $reviews_result = mysqli_query($conn, $reviews_query);
     <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='userDashboard.php'">
-                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
+                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200" alt="Logo">
             </div>
             <div class="profile">
                 <div class="devider1"></div>
-                <span class="profile-name">User #7</span>
-                <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg" alt="Profile">
-                <a href="#" class="login-link-Log-out">Log Out</a>
+                <?php if ($user_id): ?>
+                    <span class="profile-name" onclick="window.location.href='userDashboard.php'"><?php echo htmlspecialchars($username); ?></span>
+                    <img src="<?php echo htmlspecialchars($user_profile_pic); ?>" alt="Profile" onclick="window.location.href='userDashboard.php'">
+                    <a href="logout.php" class="login-link-Log-out">Log Out</a>
+                <?php else: ?>
+                    <a href="login.php" class="login-link">Log In</a>
+                <?php endif; ?>
             </div>
         </div>
         <div class="header-middle">
@@ -111,15 +157,17 @@ $reviews_result = mysqli_query($conn, $reviews_query);
     </header>
 
     <main>
-        <!-- LEFT SIDEBAR: User Actions (Poster, Status, Favorite, Review Form) -->
+        <!-- LEFT SIDEBAR -->
         <div class="leftSection">
             
             <div class="media-poster-container">
                 <img src="<?php echo htmlspecialchars($media['poster_image_link']); ?>" alt="Poster" class="media-poster">
             </div>
 
+            <!-- WATCHLIST STATUS -->
             <div class="sidebar-fieldset">
                 <div class="sidebar-header"><h3>Edit Status</h3></div>
+                <?php if ($user_id): ?>
                 <form method="POST">
                     <select name="status" class="status-select">
                         <option value="plan_to_watch" <?php if($current_status == 'plan_to_watch') echo 'selected'; ?>>Plan to Watch</option>
@@ -130,18 +178,29 @@ $reviews_result = mysqli_query($conn, $reviews_query);
                     </select>
                     <button type="submit" name="update_watchlist" class="btn-action btn-blue">Update Status</button>
                 </form>
+                <?php else: ?>
+                    <p style="font-size:12px; text-align:center;">Please <a href="login.php" style="color:blue;">login</a> to update status.</p>
+                <?php endif; ?>
             </div>
 
+             <!-- FAVORITES BUTTON -->
              <div class="sidebar-fieldset" style="margin-top: 10px;">
+                <?php if ($user_id): ?>
                 <form method="POST">
                      <button type="submit" name="toggle_favorite" class="btn-action btn-pink">
-                        <i class="fas fa-heart"></i> Add to Favorites
+                        <i class="<?php echo $is_favorite ? 'fas' : 'far'; ?> fa-heart"></i> 
+                        <?php echo $is_favorite ? 'Remove Favorite' : 'Add to Favorites'; ?>
                      </button>
                 </form>
+                <?php else: ?>
+                    <button class="btn-action btn-pink" onclick="window.location.href='login.php'">Add to Favorites</button>
+                <?php endif; ?>
             </div>
 
+            <!-- REVIEW FORM -->
             <div class="sidebar-fieldset" style="margin-top: 10px;">
                 <div class="sidebar-header"><h3>Rate & Review</h3></div>
+                <?php if ($user_id): ?>
                 <form method="POST">
                     <div style="margin-bottom:8px;">
                         <label style="font-size:11px; font-weight:bold;">Your Score:</label>
@@ -162,6 +221,9 @@ $reviews_result = mysqli_query($conn, $reviews_query);
                     <button type="submit" name="submit_review" class="btn-action btn-blue">Submit Review</button>
                     <?php if($msg) echo "<div style='color:green; font-size:11px; margin-top:5px; text-align:center;'>$msg</div>"; ?>
                 </form>
+                <?php else: ?>
+                    <p style="font-size:12px; text-align:center;">Please <a href="login.php" style="color:blue;">login</a> to review.</p>
+                <?php endif; ?>
             </div>
 
         </div>
@@ -207,7 +269,7 @@ $reviews_result = mysqli_query($conn, $reviews_query);
                         <?php while ($review = mysqli_fetch_assoc($reviews_result)): ?>
                             <div class="review-item">
                                 <div class="review-avatar">
-                                    <img src="<?php echo $review['profile_image_link']; ?>" alt="User">
+                                    <img src="<?php echo !empty($review['profile_image_link']) ? $review['profile_image_link'] : 'https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg'; ?>" alt="User">
                                 </div>
                                 <div class="review-content">
                                     <div class="review-meta">
