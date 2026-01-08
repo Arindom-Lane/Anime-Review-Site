@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
 
         if (password_verify($password, $user["password"])) {
 
-            
+
 
             $_SESSION['loggedIn'] = true;
             $_SESSION['username'] = $name;
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
                 mysqli_query($conn, $insertUserSettingQuery);
                 $_SESSION['theme_mode'] = 'light';
             }
-            
+
             header("Location: home.php");
             exit();
         } else {
@@ -156,6 +156,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
             font-size: 12px;
             color: #ffffffff;
         }
+
+        .logo {
+            width: 300px;
+            height: auto;
+            align-items: center;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white);
+        }
     </style>
 </head>
 
@@ -169,7 +183,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
         <h2>Start Using MyAnimeList</h2>
 
         <form method="POST">
-            <img src="download.png">
+            <div class="logo">
+                <img src="download.png">
+            </div>
             <div class="feild">
                 <label>User name</label>
                 <input type="text" name="username" required>

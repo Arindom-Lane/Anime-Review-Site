@@ -21,7 +21,7 @@ include("db.php");
     <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='home.php'">
-                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
+                <img src="download.png" alt="Logo">
             </div>
             <div class="profile">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>

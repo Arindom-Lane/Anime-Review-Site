@@ -63,15 +63,16 @@ if (isset($_SESSION['editUserMessage'])) {
     <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='home.php'">
-                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
+                <img src="download.png" alt="Logo">
             </div>
             <div class="profile">
+                <a href="admin.php" class="login-link">Dashboard</a>
                 <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
             </div>
         </div>
         <div class="header-middle">
             <div class="topButton">
-                <span onclick="window.location.href='admin.php'">  く  </span>
+                <span onclick="window.location.href='admin.php'"> く </span>
             </div>
             <div class="search-bar">
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

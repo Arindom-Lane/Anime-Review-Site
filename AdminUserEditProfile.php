@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
     <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='home.php'">
-                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
+                <img src="download.png" alt="Logo">
             </div>
             <div class="profile" onclick="window.location.href='userDashboard.php'">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
@@ -76,8 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
         </div>
         <div class="header-middle">
             <div class="topButton">
-                <span onclick="window.location.href='top-Anime.php'">TOP ANIME</span>
-                <span onclick="window.location.href='top-Manga.php'">TOP MANGA</span>
+                <span onclick="window.location.href='admin.php'"> く </span>
             </div>
             <div class="search-bar">
                 <div class="search-bar">

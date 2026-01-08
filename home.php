@@ -18,7 +18,7 @@ include("db.php");
     <header>
 
         <div class="header-upper">
-            <div class="logo" onclick="window.location.href='userDashboard.php'">
+            <div class="logo">
                 <img src="download.png">
             </div>
             <div class="profile">
