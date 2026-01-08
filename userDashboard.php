@@ -305,8 +305,7 @@ $mangaPct = calculatePercentages($mangaStats);
                         </ul>
                         <ul class="status-totals">
                             <li><span>Total Entries</span> <span><?php echo $animeStats['total']; ?></span></li>
-                            <li><span>Rewatched</span> <span>0</span></li>
-                            <li><span>Episodes</span> <span>0</span></li>
+                           
                         </ul>
                     </div>
                 </div>
@@ -319,19 +318,6 @@ $mangaPct = calculatePercentages($mangaStats);
                     <div class="update-item">
                         <div class="no-updates">
                             No updates yet. <a href="#">Edit list now.</a>
-                            <!--
-                <img src="https://cdn.myanimelist.net/images/anime/1697/151793.jpg" alt="Anime Image">
-                <div class="update-info">
-                    <a href="#" class="title-link">Spy x Family Season 3</a>
-                    <div class="thin-progress-bar">
-                        <div class="fill green" style="width: 100%;"></div>
-                    </div>
-                    <div class="update-meta">
-                        <span>Watching <strong>13</strong>/13 · Scored -</span>
-                        <span class="date">Dec 5, 9:37 AM</span>
-                    </div> 
-                </div>
--->
                         </div>
                     </div>
                 </div>
@@ -369,9 +355,7 @@ $mangaPct = calculatePercentages($mangaStats);
                         </ul>
                         <ul class="status-totals">
                             <li><span>Total Entries</span> <span><?php echo $mangaStats['total']; ?></span></li>
-                            <li><span>Reread</span> <span>0</span></li>
-                            <li><span>Chapters</span> <span>0</span></li>
-                            <li><span>Volumes</span> <span>0</span></li>
+                            
                         </ul>
                     </div>
                 </div>
