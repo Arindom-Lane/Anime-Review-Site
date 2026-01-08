@@ -132,7 +132,7 @@ $reviews_result = mysqli_query($conn, $reviews_query);
     <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='userDashboard.php'">
-                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200" alt="Logo">
+                <img src="download.png" alt="Logo">
             </div>
             <div class="profile">
                 <div class="devider1"></div>

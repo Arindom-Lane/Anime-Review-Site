@@ -86,16 +86,16 @@ if (mysqli_num_rows($targetUserId) > 0) {
     <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='home.php'">
-                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
+                <img src="download.png" alt="Logo">
             </div>
             <div class="profile">
+                <a href="admin.php" class="login-link">Dashboard</a>
                 <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
             </div>
         </div>
         <div class="header-middle">
             <div class="topButton">
-                <span onclick="window.location.href='top-Anime.php'">TOP ANIME</span>
-                <span onclick="window.location.href='top-Manga.php'">TOP MANGA</span>
+                <span onclick="window.location.href='admin.php'">  く  </span>
             </div>
             <div class="search-bar">
                 <div class="search-bar">

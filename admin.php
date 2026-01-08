@@ -63,7 +63,7 @@ if (isset($_SESSION['editUserMessage'])) {
     <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='home.php'">
-                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
+                <img src="download.png" alt="Logo">
             </div>
             <div class="profile">
                 <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
@@ -143,19 +143,19 @@ if (isset($_SESSION['editUserMessage'])) {
                     <span class="status-online" style="color: GREEN;">ONLINE</span>
                 </div>
                 <div class="editProfile">
-                    <a href="UserEditProfile.php" class="editProfileHREF">Edit Profile</a>
+                    <a href="userDashboard.php" class="editProfileHREF">User Profile</a>
                 </div>
             </div>
         </div>
 
         <div class="rightsection">
             <div class="admin-box"> <!-- show media count -->
-                <h2>Meida Overview</h2>
+                <h2>Site Overview</h2>
                 <div class="media-overview">
-                    <span>Users</span>
-                    <span>Media</span>
-                    <span>Anime</span>
-                    <span>Manga</span>
+                    <span>Users: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users")); ?></span>
+                    <span>Media: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT * FROM media")); ?></span>
+                    <span>TV-shows: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT * FROM media WHERE type = 'tvshow'")); ?></span>
+                    <span>Mangas: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT * FROM media WHERE type = 'manga'")); ?></span>
                 </div>
             </div>
             <div class="admin-box"><!-- User Management -->
