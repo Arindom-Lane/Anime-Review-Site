@@ -48,7 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_review'])) {
     }
 }
 
-// --- 3. Handle Favorites (Simulation) ---
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['toggle_favorite'])) {
     header("Location: MediaPage.php");
     exit();
@@ -58,14 +57,12 @@ $query = "SELECT * FROM Media WHERE media_id = '$media_id'";
 $result = mysqli_query($conn, $query);
 $media = mysqli_fetch_assoc($result);
 
-// Fetch Current Status
 $current_status = "plan_to_watch";
 $wl_query = mysqli_query($conn, "SELECT status FROM Watchlist WHERE user_id = '$user_id' AND media_id = '$media_id'");
 if ($row = mysqli_fetch_assoc($wl_query)) {
     $current_status = $row['status'];
 }
 
-// Fetch Reviews
 $reviews_query = "SELECT r.*, u.username, u.profile_image_link 
                   FROM Reviews r 
                   JOIN Users u ON r.user_id = u.user_id 
@@ -83,7 +80,6 @@ $reviews_result = mysqli_query($conn, $reviews_query);
     <link rel="stylesheet" href="homeStyle.css">
     <link rel="stylesheet" href="searchBar.css">
     <link rel="stylesheet" href="MediaPage.css"> 
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -118,12 +114,10 @@ $reviews_result = mysqli_query($conn, $reviews_query);
         <!-- LEFT SIDEBAR: User Actions (Poster, Status, Favorite, Review Form) -->
         <div class="leftSection">
             
-            <!-- 1. Poster -->
             <div class="media-poster-container">
                 <img src="<?php echo htmlspecialchars($media['poster_image_link']); ?>" alt="Poster" class="media-poster">
             </div>
 
-            <!-- 2. Watchlist Status -->
             <div class="sidebar-fieldset">
                 <div class="sidebar-header"><h3>Edit Status</h3></div>
                 <form method="POST">
@@ -137,7 +131,6 @@ $reviews_result = mysqli_query($conn, $reviews_query);
                 </form>
             </div>
 
-            <!-- 3. Favorite Button -->
              <div class="sidebar-fieldset" style="margin-top: 10px;">
                 <form method="POST">
                      <button type="submit" name="toggle_favorite" class="btn-action btn-pink">
@@ -146,7 +139,6 @@ $reviews_result = mysqli_query($conn, $reviews_query);
                 </form>
             </div>
 
-            <!-- 4. Review & Rate Form (Moved to Left) -->
             <div class="sidebar-fieldset" style="margin-top: 10px;">
                 <div class="sidebar-header"><h3>Rate & Review</h3></div>
                 <form method="POST">
@@ -173,10 +165,8 @@ $reviews_result = mysqli_query($conn, $reviews_query);
 
         </div>
 
-        <!-- RIGHT SECTION: Details, Synopsis, Reviews List -->
         <div class="rightSection">
             
-            <!-- Score & Rank Header -->
             <div class="media-header-bar">
                 <div class="score-container">
                     <span class="score-label">SCORE</span>
@@ -188,7 +178,6 @@ $reviews_result = mysqli_query($conn, $reviews_query);
                 </div>
             </div>
 
-            <!-- Synopsis -->
             <div class="content-block">
                 <h2 class="section-heading">Synopsis</h2>
                 <p class="synopsis-text">
@@ -196,7 +185,6 @@ $reviews_result = mysqli_query($conn, $reviews_query);
                 </p>
             </div>
 
-            <!-- Media Details (Moved to Right - Full Width) -->
             <div class="content-block">
                 <h2 class="section-heading">Details</h2>
                 <div class="details-grid">
@@ -211,7 +199,6 @@ $reviews_result = mysqli_query($conn, $reviews_query);
                 </div>
             </div>
 
-            <!-- User Reviews List -->
             <div class="content-block">
                 <h2 class="section-heading">User Reviews</h2>
                 <div class="reviews-list">
