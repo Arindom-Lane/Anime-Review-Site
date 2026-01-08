@@ -133,17 +133,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
                 <input type="text" name="profileImage" value="<?php echo $targetData['profile_image_link']; ?>">
                 <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
             </div>
-
         </form>
-
-
-
-
     </main>
-    <center>
-        <a href="admin.php" class="editProfileHREF" style="width: 250px; height: auto; font-size: 17px;">Back to Dashboard</a>
-    </center>
-
 </body>
 
 </html>
