@@ -130,3 +130,13 @@ WHERE title IN (
     'Grand Blue',
     'Chainsaw Man Movie: Reze-hen'
 );
+
+CREATE TABLE Favorites (
+    favorite_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    media_id INT,
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (media_id) REFERENCES Media(media_id),
+    UNIQUE(user_id, media_id) -- Prevents duplicate favorites
+);
