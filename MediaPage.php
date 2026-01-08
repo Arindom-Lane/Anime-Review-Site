@@ -20,7 +20,7 @@ if (isset($_SESSION['username'])) {
 }
 */
 $user_id = 7;
-$media_id = 10; // For testing purposes
+$media_id = 13; // For testing purposes
 $msg = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_watchlist'])) {
