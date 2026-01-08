@@ -1,11 +1,20 @@
 <?php
 session_start();
 include("db.php");
+$media_id = NULL;
+if(isset($_GET['id'])){
+    $media_id = $_GET['id'];
+    $sql = "SELECT * FROM currentlyairingmedia WHERE media_id = $media_id";
+    $result = mysqli_query($conn,$sql);
+    $media = mysqli_fetch_assoc($result);
 
-/*if (isset($_GET['id'])) {
-    $media_id = intval($_GET['id']);
-}*/
-$media_id=9; // for testing purposes
+    if(!$media){
+        echo "Media not found.";
+        header("Location: home.php");
+        exit();
+    }
+    
+}
 
 
 $user_id = null;
@@ -81,14 +90,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['toggle_favorite'])) {
     }
 }
 
-$query = "SELECT * FROM Media WHERE media_id = '$media_id'";
-$result = mysqli_query($conn, $query);
 
-if (mysqli_num_rows($result) == 0) {
-    echo "Media not found (ID: $media_id).";
-    exit();
-}
-$media = mysqli_fetch_assoc($result);
+
 
 $current_status = "plan_to_watch";
 $is_favorite = false;

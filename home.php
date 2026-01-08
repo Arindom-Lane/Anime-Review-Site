@@ -134,7 +134,7 @@ include("db.php");
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                     ?>
-                        <a href="mediaPageMain.php?id=<?php echo $row['media_id']; ?>">
+                        <a href="MediaPage.php?id=<?php echo $row['media_id']; ?>">
                             <img src="<?php echo $row['poster_image_link']; ?>" alt="<?php echo $row['title']; ?>">
                         </a>
                     <?php

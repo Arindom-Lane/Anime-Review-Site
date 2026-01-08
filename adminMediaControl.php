@@ -71,7 +71,7 @@ if (isset($_SESSION['editUserMessage'])) {
         </div>
         <div class="header-middle">
             <div class="topButton">
-                <span onclick="window.location.href='adminMediaControl.php'">Home Control</span>
+                <span onclick="window.location.href='admin.php'">  く  </span>
             </div>
             <div class="search-bar">
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -149,50 +149,48 @@ if (isset($_SESSION['editUserMessage'])) {
         </div>
 
         <div class="rightsection">
-            <div class="admin-box"> <!-- show media count -->
-                <h2>Meida Overview</h2>
-                <div class="media-overview">
-                    <span>Users</span>
-                    <span>Media</span>
-                    <span>Anime</span>
-                    <span>Manga</span>
-                </div>
-            </div>
-            <div class="admin-box"><!-- User Management -->
-                <h2 class="main-header">User Management</h2>
+            <div class="admin-box"><!-- Media Management -->
+                <h2 class="main-header">Media Management</h2>
                 <form method="GET">
-                    <input type="search" name="search" style="min-width:400px;" placeholder="User name, Email.." required value="<?php if (isset($_GET['search'])) {
-                                                                                                                                        echo $_GET['search'];
-                                                                                                                                    } ?>">
+                    <input type="search" name="searchMedia" style="min-width:400px;" placeholder="Movie, TV-show, Manga.." required value="<?php if (isset($_GET['searchMedia'])) {
+                                                                                                                                                echo $_GET['searchMedia'];
+                                                                                                                                            } ?>">
                     <button type="submit" class="lookUp" style="margin-left:15px;">Look Up</button>
                 </form>
 
                 <table>
                     <thead>
                         <tr>
-                            <th>User ID</th>
-                            <th>Name</th>
-                            <th>Mail</th>
+                            <th>Title</th>
+                            <th>Poster</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="font-size: 5px;">
 
                         <?php
-                        if (isset($_GET['search'])) {
-                            $filterValue = $_GET['search'];
-                            $result = mysqli_query($conn, "SELECT * FROM users WHERE CONCAT(username,email,user_id) LIKE '%$filterValue%'");
-                            unset($filterValue);
-                            if (mysqli_num_rows(result: $result) > 0) {
+                        if (isset($_GET['searchMedia'])) {
+                            $filterValue = $_GET['searchMedia'];
+                            $result = mysqli_query($conn, "SELECT * FROM media WHERE CONCAT(title,media_id) LIKE '%$filterValue%'");
+
+                            if (mysqli_num_rows($result) > 0) {
                                 foreach ($result as $row) {
                         ?>
                                     <tr>
-                                        <td><?php echo $row['user_id'] ?></td>
-                                        <td><?php echo $row['username'] ?></td>
-                                        <td><?php echo $row['email'] ?></td>
+                                        <td><strong><?php echo $row['title'] ?></strong><br><br>
+                                            <?php echo $row['description'] ?><br><br>
+                                            <hr>
+                                            <strong>type:</strong> <?php echo $row['type'] ?>,
+                                            <strong>score:</strong> <?php echo $row['score'] ?>,
+                                            <strong>studio:</strong> <?php echo $row['studio'] ?>,
+                                            <strong>source:</strong> <?php echo $row['source'] ?>
+                                            <hr><br><br>
+
+                                        </td>
+                                        <td><img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:100px; height:auto;"></td>
                                         <td style="display: flex;">
-                                            <a href="AdminUserEditProfile.php?id=<?php echo $row['user_id']; ?>" class="editProfileHREF" style="width: 150px; height: auto; text-align: center; margin-right: 10px;">Edit</a>
-                                            <a href="adminDeleteUser.php?id=<?php echo $row['user_id']; ?>" class="editProfileHREF" style="width: 150px; height: auto; text-align: center;" onclick="return confirm('Delete this user?')">Delete</a>
+                                            <a href="adminEditMedia.php?id=<?php echo $row['media_id']; ?>" name="editMediaData" class="editProfileHREF" style="width: 150px; height: auto; text-align: center; margin-right: 10px;">Edit</a>
+                                            <a href="adminDeleteMedia.php?id=<?php echo $row['media_id']; ?>" class="editProfileHREF" style="width: 150px; height: auto; text-align: center;" onclick="return confirm('Delete this media?')">Delete</a>
                                         </td>
                                     </tr>
                                 <?php
@@ -208,6 +206,27 @@ if (isset($_SESSION['editUserMessage'])) {
                         ?>
                     </tbody>
                 </table>
+            </div>
+            <div class="admin-box"><!-- Create media form -->
+                <h2 class="main-header">Create Media</h2>
+                <div class="media-overview">
+                    <form method="POST" action="adminCreate.php">
+                        <input name="title" placeholder="Title">
+                        <select name="type">
+                            <option value="movie">Movie</option>
+                            <option value="tvshow">TV Show</option>
+                            <option value="manga">Manga</option>
+                        </select>
+                        <input name="poster" placeholder="Poster URL" class="Poster">
+                        <input name="studio" placeholder="Studio" class="Studio">
+                        <input name="producer" placeholder="Producer" class="Producer">
+                        <input name="genre" placeholder="Genre" class="Genre">
+                        <input name="duration" placeholder="Duration" class="Duration">
+                        <input name="source" placeholder="Source" class="Source">
+                        <textarea name="description" placeholder="Description. HTMl syntax (Optional)" class="Description"></textarea>
+                        <button type="submit" class="admin-save" onclick="return confirm('Insert this media?')">Save Media</button>
+                    </form>
+                </div>
             </div>
     </main>
 </body>
