@@ -2,19 +2,7 @@
 session_start();
 include("db.php");
 
-if(isset($_GET['id'])){
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM currentlyairingmedia WHERE media_id = $id";
-    $result = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_array($result);
 
-    if(!$row){
-        echo "Media not found.";
-        header("Location: home.php");
-        exit();
-    }
-    
-}
 
 ?>
 <!DOCTYPE html>
