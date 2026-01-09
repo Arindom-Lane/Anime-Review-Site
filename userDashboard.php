@@ -4,11 +4,11 @@ include("db.php");
 
 // Initialize default stats
 $animeStats = [
-    'watching' => 0, 'completed' => 0, 'on_hold' => 0, 'dropped' => 0, 'plan_to_watch' => 0, 
+    'watching' => 0, 'completed' => 0, 'dropped' => 0, 'plan_to_watch' => 0, 
     'total' => 0, 'mean_score' => 0.00
 ];
 $mangaStats = [
-    'reading' => 0, 'completed' => 0, 'on_hold' => 0, 'dropped' => 0, 'plan_to_read' => 0, 
+    'reading' => 0, 'completed' => 0, 'dropped' => 0, 'plan_to_read' => 0, 
     'total' => 0, 'mean_score' => 0.00
 ];
 
@@ -72,7 +72,7 @@ if ($conn) {
         return [
             'watching'      => isset($data['watching']) ? $data['watching'] : 0,
             'completed'     => isset($data['completed']) ? $data['completed'] : 0,
-            'on_hold'       => isset($data['on_hold']) ? $data['on_hold'] : 0,
+            
             'dropped'       => isset($data['dropped']) ? $data['dropped'] : 0,
             'plan_to_watch' => isset($data['plan_to_watch']) ? $data['plan_to_watch'] : 0,
             'total'         => array_sum($data),
@@ -90,7 +90,7 @@ if ($conn) {
     $mangaStats = [
         'reading'      => $mangaData['watching'],
         'completed'    => $mangaData['completed'],
-        'on_hold'      => $mangaData['on_hold'],
+        
         'dropped'      => $mangaData['dropped'],
         'plan_to_read' => $mangaData['plan_to_watch'],
         'total'        => $mangaData['total'],
@@ -122,7 +122,7 @@ function calculatePercentages($stats) {
     // Avoid division by zero
     if ($total == 0) {
         return [
-            'watching' => 0, 'completed' => 0, 'on_hold' => 0, 
+            'watching' => 0, 'completed' => 0, 
             'dropped' => 0, 'plan' => 0
         ];
     }
@@ -137,7 +137,6 @@ function calculatePercentages($stats) {
     return [
         'watching'  => ($watchingCount / $total) * 100,
         'completed' => ($stats['completed'] / $total) * 100,
-        'on_hold'   => ($stats['on_hold'] / $total) * 100,
         'dropped'   => ($stats['dropped'] / $total) * 100,
         'plan'      => ($planCount / $total) * 100,
     ];
@@ -290,7 +289,6 @@ $mangaPct = calculatePercentages($mangaStats);
                      <div class="main-progress-bar">
                         <div class="stat-bar-segment bg-watching" style="width: <?php echo $animePct['watching']; ?>%" title="Watching"></div>
                         <div class="stat-bar-segment bg-completed" style="width: <?php echo $animePct['completed']; ?>%" title="Completed"></div>
-                        <div class="stat-bar-segment bg-onhold" style="width: <?php echo $animePct['on_hold']; ?>%" title="On-Hold"></div>
                         <div class="stat-bar-segment bg-dropped" style="width: <?php echo $animePct['dropped']; ?>%" title="Dropped"></div>
                         <div class="stat-bar-segment bg-plan" style="width: <?php echo $animePct['plan']; ?>%" title="Plan to Watch"></div>
                     </div>
@@ -299,7 +297,6 @@ $mangaPct = calculatePercentages($mangaStats);
                         <ul class="status-legend">
                             <li><span class="dot watching"></span> Watching <span class="count"><?php echo $animeStats['watching']; ?></span></li>
                             <li><span class="dot completed"></span> Completed <span class="count"><?php echo $animeStats['completed']; ?></span></li>
-                            <li><span class="dot onhold"></span> On-Hold <span class="count"><?php echo $animeStats['on_hold']; ?></span></li>
                             <li><span class="dot dropped"></span> Dropped <span class="count"><?php echo $animeStats['dropped']; ?></span></li>
                             <li><span class="dot plan"></span> Plan to Watch <span class="count"><?php echo $animeStats['plan_to_watch']; ?></span></li>
                         </ul>
@@ -340,7 +337,6 @@ $mangaPct = calculatePercentages($mangaStats);
                     <div class="main-progress-bar">
                         <div class="stat-bar-segment bg-watching" style="width: <?php echo $mangaPct['watching']; ?>%" title="Reading"></div>
                         <div class="stat-bar-segment bg-completed" style="width: <?php echo $mangaPct['completed']; ?>%" title="Completed"></div>
-                        <div class="stat-bar-segment bg-onhold" style="width: <?php echo $mangaPct['on_hold']; ?>%" title="On-Hold"></div>
                         <div class="stat-bar-segment bg-dropped" style="width: <?php echo $mangaPct['dropped']; ?>%" title="Dropped"></div>
                         <div class="stat-bar-segment bg-plan" style="width: <?php echo $mangaPct['plan']; ?>%" title="Plan to Read"></div>
                     </div>
@@ -349,7 +345,6 @@ $mangaPct = calculatePercentages($mangaStats);
                         <ul class="status-legend">
                             <li><span class="dot watching"></span> Reading <span class="count"><?php echo $mangaStats['reading']; ?></span></li>
                             <li><span class="dot completed"></span> Completed <span class="count"><?php echo $mangaStats['completed']; ?></span></li>
-                            <li><span class="dot onhold"></span> On-Hold <span class="count"><?php echo $mangaStats['on_hold']; ?></span></li>
                             <li><span class="dot dropped"></span> Dropped <span class="count"><?php echo $mangaStats['dropped']; ?></span></li>
                             <li><span class="dot plan"></span> Plan to Read <span class="count"><?php echo $mangaStats['plan_to_read']; ?></span></li>
                         </ul>

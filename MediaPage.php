@@ -20,15 +20,20 @@ elseif(isset($_GET["title"])){
     $sql = "SELECT * FROM Media WHERE title = '$title'";
     $result = mysqli_query($conn,$sql);
     $media = mysqli_fetch_assoc($result);
+    
 
     if(!$media){
         header("Location: home.php");
         exit();
     }
+    $media_id = $media['media_id'];
 }
 elseif(isset($_GET["idTopManga"])){
-    $media_id = $_GET["idTopManga"];
-    $sql = "SELECT * FROM TopManga WHERE media_id = '$media_id'";
+    $temp_id = $_GET["idTopManga"];
+    $sql = "SELECT * FROM TopManga WHERE media_id = '$temp_id'";
+    $result = mysqli_query($conn,$sql);
+    $media = mysqli_fetch_assoc($result);
+    $sql = "SELECT * FROM Media WHERE title = '$media[title]'";
     $result = mysqli_query($conn,$sql);
     $media = mysqli_fetch_assoc($result);
 
@@ -36,10 +41,15 @@ elseif(isset($_GET["idTopManga"])){
         header("Location: home.php");
         exit();
     }
+    $media_id = $media['media_id'];
 }
 elseif(isset($_GET["idTopAnime"])){
-    $media_id = $_GET["idTopAnime"];
-    $sql = "SELECT * FROM TopAnime WHERE media_id = '$media_id'";
+    $temp_id = $_GET["idTopAnime"];
+    
+    $sql = "SELECT * FROM TopAnime WHERE media_id = '$temp_id'";
+    $result = mysqli_query($conn,$sql);
+    $media = mysqli_fetch_assoc($result);
+    $sql = "SELECT * FROM Media WHERE title = '$media[title]'";
     $result = mysqli_query($conn,$sql);
     $media = mysqli_fetch_assoc($result);
 
@@ -177,7 +187,7 @@ $reviews_result = mysqli_query($conn, $reviews_query);
                 <?php if ($user_id): ?>
                     <span class="profile-name" onclick="window.location.href='userDashboard.php'"><?php echo htmlspecialchars($username); ?></span>
                     <img src="<?php echo htmlspecialchars($user_profile_pic); ?>" alt="Profile" onclick="window.location.href='userDashboard.php'">
-                    <a href="logout.php" class="login-link-Log-out">Log Out</a>
+                    <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
                 <?php else: ?>
                     <a href="login.php" class="login-link">Log In</a>
                 <?php endif; ?>
@@ -212,10 +222,9 @@ $reviews_result = mysqli_query($conn, $reviews_query);
                 <form method="POST">
                     <select name="status" class="status-select">
                         <option value="plan_to_watch" <?php if($current_status == 'plan_to_watch') echo 'selected'; ?>>Plan to Watch</option>
-                        <option value="watching" <?php if($current_status == 'watching') echo 'selected'; ?>>Watching</option>
+                        <option value="watching" <?php if($current_status == 'watching') echo 'selected'; ?>><?php if ($media['type'] == 'movie' || $media['type'] == 'tvshow') echo 'Watching'; else echo 'Reading'; ?></option>
                         <option value="completed" <?php if($current_status == 'completed') echo 'selected'; ?>>Completed</option>
                         <option value="dropped" <?php if($current_status == 'dropped') echo 'selected'; ?>>Dropped</option>
-                        <option value="on_hold" <?php if($current_status == 'on_hold') echo 'selected'; ?>>On Hold</option>
                     </select>
                     <button type="submit" name="update_watchlist" class="btn-action btn-blue">Update Status</button>
                 </form>
