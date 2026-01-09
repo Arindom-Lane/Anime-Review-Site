@@ -200,123 +200,6 @@ INSERT INTO trailers (image_url, video_url) VALUES
 ('https://img.youtube.com/vi/NdHlNMAqC1A/maxresdefault.jpg', 'https://www.youtube.com/watch?v=NdHlNMAqC1A');
 
 
-INSERT INTO TopUpcoming (
-    title, 
-    description, 
-    type, 
-    poster_image_link, 
-    score, 
-    status, 
-    aired_date, 
-    producer, 
-    studio, 
-    source, 
-    genre, 
-    duration
-) VALUES
-/* 1. Jujutsu Kaisen Season 3 (Culling Game) */
-('Jujutsu Kaisen: Culling Game', 
- 'The Culling Game begins, pushing Yuji and his allies to their limits in a deadly sorcerer battle royale.', 
- 'tvshow', 'https://img.youtube.com/vi/fgvoLo52aac/maxresdefault.jpg', NULL, 'upcoming', '2026-01-08', 'TOHO Animation', 'MAPPA', 'Manga', 'Action, Dark Fantasy', '24 min'),
-
-/* 2. Frieren: Beyond Journey\'s End Season 2 */
-('Frieren: Beyond Journey\'s End Season 2', 
- 'Frieren continues her journey to Ende, confronting her past and new threats with her party.', 
- 'tvshow', 'https://img.youtube.com/vi/kF4KuvjdHQg/maxresdefault.jpg', NULL, 'upcoming', '2026-01-16', 'TOHO Animation', 'Madhouse', 'Manga', 'Adventure, Fantasy', '24 min'),
-
-/* 3. Oshi no Ko Season 3 */
-('Oshi no Ko Season 3', 
- 'Ruby Hoshino continues her pursuit of the truth in the entertainment industry as B-Komachi rises.', 
- 'tvshow', 'https://img.youtube.com/vi/lYGgjpCJOXk/maxresdefault.jpg', NULL, 'upcoming', '2026-01-14', 'Kadokawa', 'Doga Kobo', 'Manga', 'Drama, Supernatural', '24 min'),
-
-/* 4. JoJo\'s Bizarre Adventure: Steel Ball Run */
-('JoJo\'s Bizarre Adventure: Steel Ball Run', 
- 'A cross-country horse race in the American Old West uncovers a conspiracy involving the President and holy relics.', 
- 'tvshow', 'https://example.com/posters/jojo_sbr.jpg', NULL, 'upcoming', '2026-03-19', 'Warner Bros. Japan', 'David Production', 'Manga', 'Adventure, Supernatural', '24 min'),
-
-/* 5. Re:Zero - Starting Life in Another World Season 4 */
-('Re:Zero Season 4', 
- 'Subaru and his friends head to a new land to save Rem and uncover more about the Witch of Envy.', 
- 'tvshow', 'https://example.com/posters/rezero_s4.jpg', NULL, 'upcoming', '2026-04-01', 'Kadokawa', 'White Fox', 'Light Novel', 'Isekai, Psychological', '24 min'),
-
-/* 6. Bleach: Thousand-Year Blood War - The Calamity */
-('Bleach: Thousand-Year Blood War - The Calamity', 
- 'The final conflict between the Soul Reapers and the Quincies reaches its devastating conclusion.', 
- 'tvshow', 'https://example.com/posters/bleach_tybw_calamity.jpg', NULL, 'upcoming', '2026-07-01', 'Aniplex', 'Pierrot', 'Manga', 'Action, Supernatural', '24 min'),
-
-/* 7. Fire Force Season 3 (Part 2) */
-('Fire Force Season 3 (Part 2)', 
- 'Shinra and Company 8 fight to stop the Great Cataclysm in the final chapter of the saga.', 
- 'tvshow', 'https://img.youtube.com/vi/-5J-2dF5Myk/maxresdefault.jpg', NULL, 'upcoming', '2026-01-09', 'DMM Pictures', 'David Production', 'Manga', 'Action, Sci-Fi', '24 min'),
-
-/* 8. One Piece: Elbaph Arc */
-('One Piece: Elbaph Arc', 
- 'The Straw Hat Pirates finally arrive at the land of giants, Elbaph, for a new adventure.', 
- 'tvshow', 'https://example.com/posters/one_piece_elbaph.jpg', NULL, 'upcoming', '2026-04-05', 'Toei Animation', 'Toei Animation', 'Manga', 'Adventure, Action', '24 min'),
-
-/* 9. Hell\'s Paradise Season 2 */
-('Hell\'s Paradise Season 2', 
- 'Gabimaru and the survivors face the Tensen as they desperately search for the Elixir of Life.', 
- 'tvshow', 'https://example.com/posters/jigokuraku_s2.jpg', NULL, 'upcoming', '2026-01-11', 'Twin Engine', 'MAPPA', 'Manga', 'Action, Dark Fantasy', '24 min'),
-
-/* 10. Witch Hat Atelier */
-('Witch Hat Atelier', 
- 'Coco, a girl who longs to be a witch, accidentally discovers the secret of magic and begins her training.', 
- 'tvshow', 'https://example.com/posters/witch_hat_atelier.jpg', NULL, 'upcoming', '2026-04-01', 'Kodansha', 'Bug Films', 'Manga', 'Fantasy, Seinen', '24 min'),
-
-/* 11. Fate/strange Fake */
-('Fate/strange Fake', 
- 'A false Holy Grail War begins in the United States, summoning strange and powerful Servants.', 
- 'tvshow', 'https://example.com/posters/fate_strange_fake.jpg', NULL, 'upcoming', '2026-01-03', 'Aniplex', 'A-1 Pictures', 'Light Novel', 'Action, Fantasy', '24 min'),
-
-/* 12. Golden Kamuy: Final Season */
-('Golden Kamuy: Final Season', 
- 'Sugimoto and Asirpa reach the climax of their hunt for the Ainu gold in Hokkaido.', 
- 'tvshow', 'https://example.com/posters/golden_kamuy_final.jpg', NULL, 'upcoming', '2026-01-04', 'NBCUniversal', 'Brain\'s Base', 'Manga', 'Adventure, Historical', '24 min'),
-
-/* 13. My Hero Academia: Vigilantes Season 2 */
-('My Hero Academia: Vigilantes Season 2', 
- 'Koichi Haimawari continues his unauthorized hero work as the Crawler in this prequel series.', 
- 'tvshow', 'https://example.com/posters/mha_vigilantes_s2.jpg', NULL, 'upcoming', '2026-01-05', 'TOHO Animation', 'Bones', 'Manga', 'Superhero, Action', '24 min'),
-
-/* 14. Trigun Stargaze */
-('Trigun Stargaze', 
- 'Vash the Stampede returns in the final act of the Trigun Stampede saga.', 
- 'tvshow', 'https://example.com/posters/trigun_stargaze.jpg', NULL, 'upcoming', '2026-01-10', 'TOHO Animation', 'Orange', 'Manga', 'Sci-Fi, Action', '24 min'),
-
-/* 15. The Apothecary Diaries Season 3 */
-('The Apothecary Diaries Season 3', 
- 'Maomao returns to solve mysteries within the inner palace using her pharmaceutical knowledge.', 
- 'tvshow', 'https://example.com/posters/apothecary_diaries_s3.jpg', NULL, 'upcoming', '2026-10-01', 'TOHO Animation', 'OLM', 'Light Novel', 'Mystery, Historical', '24 min'),
-
-/* 16. Black Clover Season 2 */
-('Black Clover Season 2', 
- 'Asta and the Black Bulls prepare for the final war against the Spade Kingdom devils.', 
- 'tvshow', 'https://example.com/posters/black_clover_s2.jpg', NULL, 'upcoming', '2026-10-01', 'TV Tokyo', 'Pierrot', 'Manga', 'Action, Fantasy', '24 min'),
-
-/* 17. Cosmic Princess Kaguya! */
-('Cosmic Princess Kaguya!', 
- 'A modern reimagining of the Tale of the Bamboo Cutter set in a sci-fi universe.', 
- 'movie', 'https://example.com/posters/cosmic_princess_kaguya.jpg', NULL, 'upcoming', '2026-01-22', 'Twin Engine', 'Studio Colorido', 'Original', 'Sci-Fi, Fantasy', '1h 55m'),
-
-/* 18. Saga of Tanya the Evil Season 2 */
-('Saga of Tanya the Evil Season 2', 
- 'Tanya Degurechaff continues her war against the world and Being X.', 
- 'tvshow', 'https://example.com/posters/tanya_evil_s2.jpg', NULL, 'upcoming', '2026-06-01', 'Kadokawa', 'Studio NUT', 'Light Novel', 'Military, Isekai', '24 min'),
-
-/* 19. The Ghost in the Shell (2026) */
-('The Ghost in the Shell (2026)', 
- 'A new cyberpunk adaptation exploring the philosophy of the ghost and the machine.', 
- 'tvshow', 'https://example.com/posters/gits_2026.jpg', NULL, 'upcoming', '2026-12-01', 'Production I.G', 'Science SARU', 'Manga', 'Sci-Fi, Cyberpunk', '24 min'),
-
-/* 20. Sentenced to Be a Hero */
-('Sentenced to Be a Hero', 
- 'A group of criminals is forced to become heroes to fight against the Demon Lord army.', 
- 'tvshow', 'https://example.com/posters/sentenced_hero.jpg', NULL, 'upcoming', '2026-01-03', 'Kadokawa', 'Studio KAI', 'Light Novel', 'Fantasy, Action', '24 min');
-
-
-
-
 
 INSERT INTO TopAnime (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration) VALUES
 ('Sousou no Frieren', 'After their decade-long quest to defeat the Demon King ends, the party of heroes disbands. Frieren, an elf wizard, must now come to terms with the mortality of her human friends and find a new purpose in a world that moves much faster than she does.', 'tvshow', 'https://m.media-amazon.com/images/M/MV5BZTI4ZGMxN2UtODlkYS00MTBjLWE1YzctYzc3NDViMGI0ZmJmXkEyXkFqcGc@._V1_.jpg', 9.35, 'Finished Airing', '2023-09-29', 'TOHO animation', 'Madhouse', 'Manga', 'Adventure, Fantasy, Drama', '24 min per ep'),
@@ -386,3 +269,364 @@ INSERT INTO TopManga (title, description, type, poster_image_link, score, status
 ('Spy x Family', 'A spy known as Twilight must build a fake family for a mission. He adopts a telepathic daughter and marries an assassin, but none of them know each other''s secrets. They try to act like a normal family while saving the world.', 'manga', 'https://cdn.myanimelist.net/images/manga/3/219741.jpg', 8.75, 'Publishing', '2019-03-25', 'Tatsuya Endo', 'Shonen Jump+', 'Original', 'Action, Comedy, Slice of Life', 'N/A'),
 ('Blue Period', 'Yatora Yaguchi is a popular student with good grades but feels empty inside. Upon seeing a painting that moves him, he dives into the beautiful yet grueling world of art, aiming for the Tokyo University of the Arts.', 'manga', 'https://cdn.myanimelist.net/images/manga/5/209192.jpg', 8.73, 'Publishing', '2017-06-24', 'Tsubasa Yamaguchi', 'Afternoon', 'Original', 'Drama, School, Slice of Life', 'N/A'),
 ('Uchuu Kyoudai', 'Two brothers, Mutta and Hibito, make a vow as kids to go to space. Years later, Hibito is an astronaut about to go to the moon, while Mutta has just been fired. Mutta remembers his promise and decides to aim for Mars.', 'manga', 'https://cdn.myanimelist.net/images/manga/2/155914.jpg', 8.73, 'Publishing', '2007-12-06', 'Chuya Koyama', 'Morning', 'Original', 'Sci-Fi, Slice of Life, Comedy', 'N/A');
+
+
+
+-- 1. The Apothecary Diaries Season 3
+-- Scheduled for late 2026 (Fall)
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'The Apothecary Diaries Season 3',
+    'Maomao returns to the inner palace. The story moves into the second distinct arc where Maomao faces political intrigue and medical mysteries on a larger scale.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/6/65/The_Apothecary_Diaries_light_novel_volume_1_cover.jpg',
+    NULL,
+    'upcoming',
+    '2026-10-01',
+    'Toho',
+    'OLM',
+    'Light Novel',
+    'Drama, Mystery',
+    '24 min per ep'
+);
+
+-- 2. Bleach: Thousand-Year Blood War – Part 4: The Calamity
+-- The final conclusion to the Blood War arc.
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'Bleach: Thousand-Year Blood War – Part 4',
+    'The final climactic battles between the Soul Reapers and the Quincy King Yhwach. The conclusion to the Thousand-Year Blood War saga.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/7/72/Bleach_Vol._74_cover.jpg',
+    NULL,
+    'upcoming',
+    '2026-07-01',
+    'Shueisha',
+    'Pierrot',
+    'Manga',
+    'Action, Supernatural',
+    '24 min per ep'
+);
+
+-- 3. JoJo\'s Bizarre Adventure: Steel Ball Run
+-- Highly anticipated, likely late 2026 or 2027.
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'JoJo\'s Bizarre Adventure: Steel Ball Run',
+    'In 1890 America, paraplegic jockey Johnny Joestar enters a cross-country horse race for $50 million, discovering the power of the Spin and the corpse parts.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/8/87/Steel_Ball_Run_vol_1.jpg',
+    NULL,
+    'upcoming',
+    '2026-10-01',
+    'Warner Bros. Japan',
+    'David Production',
+    'Manga',
+    'Action, Adventure',
+    '24 min per ep'
+);
+
+-- 4. One Piece: Elbaph Arc
+-- Entering the land of Giants (estimated start mid-to-late 2026).
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'One Piece: Elbaph Arc',
+    'Luffy and the Straw Hats finally arrive at Elbaph, the kingdom of giants, to uncover the final secrets of the Void Century and the One Piece.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/9/90/One_Piece%2C_Volume_61_Cover_%28Japanese%29.jpg',
+    NULL,
+    'upcoming',
+    '2026-06-15',
+    'Toei Animation',
+    'Toei Animation',
+    'Manga',
+    'Adventure, Fantasy',
+    '24 min per ep'
+);
+
+-- 5. Demon Slayer: Infinity Castle Arc
+-- Expected to be a trilogy of movies or a massive final season starting late 2026.
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'Demon Slayer: Infinity Castle Arc',
+    'The Demon Slayer Corps plunges into the Infinity Castle to face Muzan Kibutsuji and the remaining Upper Moons in an all-out war.',
+    'movie',
+    'https://upload.wikimedia.org/wikipedia/en/0/09/Demon_Slayer_-_Kimetsu_no_Yaiba%2C_volume_1.jpg',
+    NULL,
+    'upcoming',
+    '2026-12-20',
+    'Aniplex',
+    'ufotable',
+    'Manga',
+    'Action, Supernatural',
+    '1 hr 50 min'
+);
+
+-- 6. Haikyuu!! Final Movie: The Little Giant
+-- The grand finale movie (scheduled 2027).
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'Haikyuu!! Final Movie: The Little Giant',
+    'Hinata Shoyo faces his greatest rivals on the national stage. The final conclusion to the Haikyuu!! storyline.',
+    'movie',
+    'https://upload.wikimedia.org/wikipedia/en/c/c0/Haikyu_volume_1.jpg',
+    NULL,
+    'upcoming',
+    '2027-02-14',
+    'Toho',
+    'Production I.G',
+    'Manga',
+    'Sports, Drama',
+    '1 hr 45 min'
+);
+
+-- 7. One Punch Man Season 3
+-- Long production cycle, likely late 2026.
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'One Punch Man Season 3',
+    'The Hero Association launches an assault on the Monster Association HQ. Garou\'s evolution continues as Saitama enters the fray.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/c/c3/OnePunchMan_manga_cover.png',
+    NULL,
+    'upcoming',
+    '2026-10-05',
+    'Bandai Namco',
+    'J.C.Staff',
+    'Manga',
+    'Action, Comedy',
+    '24 min per ep'
+);
+
+-- 8. Witch Hat Atelier
+-- Pushed to 2026.
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'Witch Hat Atelier',
+    'Coco, a girl born without magic, inadvertently discovers the secret of casting spells and is whisked away to a wizard\'s atelier.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/c/c2/Witch_Hat_Atelier_volume_1_cover.jpg',
+    NULL,
+    'upcoming',
+    '2026-07-01',
+    'Kodansha',
+    'Bug Films',
+    'Manga',
+    'Fantasy, Seinen',
+    '24 min per ep'
+);
+
+-- 9. Sakamoto Days Season 2
+-- Assuming S1 aired early 2025, S2 likely late 2026.
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'Sakamoto Days Season 2',
+    'The order of assassins intensifies their hunt for Taro Sakamoto. The convenience store crew must protect their peaceful life.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/8/88/Sakamoto_Days_volume_1_cover.jpg',
+    NULL,
+    'upcoming',
+    '2026-09-15',
+    'TMS Entertainment',
+    'TMS Entertainment',
+    'Manga',
+    'Action, Comedy',
+    '24 min per ep'
+);
+
+-- 10. Fire Force Season 3 Part 2
+-- The final cour.
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'Fire Force Season 3 Part 2',
+    'The Great Cataclysm is imminent. Company 8 fights the White-Clad in a battle that will reshape the world.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/6/67/Fire_Force_volume_1_cover.jpg',
+    NULL,
+    'upcoming',
+    '2026-10-03',
+    'DMM Pictures',
+    'David Production',
+    'Manga',
+    'Action, Sci-Fi',
+    '24 min per ep'
+);
+
+-- 11. Madoka Magica: Walpurgisnacht Rising
+-- Movie, finally releasing 2026.
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'Madoka Magica: Walpurgisnacht Rising',
+    'The sequel to the Rebellion movie. Homura Akemi\'s new world begins to crack as the magical girls face a new threat.',
+    'movie',
+    'https://upload.wikimedia.org/wikipedia/en/b/b2/Madoka_Magica_Rebellion_Poster.png',
+    NULL,
+    'upcoming',
+    '2026-12-01',
+    'Aniplex',
+    'Shaft',
+    'Original',
+    'Psychological, Fantasy',
+    '2 hr 00 min'
+);
+
+-- 12. Spy x Family Season 4
+-- Assuming S3 aired Fall 2025.
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'Spy x Family Season 4',
+    'Operation Strix continues as Anya faces high school entrance exams and Loid digs deeper into Desmond\'s political circle.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/4/46/Spy_%C3%97_Family_volume_1_cover.jpg',
+    NULL,
+    'upcoming',
+    '2026-10-07',
+    'Toho',
+    'Wit Studio',
+    'Manga',
+    'Comedy, Action',
+    '24 min per ep'
+);
+
+-- 13. Chainsaw Man Season 2
+-- Following the Reze arc movie.
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'Chainsaw Man Season 2',
+    'Public Safety faces the International Assassins arc. Denji becomes a global target as hunters from around the world descend on Tokyo.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/5/5a/Chainsaw_Man_volume_1_cover.jpg',
+    NULL,
+    'upcoming',
+    '2026-11-01',
+    'MAPPA',
+    'MAPPA',
+    'Manga',
+    'Action, Horror',
+    '24 min per ep'
+);
+
+-- 14. Zom 100: Bucket List of the Dead Season 2
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'Zom 100: Bucket List of the Dead Season 2',
+    'Akira and friends continue their road trip across zombie-infested Japan, aiming to complete the bucket list before they turn.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/7/77/Zom_100_volume_1_cover.jpg',
+    NULL,
+    'upcoming',
+    '2026-08-10',
+    'Viz Media',
+    'Bug Films',
+    'Manga',
+    'Comedy, Horror',
+    '24 min per ep'
+);
+
+-- 15. Lycoris Recoil: New Animation Project
+-- Expected Season 2 or OVA.
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'Lycoris Recoil: Tactical Days',
+    'Chisato and Takina return for new missions. The secret organization DA faces a leak that threatens the peace of Japan.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/1/18/Lycoris_Recoil_key_visual.jpg',
+    NULL,
+    'upcoming',
+    '2026-07-05',
+    'Aniplex',
+    'A-1 Pictures',
+    'Original',
+    'Action, Sci-Fi',
+    '24 min per ep'
+);
+
+-- 16. Black Clover Season 2
+-- The Spade Kingdom Raid Arc conclusion.
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'Black Clover: Spade Kingdom Arc',
+    'Asta and Yuno lead the charge against the Dark Triad to stop the advent of devils and rescue their captains.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/3/3c/Black_Clover%2C_volume_1.jpg',
+    NULL,
+    'upcoming',
+    '2026-10-01',
+    'TV Tokyo',
+    'Pierrot',
+    'Manga',
+    'Action, Fantasy',
+    '24 min per ep'
+);
+
+-- 17. Lazarus
+-- Adult Swim / MAPPA collaboration.
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'Lazarus',
+    'A sci-fi action series by Shinichirō Watanabe. In 2052, a Nobel prize winner develops a drug that cures everything but kills you 3 years later.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/2/2b/Cowboy_Bebop_The_Movie_poster.jpg', -- Placeholder for Watanabe style as Lazarus wiki image is rare
+    NULL,
+    'upcoming',
+    '2026-09-01',
+    'Adult Swim',
+    'MAPPA',
+    'Original',
+    'Sci-Fi, Action',
+    '24 min per ep'
+);
+
+-- 18. Dandadan Season 2
+-- Assuming S1 success in 2024/25.
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'Dandadan Season 2',
+    'Momo and Okarun face even stranger aliens and spirits as they search for the remaining parts of Okarun\'s missing anatomy.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/2/23/Dandadan_volume_1_cover.jpg',
+    NULL,
+    'upcoming',
+    '2026-07-12',
+    'MBS',
+    'Science SARU',
+    'Manga',
+    'Supernatural, Action',
+    '24 min per ep'
+);
+
+-- 19. Noragami Season 3
+-- Highly requested return.
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'Noragami Season 3',
+    'Yato faces his father and the secret of his origin. The God of Calamity must decide what kind of God he truly wants to be.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/d/df/Noragami_Vol_1_Cover.jpg',
+    NULL,
+    'upcoming',
+    '2027-01-10',
+    'Avex Pictures',
+    'Bones',
+    'Manga',
+    'Action, Supernatural',
+    '24 min per ep'
+);
+
+-- 20. Hunter x Hunter: The Dark Continent
+-- Speculative continuation.
+INSERT INTO TopUpcoming (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration)
+VALUES (
+    'Hunter x Hunter: The Dark Continent',
+    'The Zodiacs and Beyond Netero prepare for the voyage to the Dark Continent, a place of unimaginable danger and resources.',
+    'tvshow',
+    'https://upload.wikimedia.org/wikipedia/en/0/0f/Hunter_x_Hunter_vol_1_Cover.jpg',
+    NULL,
+    'upcoming',
+    '2027-04-01',
+    'VAP',
+    'Madhouse',
+    'Manga',
+    'Adventure, Fantasy',
+    '24 min per ep'
+);
