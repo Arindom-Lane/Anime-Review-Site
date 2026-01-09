@@ -156,3 +156,16 @@ CREATE TABLE Favorites (
     FOREIGN KEY (media_id) REFERENCES Media(media_id),
     UNIQUE(user_id, media_id) -- Prevents duplicate favorites
 );
+
+
+CREATE TABLE articles (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    image_url TEXT NOT NULL,
+    article_url TEXT NOT NULL,
+);
+
+CREATE TABLE trailers (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    image_url TEXT NOT NULL,
+    video_url TEXT NOT NULL,
+);

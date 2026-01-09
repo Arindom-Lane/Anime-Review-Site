@@ -216,6 +216,8 @@ if (isset($_SESSION['editUserMessage'])) {
                 <button>Top ANime</button>
                 <button>Top Manga</button>
                 <button>Top Upcoming</button>
+                <button>articles</button>
+                <button>trailers</button>
 
             </div>
 
