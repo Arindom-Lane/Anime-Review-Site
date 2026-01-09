@@ -158,7 +158,7 @@ while ($row = mysqli_fetch_assoc($sql)) {
                 </div>
             </div>
             <br>
-            <h3>Latest Updated Episode Videos</h3>
+            <h3>Top Upcoming</h3>
             <hr>
             <div class="latest-wrapper">
                 <span class="left-arrowlatest">&lt;</span>
@@ -171,6 +171,9 @@ while ($row = mysqli_fetch_assoc($sql)) {
                         while ($row = mysqli_fetch_assoc($topUpcomingResult)) {
                             echo '<img href="MediaPage.php?title=' . $row['title'] . '" src="' . $row['poster_image_link'] . '" alt="Anime Image">';
                         }
+                    }
+                    else {
+                        echo "<p>No media found.</p>";
                     }
                     ?>
                 </div>
@@ -191,6 +194,9 @@ while ($row = mysqli_fetch_assoc($sql)) {
                             echo '<img src="' . $row['image_url'] . '" alt="Trailer Image">';
                             echo '</a>';
                         }
+                    }
+                    else {
+                        echo "<p>No trailers found.</p>";
                     }
                     ?>
                 </div>
