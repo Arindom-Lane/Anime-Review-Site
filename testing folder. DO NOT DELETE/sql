@@ -159,13 +159,30 @@ CREATE TABLE Favorites (
 
 
 CREATE TABLE articles (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    image_url TEXT NOT NULL,
-    article_url TEXT NOT NULL,
+    articles_id INT AUTO_INCREMENT PRIMARY KEY,
+    image_url VARCHAR(500) NOT NULL,
+    article_url VARCHAR(500) NOT NULL
 );
 
 CREATE TABLE trailers (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    image_url TEXT NOT NULL,
-    video_url TEXT NOT NULL,
+    trailers_id INT AUTO_INCREMENT PRIMARY KEY,
+    image_url VARCHAR(500) NOT NULL,
+    video_url VARCHAR(500) NOT NULL
+);
+
+CREATE TABLE currentlyairingmedia (
+    media_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    type ENUM('movie','tvshow','manga') NOT NULL,
+    poster_image_link VARCHAR(255),
+    score DECIMAL(3,1), -- average rating 1–10
+    status ENUM('airing','upcoming','completed') DEFAULT 'upcoming',
+    aired_date DATE,
+    producer VARCHAR(100),
+    studio VARCHAR(100),
+    source VARCHAR(100),
+    genre VARCHAR(100),
+    duration VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

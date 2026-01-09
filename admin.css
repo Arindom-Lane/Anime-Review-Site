@@ -455,3 +455,20 @@ input::placeholder {
     background-color: var(--mal-blue-dark);
     color: white;
 }
+.greyButton{
+    background-color: rgb(69, 82, 124);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 200px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: var(--border-radius-2);
+}
+.greyButton:hover{
+    background-color: rgb(130, 139, 164);
+}

@@ -106,7 +106,7 @@ if (mysqli_num_rows($targetUserId) > 0) {
         </div>
         <div class="header-middle">
             <div class="topButton">
-                <span onclick="window.location.href='admin.php'">  く  </span>
+                <span onclick="window.location.href='admin.php'"> く </span>
             </div>
             <div class="search-bar">
                 <div class="search-bar">
@@ -115,7 +115,7 @@ if (mysqli_num_rows($targetUserId) > 0) {
                         <input class="search" id="search" type="text" name="search" placeholder="Search...">
                     </form>
                     <div class="search-results" id="search-results">
-                        
+
                     </div>
                 </div>
                 <script>
