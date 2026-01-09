@@ -10,8 +10,13 @@ $output = '<ul class="search-results-list">';
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $output .= '<li>
-                        <span class="result-title">' . htmlspecialchars($row["title"]) . '</span>
-                        <img class="result-img" src="' . $row["poster_image_link"] . '" alt="poster">
+                        <a style="text-decoration: none;" href="MediaPage.php?id=' . $row['media_id'] . '" class="search-item-link">
+                            <div class="search-item">
+                            <span class="search-item-title">' . htmlspecialchars($row['title']) . '</span>
+                                <img src="' . $row['poster_image_link'] . '" alt="' . htmlspecialchars($row['title']) . ' Poster" class="search-item-image">
+                                
+                            </div>
+                        </a>
                     </li>';
     }
     $output .= '</ul>';
