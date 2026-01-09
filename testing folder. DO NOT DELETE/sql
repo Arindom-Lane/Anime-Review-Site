@@ -187,4 +187,36 @@ CREATE TABLE TopUpcoming (
     duration VARCHAR(50),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE TABLE TopAnime (
+    media_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    type ENUM('movie','tvshow','manga') NOT NULL,
+    poster_image_link VARCHAR(255),
+    score DECIMAL(3,1), -- average rating 1–10
+    status ENUM('airing','upcoming','completed') DEFAULT 'upcoming',
+    aired_date DATE,
+    producer VARCHAR(100),
+    studio VARCHAR(100),
+    source VARCHAR(100),
+    genre VARCHAR(100),
+    duration VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE TopManga (
+    media_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    type ENUM('movie','tvshow','manga') NOT NULL,
+    poster_image_link VARCHAR(255),
+    score DECIMAL(3,1), -- average rating 1–10
+    status ENUM('airing','upcoming','completed') DEFAULT 'upcoming',
+    aired_date DATE,
+    producer VARCHAR(100),
+    studio VARCHAR(100),
+    source VARCHAR(100),
+    genre VARCHAR(100),
+    duration VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 

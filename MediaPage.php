@@ -26,6 +26,29 @@ elseif(isset($_GET["title"])){
         exit();
     }
 }
+elseif(isset($_GET["idTopManga"])){
+    $media_id = $_GET["idTopManga"];
+    $sql = "SELECT * FROM TopManga WHERE media_id = '$media_id'";
+    $result = mysqli_query($conn,$sql);
+    $media = mysqli_fetch_assoc($result);
+
+    if(!$media){
+        header("Location: home.php");
+        exit();
+    }
+}
+elseif(isset($_GET["idTopAnime"])){
+    $media_id = $_GET["idTopAnime"];
+    $sql = "SELECT * FROM TopAnime WHERE media_id = '$media_id'";
+    $result = mysqli_query($conn,$sql);
+    $media = mysqli_fetch_assoc($result);
+
+    if(!$media){
+        header("Location: home.php");
+        exit();
+    }
+}
+
 else{
     header("Location: home.php");
     exit();
