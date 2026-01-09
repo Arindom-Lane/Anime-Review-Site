@@ -137,7 +137,7 @@ while ($row = mysqli_fetch_assoc($sql)) {
                 </div>
             </div>
 
-            <h3>??</h3>
+            <h3>Currently Airing</h3>
             <hr>
             <div class="fallList-wrapper">
                 <span class="left-arrowfallList">&lt;</span>
