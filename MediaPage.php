@@ -2,18 +2,33 @@
 session_start();
 include("db.php");
 $media_id = NULL;
+
 if(isset($_GET['id'])){
     $media_id = $_GET['id'];
-    $sql = "SELECT * FROM currentlyairingmedia WHERE media_id = $media_id";
+    $sql = "SELECT * FROM Media WHERE media_id = $media_id";
     $result = mysqli_query($conn,$sql);
     $media = mysqli_fetch_assoc($result);
 
     if(!$media){
-        echo "Media not found.";
         header("Location: home.php");
         exit();
     }
     
+}
+elseif(isset($_GET["title"])){
+    $title = $_GET["title"];
+    $sql = "SELECT * FROM Media WHERE title = '$title'";
+    $result = mysqli_query($conn,$sql);
+    $media = mysqli_fetch_assoc($result);
+
+    if(!$media){
+        header("Location: home.php");
+        exit();
+    }
+}
+else{
+    header("Location: home.php");
+    exit();
 }
 
 
@@ -131,7 +146,7 @@ $reviews_result = mysqli_query($conn, $reviews_query);
 
     <header>
         <div class="header-upper">
-            <div class="logo" onclick="window.location.href='userDashboard.php'">
+            <div class="logo" onclick="window.location.href='home.php'">
                 <img src="download.png" alt="Logo">
             </div>
             <div class="profile">
