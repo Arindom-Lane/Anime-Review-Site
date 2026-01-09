@@ -120,21 +120,18 @@ while ($row = mysqli_fetch_assoc($sql)) {
             </div>
             <hr>
             <div class="MALxJAPANmainDiv">
-                <div>
-                    <img src="https://mxj.myanimelist.net/img/projects/Sparks_of_Tomorrow/354x220.png">
-                    <a href="https://mxj.myanimelist.net/Sparks_of_Tomorrow">Unveil the World of Sparks of Tomorrow & Win Prizes!</a>
-
-                </div>
-                <div>
-                    <img src="https://cdn.myanimelist.net/resources/mxj_panel/2025/20251027221823_MxJ%20exposure-354x220@2x.png">
-                    <a href="https://mhwc.myanimelist.net/202510/?utm_source=MAL&utm_medium=top_mxj_frontierworks&utm_content=announce1">MyAnimeList x Honeyfeed Writing Contest 2025 - Twilight Frontiers Presented by Frontier Works</a>
-
-                </div>
-                <div>
-                    <img src="https://cdn.myanimelist.net/resources/mxj_panel/2024/20241121005050_354x220@2x.png">
-                    <a href="https://mxj.myanimelist.net/conbiz?utm_source=MAL&utm_medium=top_mxj_conbiz">Watch "ConBiz!" ー a new Japanese business entertainment program</a>
-
-                </div>
+                <?php
+                $mxjQuery = 'SELECT * FROM articles LIMIT 3';
+                $mxjResult = mysqli_query($conn, $mxjQuery);
+                if (mysqli_num_rows($mxjResult) > 0) {
+                    while ($row = mysqli_fetch_assoc($mxjResult)) {
+                        echo '<div>';
+                        echo '<img href="' . $row['article_url'] . '" src="' . $row['image_url'] . '" alt="Article Image">';
+                        echo '<center><a href="' . $row['article_url'] . '">Read More</a></center><br>';
+                        echo '</div>';
+                    }
+                }
+                ?>
             </div>
 
             <h3>Currently Airing</h3>
