@@ -55,36 +55,37 @@ include("db.php");
                 <span class="TOPANIME">TOP MANGA</span>
             </div>
             <div class="search-bar">
-<div class="search-bar">
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                <form method="POST">
-                    <input class="search" id="search" type="text" name="search" placeholder="Search...">
-                </form>
-                <div class="search-results" id="search-results">
-                    
+                <div class="search-bar">
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <form method="POST">
+                        <input class="search" id="search" type="text" name="search" placeholder="Search...">
+                    </form>
+                    <div class="search-results" id="search-results">
+
+                    </div>
                 </div>
-            </div>
-            <script>
-                $(document).ready(function() {
-                    $('#search').on('input', function() {
-                        var query = $(this).val();
-                        if (query.length > 2) {
-                            $.ajax({
-                                url: 'searchBarLogic.php',
-                                method: 'POST',
-                                data: {
-                                    search: query
-                                },
-                                success: function(data) {
-                                    $('#search-results').html(data).show();
-                                }
-                            });
-                        } else {
-                            $('#search-results').hide();
-                        }
+                <script>
+                    $(document).ready(function() {
+                        $('#search').on('input', function() {
+                            var query = $(this).val();
+                            if (query.length > 2) {
+                                $.ajax({
+                                    url: 'searchBarLogic.php',
+                                    method: 'POST',
+                                    data: {
+                                        search: query
+                                    },
+                                    success: function(data) {
+                                        $('#search-results').html(data).show();
+                                    }
+                                });
+                            } else {
+                                $('#search-results').hide();
+                            }
+                        });
                     });
-                });
-            </script>            </div>
+                </script>
+            </div>
         </div>
     </header>
 
@@ -102,24 +103,29 @@ include("db.php");
                     <?php
                     $result = mysqli_query($conn, "SELECT m.* FROM Top_Mangas t INNER JOIN Media m ON t.media_id = m.media_id ORDER BY m.score DESC");
                     if (mysqli_num_rows($result) > 0) {
-                        foreach ($result as $row) {
+                        while ($row = mysqli_fetch_assoc($result)) {
                     ?>
+
                             <tr>
-                                <td><strong><?php echo $row['title'] ?></strong><br><br>
-                                    <?php echo $row['description'] ?><br><br>
-                                    <hr>
-                                    <strong>score:</strong> <?php echo $row['score'] ?>,
-                                    <strong>type:</strong> <?php echo $row['type'] ?>,                                
-                                    <strong>studio:</strong> <?php echo $row['studio'] ?>,
-                                    <strong>source:</strong> <?php echo $row['source'] ?>
-                                    <hr>
+                                <td>
+                                    <a class="mediaClick" href="MediaPage.php?id=<?php echo $row['media_id']; ?>">
+                                        <strong><?php echo $row['title'] ?></strong><br><br>
+                                        <?php echo $row['description'] ?><br><br>
+                                        <hr>
+                                        <strong>score:</strong> <?php echo $row['score'] ?>,
+                                        <strong>type:</strong> <?php echo $row['type'] ?>,
+                                        <strong>studio:</strong> <?php echo $row['studio'] ?>,
+                                        <strong>source:</strong> <?php echo $row['source'] ?>
+                                        <hr>
+                                    </a>
                                 </td>
-                                <td><img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:100px; height:auto;"></td>
+                                <td><a href="MediaPage.php?id=<?php echo $row['media_id']; ?>"><img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:100px; height:auto;"></a></td>
                                 <td style="display: flex;">
                                     <a href="NONE .php?id=<?php echo $row['media_id']; ?>" name="editMediaData" class="editProfileHREF" style="width: 150px; height: auto; text-align: center; margin-right: 10px;">Edit</a>
-                                    <a href=" .php?id=<?php echo $row['media_id']; ?>" class="editProfileHREF" style="width: 150px; height: auto; text-align: center;" onclick="return confirm('Delete this media?')">Delete</a>
                                 </td>
+
                             </tr>
+
                         <?php
                         }
                     } else {

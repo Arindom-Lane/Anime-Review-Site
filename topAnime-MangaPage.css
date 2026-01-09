@@ -79,7 +79,7 @@ header {
 
 .logo {
     width: 200px;
-    height: auto;
+    height: 50px;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -173,11 +173,9 @@ header {
     align-items: center;
     margin-left: -10px;
     height: 10px;
+    color: white;
 }
-.TOPANIME{
-    background-color: var(--mal-blue-light);
-    color: black;
-}
+
 .topButton span {
 
     padding: 10px 13px;
@@ -189,6 +187,7 @@ header {
 
 .topButton span:hover {
     background-color: var(--mal-blue-dark);
+    color: white;
     border-radius: var(--border-radius-1);
 }
 
@@ -289,3 +288,14 @@ main {
     background-color: #d2dfffff;
     color: #070943;
 }
+
+.mediaClick {
+    text-decoration: none;
+    color: var(--text-primary);
+}
+.admin-box table tbody tr:hover td,
+.admin-box table tbody tr:hover td a {
+    color: white;
+    cursor: pointer;
+}
+

@@ -1,6 +1,21 @@
 <?php
 session_start();
 include("db.php");
+if(isset($_SESSION["userid"]) && $_SESSION["loggedId"]==true){
+    $userId = $_SESSION['userId'];
+    $typeString = "'" . implode("','", $types) . "'";
+$sql = mysqli_query($conn, "SELECT w.status, COUNT(*) as count 
+                FROM Watchlist w 
+                JOIN Media m ON w.media_id = m.media_id 
+                WHERE w.user_id = $userId
+                GROUP BY w.status");
+
+
+$stats = [];
+
+while ($row = mysqli_fetch_assoc($sql)) {
+    $stats[$row['status']] = $row['total'];
+}}
 ?>
 
 <!DOCTYPE html>
@@ -134,7 +149,7 @@ include("db.php");
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                     ?>
-                        <a href="MediaPage.php?id=<?php echo $row['media_id']; ?>">
+                        <a href="MediaPage.php?title=<?php echo $row['title']; ?>">
                             <img src="<?php echo $row['poster_image_link']; ?>" alt="<?php echo $row['title']; ?>">
                         </a>
                     <?php
@@ -207,64 +222,48 @@ include("db.php");
 
         </div>
         <div class="rightSection">
-            <div class="MyStats"></div>
-            <div class="topAiringAnime">
-                <div class="topAiringAnimeHeading">
-                    <h3>Top Airing Anime</h3>
-                    <span>More</span>
-                </div>
-                <div class="topAiringAnimeImagesGrid">
-                    <div>
-                        <h2>1</h2>
-                        <img src="https://cdn.myanimelist.net/r/100x140/images/anime/1064/152251.webp?s=922394da72dc89aaca1e482d3700a90c">
-                        <span>Sousou no Frieren 2nd Season</span>
+            <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
+                <div class="MyStats">
+                    <div class="MyStatsHeading">
+                        <h3>My Stats</h3>
                     </div>
-                    <div>
-                        <h2>3</h2>
-                        <img src="https://cdn.myanimelist.net/images/anime/1982/153900.jpg">
-                        <span>Jigokuraku 2nd Season</span>
-                    </div>
-                    <div>
-                        <h2>3</h2>
-                        <img src="https://cdn.myanimelist.net/images/anime/1653/153899.jpg">
-                        <span>Youjo Senki II</span>
-                    </div>
-                    <div>
-                        <h2>4</h2>
-                        <img src="https://cdn.myanimelist.net/images/anime/1180/153379.jpg">
-                        <span>Jujutsu Kaisen: Shimetsu Kaiyuu - Zenpen</span>
+                    <div class="MyStatsContent">
+                        Watching: <?php echo $stats['watching'] ?? 0; ?><br>
+                        Completed: <?php echo $stats['completed'] ?? 0; ?><br>
+                        Plan to Watch: <?php echo $stats['plan_to_watch'] ?? 0; ?><br>
+                        Dropped: <?php echo $stats['dropped'] ?? 0; ?>
                     </div>
                 </div>
-            </div>
-
-            <div class="topUpcoming">
-                <div class="topUpcomingHeading">
-                    <h3>Top Upcoming Anime</h3>
-                    <span>More</span>
+            <?php else: ?>
+                <div class="topAiringAnime">
+                    <div class="topAiringAnimeHeading">
+                        <h3>Top Airing Anime</h3>
+                        <span>More</span>
+                    </div>
+                    <div class="topAiringAnimeImagesGrid">
+                        <div>
+                            <h2>1</h2>
+                            <img src="https://cdn.myanimelist.net/r/100x140/images/anime/1064/152251.webp?s=922394da72dc89aaca1e482d3700a90c">
+                            <span>Sousou no Frieren 2nd Season</span>
+                        </div>
+                        <div>
+                            <h2>3</h2>
+                            <img src="https://cdn.myanimelist.net/images/anime/1982/153900.jpg">
+                            <span>Jigokuraku 2nd Season</span>
+                        </div>
+                        <div>
+                            <h2>3</h2>
+                            <img src="https://cdn.myanimelist.net/images/anime/1653/153899.jpg">
+                            <span>Youjo Senki II</span>
+                        </div>
+                        <div>
+                            <h2>4</h2>
+                            <img src="https://cdn.myanimelist.net/images/anime/1180/153379.jpg">
+                            <span>Jujutsu Kaisen: Shimetsu Kaiyuu - Zenpen</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="topUpcomingImagesGrid">
-                    <div>
-                        <h2>1</h2>
-                        <img src="https://cdn.myanimelist.net/images/anime/1706/144725.jpg">
-                        <span>Re:Zero kara Hajimeru Isekai Seikatsu 3rd Season</span>
-                    </div>
-                    <div>
-                        <h2>2</h2>
-                        <img src="https://cdn.myanimelist.net/images/anime/1026/146459.jpg">
-                        <span>Sakamoto Days</span>
-                    </div>
-                    <div>
-                        <h2>3</h2>
-                        <img src="https://cdn.myanimelist.net/images/anime/1584/143719.jpg">
-                        <span>Dandadan</span>
-                    </div>
-                    <div>
-                        <h2>4</h2>
-                        <img src="https://m.media-amazon.com/images/M/MV5BNWFlNmJkN2YtNGRiZS00NjExLTlmNmEtYzdiMTdiZmMzYzAwXkEyXkFqcGc@._V1_FMjpg_UY3000_.jpg">
-                        <span>Blue Lock 2nd Season</span>
-                    </div>
-                </div>
-            </div>
+            <?php endif; ?>
 
             <div class="mostPopuar">
                 <div class="mostPopuarHeading">

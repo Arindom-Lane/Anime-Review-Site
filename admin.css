@@ -79,7 +79,7 @@ header {
 
 .logo {
     width: 200px;
-    height: auto;
+    height: 50px;;
     display: flex;
     align-items: center;
     cursor: pointer;
