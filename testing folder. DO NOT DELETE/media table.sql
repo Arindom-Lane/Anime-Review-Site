@@ -144,3 +144,172 @@ INSERT INTO Media (title, description, type, poster_image_link, score, status, a
 ('Space Brothers', 'Two brothers make a childhood pact to become astronauts, but while one achieves it easily, the other must fight his way back to the dream.', 'manga', 'https://cdn.myanimelist.net/images/manga/3/116909.jpg', 8.81, 'publishing', '2007-12-06', 'Kodansha', 'Morning', 'Manga', 'Comedy, Sci-Fi, Slice of Life', '44 volumes'),
 ('Made in Abyss', 'Young Riko and her robot friend Reg descend into a colossal pit filled with artifacts and monsters to find her missing mother.', 'manga', 'https://cdn.myanimelist.net/images/manga/3/161645.jpg', 8.74, 'publishing', '2012-10-20', 'Takeshobo', 'Web Comic Gamma', 'Manga', 'Adventure, Fantasy, Sci-Fi', '12 volumes'),
 ('Yokohama Kaidashi Kikou', 'In a quiet, post-apocalyptic world where the sea level has risen, an android named Alpha runs a small coffee shop and watches the sunset.', 'manga', 'https://cdn.myanimelist.net/images/manga/1/170994.jpg', 8.72, 'completed', '1994-04-25', 'Kodansha', 'Afternoon', 'Manga', 'Sci-Fi, Slice of Life', '14 volumes');
+
+
+
+INSERT INTO trailers (image_url, video_url) VALUES
+/* 1. Demon Slayer: Infinity Castle */
+('https://img.youtube.com/vi/ONvWLuFYvVg/maxresdefault.jpg', 'https://www.youtube.com/watch?v=ONvWLuFYvVg'),
+
+/* 2. One Piece: Egghead Arc */
+('https://img.youtube.com/vi/z9pIx3Yt1H0/maxresdefault.jpg', 'https://www.youtube.com/watch?v=z9pIx3Yt1H0'),
+
+/* 3. Attack on Titan: The Last Attack */
+('https://img.youtube.com/vi/LvLT_3lyvv4/maxresdefault.jpg', 'https://www.youtube.com/watch?v=LvLT_3lyvv4'),
+
+/* 4. Jujutsu Kaisen: Execution (Culling Game Event) */
+('https://img.youtube.com/vi/fgvoLo52aac/maxresdefault.jpg', 'https://www.youtube.com/watch?v=fgvoLo52aac'),
+
+/* 5. One Punch Man Season 3 */
+('https://img.youtube.com/vi/H4459oyZYoo/maxresdefault.jpg', 'https://www.youtube.com/watch?v=H4459oyZYoo'),
+
+/* 6. Dragon Ball Daima */
+('https://img.youtube.com/vi/0wMBz2xdI_s/maxresdefault.jpg', 'https://www.youtube.com/watch?v=0wMBz2xdI_s'),
+
+/* 7. Dandadan */
+('https://img.youtube.com/vi/NRxTXed7I7k/maxresdefault.jpg', 'https://www.youtube.com/watch?v=NRxTXed7I7k'),
+
+/* 8. Sakamoto Days */
+('https://img.youtube.com/vi/5bEriPzABTY/maxresdefault.jpg', 'https://www.youtube.com/watch?v=5bEriPzABTY'),
+
+/* 9. Kaiju No. 8 */
+('https://img.youtube.com/vi/D8cVDarxgHg/maxresdefault.jpg', 'https://www.youtube.com/watch?v=D8cVDarxgHg'),
+
+/* 10. Oshi no Ko Season 2 */
+('https://img.youtube.com/vi/lYGgjpCJOXk/maxresdefault.jpg', 'https://www.youtube.com/watch?v=lYGgjpCJOXk'),
+
+/* 11. My Hero Academia Season 7 */
+('https://img.youtube.com/vi/IG_qW6mDoug/maxresdefault.jpg', 'https://www.youtube.com/watch?v=IG_qW6mDoug'),
+
+/* 12. Frieren: Beyond Journey's End Season 2 */
+('https://img.youtube.com/vi/kF4KuvjdHQg/maxresdefault.jpg', 'https://www.youtube.com/watch?v=kF4KuvjdHQg'),
+
+/* 13. Fire Force Season 3 */
+('https://img.youtube.com/vi/-5J-2dF5Myk/maxresdefault.jpg', 'https://www.youtube.com/watch?v=-5J-2dF5Myk'),
+
+/* 14. Blue Lock: Episode Nagi */
+('https://img.youtube.com/vi/VPaKFUzutxg/maxresdefault.jpg', 'https://www.youtube.com/watch?v=VPaKFUzutxg'),
+
+/* 15. Cyberpunk: Edgerunners */
+('https://img.youtube.com/vi/ctPOxfhv2yk/maxresdefault.jpg', 'https://www.youtube.com/watch?v=ctPOxfhv2yk'),
+
+/* 16. Look Back (Movie) */
+('https://img.youtube.com/vi/wkRR2VUsWfU/maxresdefault.jpg', 'https://www.youtube.com/watch?v=wkRR2VUsWfU'),
+
+/* 17. Solo Leveling: Karma (Action RPG Trailer) */
+('https://img.youtube.com/vi/NdHlNMAqC1A/maxresdefault.jpg', 'https://www.youtube.com/watch?v=NdHlNMAqC1A');
+
+
+INSERT INTO TopUpcoming (
+    title, 
+    description, 
+    type, 
+    poster_image_link, 
+    score, 
+    status, 
+    aired_date, 
+    producer, 
+    studio, 
+    source, 
+    genre, 
+    duration
+) VALUES
+/* 1. Jujutsu Kaisen Season 3 (Culling Game) */
+('Jujutsu Kaisen: Culling Game', 
+ 'The Culling Game begins, pushing Yuji and his allies to their limits in a deadly sorcerer battle royale.', 
+ 'tvshow', 'https://img.youtube.com/vi/fgvoLo52aac/maxresdefault.jpg', NULL, 'upcoming', '2026-01-08', 'TOHO Animation', 'MAPPA', 'Manga', 'Action, Dark Fantasy', '24 min'),
+
+/* 2. Frieren: Beyond Journey\'s End Season 2 */
+('Frieren: Beyond Journey\'s End Season 2', 
+ 'Frieren continues her journey to Ende, confronting her past and new threats with her party.', 
+ 'tvshow', 'https://img.youtube.com/vi/kF4KuvjdHQg/maxresdefault.jpg', NULL, 'upcoming', '2026-01-16', 'TOHO Animation', 'Madhouse', 'Manga', 'Adventure, Fantasy', '24 min'),
+
+/* 3. Oshi no Ko Season 3 */
+('Oshi no Ko Season 3', 
+ 'Ruby Hoshino continues her pursuit of the truth in the entertainment industry as B-Komachi rises.', 
+ 'tvshow', 'https://img.youtube.com/vi/lYGgjpCJOXk/maxresdefault.jpg', NULL, 'upcoming', '2026-01-14', 'Kadokawa', 'Doga Kobo', 'Manga', 'Drama, Supernatural', '24 min'),
+
+/* 4. JoJo\'s Bizarre Adventure: Steel Ball Run */
+('JoJo\'s Bizarre Adventure: Steel Ball Run', 
+ 'A cross-country horse race in the American Old West uncovers a conspiracy involving the President and holy relics.', 
+ 'tvshow', 'https://example.com/posters/jojo_sbr.jpg', NULL, 'upcoming', '2026-03-19', 'Warner Bros. Japan', 'David Production', 'Manga', 'Adventure, Supernatural', '24 min'),
+
+/* 5. Re:Zero - Starting Life in Another World Season 4 */
+('Re:Zero Season 4', 
+ 'Subaru and his friends head to a new land to save Rem and uncover more about the Witch of Envy.', 
+ 'tvshow', 'https://example.com/posters/rezero_s4.jpg', NULL, 'upcoming', '2026-04-01', 'Kadokawa', 'White Fox', 'Light Novel', 'Isekai, Psychological', '24 min'),
+
+/* 6. Bleach: Thousand-Year Blood War - The Calamity */
+('Bleach: Thousand-Year Blood War - The Calamity', 
+ 'The final conflict between the Soul Reapers and the Quincies reaches its devastating conclusion.', 
+ 'tvshow', 'https://example.com/posters/bleach_tybw_calamity.jpg', NULL, 'upcoming', '2026-07-01', 'Aniplex', 'Pierrot', 'Manga', 'Action, Supernatural', '24 min'),
+
+/* 7. Fire Force Season 3 (Part 2) */
+('Fire Force Season 3 (Part 2)', 
+ 'Shinra and Company 8 fight to stop the Great Cataclysm in the final chapter of the saga.', 
+ 'tvshow', 'https://img.youtube.com/vi/-5J-2dF5Myk/maxresdefault.jpg', NULL, 'upcoming', '2026-01-09', 'DMM Pictures', 'David Production', 'Manga', 'Action, Sci-Fi', '24 min'),
+
+/* 8. One Piece: Elbaph Arc */
+('One Piece: Elbaph Arc', 
+ 'The Straw Hat Pirates finally arrive at the land of giants, Elbaph, for a new adventure.', 
+ 'tvshow', 'https://example.com/posters/one_piece_elbaph.jpg', NULL, 'upcoming', '2026-04-05', 'Toei Animation', 'Toei Animation', 'Manga', 'Adventure, Action', '24 min'),
+
+/* 9. Hell\'s Paradise Season 2 */
+('Hell\'s Paradise Season 2', 
+ 'Gabimaru and the survivors face the Tensen as they desperately search for the Elixir of Life.', 
+ 'tvshow', 'https://example.com/posters/jigokuraku_s2.jpg', NULL, 'upcoming', '2026-01-11', 'Twin Engine', 'MAPPA', 'Manga', 'Action, Dark Fantasy', '24 min'),
+
+/* 10. Witch Hat Atelier */
+('Witch Hat Atelier', 
+ 'Coco, a girl who longs to be a witch, accidentally discovers the secret of magic and begins her training.', 
+ 'tvshow', 'https://example.com/posters/witch_hat_atelier.jpg', NULL, 'upcoming', '2026-04-01', 'Kodansha', 'Bug Films', 'Manga', 'Fantasy, Seinen', '24 min'),
+
+/* 11. Fate/strange Fake */
+('Fate/strange Fake', 
+ 'A false Holy Grail War begins in the United States, summoning strange and powerful Servants.', 
+ 'tvshow', 'https://example.com/posters/fate_strange_fake.jpg', NULL, 'upcoming', '2026-01-03', 'Aniplex', 'A-1 Pictures', 'Light Novel', 'Action, Fantasy', '24 min'),
+
+/* 12. Golden Kamuy: Final Season */
+('Golden Kamuy: Final Season', 
+ 'Sugimoto and Asirpa reach the climax of their hunt for the Ainu gold in Hokkaido.', 
+ 'tvshow', 'https://example.com/posters/golden_kamuy_final.jpg', NULL, 'upcoming', '2026-01-04', 'NBCUniversal', 'Brain\'s Base', 'Manga', 'Adventure, Historical', '24 min'),
+
+/* 13. My Hero Academia: Vigilantes Season 2 */
+('My Hero Academia: Vigilantes Season 2', 
+ 'Koichi Haimawari continues his unauthorized hero work as the Crawler in this prequel series.', 
+ 'tvshow', 'https://example.com/posters/mha_vigilantes_s2.jpg', NULL, 'upcoming', '2026-01-05', 'TOHO Animation', 'Bones', 'Manga', 'Superhero, Action', '24 min'),
+
+/* 14. Trigun Stargaze */
+('Trigun Stargaze', 
+ 'Vash the Stampede returns in the final act of the Trigun Stampede saga.', 
+ 'tvshow', 'https://example.com/posters/trigun_stargaze.jpg', NULL, 'upcoming', '2026-01-10', 'TOHO Animation', 'Orange', 'Manga', 'Sci-Fi, Action', '24 min'),
+
+/* 15. The Apothecary Diaries Season 3 */
+('The Apothecary Diaries Season 3', 
+ 'Maomao returns to solve mysteries within the inner palace using her pharmaceutical knowledge.', 
+ 'tvshow', 'https://example.com/posters/apothecary_diaries_s3.jpg', NULL, 'upcoming', '2026-10-01', 'TOHO Animation', 'OLM', 'Light Novel', 'Mystery, Historical', '24 min'),
+
+/* 16. Black Clover Season 2 */
+('Black Clover Season 2', 
+ 'Asta and the Black Bulls prepare for the final war against the Spade Kingdom devils.', 
+ 'tvshow', 'https://example.com/posters/black_clover_s2.jpg', NULL, 'upcoming', '2026-10-01', 'TV Tokyo', 'Pierrot', 'Manga', 'Action, Fantasy', '24 min'),
+
+/* 17. Cosmic Princess Kaguya! */
+('Cosmic Princess Kaguya!', 
+ 'A modern reimagining of the Tale of the Bamboo Cutter set in a sci-fi universe.', 
+ 'movie', 'https://example.com/posters/cosmic_princess_kaguya.jpg', NULL, 'upcoming', '2026-01-22', 'Twin Engine', 'Studio Colorido', 'Original', 'Sci-Fi, Fantasy', '1h 55m'),
+
+/* 18. Saga of Tanya the Evil Season 2 */
+('Saga of Tanya the Evil Season 2', 
+ 'Tanya Degurechaff continues her war against the world and Being X.', 
+ 'tvshow', 'https://example.com/posters/tanya_evil_s2.jpg', NULL, 'upcoming', '2026-06-01', 'Kadokawa', 'Studio NUT', 'Light Novel', 'Military, Isekai', '24 min'),
+
+/* 19. The Ghost in the Shell (2026) */
+('The Ghost in the Shell (2026)', 
+ 'A new cyberpunk adaptation exploring the philosophy of the ghost and the machine.', 
+ 'tvshow', 'https://example.com/posters/gits_2026.jpg', NULL, 'upcoming', '2026-12-01', 'Production I.G', 'Science SARU', 'Manga', 'Sci-Fi, Cyberpunk', '24 min'),
+
+/* 20. Sentenced to Be a Hero */
+('Sentenced to Be a Hero', 
+ 'A group of criminals is forced to become heroes to fight against the Demon Lord army.', 
+ 'tvshow', 'https://example.com/posters/sentenced_hero.jpg', NULL, 'upcoming', '2026-01-03', 'Kadokawa', 'Studio KAI', 'Light Novel', 'Fantasy, Action', '24 min');

@@ -164,25 +164,15 @@ while ($row = mysqli_fetch_assoc($sql)) {
                 <span class="left-arrowlatest">&lt;</span>
                 <span class="right-arrowlatest">&gt;</span>
                 <div class="latestList">
-
-                    <img src="https://cdn.myanimelist.net/images/anime/1168/148347.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1697/151793.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1959/151055.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1140/152364.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1190/151754.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1276/151118.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1206/151772.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1699/151694.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1364/151767.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1830/145051.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1163/151246.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1721/151097.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1011/152084.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1651/152063.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1864/151837.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1015/151233.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1264/152012.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1257/152233.jpg">
+                    <?php 
+                    $topUpcoming = 'SELECT * FROM TopUpcoming';
+                    $topUpcomingResult = mysqli_query($conn, $topUpcoming);
+                    if (mysqli_num_rows($topUpcomingResult) > 0) {
+                        while ($row = mysqli_fetch_assoc($topUpcomingResult)) {
+                            echo '<img href="MediaPage.php?title=' . $row['title'] . '" src="' . $row['poster_image_link'] . '" alt="Anime Image">';
+                        }
+                    }
+                    ?>
                 </div>
             </div>
             <br>
@@ -192,25 +182,17 @@ while ($row = mysqli_fetch_assoc($sql)) {
                 <span class="left-arrowTrailers">&lt;</span>
                 <span class="right-arrowTrailers">&gt;</span>
                 <div class="TrailersList">
-
-                    <img src="https://i.ytimg.com/vi/WJkJTb8T-8E/maxresdefault.jpg">
-                    <img src="https://i.ytimg.com/vi/ATJYac_dORw/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCFg_a8bomx8r7HLZEPf_HriNAkhA">
-                    <img src="https://img.youtube.com/vi/pv8A7eubPQQ/maxresdefault.jpg">
-                    <img src="https://img.youtube.com/vi/FHgm89hKpXU/maxresdefault.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1190/151754.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1276/151118.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1206/151772.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1699/151694.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1364/151767.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1830/145051.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1163/151246.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1721/151097.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1011/152084.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1651/152063.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1864/151837.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1015/151233.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1264/152012.jpg">
-                    <img src="https://cdn.myanimelist.net/images/anime/1257/152233.jpg">
+                    <?php 
+                    $trailersQuery = 'SELECT * FROM trailers';
+                    $trailersResult = mysqli_query($conn, $trailersQuery);
+                    if (mysqli_num_rows($trailersResult) > 0) {
+                        while ($row = mysqli_fetch_assoc($trailersResult)) {
+                            echo '<a href="' . $row['video_url'] . '" target="_blank">';
+                            echo '<img src="' . $row['image_url'] . '" alt="Trailer Image">';
+                            echo '</a>';
+                        }
+                    }
+                    ?>
                 </div>
             </div><br>
             <hr>
