@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("db.php"); 
+include("../../HOME/Model/db.php"); 
 
 // Initialize default stats
 $animeStats = [
@@ -157,8 +157,8 @@ $mangaPct = calculatePercentages($mangaStats);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="userDash.css">
-    <link rel="stylesheet" href="searchBar.css">
+    <link rel="stylesheet" href="../Css/userDash.css">
+    <link rel="stylesheet" href="../../HOME/Css/searchBar.css">
 </head>
 
 <body>
