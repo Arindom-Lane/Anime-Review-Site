@@ -1,21 +1,30 @@
 <?php
 session_start();
 include("db.php");
-if(isset($_SESSION["userid"]) && $_SESSION["loggedId"]==true){
+
+$stats = [
+    'watching' => 0,
+    'completed' => 0,
+    'plan_to_watch' => 0,
+    'dropped' => 0
+];
+
+if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true) {
     $userId = $_SESSION['userId'];
-    $typeString = "'" . implode("','", $types) . "'";
-$sql = mysqli_query($conn, "SELECT w.status, COUNT(*) as count 
-                FROM Watchlist w 
-                JOIN Media m ON w.media_id = m.media_id 
-                WHERE w.user_id = $userId
-                GROUP BY w.status");
 
+    $sql = "SELECT status, COUNT(*) as count 
+            FROM Watchlist 
+            WHERE user_id = '$userId' 
+            GROUP BY status";
 
-$stats = [];
+    $result = mysqli_query($conn, $sql);
 
-while ($row = mysqli_fetch_assoc($sql)) {
-    $stats[$row['status']] = $row['total'];
-}}
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $stats[$row['status']] = $row['count'];
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -213,10 +222,10 @@ while ($row = mysqli_fetch_assoc($sql)) {
                         <h3>My Stats</h3>
                     </div>
                     <div class="MyStatsContent">
-                        Watching: <?php echo $stats['watching'] ?? 0; ?><br>
-                        Completed: <?php echo $stats['completed'] ?? 0; ?><br>
-                        Plan to Watch: <?php echo $stats['plan_to_watch'] ?? 0; ?><br>
-                        Dropped: <?php echo $stats['dropped'] ?? 0; ?>
+                        Watching: <?php echo $stats['watching']; ?><br>
+                        Completed: <?php echo $stats['completed']; ?><br>
+                        Plan to Watch: <?php echo $stats['plan_to_watch']; ?><br>
+                        Dropped: <?php echo $stats['dropped']; ?>
                     </div>
                 </div>
             <?php else: ?>
