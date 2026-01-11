@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("db.php");
+include("../Model/db.php");
 
 $stats = [
     'watching' => 0,
@@ -34,34 +34,34 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList</title>
-    <link rel="stylesheet" href="homeStyle.css">
-    <link rel="stylesheet" href="searchBar.css">
+    <link rel="stylesheet" href="../Css/homeStyle.css">
+    <link rel="stylesheet" href="../Css/searchBar.css">
 </head>
 
 <body>
     <header>
 
         <div class="header-upper">
-            <div class="logo">
-                <img src="download.png">
+            <div class="logo" onclick="window.location.href='home.php'" style="cursor: pointer;">
+                <img src="../Images/download.png">
             </div>
             <div class="profile">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
                     <?php if ($_SESSION['role'] ==  'registered'): ?>
                         <div class="devider1"></div>
-                        <span class="profile-name" onclick="window.location.href='userDashboard.php'">
+                        <span class="profile-name" onclick="window.location.href='../../USER/View/userDashboard.php'">
                             <?php echo $_SESSION['username']; ?>
                         </span>
-                        <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='userDashboard.php'">
-                        <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
+                        <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='../../USER/View/userDashboard.php'">
+                        <a href="../Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
                     <?php else: ?>
                         <div class="devider1"></div>
-                        <span class="profile-name" onclick="window.location.href='userDashboard.php'">
+                        <span class="profile-name" onclick="window.location.href='../../USER/View/userDashboard.php'">
                             <?php echo $_SESSION['username']; ?>
                         </span>
-                        <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='userDashboard.php'">
-                        <a href="admin.php" class="login-link">Dashboard</a>
-                        <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
+                        <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='../../USER/View/userDashboard.php'">
+                        <a href="../../ADMIN/View/admin.php" class="login-link">Dashboard</a>
+                        <a href="../Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
                     <?php endif; ?>
                 <?php else: ?>
                     <a href="signUp.php" class="login-link">Sign Up</a>
@@ -91,7 +91,7 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
                             var query = $(this).val();
                             if (query.length > 2) {
                                 $.ajax({
-                                    url: 'searchBarLogic.php',
+                                    url: '../Controler/searchBarLogic.php',
                                     method: 'POST',
                                     data: {
                                         search: query
@@ -321,7 +321,7 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
         </div>
     </main>
 
-    <script src="homeJSCRIPT.js"></script>
+    <script src="../Js/homeJSCRIPT.js"></script>
 </body>
 
 </html>

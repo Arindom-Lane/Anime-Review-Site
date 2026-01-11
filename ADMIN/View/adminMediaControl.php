@@ -64,7 +64,7 @@ if (isset($_SESSION['editUserMessage'])) {
 
     <header>
         <div class="header-upper">
-            <div class="logo" onclick="window.location.href='home.php'">
+            <div class="logo" onclick="window.location.href='../../HOME/View/home.php'">
                 <img src="../../HOME/Images/download.png" alt="Logo">
             </div>
             <div class="profile">

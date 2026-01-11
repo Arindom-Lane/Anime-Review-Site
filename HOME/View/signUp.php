@@ -1,5 +1,5 @@
 <?php
-include("db.php");
+include("../Model/db.php");
 $exists = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
@@ -172,7 +172,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
 
         <form method="POST">
             <div class="logo">
-                <img src="download.png">
+                <img src="../Images/download.png">
             </div>
             <div class="feild">
                 <label>Username</label>

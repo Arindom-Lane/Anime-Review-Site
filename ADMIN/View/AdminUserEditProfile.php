@@ -62,10 +62,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
 <body>
     <header>
         <div class="header-upper">
-            <div class="logo" onclick="window.location.href='home.php'">
+            <div class="logo" onclick="window.location.href='../../HOME/View/home.php'">
                 <img src="../../HOME/Images/download.png" alt="Logo">
             </div>
-            <div class="profile" onclick="window.location.href='../../USER/Controler/userDashboard.php'">
+            <div class="profile" onclick="window.location.href='../../USER/View/userDashboard.php'">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
                     <div class="devider1"></div>
                     <span class="profile-name">
