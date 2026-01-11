@@ -1,3 +1,154 @@
+<?php
+session_start();
+include("../../HOME/Model/db.php"); 
+
+// Initialize default stats
+$animeStats = [
+    'watching' => 0, 'completed' => 0, 'dropped' => 0, 'plan_to_watch' => 0, 
+    'total' => 0, 'mean_score' => 0.00
+];
+$mangaStats = [
+    'reading' => 0, 'completed' => 0, 'dropped' => 0, 'plan_to_read' => 0, 
+    'total' => 0, 'mean_score' => 0.00
+];
+
+if ($conn) {
+    if (!isset($_SESSION['username'])) {
+        header("Location: ../../HOME/View/login.php");
+        exit();
+    }
+
+    $currentUser = mysqli_real_escape_string($conn, $_SESSION['username']);
+
+
+    $user_sql = "SELECT * FROM users WHERE username = '$currentUser'";
+    $user_result = mysqli_query($conn, $user_sql);
+    
+    if($user_row = mysqli_fetch_assoc($user_result)){
+        if(isset($user_row['id'])){
+            $userId = $user_row['id'];
+        } elseif(isset($user_row['user_id'])){
+            $userId = $user_row['user_id'];
+        } else {
+            die("Error: Could not find 'id' or 'user_id' column in your 'users' table. Please check your database structure.");
+        }
+    } else {
+        die("User not found in database.");
+    } 
+
+    function getMediaStats($conn, $uId, $types) {
+        $typeString = "'" . implode("','", $types) . "'";
+        
+        // 1. Get Counts per Status
+        $sql = "SELECT w.status, COUNT(*) as count 
+                FROM Watchlist w 
+                JOIN Media m ON w.media_id = m.media_id 
+                WHERE w.user_id = $uId AND m.type IN ($typeString) 
+                GROUP BY w.status";
+        
+        $result = mysqli_query($conn, $sql);
+        $data = [];
+        
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[$row['status']] = $row['count'];
+            }
+        }
+
+        // 2. Get Mean Score from Reviews
+        $sqlScore = "SELECT AVG(r.rating) as mean_score
+                     FROM Reviews r 
+                     JOIN Media m ON r.media_id = m.media_id 
+                     WHERE r.user_id = $uId AND m.type IN ($typeString)";
+        
+        $resultScore = mysqli_query($conn, $sqlScore);
+        $meanScore = 0;
+        
+        if ($resultScore) {
+            $rowScore = mysqli_fetch_assoc($resultScore);
+            $meanScore = $rowScore['mean_score'];
+        }
+
+        return [
+            'watching'      => isset($data['watching']) ? $data['watching'] : 0,
+            'completed'     => isset($data['completed']) ? $data['completed'] : 0,
+            
+            'dropped'       => isset($data['dropped']) ? $data['dropped'] : 0,
+            'plan_to_watch' => isset($data['plan_to_watch']) ? $data['plan_to_watch'] : 0,
+            'total'         => array_sum($data),
+            'mean_score'    => number_format((float)$meanScore, 2)
+        ];
+    }
+
+    // --- EXECUTE FOR ANIME ---
+    $animeStats = getMediaStats($conn, $userId, ['movie', 'tvshow']);
+
+    // --- EXECUTE FOR MANGA ---
+    $mangaData = getMediaStats($conn, $userId, ['manga']);
+    
+    // Map keys for Manga
+    $mangaStats = [
+        'reading'      => $mangaData['watching'],
+        'completed'    => $mangaData['completed'],
+        
+        'dropped'      => $mangaData['dropped'],
+        'plan_to_read' => $mangaData['plan_to_watch'],
+        'total'        => $mangaData['total'],
+        'mean_score'   => $mangaData['mean_score']
+    ];
+}
+
+// --- COMMENT LOGIC ---
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
+    $commentText = htmlspecialchars(trim($_POST['user_comment']));
+    if (!empty($commentText)) {
+        $userDisplay = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
+        $newComment = [
+            'id'   => uniqid(),
+            'user' => $userDisplay, 
+            'text' => $commentText,
+            'date' => date('M d, Y H:i')
+        ];
+        if (!isset($_SESSION['post_comments'])) { $_SESSION['post_comments'] = []; }
+        $_SESSION['post_comments'][] = $newComment;
+    }
+}
+
+// --- CALCULATE BAR WIDTHS ---
+
+function calculatePercentages($stats) {
+    $total = $stats['total'];
+    
+    // Avoid division by zero
+    if ($total == 0) {
+        return [
+            'watching' => 0, 'completed' => 0, 
+            'dropped' => 0, 'plan' => 0
+        ];
+    }
+
+    // FIX: Check if 'watching' key exists, otherwise use 'reading' (for Manga)
+    $watchingCount = isset($stats['watching']) ? $stats['watching'] : (isset($stats['reading']) ? $stats['reading'] : 0);
+    
+    // FIX: Check if 'plan_to_watch' key exists, otherwise use 'plan_to_read'
+    $planCount = isset($stats['plan_to_watch']) ? $stats['plan_to_watch'] : (isset($stats['plan_to_read']) ? $stats['plan_to_read'] : 0);
+
+    // Return an array of percentages
+    return [
+        'watching'  => ($watchingCount / $total) * 100,
+        'completed' => ($stats['completed'] / $total) * 100,
+        'dropped'   => ($stats['dropped'] / $total) * 100,
+        'plan'      => ($planCount / $total) * 100,
+    ];
+}
+
+// Get Anime Percentages
+$animePct = calculatePercentages($animeStats);
+
+// Get Manga Percentages
+$mangaPct = calculatePercentages($mangaStats);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,15 +156,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="userDash.css">
-    <link rel="stylesheet" href="searchBar.css">
+    <link rel="stylesheet" href="../Css/userDash.css">
+    <link rel="stylesheet" href="../../HOME/Css/searchBar.css">
 </head>
 
 <body>
     <header>
         <div class="header-upper">
-            <div class="logo" onclick="window.location.href='home.php'">
-                <img src="download.png" alt="Logo">
+            <div class="logo" onclick="window.location.href='../../HOME/View/home.php'">
+                <img src="../../HOME/Images/download.png" alt="Logo">
             </div>
             <div class="profile">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
@@ -22,7 +173,7 @@
                         <?php echo $_SESSION['username']; ?>
                     </span>
                     <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile">
-                    <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
+                    <a href="../../HOME/Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -46,7 +197,7 @@
                         var query = $(this).val();
                         if (query.length > 2) {
                             $.ajax({
-                                url: 'searchBarLogic.php',
+                                url: '../../HOME/Controler/searchBarLogic.php',
                                 method: 'POST',
                                 data: {
                                     search: query
@@ -135,7 +286,6 @@
                      <div class="main-progress-bar">
                         <div class="stat-bar-segment bg-watching" style="width: <?php echo $animePct['watching']; ?>%" title="Watching"></div>
                         <div class="stat-bar-segment bg-completed" style="width: <?php echo $animePct['completed']; ?>%" title="Completed"></div>
-                        <div class="stat-bar-segment bg-onhold" style="width: <?php echo $animePct['on_hold']; ?>%" title="On-Hold"></div>
                         <div class="stat-bar-segment bg-dropped" style="width: <?php echo $animePct['dropped']; ?>%" title="Dropped"></div>
                         <div class="stat-bar-segment bg-plan" style="width: <?php echo $animePct['plan']; ?>%" title="Plan to Watch"></div>
                     </div>
@@ -144,7 +294,6 @@
                         <ul class="status-legend">
                             <li><span class="dot watching"></span> Watching <span class="count"><?php echo $animeStats['watching']; ?></span></li>
                             <li><span class="dot completed"></span> Completed <span class="count"><?php echo $animeStats['completed']; ?></span></li>
-                            <li><span class="dot onhold"></span> On-Hold <span class="count"><?php echo $animeStats['on_hold']; ?></span></li>
                             <li><span class="dot dropped"></span> Dropped <span class="count"><?php echo $animeStats['dropped']; ?></span></li>
                             <li><span class="dot plan"></span> Plan to Watch <span class="count"><?php echo $animeStats['plan_to_watch']; ?></span></li>
                         </ul>
@@ -185,7 +334,6 @@
                     <div class="main-progress-bar">
                         <div class="stat-bar-segment bg-watching" style="width: <?php echo $mangaPct['watching']; ?>%" title="Reading"></div>
                         <div class="stat-bar-segment bg-completed" style="width: <?php echo $mangaPct['completed']; ?>%" title="Completed"></div>
-                        <div class="stat-bar-segment bg-onhold" style="width: <?php echo $mangaPct['on_hold']; ?>%" title="On-Hold"></div>
                         <div class="stat-bar-segment bg-dropped" style="width: <?php echo $mangaPct['dropped']; ?>%" title="Dropped"></div>
                         <div class="stat-bar-segment bg-plan" style="width: <?php echo $mangaPct['plan']; ?>%" title="Plan to Read"></div>
                     </div>
@@ -194,7 +342,6 @@
                         <ul class="status-legend">
                             <li><span class="dot watching"></span> Reading <span class="count"><?php echo $mangaStats['reading']; ?></span></li>
                             <li><span class="dot completed"></span> Completed <span class="count"><?php echo $mangaStats['completed']; ?></span></li>
-                            <li><span class="dot onhold"></span> On-Hold <span class="count"><?php echo $mangaStats['on_hold']; ?></span></li>
                             <li><span class="dot dropped"></span> Dropped <span class="count"><?php echo $mangaStats['dropped']; ?></span></li>
                             <li><span class="dot plan"></span> Plan to Read <span class="count"><?php echo $mangaStats['plan_to_read']; ?></span></li>
                         </ul>
@@ -257,7 +404,7 @@
         </div>
         </div>
 
-        <script src="userDashboard.js"></script>
+        <script src="../Js/userDashboard_search.js"></script>
     </main>
 </body>
 

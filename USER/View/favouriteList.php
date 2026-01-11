@@ -1,17 +1,26 @@
+<?php
+session_start();
+include("../../HOME/Model/db.php");
+
+if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
+    header('Location: ../../HOME/View/login.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="userDash.css">  
-    <link rel="stylesheet" href="searchBar.css">  
+    <link rel="stylesheet" href="../Css/userDash.css">  
+    <link rel="stylesheet" href="../../HOME/Css/searchBar.css">  
 </head>
 <body>
     <header>
         <div class="header-upper">
-            <div class="logo" onclick="window.location.href='home.php'">
-                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
+            <div class="logo" onclick="window.location.href='../../HOME/View/home.php'">
+                <img src="../../HOME/Images/download.png" alt="Logo">
             </div>
             <div class="profile">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
@@ -20,7 +29,7 @@
                     <?php echo $_SESSION['username']; ?>
                 </span>
                 <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile">
-                <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
+                <a href="../../HOME/Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -38,6 +47,27 @@
                     
                 </div>
             </div>
+            <script>
+                $(document).ready(function() {
+                    $('#search').on('input', function() {
+                        var query = $(this).val();
+                        if (query.length > 2) {
+                            $.ajax({
+                                url: '../../HOME/Controler/searchBarLogic.php',
+                                method: 'POST',
+                                data: {
+                                    search: query
+                                },
+                                success: function(data) {
+                                    $('#search-results').html(data).show();
+                                }
+                            });
+                        } else {
+                            $('#search-results').hide();
+                        }
+                    });
+                });
+            </script>
         </div>
         <div class="header-lower">
             <span>My Panel</span>
@@ -101,6 +131,6 @@
             
     </main>
     
-    <script src="favouriteList.js"></script>
+    <script src="../Js/favouriteList.js"></script>
 </body>
 </html>
