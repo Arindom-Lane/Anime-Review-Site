@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("db.php");
+include("../Model/db.php");
 $media_id = NULL;
 
 if(isset($_GET['id'])){
@@ -170,9 +170,9 @@ $reviews_result = mysqli_query($conn, $reviews_query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($media['title']); ?> - MyAnimeList</title>
-    <link rel="stylesheet" href="homeStyle.css">
-    <link rel="stylesheet" href="searchBar.css">
-    <link rel="stylesheet" href="MediaPage.css"> 
+    <link rel="stylesheet" href="../Css/homeStyle.css">
+    <link rel="stylesheet" href="../Css/searchBar.css">
+    <link rel="stylesheet" href="../Css/MediaPage.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -180,14 +180,14 @@ $reviews_result = mysqli_query($conn, $reviews_query);
     <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='home.php'">
-                <img src="download.png" alt="Logo">
+                <img src="../Images/download.png" alt="Logo">
             </div>
             <div class="profile">
                 <div class="devider1"></div>
                 <?php if ($user_id): ?>
-                    <span class="profile-name" onclick="window.location.href='userDashboard.php'"><?php echo htmlspecialchars($username); ?></span>
-                    <img src="<?php echo htmlspecialchars($user_profile_pic); ?>" alt="Profile" onclick="window.location.href='userDashboard.php'">
-                    <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
+                    <span class="profile-name" onclick="window.location.href='../../USER/View/userDashboard.php'"><?php echo htmlspecialchars($username); ?></span>
+                    <img src="<?php echo htmlspecialchars($user_profile_pic); ?>" alt="Profile" onclick="window.location.href='../../USER/View/userDashboard.php'">
+                    <a href="../Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
                 <?php else: ?>
                     <a href="login.php" class="login-link">Log In</a>
                 <?php endif; ?>
@@ -195,8 +195,8 @@ $reviews_result = mysqli_query($conn, $reviews_query);
         </div>
         <div class="header-middle">
             <div class="topButton">
-                <span>TOP ANIME</span>
-                <span>TOP MANGA</span>
+                <span onclick="window.location.href='top-Anime.php'">TOP ANIME</span>
+                <span onclick="window.location.href='top-Manga.php'">TOP MANGA</span>
             </div>
              <div class="search-bar">
                 <input class="search" type="text" placeholder="Search...">

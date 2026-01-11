@@ -3,7 +3,7 @@ $(document).ready(function() {
         var query = $(this).val();
         if (query.length > 2) {
             $.ajax({
-                url: 'searchBarLogic.php',
+                url: '../../HOME/Controler/searchBarLogic.php',
                 method: 'POST',
                 data: {
                     search: query
