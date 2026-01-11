@@ -3,7 +3,7 @@ session_start();
 include("../../HOME/Model/db.php");
 
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
-    header('Location: login.php');
+    header('Location: ../../HOME/View/login.php');
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
