@@ -1,7 +1,7 @@
 <?php
 session_start();
 $error = false;
-include("db.php");
+include("../Model/db.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
     $name = $_POST["username"];
     $password = $_POST["password"];
@@ -184,7 +184,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
 
         <form method="POST">
             <div class="logo">
-                <img src="download.png">
+                <img src="../Images/download.png">
             </div>
             <div class="feild">
                 <label>User name</label>

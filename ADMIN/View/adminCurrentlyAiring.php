@@ -4,10 +4,10 @@ include("../../HOME/Model/db.php");
 
 
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true && $_SESSION['role'] != 'admin') {
-    header('Location: login.php');
+    header('Location: ../../HOME/View/login.php');
     exit();
 } elseif ($_SESSION['role'] == 'registered') {
-    header('Location: home.php');
+    header('Location: ../../HOME/View/home.php');
 }
 
 if (isset($_SESSION['CreateError'])) {
@@ -63,7 +63,7 @@ if (isset($_SESSION['editUserMessage'])) {
 
     <header>
         <div class="header-upper">
-            <div class="logo" onclick="window.location.href='home.php'">
+            <div class="logo" onclick="window.location.href='../../HOME/View/home.php'">
                 <img src="../../HOME/Images/download.png" alt="Logo">
             </div>
             <div class="profile">
