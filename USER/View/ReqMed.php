@@ -1,20 +1,34 @@
+<?php
+session_start();
+include("../../HOME/Model/db.php"); 
+
+if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
+    header('Location: ../../HOME/View/login.php');
+    exit();
+}
+
+if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
+    echo '<script>alert("Media Creation Error!");</script>';
+    $_SESSION['CreateError'] = false;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="admin.css">    
-    <link rel="stylesheet" href="searchBar.css">
+    <link rel="stylesheet" href="../Css/favourite.css">    
+    <link rel="stylesheet" href="../../HOME/Css/searchBar.css">
 </head>
 <body>
     <header>
         <div class="header-upper">
-            <div class="logo" onclick="window.location.href='home.php'">
-                <img src="https://cdn.myanimelist.net/images/mal-logo-xsmall.png?v=1634263200">
+            <div class="logo" onclick="window.location.href='../../HOME/View/home.php'">
+                <img src="../../HOME/Images/download.png" alt="Logo">
             </div>
             <div class="profile">
-                <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
+                <a href="../../HOME/Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
             </div>
         </div>
         <div class="header-middle">
@@ -37,7 +51,7 @@
                         var query = $(this).val();
                         if (query.length > 2) {
                             $.ajax({
-                                url: 'searchBarLogic.php',
+                                url: '../../HOME/Controler/searchBarLogic.php',
                                 method: 'POST',
                                 data: {
                                     search: query
@@ -85,7 +99,7 @@
         <div class="admin-box">
             <h2 class="main-header">Create Media</h2>
             <div class="media-overview">
-                <form method="POST" action="adminCreate.php">
+                <form method="POST" action="../../ADMIN/View/adminCreate.php">
                    <input name="title" placeholder="Title">
                     <select name="type">
                         <option value="movie">Movie</option>
@@ -104,11 +118,7 @@
             </div>
         </div>
 
-        
-            
-            
-            
-        <script src="userDashboard.js"></script>
+        <script src="../Js/ReqMed.js"></script>
     </main>
 </body>
 </html>
