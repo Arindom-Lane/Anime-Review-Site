@@ -79,7 +79,6 @@
         $showDetails = true;
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,7 +111,6 @@
                 <span>TOP MANGA</span>
             </div>
             <div class="search-bar">
-<div class="search-bar">
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                 <form method="POST">
                     <input class="search" id="search" type="text" name="search" placeholder="Search...">
@@ -121,27 +119,6 @@
                     
                 </div>
             </div>
-            <script>
-                $(document).ready(function() {
-                    $('#search').on('input', function() {
-                        var query = $(this).val();
-                        if (query.length > 2) {
-                            $.ajax({
-                                url: 'searchBarLogic.php',
-                                method: 'POST',
-                                data: {
-                                    search: query
-                                },
-                                success: function(data) {
-                                    $('#search-results').html(data).show();
-                                }
-                            });
-                        } else {
-                            $('#search-results').hide();
-                        }
-                    });
-                });
-            </script>            </div>
         </div>
         <div class="header-lower">
             <span>Edit Profile</span>
@@ -198,4 +175,6 @@
         <?php endif; ?>
     </main>
 
-    
+    <script src="UserEditProfile.js"></script>
+</body>
+</html>

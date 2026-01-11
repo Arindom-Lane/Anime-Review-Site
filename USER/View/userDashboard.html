@@ -1,157 +1,3 @@
-<?php
-session_start();
-include("db.php"); 
-
-// Initialize default stats
-$animeStats = [
-    'watching' => 0, 'completed' => 0, 'on_hold' => 0, 'dropped' => 0, 'plan_to_watch' => 0, 
-    'total' => 0, 'mean_score' => 0.00
-];
-$mangaStats = [
-    'reading' => 0, 'completed' => 0, 'on_hold' => 0, 'dropped' => 0, 'plan_to_read' => 0, 
-    'total' => 0, 'mean_score' => 0.00
-];
-
-if ($conn) {
-    if (!isset($_SESSION['username'])) {
-        header("Location: login.php");
-        exit();
-    }
-
-    $currentUser = mysqli_real_escape_string($conn, $_SESSION['username']);
-
-
-    $user_sql = "SELECT * FROM users WHERE username = '$currentUser'";
-    $user_result = mysqli_query($conn, $user_sql);
-    
-    if($user_row = mysqli_fetch_assoc($user_result)){
-        if(isset($user_row['id'])){
-            $userId = $user_row['id'];
-        } elseif(isset($user_row['user_id'])){
-            $userId = $user_row['user_id'];
-        } else {
-            die("Error: Could not find 'id' or 'user_id' column in your 'users' table. Please check your database structure.");
-        }
-    } else {
-        die("User not found in database.");
-    } 
-
-    function getMediaStats($conn, $uId, $types) {
-        $typeString = "'" . implode("','", $types) . "'";
-        
-        // 1. Get Counts per Status
-        $sql = "SELECT w.status, COUNT(*) as count 
-                FROM Watchlist w 
-                JOIN Media m ON w.media_id = m.media_id 
-                WHERE w.user_id = $uId AND m.type IN ($typeString) 
-                GROUP BY w.status";
-        
-        $result = mysqli_query($conn, $sql);
-        $data = [];
-        
-        if ($result) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                $data[$row['status']] = $row['count'];
-            }
-        }
-
-        // 2. Get Mean Score from Reviews
-        $sqlScore = "SELECT AVG(r.rating) as mean_score
-                     FROM Reviews r 
-                     JOIN Media m ON r.media_id = m.media_id 
-                     WHERE r.user_id = $uId AND m.type IN ($typeString)";
-        
-        $resultScore = mysqli_query($conn, $sqlScore);
-        $meanScore = 0;
-        
-        if ($resultScore) {
-            $rowScore = mysqli_fetch_assoc($resultScore);
-            $meanScore = $rowScore['mean_score'];
-        }
-
-        return [
-            'watching'      => isset($data['watching']) ? $data['watching'] : 0,
-            'completed'     => isset($data['completed']) ? $data['completed'] : 0,
-            'on_hold'       => isset($data['on_hold']) ? $data['on_hold'] : 0,
-            'dropped'       => isset($data['dropped']) ? $data['dropped'] : 0,
-            'plan_to_watch' => isset($data['plan_to_watch']) ? $data['plan_to_watch'] : 0,
-            'total'         => array_sum($data),
-            'mean_score'    => number_format((float)$meanScore, 2)
-        ];
-    }
-
-    // --- EXECUTE FOR ANIME ---
-    $animeStats = getMediaStats($conn, $userId, ['movie', 'tvshow']);
-
-    // --- EXECUTE FOR MANGA ---
-    $mangaData = getMediaStats($conn, $userId, ['manga']);
-    
-    // Map keys for Manga
-    $mangaStats = [
-        'reading'      => $mangaData['watching'],
-        'completed'    => $mangaData['completed'],
-        'on_hold'      => $mangaData['on_hold'],
-        'dropped'      => $mangaData['dropped'],
-        'plan_to_read' => $mangaData['plan_to_watch'],
-        'total'        => $mangaData['total'],
-        'mean_score'   => $mangaData['mean_score']
-    ];
-}
-
-// --- COMMENT LOGIC ---
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
-    $commentText = htmlspecialchars(trim($_POST['user_comment']));
-    if (!empty($commentText)) {
-        $userDisplay = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
-        $newComment = [
-            'id'   => uniqid(),
-            'user' => $userDisplay, 
-            'text' => $commentText,
-            'date' => date('M d, Y H:i')
-        ];
-        if (!isset($_SESSION['post_comments'])) { $_SESSION['post_comments'] = []; }
-        $_SESSION['post_comments'][] = $newComment;
-    }
-}
-
-// --- CALCULATE BAR WIDTHS ---
-
-function calculatePercentages($stats) {
-    $total = $stats['total'];
-    
-    // Avoid division by zero
-    if ($total == 0) {
-        return [
-            'watching' => 0, 'completed' => 0, 'on_hold' => 0, 
-            'dropped' => 0, 'plan' => 0
-        ];
-    }
-
-    // FIX: Check if 'watching' key exists, otherwise use 'reading' (for Manga)
-    $watchingCount = isset($stats['watching']) ? $stats['watching'] : (isset($stats['reading']) ? $stats['reading'] : 0);
-    
-    // FIX: Check if 'plan_to_watch' key exists, otherwise use 'plan_to_read'
-    $planCount = isset($stats['plan_to_watch']) ? $stats['plan_to_watch'] : (isset($stats['plan_to_read']) ? $stats['plan_to_read'] : 0);
-
-    // Return an array of percentages
-    return [
-        'watching'  => ($watchingCount / $total) * 100,
-        'completed' => ($stats['completed'] / $total) * 100,
-        'on_hold'   => ($stats['on_hold'] / $total) * 100,
-        'dropped'   => ($stats['dropped'] / $total) * 100,
-        'plan'      => ($planCount / $total) * 100,
-    ];
-}
-
-// Get Anime Percentages
-$animePct = calculatePercentages($animeStats);
-
-// Get Manga Percentages
-$mangaPct = calculatePercentages($mangaStats);
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -186,7 +32,6 @@ $mangaPct = calculatePercentages($mangaStats);
                 <span>TOP MANGA</span>
             </div>
             <div class="search-bar">
-<div class="search-bar">
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                 <form method="POST">
                     <input class="search" id="search" type="text" name="search" placeholder="Search...">
@@ -215,7 +60,7 @@ $mangaPct = calculatePercentages($mangaStats);
                         }
                     });
                 });
-            </script>            </div>
+            </script>
         </div>
         <div class="header-lower">
             <span>My Panel</span>
