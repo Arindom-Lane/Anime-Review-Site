@@ -7,7 +7,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true && $_SESSION
     header('Location: ../../HOME/View/login.php');
     exit();
 } elseif ($_SESSION['role'] == 'registered') {
-    header('Location: home.php');
+    header('Location: ../../HOME/View/home.php');
 }
 
 if (isset($_SESSION['CreateError'])) {
@@ -55,7 +55,7 @@ if (isset($_SESSION['editUserMessage'])) {
     <title>My AnimeList Dashboard</title>
     <link rel="stylesheet" href="../Css/admin.css">
     <link rel="stylesheet" href="../../HOME/Css/searchBar.css">
-    <script src="admin.js" defer></script>
+    <script src="../Js/admin.js" defer></script>
 
 </head>
 
@@ -63,7 +63,7 @@ if (isset($_SESSION['editUserMessage'])) {
 
     <header>
         <div class="header-upper">
-            <div class="logo" onclick="window.location.href='home.php'">
+            <div class="logo" onclick="window.location.href='../../HOME/View/home.php'">
                 <img src="../../HOME/Images/download.png" alt="Logo">
             </div>
             <div class="profile">
