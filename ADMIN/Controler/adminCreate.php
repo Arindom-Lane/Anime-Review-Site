@@ -2,6 +2,7 @@
 session_start();
 include("../../HOME/Model/db.php");
 
+
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
     header('Location: ../../HOME/View/login.php');
 }
