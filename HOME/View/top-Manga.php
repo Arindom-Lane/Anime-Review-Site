@@ -101,14 +101,14 @@ include("db.php");
                 </thead>
                 <tbody>
                     <?php
-                    $result = mysqli_query($conn, "SELECT m.* FROM Top_Mangas t INNER JOIN Media m ON t.media_id = m.media_id ORDER BY m.score DESC");
+                    $result = mysqli_query($conn, "SELECT * FROM TopManga");
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                     ?>
 
                             <tr>
                                 <td>
-                                    <a class="mediaClick" href="MediaPage.php?id=<?php echo $row['media_id']; ?>">
+                                    <a class="mediaClick" href="MediaPage.php?idTopManga=<?php echo $row['media_id']; ?>">
                                         <strong><?php echo $row['title'] ?></strong><br><br>
                                         <?php echo $row['description'] ?><br><br>
                                         <hr>

@@ -1,11 +1,10 @@
 <?php
 session_start();
-include("db.php");
-
+include("../../HOME/Model/db.php");
 
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
 
-    header('Location: login.php');
+    header('Location: ../../HOME/View/login.php');
     exit();
 }
 
@@ -77,25 +76,25 @@ if (mysqli_num_rows($targetUserId) > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="admin.css">
-    <link rel="stylesheet" href="searchBar.css">
-    <script src="admin.js" defer></script>
+    <link rel="stylesheet" href="../Css/admin.css">
+    <link rel="stylesheet" href="../../HOME/Css/searchBar.css">
+    <script src="../Js/admin.js" defer></script>
 </head>
 
 <body>
     <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='home.php'">
-                <img src="download.png" alt="Logo">
+                <img src="../../HOME/Images/download.png" alt="Logo">
             </div>
             <div class="profile">
                 <a href="admin.php" class="login-link">Dashboard</a>
-                <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
+                <a href="../../HOME/Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
             </div>
         </div>
         <div class="header-middle">
             <div class="topButton">
-                <span onclick="window.location.href='admin.php'">  く  </span>
+                <span onclick="window.location.href='admin.php'"> く </span>
             </div>
             <div class="search-bar">
                 <div class="search-bar">
@@ -104,7 +103,7 @@ if (mysqli_num_rows($targetUserId) > 0) {
                         <input class="search" id="search" type="text" name="search" placeholder="Search...">
                     </form>
                     <div class="search-results" id="search-results">
-                        
+
                     </div>
                 </div>
                 <script>
@@ -113,7 +112,7 @@ if (mysqli_num_rows($targetUserId) > 0) {
                             var query = $(this).val();
                             if (query.length > 2) {
                                 $.ajax({
-                                    url: 'searchBarLogic.php',
+                                    url: '../../HOME/Controler/searchBarLogic.php',
                                     method: 'POST',
                                     data: {
                                         search: query
@@ -151,7 +150,7 @@ if (mysqli_num_rows($targetUserId) > 0) {
                     <span class="status-online" style="color: GREEN;">ONLINE</span>
                 </div>
                 <div class="editProfile">
-                    <a href="UserEditProfile.php" class="editProfileHREF">Edit Profile</a>
+                    <a href="../../USER/Controler/UserEditProfile.php" class="editProfileHREF">Edit Profile</a>
                 </div>
             </div>
         </div>

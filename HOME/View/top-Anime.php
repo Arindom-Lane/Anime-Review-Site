@@ -100,12 +100,14 @@ include("db.php");
                 </thead>
                 <tbody>
                     <?php
-                    $result = mysqli_query($conn, "SELECT m.* FROM Top_TVSeries t INNER JOIN Media m ON t.media_id = m.media_id ORDER BY m.score DESC");
+                    $result = mysqli_query($conn, "SELECT * FROM TopAnime");
                     if (mysqli_num_rows($result) > 0) {
                         foreach ($result as $row) {
                     ?>
                             <tr>
-                                <td><strong><?php echo $row['title'] ?></strong><br><br>
+                                <td>
+                                    <a href="MediaPage.php?idTopAnime=<?php echo $row['media_id']; ?>" class="mediaClick">
+                                    <strong><?php echo $row['title'] ?></strong><br><br>
                                     <?php echo $row['description'] ?><br><br>
                                     <hr>
                                     <strong>score:</strong> <?php echo $row['score'] ?>,
