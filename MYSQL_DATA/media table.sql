@@ -42,111 +42,6 @@ INSERT INTO Media (title, description, type, poster_image_link, score, status, a
 ('Bocchi the Rock!', 'Hitori Gotou attempts to overcome her paralyzing social anxiety by becoming a guitar hero and joining a local rock band.', 'tvshow', 'https://cdn.myanimelist.net/images/anime/1448/127956.jpg', 8.7, 'completed', '2022-10-09', 'Aniplex', 'CloverWorks', 'Manga', 'Comedy, Slice of Life', '24 min'),
 ('Kingdom 4th Season', 'King Ying Zheng struggles against political sabotage and betrayal within the royal court while Xin fights to secure the border states.', 'tvshow', 'https://cdn.myanimelist.net/images/anime/1160/122627.jpg', 8.7, 'completed', '2022-04-10', 'NHK', 'Studio Pierrot', 'Manga', 'Action, Historical', '24 min');
 
-
-## Section 1: Top 10 Airing Anime
-
-
-INSERT INTO Media (title, description, poster_link, score, status, aired_date, producer, studio, source, genre, duration) VALUES
-('Kingdom 6th Season', 'The narrative of Qin unification of China continues as Xin and Zheng face new threats from the Zhao and Wei states.', 'https://cdn.myanimelist.net/images/anime/1355/140304.jpg', 9.04, 'Airing', 'Jan 2024', 'NHK', 'Pierrot', 'Manga', 'Action, Historical', '24 min'),
-('Bleach: Sennen Kessen-hen - Kashin-tan', 'The final cour of the Thousand-Year Blood War arc where the fate of the Soul Society is decided against Yhwach.', 'https://cdn.myanimelist.net/images/anime/1063/145395.jpg', 9.05, 'Airing', 'Oct 2024', 'TV Tokyo', 'Pierrot', 'Manga', 'Action, Fantasy', '24 min'),
-('Boku no Hero Academia: Final Season', 'Deku and the heroes of Class 1-A engage in the ultimate battle against All For One and Shigaraki.', 'https://cdn.myanimelist.net/images/anime/1841/142343.jpg', 8.85, 'Airing', 'May 2024', 'Shueisha', 'Bones', 'Manga', 'Action, Super Power', '23 min'),
-('One Piece', 'Monkey D. Luffy and his Straw Hat crew continue their journey in the Egghead Island arc to find the legendary treasure.', 'https://cdn.myanimelist.net/images/anime/1244/138851.jpg', 8.75, 'Airing', 'Oct 1999', 'Fuji TV', 'Toei Animation', 'Manga', 'Action, Adventure', '24 min'),
-('Uma Musume: Cinderella Gray Part 2', 'A focus on Oguri Cap as she moves to the central racing league to face even more formidable horse girl opponents.', 'https://cdn.myanimelist.net/images/anime/1484/144673.jpg', 8.64, 'Airing', 'Oct 2024', 'Cygames', 'Science SARU', 'Manga', 'Sports, Racing', '24 min'),
-('Fumetsu no Anata e Season 3', 'The immortal entity Fushi navigates the complexities of the modern era after centuries of observation.', 'https://cdn.myanimelist.net/images/anime/1897/129758.jpg', 8.45, 'Airing', 'Oct 2024', 'NHK', 'Drive', 'Manga', 'Adventure, Supernatural', '24 min'),
-('Blue Lock: Vs. U-20 Japan', 'The final selection for the egoist strikers as they face the official Japanese national youth team for survival.', 'https://cdn.myanimelist.net/images/anime/1183/145450.jpg', 8.35, 'Airing', 'Oct 2024', 'Bandai Namco', '8bit', 'Manga', 'Sports, Shounen', '24 min'),
-('Chiikawa', 'Small, cute creatures live daily lives filled with mystery, lightheartedness, and occasional existential dread.', 'https://cdn.myanimelist.net/images/anime/1033/121118.jpg', 8.20, 'Airing', 'Apr 2022', 'Kodansha', 'Doga Kobo', 'Manga', 'Slice of Life, Comedy', '1 min'),
-('Shuumatsu no Walküre III', 'Gods and humans continue their 13-round duel for the survival of humanity in the arena of Valhalla.', 'https://cdn.myanimelist.net/images/anime/1966/133038.jpg', 8.12, 'Airing', '2024', 'Warner Bros', 'Graphinica', 'Manga', 'Action, Drama', '24 min'),
-('Nageki no Bourei wa Intai shitai Part 2', 'Krai continues his unintentional climb to legendary hero status while desperately trying to quit.', 'https://cdn.myanimelist.net/images/anime/1049/145464.jpg', 7.95, 'Airing', 'Oct 2024', 'Micro Magazine', 'Unknown', 'Light Novel', 'Adventure, Fantasy', '23 min');
-
-
-
-## Section 2: Top 20 Upcoming Anime
-
-INSERT INTO Media (title, description, poster_link, score, status, aired_date, producer, studio, source, genre, duration) VALUES
-('Sousou no Frieren 2nd Season', 'The second season following Frieren journey to the northern lands of Aureole.', 'https://cdn.myanimelist.net/images/anime/1015/138024.jpg', NULL, 'Upcoming', 'Jan 2026', 'Aniplex', 'Madhouse', 'Manga', 'Adventure, Fantasy', '24 min'),
-('Jigokuraku 2nd Season', 'Gabimaru and the survivors of the initial island expedition venture deeper into the mystery of the Elixir.', 'https://cdn.myanimelist.net/images/anime/1510/135987.jpg', NULL, 'Upcoming', 'Jan 2026', 'Twin Engine', 'MAPPA', 'Manga', 'Action, Adventure', '24 min'),
-('Youjo Senki II', 'Tanya Degurechaff returns to lead the Imperial 203rd Aerial Mage Battalion into another global conflict.', 'https://cdn.myanimelist.net/images/anime/1188/115591.jpg', NULL, 'Upcoming', '2026', 'Kadokawa', 'Nut', 'Light Novel', 'Isekai, Military', '24 min'),
-('Jujutsu Kaisen: Shimetsu Kaiyuu', 'The Culling Game arc begins as Kenjaku initiates a ritual that forces sorcerers and civilians into a deadly game.', 'https://cdn.myanimelist.net/images/anime/1739/140226.jpg', NULL, 'Upcoming', 'Jan 2026', 'TOHO', 'MAPPA', 'Manga', 'Action, Supernatural', '24 min'),
-('Mushoku Tensei III', 'Rudeus Greyrat enters adulthood and faces the challenges of protecting his family and legacy.', 'https://cdn.myanimelist.net/images/anime/1051/144186.jpg', NULL, 'Upcoming', '2026', 'Egg Firm', 'Studio Bind', 'Light Novel', 'Isekai, Adventure', '24 min'),
-('[Oshi no Ko] 3rd Season', 'Aqua and Ruby continue their revenge plot within the heart of the Japanese idol and acting industry.', 'https://cdn.myanimelist.net/images/anime/1915/145558.jpg', NULL, 'Upcoming', 'Jan 2026', 'Kadokawa', 'Doga Kobo', 'Manga', 'Drama, Supernatural', '24 min'),
-('Kage no Jitsuryokusha ni Naritakute! Movie', 'Cid Kagenou takes his shadow persona to the cinematic screen to fight a global conspiracy.', 'https://cdn.myanimelist.net/images/anime/1665/140889.jpg', NULL, 'Upcoming', '2026', 'Kadokawa', 'Nexus', 'Light Novel', 'Action, Fantasy', '90 min'),
-('Dungeon Meshi 2nd Season', 'The party continues their trek into the lower depths of the dungeon to rescue Falin.', 'https://cdn.myanimelist.net/images/anime/1376/143521.jpg', NULL, 'Upcoming', 'TBA', 'Kadokawa', 'Trigger', 'Manga', 'Adventure, Gourmet', '24 min'),
-('Re:Zero kara Hajimeru Isekai Seikatsu 4th Season', 'Subaru faces the aftermath of the Sanctuary and heads toward a new conflict with the Witch Cult.', 'https://cdn.myanimelist.net/images/anime/1209/141703.jpg', NULL, 'Upcoming', 'Apr 2026', 'Kadokawa', 'White Fox', 'Light Novel', 'Isekai, Drama', '24 min'),
-('Bocchi the Rock! 2nd Season', 'Hitori Gotoh continues to overcome her social anxiety through music and friendship in the Kessoku Band.', 'https://cdn.myanimelist.net/images/anime/1448/127956.jpg', NULL, 'Upcoming', 'TBA', 'Aniplex', 'CloverWorks', 'Manga', 'Comedy, Music', '24 min'),
-('Tensei shitara Slime Datta Ken 4th Season', 'Rimuru Tempest leads his nation of monsters into an era of diplomatic and military expansion.', 'https://cdn.myanimelist.net/images/anime/1351/143574.jpg', NULL, 'Upcoming', 'Apr 2026', 'Bandai Namco', '8bit', 'Light Novel', 'Isekai, Fantasy', '24 min'),
-('Enen no Shouboutai: San no Shou Part 2', 'The Special Fire Force Unit 8 battles the Evangelist for the fate of Tokyo.', 'https://cdn.myanimelist.net/images/anime/1314/144577.jpg', NULL, 'Upcoming', 'Jan 2026', 'Funimation', 'David Production', 'Manga', 'Action, Sci-Fi', '24 min'),
-('Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e 4th Season', 'Kiyotaka Ayanokouji begins his second year at the elite Advanced Nurturing High School.', 'https://cdn.myanimelist.net/images/anime/1020/145155.jpg', NULL, 'Upcoming', 'Apr 2026', 'Kadokawa', 'Lerche', 'Light Novel', 'Drama, Suspense', '24 min'),
-('Tokidoki Bosotto Russia-go de Dereru Tonari no Alya-san S2', 'Alya and Masachika relationship deepens during their second year of high school.', 'https://cdn.myanimelist.net/images/anime/1917/145612.jpg', NULL, 'Upcoming', '2026', 'Kadokawa', 'Doga Kobo', 'Light Novel', 'Comedy, Romance', '24 min'),
-('Dandadan 3rd Season', 'Momo and Okarun continue their quest to retrieve Okarun kintama while fighting aliens and spirits.', 'https://cdn.myanimelist.net/images/anime/1131/140131.jpg', NULL, 'Upcoming', 'TBA', 'Aniplex', 'Science SARU', 'Manga', 'Supernatural, Action', '24 min'),
-('The World Finest Assassin S2', 'Lugh Tuatha Dé mission to kill the hero takes a turn as new political players emerge.', 'https://cdn.myanimelist.net/images/anime/1963/119047.jpg', NULL, 'Upcoming', 'TBA', 'Crunchyroll', 'Silver Link', 'Light Novel', 'Isekai, Action', '24 min'),
-('Fate/strange Fake', 'A fake Holy Grail War in Snowfield, USA, summons heroes of legendary and modern status.', 'https://cdn.myanimelist.net/images/anime/1865/133550.jpg', NULL, 'Upcoming', 'Jan 2026', 'Aniplex', 'A-1 Pictures', 'Light Novel', 'Action, Fantasy', '24 min'),
-('Tensei shitara Ken deshita 2', 'Fran and her sentient sword, Teacher, travel to a new continent to gain more power.', 'https://cdn.myanimelist.net/images/anime/1359/129759.jpg', NULL, 'Upcoming', 'Oct 2026', 'NBCUniversal', 'C2C', 'Light Novel', 'Isekai, Action', '24 min'),
-('Mahou Shoujo Madoka★Magica Movie 4', 'Homura Akemi faces the consequences of the law of cycles in a world where she is god.', 'https://cdn.myanimelist.net/images/anime/1884/137684.jpg', NULL, 'Upcoming', 'Feb 2026', 'Aniplex', 'Shaft', 'Original', 'Drama, Psychological', '120 min'),
-('Otonari no Tenshi-sama ni Itsunomanika Dame Ningen ni Sareteita Ken 2', 'Amane and Mahiru continue their wholesome domestic life together.', 'https://cdn.myanimelist.net/images/anime/1205/138139.jpg', NULL, 'Upcoming', 'Apr 2026', 'TOHO', 'project No.9', 'Light Novel', 'Romance, School', '24 min');
-
-
-## 
-## Section 3: Top 20 Movie Anime
-
-INSERT INTO Media (title, description, poster_link, score, status, aired_date, producer, studio, source, genre, duration) VALUES
-('Chainsaw Man Movie: Reze-hen', 'Denji encounters a girl named Reze who leads him into the explosive Bomb Girl arc.', 'https://cdn.myanimelist.net/images/anime/1065/140307.jpg', 9.15, 'Finished', 'Sep 2025', 'Crunchyroll', 'MAPPA', 'Manga', 'Action, Supernatural', '90 min'),
-('Gintama: The Final', 'The Yorozuya reunites for one last battle against Utsuro to save Earth and their teacher.', 'https://cdn.myanimelist.net/images/anime/1245/116760.jpg', 9.05, 'Finished', 'Jan 2021', 'Warner Bros', 'Bandai Namco Pictures', 'Manga', 'Action, Comedy', '104 min'),
-('Koe no Katachi', 'A young man tries to make amends with a deaf girl he bullied in elementary school.', 'https://cdn.myanimelist.net/images/anime/1122/96435.jpg', 8.93, 'Finished', 'Sep 2016', 'ABC Animation', 'Kyoto Animation', 'Manga', 'Drama, School', '130 min'),
-('Gintama Movie 2: Kanketsu-hen', 'Gintoki is transported five years into the future where a virus has decimated the population.', 'https://cdn.myanimelist.net/images/anime/10/50647.jpg', 8.89, 'Finished', 'Jul 2013', 'Aniplex', 'Sunrise', 'Manga', 'Action, Comedy', '110 min'),
-('Violet Evergarden Movie', 'Violet continues her search for the meaning of "I love you" as she looks for Major Gilbert.', 'https://cdn.myanimelist.net/images/anime/1825/110716.jpg', 8.84, 'Finished', 'Sep 2020', 'ABC Animation', 'Kyoto Animation', 'Light Novel', 'Drama, Slice of Life', '140 min'),
-('Shingeki no Kyojin Movie: Kanketsu-hen', 'The cinematic presentation of the final episodes including the Rumbling and the final clash.', 'https://cdn.myanimelist.net/images/anime/1279/131078.jpg', 8.83, 'Finished', 'Nov 2024', 'Pony Canyon', 'MAPPA', 'Manga', 'Action, Drama', '145 min'),
-('Kimi no Na wa.', 'Two high school students from different backgrounds swap bodies and embark on a search for one another.', 'https://cdn.myanimelist.net/images/anime/5/87048.jpg', 8.83, 'Finished', 'Aug 2016', 'Toho', 'Comix Wave Films', 'Original', 'Romance, Supernatural', '106 min'),
-('Kizumonogatari III: Reiketsu-hen', 'Koyomi Araragi faces the final challenge to regain his humanity after his vampire conversion.', 'https://cdn.myanimelist.net/images/anime/12/82890.jpg', 8.78, 'Finished', 'Jan 2017', 'Aniplex', 'Shaft', 'Light Novel', 'Mystery, Supernatural', '83 min'),
-('Sen to Chihiro no Kamikakushi', 'A young girl wanders into a spirit realm and must work in a bathhouse to free her parents.', 'https://cdn.myanimelist.net/images/anime/6/79597.jpg', 8.77, 'Finished', 'Jul 2001', 'Toho', 'Studio Ghibli', 'Original', 'Adventure, Supernatural', '125 min'),
-('Kaguya-sama wa Kokurasetai: First Kiss', 'The student council faces the romantic tension following their legendary festival confession.', 'https://cdn.myanimelist.net/images/anime/1045/129189.jpg', 8.72, 'Finished', 'Dec 2022', 'Aniplex', 'A-1 Pictures', 'Manga', 'Romance, Comedy', '96 min'),
-('The First Slam Dunk', 'Shohoku High basketball team faces Sannoh Industrial in a high-stakes championship game.', 'https://cdn.myanimelist.net/images/anime/1795/129337.jpg', 8.71, 'Finished', 'Dec 2022', 'Toei Animation', 'Toei Animation', 'Manga', 'Sports, Drama', '124 min'),
-('Kimetsu no Yaiba Movie: Akaza Sairai', 'The Infinity Castle arc begins with the rematch between Tanjiro and the Upper Moon 3 demon Akaza.', 'https://cdn.myanimelist.net/images/anime/1735/143578.jpg', 8.70, 'Finished', 'Jul 2025', 'Aniplex', 'ufotable', 'Manga', 'Action, Fantasy', '115 min'),
-('Howl no Ugoku Shiro', 'A young milliner is cursed with an old body and seeks help from a wizard in his moving castle.', 'https://cdn.myanimelist.net/images/anime/1540/144574.jpg', 8.67, 'Finished', 'Nov 2004', 'Toho', 'Studio Ghibli', 'Novel', 'Adventure, Fantasy', '119 min'),
-('Mononoke Hime', 'A young prince is caught in a war between forest spirits and a mining colony.', 'https://cdn.myanimelist.net/images/anime/7/75919.jpg', 8.67, 'Finished', 'Jul 1997', 'Toho', 'Studio Ghibli', 'Original', 'Action, Adventure', '133 min'),
-('Uma Musume: Pretty Derby - Shin Jidai', 'A new generation of horse girls competes for the title of the fastest in the central league.', 'https://cdn.myanimelist.net/images/anime/1519/140682.jpg', 8.64, 'Finished', 'May 2024', 'Cygames', 'CygamesPictures', 'Manga', 'Sports, Racing', '108 min'),
-('Fate/stay night Movie: Heaven’s Feel III', 'The dark truth of the Holy Grail War is revealed as Shirou and Sakura face their destiny.', 'https://cdn.myanimelist.net/images/anime/1202/107530.jpg', 8.64, 'Finished', 'Aug 2020', 'Aniplex', 'ufotable', 'Visual Novel', 'Action, Fantasy', '122 min'),
-('Look Back', 'Two young girls are bonded together by their shared passion for creating manga.', 'https://cdn.myanimelist.net/images/anime/1183/141870.jpg', 8.63, 'Finished', 'Jun 2024', 'Avex Pictures', 'Studio Durian', 'Manga', 'Drama, Slice of Life', '58 min'),
-('Haikyuu!! Movie: Gomisuteba no Kessen', 'The fated "Trashcan Battle" between Karasuno and Nekoma finally takes place at the Nationals.', 'https://cdn.myanimelist.net/images/anime/1911/140924.jpg', 8.61, 'Finished', 'Feb 2024', 'TOHO', 'Production I.G', 'Manga', 'Sports, Shounen', '85 min'),
-('Made in Abyss Movie 3', 'Riko, Reg, and Nanachi descend into the fifth layer to face the sovereign Bondrewd.', 'https://cdn.myanimelist.net/images/anime/1848/104523.jpg', 8.60, 'Finished', 'Jan 2020', 'Kadokawa', 'Kinema Citrus', 'Manga', 'Adventure, Drama', '105 min'),
-('Tengen Toppa Gurren Lagann Movie 2', 'Simon and Team Dai-Gurren face the Anti-Spiral in the ultimate universal-scale showdown.', 'https://cdn.myanimelist.net/images/anime/1126/133036.jpg', 8.60, 'Finished', 'Apr 2009', 'Aniplex', 'Gainax', 'Original', 'Action, Sci-Fi', '126 min');
-
-
-## Section 4: Top 30 Manga
-
-INSERT INTO Media (title, description, type, poster_image_link, score, status, aired_date, producer, studio, source, genre, duration) VALUES
-('Berserk', 'Guts, a former mercenary now known as the "Black Swordsman," seeks revenge on his former master who betrayed him.', 'manga', 'https://cdn.myanimelist.net/images/manga/1/157897.jpg', 9.47, 'publishing', '1989-08-25', 'Hakusensha', 'Young Animal', 'Manga', 'Action, Adventure, Award Winning, Drama, Fantasy, Horror', '42 volumes'),
-('JoJo no Kimyou na Bouken Part 7: Steel Ball Run', 'In 1890, a cross-country horse race across America offers a $50 million prize, but hidden motives and supernatural powers are at play.', 'manga', 'https://cdn.myanimelist.net/images/manga/3/179882.jpg', 9.30, 'completed', '2004-01-19', 'Shueisha', 'Ultra Jump', 'Manga', 'Action, Adventure, Mystery, Supernatural', '24 volumes'),
-('Vagabond', 'Based on the life of Musashi Miyamoto, this story follows his journey from a violent youth to becoming Japan’s most famous swordsman.', 'manga', 'https://cdn.myanimelist.net/images/manga/1/259070.jpg', 9.24, 'completed', '1998-09-03', 'Kodansha', 'Morning', 'Manga', 'Action, Adventure, Award Winning, Historical, Samurai', '37 volumes'),
-('One Piece', 'Monkey D. Luffy and his pirate crew travel the seas in search of the ultimate treasure, the One Piece, to become the Pirate King.', 'manga', 'https://cdn.myanimelist.net/images/manga/2/253146.jpg', 9.22, 'publishing', '1997-07-22', 'Shueisha', 'Weekly Shounen Jump', 'Manga', 'Action, Adventure, Fantasy', '110 volumes'),
-('Monster', 'Dr. Kenzo Tenma, a brilliant neurosurgeon, risks his career to save a child who turns out to be a psychopathic mastermind.', 'manga', 'https://cdn.myanimelist.net/images/manga/3/258224.jpg', 9.15, 'completed', '1994-12-05', 'Shogakukan', 'Big Comic Original', 'Manga', 'Drama, Mystery, Psychological, Seinen, Thriller', '18 volumes'),
-('Fullmetal Alchemist', 'Two brothers use alchemy in an attempt to resurrect their mother, leading to a tragic loss and a quest for the Philosopher’s Stone.', 'manga', 'https://cdn.myanimelist.net/images/manga/3/243675.jpg', 9.03, 'completed', '2001-07-12', 'Square Enix', 'Monthly Shounen Gangan', 'Manga', 'Action, Adventure, Award Winning, Drama, Fantasy', '27 volumes'),
-('Goodnight Punpun', 'A surreal coming-of-age story following the life of a boy named Punpun through his dysfunctional family and existential crises.', 'manga', 'https://cdn.myanimelist.net/images/manga/3/164420.jpg', 9.02, 'completed', '2007-03-15', 'Shogakukan', 'Weekly Young Sunday', 'Manga', 'Drama, Psychological, Slice of Life', '13 volumes'),
-('Vinland Saga', 'Thorfinn, the son of a legendary Viking warrior, seeks revenge against the man who killed his father in a story of war and peace.', 'manga', 'https://cdn.myanimelist.net/images/manga/2/188925.jpg', 9.00, 'publishing', '2005-04-13', 'Kodansha', 'Afternoon', 'Manga', 'Action, Adventure, Drama, Historical', '28 volumes'),
-('Grand Blue', 'Iori Kitahara moves to a coastal town and gets swept up in a world of scuba diving, wild drinking parties, and college life.', 'manga', 'https://cdn.myanimelist.net/images/manga/2/166124.jpg', 9.04, 'publishing', '2014-04-07', 'Kodansha', 'good! Afternoon', 'Manga', 'Comedy, Slice of Life', '22 volumes'),
-('Slam Dunk', 'Hanamichi Sakuragi joins the basketball team to impress a girl, only to discover a genuine passion for the competitive sport.', 'manga', 'https://cdn.myanimelist.net/images/manga/2/258749.jpg', 9.08, 'completed', '1990-09-18', 'Shueisha', 'Weekly Shounen Jump', 'Manga', 'Award Winning, Sports, Team Sports', '31 volumes'),
-('Kingdom', 'In war-torn ancient China, a young orphan named Xin dreams of becoming a Great General of the Heavens to unify the warring states.', 'manga', 'https://cdn.myanimelist.net/images/manga/2/171872.jpg', 9.00, 'publishing', '2006-01-26', 'Shueisha', 'Weekly Young Jump', 'Manga', 'Action, Award Winning, Historical, Military', '73 volumes'),
-('20th Century Boys', 'A group of childhood friends must stop a mysterious cult leader known as "Friend" from destroying the world using their own childhood plans.', 'manga', 'https://cdn.myanimelist.net/images/manga/5/259124.jpg', 8.95, 'completed', '1999-09-27', 'Shogakukan', 'Big Comic Spirits', 'Manga', 'Mystery, Psychological, Sci-Fi, Seinen', '22 volumes'),
-('Real', 'A gritty look at the lives of three individuals connected by wheelchair basketball as they navigate personal tragedy and redemption.', 'manga', 'https://cdn.myanimelist.net/images/manga/2/115961.jpg', 8.96, 'publishing', '1999-10-28', 'Shueisha', 'Weekly Young Jump', 'Manga', 'Drama, Psychological, Sports', '15 volumes'),
-('Ashita no Joe', 'A troubled youth finds a path out of his violent life through the world of professional boxing and legendary rivalries.', 'manga', 'https://cdn.myanimelist.net/images/manga/1/158302.jpg', 8.94, 'completed', '1968-01-01', 'Kodansha', 'Weekly Shounen Magazine', 'Manga', 'Drama, Sports, Shounen', '20 volumes'),
-('March Comes in Like a Lion', 'Rei Kiriyama, a professional shogi player struggling with isolation, finds warmth in the presence of three kind sisters.', 'manga', 'https://cdn.myanimelist.net/images/manga/2/157476.jpg', 8.94, 'publishing', '2007-07-13', 'Hakusensha', 'Young Animal', 'Manga', 'Drama, Slice of Life, Seinen', '17 volumes'),
-('Yotsuba to!', 'The everyday adventures and misunderstandings of an energetic five-year-old girl named Yotsuba as she discovers the world.', 'manga', 'https://cdn.myanimelist.net/images/manga/3/259053.jpg', 8.91, 'publishing', '2003-03-21', 'ASCII Media Works', 'Dengeki Daioh', 'Manga', 'Comedy, Slice of Life', '15 volumes'),
-('Kaguya-sama: Love is War', 'Two genius students at a prestigious academy refuse to confess their love, instead waging a psychological war to make the other confess first.', 'manga', 'https://cdn.myanimelist.net/images/manga/3/188896.jpg', 8.89, 'completed', '2015-05-19', 'Shueisha', 'Weekly Young Jump', 'Manga', 'Comedy, Romance, School', '28 volumes'),
-('GTO: Great Teacher Onizuka', 'Ex-biker Eikichi Onizuka becomes a teacher to meet high school girls, but ends up becoming a hero to his troubled students.', 'manga', 'https://cdn.myanimelist.net/images/manga/2/172982.jpg', 8.91, 'completed', '1996-12-11', 'Kodansha', 'Weekly Shounen Magazine', 'Manga', 'Comedy, Drama, School', '25 volumes'),
-('Koe no Katachi', 'A former bully seeks redemption by befriending the deaf girl he tormented years ago in elementary school.', 'manga', 'https://cdn.myanimelist.net/images/manga/1/120517.jpg', 8.85, 'completed', '2013-08-07', 'Kodansha', 'Weekly Shounen Magazine', 'Manga', 'Drama, Romance, School', '7 volumes'),
-('Haikyuu!!', 'Shouyou Hinata joins a high school volleyball team to prove that height doesn’t matter, rekindling the school’s former glory.', 'manga', 'https://cdn.myanimelist.net/images/manga/2/122177.jpg', 8.88, 'completed', '2012-02-20', 'Shueisha', 'Weekly Shounen Jump', 'Manga', 'Sports, Shounen', '45 volumes'),
-('Pluto', 'In a world where robots and humans coexist, a detective investigates a series of murders targeting the world’s most powerful robots.', 'manga', 'https://cdn.myanimelist.net/images/manga/5/259508.jpg', 8.82, 'completed', '2003-09-09', 'Shogakukan', 'Big Comic Original', 'Manga', 'Action, Mystery, Sci-Fi', '8 volumes'),
-('Mushishi', 'Ginko travels the land to study Mushi—primitive life forms that cause strange phenomena in the human world.', 'manga', 'https://cdn.myanimelist.net/images/manga/2/162383.jpg', 8.76, 'completed', '1999-01-25', 'Kodansha', 'Afternoon', 'Manga', 'Adventure, Mystery, Slice of Life, Supernatural', '10 volumes'),
-('Nausicaa of the Valley of the Wind', 'Princess Nausicaa fights to prevent war and restore balance to a dying world plagued by toxic fungi and giant insects.', 'manga', 'https://cdn.myanimelist.net/images/manga/3/258908.jpg', 8.95, 'completed', '1982-10-09', 'Tokuma Shoten', 'Animage', 'Manga', 'Action, Adventure, Fantasy', '7 volumes'),
-('Akatsuki no Yona', 'Princess Yona is forced to flee her kingdom after her father is murdered, embarking on a quest to find four legendary dragon warriors.', 'manga', 'https://cdn.myanimelist.net/images/manga/2/142993.jpg', 8.82, 'publishing', '2009-08-05', 'Hakusensha', 'Hana to Yume', 'Manga', 'Action, Adventure, Fantasy, Romance', '44 volumes'),
-('Sousou no Frieren', 'After the hero’s party defeats the Demon King, the elven mage Frieren begins a new journey to understand the humans she outlives.', 'manga', 'https://cdn.myanimelist.net/images/manga/3/232728.jpg', 8.86, 'publishing', '2020-04-28', 'Shogakukan', 'Weekly Shounen Sunday', 'Manga', 'Adventure, Drama, Fantasy', '13 volumes'),
-('Kokou no Hito', 'A solitary transfer student finds meaning in life through the dangerous and breathtaking world of professional solo mountain climbing.', 'manga', 'https://cdn.myanimelist.net/images/manga/1/156942.jpg', 8.85, 'completed', '2007-11-01', 'Shueisha', 'Weekly Young Jump', 'Manga', 'Drama, Sports, Seinen', '17 volumes'),
-('Jumyou wo Kaitotte Moratta...', 'A destitute young man sells his remaining lifespan for cash, spending his final three months with a girl assigned to monitor him.', 'manga', 'https://cdn.myanimelist.net/images/manga/3/190013.jpg', 8.79, 'completed', '2016-08-08', 'Shueisha', 'Shounen Jump+', 'Manga', 'Drama, Romance, Psychological', '3 volumes'),
-('Space Brothers', 'Two brothers make a childhood pact to become astronauts, but while one achieves it easily, the other must fight his way back to the dream.', 'manga', 'https://cdn.myanimelist.net/images/manga/3/116909.jpg', 8.81, 'publishing', '2007-12-06', 'Kodansha', 'Morning', 'Manga', 'Comedy, Sci-Fi, Slice of Life', '44 volumes'),
-('Made in Abyss', 'Young Riko and her robot friend Reg descend into a colossal pit filled with artifacts and monsters to find her missing mother.', 'manga', 'https://cdn.myanimelist.net/images/manga/3/161645.jpg', 8.74, 'publishing', '2012-10-20', 'Takeshobo', 'Web Comic Gamma', 'Manga', 'Adventure, Fantasy, Sci-Fi', '12 volumes'),
-('Yokohama Kaidashi Kikou', 'In a quiet, post-apocalyptic world where the sea level has risen, an android named Alpha runs a small coffee shop and watches the sunset.', 'manga', 'https://cdn.myanimelist.net/images/manga/1/170994.jpg', 8.72, 'completed', '1994-04-25', 'Kodansha', 'Afternoon', 'Manga', 'Sci-Fi, Slice of Life', '14 volumes');
-
-
-
 INSERT INTO trailers (image_url, video_url) VALUES
 /* 1. Demon Slayer: Infinity Castle */
 ('https://img.youtube.com/vi/ONvWLuFYvVg/maxresdefault.jpg', 'https://www.youtube.com/watch?v=ONvWLuFYvVg'),
@@ -198,6 +93,11 @@ INSERT INTO trailers (image_url, video_url) VALUES
 
 /* 17. Solo Leveling: Karma (Action RPG Trailer) */
 ('https://img.youtube.com/vi/NdHlNMAqC1A/maxresdefault.jpg', 'https://www.youtube.com/watch?v=NdHlNMAqC1A');
+
+
+
+
+
 
 
 
@@ -269,6 +169,32 @@ INSERT INTO TopManga (title, description, type, poster_image_link, score, status
 ('Spy x Family', 'A spy known as Twilight must build a fake family for a mission. He adopts a telepathic daughter and marries an assassin, but none of them know each other''s secrets. They try to act like a normal family while saving the world.', 'manga', 'https://cdn.myanimelist.net/images/manga/3/219741.jpg', 8.75, 'Publishing', '2019-03-25', 'Tatsuya Endo', 'Shonen Jump+', 'Original', 'Action, Comedy, Slice of Life', 'N/A'),
 ('Blue Period', 'Yatora Yaguchi is a popular student with good grades but feels empty inside. Upon seeing a painting that moves him, he dives into the beautiful yet grueling world of art, aiming for the Tokyo University of the Arts.', 'manga', 'https://cdn.myanimelist.net/images/manga/5/209192.jpg', 8.73, 'Publishing', '2017-06-24', 'Tsubasa Yamaguchi', 'Afternoon', 'Original', 'Drama, School, Slice of Life', 'N/A'),
 ('Uchuu Kyoudai', 'Two brothers, Mutta and Hibito, make a vow as kids to go to space. Years later, Hibito is an astronaut about to go to the moon, while Mutta has just been fired. Mutta remembers his promise and decides to aim for Mars.', 'manga', 'https://cdn.myanimelist.net/images/manga/2/155914.jpg', 8.73, 'Publishing', '2007-12-06', 'Chuya Koyama', 'Morning', 'Original', 'Sci-Fi, Slice of Life, Comedy', 'N/A');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
