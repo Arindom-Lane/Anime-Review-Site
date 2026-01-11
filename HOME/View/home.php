@@ -167,7 +167,7 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
                 </div>
             </div>
             <br>
-            <h3>Latest Updated Episode Videos</h3>
+            <h3>Top Upcoming</h3>
             <hr>
             <div class="latest-wrapper">
                 <span class="left-arrowlatest">&lt;</span>
@@ -180,6 +180,9 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
                         while ($row = mysqli_fetch_assoc($topUpcomingResult)) {
                             echo '<img href="MediaPage.php?title=' . $row['title'] . '" src="' . $row['poster_image_link'] . '" alt="Anime Image">';
                         }
+                    }
+                    else {
+                        echo "<p>No media found.</p>";
                     }
                     ?>
                 </div>
@@ -200,6 +203,9 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
                             echo '<img src="' . $row['image_url'] . '" alt="Trailer Image">';
                             echo '</a>';
                         }
+                    }
+                    else {
+                        echo "<p>No trailers found.</p>";
                     }
                     ?>
                 </div>

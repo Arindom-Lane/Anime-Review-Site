@@ -1,11 +1,12 @@
 <?php
 session_start();
-include("db.php");
+include("../../HOME/Model/db.php");
+
 
 
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
 
-    header('Location: login.php');
+    header('Location: ../../HOME/View/login.php');
     exit();
 }
 
@@ -51,10 +52,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <script src="admin.js" defer></script>
-    <link rel="stylesheet" href="AdminUserEditProfile.css">
-    <link rel="stylesheet" href="searchBar.css">
-    <link rel="stylesheet" href="admin.css">
+    <script src="../Js/admin.js" defer></script>
+    <link rel="stylesheet" href="../Css/AdminUserEditProfile.css">
+    <link rel="stylesheet" href="../../HOME/Css/searchBar.css">
+    <link rel="stylesheet" href="../Css/admin.css">
 
 </head>
 
@@ -62,9 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
     <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='home.php'">
-                <img src="download.png" alt="Logo">
+                <img src="../../HOME/Images/download.png" alt="Logo">
             </div>
-            <div class="profile" onclick="window.location.href='userDashboard.php'">
+            <div class="profile" onclick="window.location.href='../../USER/Controler/userDashboard.php'">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
                     <div class="devider1"></div>
                     <span class="profile-name">
@@ -94,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["btn-create"])) {
                             var query = $(this).val();
                             if (query.length > 2) {
                                 $.ajax({
-                                    url: 'searchBarLogic.php',
+                                    url: '../../HOME/Controler/searchBarLogic.php',
                                     method: 'POST',
                                     data: {
                                         search: query

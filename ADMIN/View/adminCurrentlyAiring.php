@@ -1,6 +1,7 @@
 <?php
 session_start();
-include("db.php");
+include("../../HOME/Model/db.php");
+
 
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true && $_SESSION['role'] != 'admin') {
     header('Location: login.php');
@@ -52,8 +53,8 @@ if (isset($_SESSION['editUserMessage'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="admin.css">
-    <link rel="stylesheet" href="searchBar.css">
+    <link rel="stylesheet" href="../Css/admin.css">
+    <link rel="stylesheet" href="../../HOME/Css/searchBar.css">
     <script src="admin.js" defer></script>
 
 </head>
@@ -63,11 +64,11 @@ if (isset($_SESSION['editUserMessage'])) {
     <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='home.php'">
-                <img src="download.png" alt="Logo">
+                <img src="../../HOME/Images/download.png" alt="Logo">
             </div>
             <div class="profile">
                 <a href="admin.php" class="login-link">Dashboard</a>
-                <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
+                <a href="../../HOME/Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
             </div>
         </div>
         <div class="header-middle">
@@ -89,7 +90,7 @@ if (isset($_SESSION['editUserMessage'])) {
                         var query = $(this).val();
                         if (query.length > 2) {
                             $.ajax({
-                                url: 'searchBarLogic.php',
+                                url: '../../HOME/Controler/searchBarLogic.php',
                                 method: 'POST',
                                 data: {
                                     search: query
@@ -112,7 +113,7 @@ if (isset($_SESSION['editUserMessage'])) {
         </div>
         <div class="header-lower">
             <span>Welcome, <?php echo strtoupper($_SESSION['username']); ?></span>
-            <form method="POST" action="adminLogic.php">
+            <form method="POST" action="../Controler/adminLogic.php">
                 <?php if (isset($_SESSION['theme_mode'])): ?>
                     <script>
                         localStorage.setItem('theme', '<?php echo $_SESSION['theme_mode']; ?>');
@@ -144,7 +145,7 @@ if (isset($_SESSION['editUserMessage'])) {
                     <span class="status-online" style="color: GREEN;">ONLINE</span>
                 </div>
                 <div class="editProfile">
-                    <a href="UserEditProfile.php" class="editProfileHREF">Edit Profile</a>
+                    <a href="../../USER/Controler/UserEditProfile.php" class="editProfileHREF">Edit Profile</a>
                 </div>
             </div>
         </div>
@@ -191,7 +192,7 @@ if (isset($_SESSION['editUserMessage'])) {
                                         <td><img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:100px; height:auto;"></td>
                                         <td style="display: flex;">
                                             <a href="adminEditCurrentlyAiringMedia.php?id=<?php echo $row['media_id']; ?>" name="editMediaData" class="editProfileHREF" style="width: 150px; height: auto; text-align: center; margin-right: 10px;">Edit</a>
-                                            <a href="adminDeleteCurrentlyAiringMedia.php?id=<?php echo $row['media_id']; ?>" class="editProfileHREF" style="width: 150px; height: auto; text-align: center;" onclick="return confirm('Delete this media?')">Delete</a>
+                                            <a href="../Controler/adminDeleteCurrentlyAiringMedia.php?id=<?php echo $row['media_id']; ?>" ...>Delete</a>
                                         </td>
                                     </tr>
                                 <?php

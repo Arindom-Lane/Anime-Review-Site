@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-include("db.php") ;
+include("../../HOME/Model/db.php");
 
 $chceckQuery = "SELECT * FROM user_settings WHERE user_id = " . $_SESSION['user_id'];
 $checkResult = mysqli_query($conn, $chceckQuery); 
@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['theme-toggle'])) {
     }
 }
 
-header('Location: admin.php');
+header('Location: ../View/admin.php');
 exit();
 
 ?>
