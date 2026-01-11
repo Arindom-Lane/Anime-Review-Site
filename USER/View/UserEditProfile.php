@@ -1,17 +1,98 @@
+<?php
+    session_start();
+    include("../../HOME/Model/db.php"); 
+
+    if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
+       header('Location: ../../HOME/View/login.php');
+       exit();
+    }
+
+    $message = "";
+    $error = "";
+
+    if(isset($_POST["btn-create"])){
+        $currentUser = $_SESSION['username']; 
+        
+        // 1. Handle Username
+        if (!empty($_POST["username"])) {
+            $name = $_POST["username"];
+        } else {
+            $name = $_SESSION['username']; 
+        }
+
+        // 2. Handle Email
+        if (!empty($_POST["email"])) {
+            $email = $_POST["email"];
+        } else {
+            $email = $_SESSION['email']; 
+        }
+
+        // 3. Handle Profile Image
+        if (!empty($_POST['profileImage'])) {
+            $profileImage = $_POST['profileImage'];
+        } else {
+            $profileImage = $_SESSION['profileImage']; 
+        }
+
+       
+        $sqlFetch = "SELECT password FROM users WHERE username = '$currentUser'";
+        $resFetch = mysqli_query($conn, $sqlFetch);
+        
+        if($resFetch && mysqli_num_rows($resFetch) > 0){
+            $row = mysqli_fetch_assoc($resFetch);
+            $finalPassword = $row['password']; 
+        } else {
+            $error = "User not found.";
+            $finalPassword = ""; 
+        }
+
+        if (!empty($_POST["password"])) {
+            $finalPassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        }
+
+       
+        if(empty($error)){
+            $query = "UPDATE `users` SET 
+                    `username` = '$name', 
+                    `email` = '$email', 
+                    `password` = '$finalPassword', 
+                    `profile_image_link` = '$profileImage' 
+                    WHERE `username` = '$currentUser'";
+
+            $result = mysqli_query($conn, $query);
+
+            if($result){
+                $_SESSION['username'] = $name;
+                $_SESSION['email'] = $email;
+                $_SESSION['profileImage'] = $profileImage;
+                
+                $message = "Profile updated successfully!";
+            }
+            else {
+                $error = "Query Failed: " . mysqli_error($conn);
+            }
+        }
+    }
+
+    $showDetails = false;
+    if (isset($_POST['btn-show-details'])) {
+        $showDetails = true;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="UserEditProfile.css">  
-    <link rel="stylesheet" href="searchBar.css">  
+    <link rel="stylesheet" href="../Css/UserEditProfile.css">  
+    <link rel="stylesheet" href="../../HOME/Css/searchBar.css">  
 </head>
 <body>
     <header>
         <div class="header-upper">
-            <div class="logo" onclick="window.location.href='home.php'">
-                <img src="download.png" alt="Logo">
+            <div class="logo" onclick="window.location.href='../../HOME/View/home.php'">
+                <img src="../../HOME/Images/download.png" alt="Logo">
             </div>
             <div class="profile">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
@@ -20,7 +101,7 @@
                     <?php echo $_SESSION['username']; ?>
                 </span>
                 <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile">
-                <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
+                <a href="../../HOME/Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -44,7 +125,7 @@
                         var query = $(this).val();
                         if (query.length > 2) {
                             $.ajax({
-                                url: 'searchBarLogic.php',
+                                url: '../../HOME/Controler/searchBarLogic.php',
                                 method: 'POST',
                                 data: {
                                     search: query
@@ -115,5 +196,6 @@
         <?php endif; ?>
     </main>
 
-    </body>
+    <script src="../Js/UserEditProfile.js"></script>
+</body>
 </html>
