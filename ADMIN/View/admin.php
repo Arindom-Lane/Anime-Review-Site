@@ -6,7 +6,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true && $_SESSION
     header('Location: ../../HOME/View/login.php');
     exit();
 } elseif ($_SESSION['role'] == 'registered') {
-    header('Location: home.php');
+    header('Location: ../../HOME/View/home.php');
 }
 
 if (isset($_SESSION['CreateError'])) {
