@@ -4,7 +4,7 @@ include("../../HOME/Model/db.php");
 
 
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true && $_SESSION['role'] != 'admin') {
-    header('Location: login.php');
+    header('Location: ../../HOME/View/login.php');
     exit();
 } elseif ($_SESSION['role'] == 'registered') {
     header('Location: home.php');
