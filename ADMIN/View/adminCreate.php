@@ -1,6 +1,7 @@
 <?php
 session_start();
-include("db.php");
+include("../../HOME/Model/db.php");
+
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
     header('Location: login.php');
 }

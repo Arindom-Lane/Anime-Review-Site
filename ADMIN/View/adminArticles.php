@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("db.php");
+include("../../HOME/Model/db.php");
 
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true && $_SESSION['role'] != 'admin') {
     header('Location: login.php');
@@ -68,9 +68,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['create_article'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="admin.css">
-    <link rel="stylesheet" href="searchBar.css">
-    <script src="admin.js" defer></script>
+    <link rel="stylesheet" href="../Css/admin.css">
+    <link rel="stylesheet" href="../../HOME/Css/searchBar.css">
+    <script src="../Js/admin.js" defer></script>
 
 </head>
 
@@ -79,11 +79,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['create_article'])) {
     <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='home.php'">
-                <img src="download.png" alt="Logo">
+                <img src="../../HOME/Images/download.png" alt="Logo">
             </div>
             <div class="profile">
                 <a href="admin.php" class="login-link">Dashboard</a>
-                <a href="destorySession.php" class="login-link-Log-out">Log Out</a>
+                <a href="../../HOME/Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
             </div>
         </div>
         <div class="header-middle">
@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['create_article'])) {
                         var query = $(this).val();
                         if (query.length > 2) {
                             $.ajax({
-                                url: 'searchBarLogic.php',
+                                url: '../../HOME/Controler/searchBarLogic.php',
                                 method: 'POST',
                                 data: {
                                     search: query
@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['create_article'])) {
         </div>
         <div class="header-lower">
             <span>Welcome, <?php echo strtoupper($_SESSION['username']); ?></span>
-            <form method="POST" action="adminLogic.php">
+            <form method="POST" action="../Controler/adminLogic.php">
                 <?php if (isset($_SESSION['theme_mode'])): ?>
                     <script>
                         localStorage.setItem('theme', '<?php echo $_SESSION['theme_mode']; ?>');
@@ -194,7 +194,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['create_article'])) {
                                         <td><img src="<?php echo $row['image_url'] ?>" style="width:100px; height:auto;"></td>
                                         <td><a href="<?php echo $row['article_url'] ?>" target="_blank">View Article</a></td>
                                         <td style="display: flex;">
-                                            <a href="adminDeleteArticles.php?id=<?php echo $row['articles_id']; ?>" class="editProfileHREF" onclick="return confirm('Delete article?')">Delete</a>
+                                            <a href="../Controler/adminDeleteArticles.php?id=<?php echo $row['articles_id']; ?>" class="editProfileHREF" onclick="return confirm('Delete article?')">Delete</a>
                                         </td>
                                     </tr>
                                 <?php
