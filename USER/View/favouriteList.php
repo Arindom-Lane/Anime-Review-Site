@@ -103,10 +103,6 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
                         <span>Aug 11, 2023</span>
                     </div>
 
-                    <div class="list-btn-row">
-                        <input type="button" value="Anime List" class="list-btn">
-                        <input type="button" value="Manga List" class="list-btn">
-                    </div>
 
                     <div class="sidebar-divider"></div>
                     
