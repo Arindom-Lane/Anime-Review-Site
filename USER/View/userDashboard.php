@@ -183,15 +183,15 @@ $mangaPct = calculatePercentages($mangaStats);
                     <span class="profile-name">
                         <?php echo $_SESSION['username']; ?>
                     </span>
-                    <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile">
+                    <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='../../USER/View/userDashboard.php'">
                     <a href="../../HOME/Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
                 <?php endif; ?>
             </div>
         </div>
         <div class="header-middle">
             <div class="topButton">
-                <span>TOP ANIME</span>
-                <span>TOP MANGA</span>
+                <span onclick="window.location.href='../../HOME/View/top-Anime.php'">TOP ANIME</span>
+                <span onclick="window.location.href='../../HOME/View/top-Manga.php'">TOP MANGA</span>
             </div>
             <div class="search-bar">
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -259,10 +259,7 @@ $mangaPct = calculatePercentages($mangaStats);
                         <span>Aug 11, 2023</span>
                     </div>
 
-                    <div class="list-btn-row">
-                        <input type="button" value="Anime List" class="list-btn">
-                        <input type="button" value="Manga List" class="list-btn">
-                    </div>
+                    
 
                     <div class="sidebar-divider">
 
