@@ -119,13 +119,63 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
 
         <!-- RIGHT MAIN CONTENT -->
         <div class="rightsection">
-            <div class="Edit">
-                <a href="#">Edit Favourites</a>
-            </div>
-            <br></br>
-            <div class="favourite-list">
-                <p>Your favourite list is currently empty.</p>
-                </div> 
+                        <div class="admin-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Poster</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $curr_user = $_SESSION['username'];
+                        $u_sql = "SELECT user_id FROM Users WHERE username = '$curr_user'";
+                        $u_res = mysqli_query($conn, $u_sql);
+                        $u_row = mysqli_fetch_assoc($u_res);
+                        $user_id = $u_row['user_id'];
+
+                        $query = "SELECT m.* FROM Favorites f 
+                                  JOIN Media m ON f.media_id = m.media_id 
+                                  WHERE f.user_id = '$user_id'";
+                        $result = mysqli_query($conn, $query);
+
+                        if (mysqli_num_rows($result) > 0) {
+                            foreach ($result as $row) {
+                        ?>
+                                <tr>
+                                    <td>
+                                        <a href="../../HOME/View/MediaPage.php?id=<?php echo $row['media_id']; ?>" class="mediaClick">
+                                        <strong><?php echo $row['title'] ?></strong><br><br>
+                                        <?php echo substr($row['description'], 0, 150) . '...'; ?><br><br>
+                                        <hr>
+                                        <strong>Score:</strong> <?php echo $row['score'] ?>,
+                                        <strong>Type:</strong> <?php echo $row['type'] ?>,
+                                        <strong>Studio:</strong> <?php echo $row['studio'] ?>
+                                        <hr>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:100px; height:auto;">
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <a href="../../HOME/View/MediaPage.php?id=<?php echo $row['media_id']; ?>" style="text-decoration:none; color:blue; font-weight:bold;">View Page</a>
+                                    </td>
+                                </tr>
+                            <?php
+                            }
+                        } else {
+                            ?>
+                            <tr>
+                                <td colspan="3" style="text-align:center;">Your favourite list is currently empty.</td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div> 
                  
                 
         </div>
