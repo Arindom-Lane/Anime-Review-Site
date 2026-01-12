@@ -9,6 +9,7 @@ $stats = [
     'dropped' => 0
 ];
 
+
 if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true) {
     $userId = $_SESSION['userId'];
 
@@ -36,6 +37,18 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
     <title>My AnimeList</title>
     <link rel="stylesheet" href="../Css/homeStyle.css">
     <link rel="stylesheet" href="../Css/searchBar.css">
+    <script>
+        const serverTheme = '<?php echo $_SESSION["theme_mode"] ?? "light"; ?>';
+        localStorage.setItem('theme', serverTheme);
+        if (serverTheme === 'dark') {
+            document.documentElement.classList.add('dark-theme');
+        } else {
+            document.documentElement.classList.remove('dark-theme');
+        }
+    </script>
+
+    <script src="../Js/homeJSCRIPT.js" defer></script>
+
 </head>
 
 <body>
@@ -323,23 +336,22 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
 
     <footer>
         <div class="footer-block">
-                <div class="footer-links">
-                    <p>Follow Us</p>
-                    <a href="https://github.com/Arindom-Lane">ARINDOM</a>
-                    <a href="https://github.com/ReDThunDeR33">ARKO</a>
-                    <a href="https://github.com/Arindom-Lane/Anime-Review-Site">PROJECT REPO</a>
-                </div>
+            <div class="footer-links">
+                <p style="border-bottom: 1px solid white; padding: 5px; width: 200px; margin: 0 auto;">Follow Us</p>
+                <a href="https://github.com/Arindom-Lane">ARINDOM</a> <strong style="color: azure;">|</strong>
+                <a href="https://github.com/ReDThunDeR33">ARKO</a> <strong style="color: azure;">|</strong>
+                <a href="https://github.com/Arindom-Lane/Anime-Review-Site">PROJECT REPO</a>
+                <img src="../Images/github.png" alt="GitHub" class="github-icon" onclick="window.location.href='https://github.com/Arindom-Lane/Anime-Review-Site'">
+            </div>
 
             <div class="copyright">
                 MyAnimeList.net is a property of MyAnimeList Co., Ltd. ©2026 All Rights Reserved.
             </div>
-            <div id="recaptcha-terms">
-                This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.
-            </div>
         </div>
     </footer>
 
-    <script src="../Js/homeJSCRIPT.js"></script>
+
+
 </body>
 
 </html>

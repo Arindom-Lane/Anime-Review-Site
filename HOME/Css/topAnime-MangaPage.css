@@ -22,7 +22,8 @@
     --border-radius-3: 0.8rem;
 }
 
-/* ===== DARK THEME ===== */
+
+html.dark-theme,
 body.dark-theme {
     --bg-page: #0f141c;
     --bg-card: #1a1f2b;

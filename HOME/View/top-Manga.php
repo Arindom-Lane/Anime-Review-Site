@@ -9,12 +9,25 @@ include("../Model/db.php");
 <html lang="en">
 
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
     <link rel="stylesheet" href="../Css/topAnime-MangaPage.css">
     <link rel="stylesheet" href="../Css/searchBar.css">
-    <script src="../../ADMIN/Js/admin.js" defer></script>
+    <script>
+        const serverTheme = '<?php echo $_SESSION["theme_mode"] ?? "light"; ?>';
+        
+        localStorage.setItem('theme', serverTheme);
+
+        if (serverTheme === 'dark') {
+            document.documentElement.classList.add('dark-theme');
+        } else {
+            document.documentElement.classList.remove('dark-theme');
+        }
+    </script>
+    <script src="../Js/homeJSCRIPT.js" defer></script>
+    
 </head>
 
 <body>
