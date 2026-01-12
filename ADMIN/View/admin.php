@@ -219,6 +219,50 @@ if (isset($_SESSION['editUserMessage'])) {
                 <button class="greyButton" onclick="window.location.href='adminTrailers.php'">Trailers</button>
             </div>
 
+            <div class="admin-box">
+                <h2>Pending Media Creation Requests!</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Poster</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $result = mysqli_query($conn, "SELECT * FROM requestmedia");
+                        if (mysqli_num_rows($result) > 0) {
+                            foreach ($result as $row) {
+                        ?>
+                                <tr>
+                                    <td>
+                                        <strong><?php echo $row['title'] ?></strong><br><br>
+                                        <?php echo $row['description'] ?><br><br>
+                                        <hr>
+                                        <strong>type:</strong> <?php echo $row['type'] ?>,
+                                        <strong>studio:</strong> <?php echo $row['studio'] ?>,
+                                        <strong>source:</strong> <?php echo $row['source'] ?>
+                                        <hr>
+                                    </td>
+                                    <td><img src="<?php echo $row['poster'] ?>" alt="Poster" style="width:100px; height:auto;"></td>
+                                    <td style="display: flex;">
+                                        <a href="../Controler/adminAcceptMediaReq.php?id=<?php echo $row['id']; ?>" name="editMediaData" class="editProfileHREF" style="width: 150px; height: auto; text-align: center; margin-right: 10px;">Accept</a>
+                                        <a href="../Controler/adminRejectMediaReq.php?id=<?php echo $row['id']; ?>" name="editMediaData" class="editProfileHREF" style="width: 150px; height: auto; text-align: center; margin-right: 10px;">Reject</a>
+
+                                    </td>
+                                </tr>
+                        <?php
+                            }
+                        } ?>
+
+
+
+                    </tbody>
+                </table>
+
+            </div>
+
         </div>
 
     </main>
