@@ -48,6 +48,8 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
     </script>
 
     <script src="../Js/homeJSCRIPT.js" defer></script>
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
 
 </head>
 
