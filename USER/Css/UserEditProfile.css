@@ -28,6 +28,17 @@ body.dark-theme {
 
 }
 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--color-background_white);
+    color: var(--color-text-dark_white);
+    font-family: var(--font-main);
+    letter-spacing: .8px;
+    scroll-behavior:smooth;
+    text-decoration: none;
+}
+
 
 header {
     margin: 0 13%;
