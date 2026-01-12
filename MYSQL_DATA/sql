@@ -220,3 +220,19 @@ CREATE TABLE TopManga (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+///////////////////////////////////////////////////////////////
+
+CREATE TABLE requestmedia (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    type VARCHAR(50) NOT NULL,
+    poster VARCHAR(255) NOT NULL,
+    studio VARCHAR(255) NOT NULL,
+    producer VARCHAR(255) NOT NULL,
+    genre VARCHAR(255) NOT NULL,
+    duration VARCHAR(50) NOT NULL,
+    source VARCHAR(255) NOT NULL,
+    description TEXT,
+    requested_by VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
