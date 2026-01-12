@@ -149,6 +149,7 @@ if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
         </div>
 
         <script src="../Js/ReqMed.js"></script>
+        <script src="../Js/homeJSCRIPT.js"></script>
     </main>
 </body>
 </html>
