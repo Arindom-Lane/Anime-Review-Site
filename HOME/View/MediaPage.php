@@ -123,6 +123,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_review'])) {
     }
 }
 
+// --- 6. HANDLE REVIEW DELETION ---
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_review'])) {
+    if ($user_id) {
+        $review_id = intval($_POST['review_id']);
+        // Delete only if the review belongs to the current logged-in user
+        $delete_sql = "DELETE FROM Reviews WHERE review_id = '$review_id' AND user_id = '$user_id'";
+        mysqli_query($conn, $delete_sql);
+        header("Location: MediaPage.php?id=" . $media_id);
+        exit();
+    }
+}
+
 // --- 5. HANDLE FAVORITES  ---
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['toggle_favorite'])) {
     if ($user_id) {
@@ -326,10 +338,19 @@ $reviews_result = mysqli_query($conn, $reviews_query);
                                 <div class="review-content">
                                     <div class="review-meta">
                                         <span class="review-author"><?php echo htmlspecialchars($review['username']); ?></span>
-                                        <div class="review-rating-badge"><?php echo $review['rating']; ?></div>
+                                        <!-- Added Rating Back -->
+                                        <div class="review-rating-badge" style="display:inline-block; background:#333; color:#fff; padding:2px 6px; border-radius:4px; font-size:12px; margin:0 5px;"><?php echo $review['rating']; ?></div>
                                         <span class="review-date"><?php echo date('M d, Y', strtotime($review['created_at'])); ?></span>
+                                        
+                                        <?php if ($user_id && $review['user_id'] == $user_id): ?>
+                                            <form method="POST" style="display:inline; margin-left: 10px;">
+                                                <input type="hidden" name="review_id" value="<?php echo $review['review_id']; ?>">
+                                                <button type="submit" name="delete_review" style="background-color: red; color: white; border: none; padding: 4px 8px; font-size: 11px; cursor: pointer; border-radius: 3px;">DELETE</button>
+                                            </form>
+                                        <?php endif; ?>
                                     </div>
-                                    <div class="review-body">
+                                    <!-- Added Review Text Back -->
+                                    <div class="review-body" style="margin-top:10px;">
                                         <?php echo nl2br(htmlspecialchars($review['review_text'])); ?>
                                     </div>
                                 </div>
