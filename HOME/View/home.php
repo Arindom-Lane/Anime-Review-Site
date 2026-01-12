@@ -39,6 +39,7 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
 </head>
 
 <body>
+    <div class="header-background"></div>
     <header>
 
         <div class="header-upper">
@@ -238,22 +239,22 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
                         <div>
                             <h2>1</h2>
                             <img src="https://cdn.myanimelist.net/r/100x140/images/anime/1064/152251.webp?s=922394da72dc89aaca1e482d3700a90c">
-                            <span>Sousou no Frieren 2nd Season</span>
+                            <p>Sousou no Frieren 2nd Season</p>
                         </div>
                         <div>
                             <h2>3</h2>
                             <img src="https://cdn.myanimelist.net/images/anime/1982/153900.jpg">
-                            <span>Jigokuraku 2nd Season</span>
+                            <p>Jigokuraku 2nd Season</p>
                         </div>
                         <div>
                             <h2>3</h2>
                             <img src="https://cdn.myanimelist.net/images/anime/1653/153899.jpg">
-                            <span>Youjo Senki II</span>
+                            <p>Youjo Senki II</p>
                         </div>
                         <div>
                             <h2>4</h2>
                             <img src="https://cdn.myanimelist.net/images/anime/1180/153379.jpg">
-                            <span>Jujutsu Kaisen: Shimetsu Kaiyuu - Zenpen</span>
+                            <p>Jujutsu Kaisen: Shimetsu Kaiyuu - Zenpen</p>
                         </div>
                     </div>
                 </div>
@@ -262,28 +263,28 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
             <div class="mostPopuar">
                 <div class="mostPopuarHeading">
                     <h3>Most Popular Anime</h3>
-                    <span>More</span>
+                    <span>.</span>
                 </div>
                 <div class="mostPopuarImagesGrid">
                     <div>
                         <h2>1</h2>
                         <img src="https://cdn.myanimelist.net/images/anime/10/47347.jpg">
-                        <span>Shingeki no Kyojin</span>
+                        <div>Shingeki no Kyojin</div>
                     </div>
                     <div>
                         <h2>2</h2>
                         <img src="https://cdn.myanimelist.net/images/anime/1223/96541.jpg">
-                        <span>Fullmetal Alchemist: Brotherhood</span>
+                        <div>Fullmetal Alchemist: Brotherhood</div>
                     </div>
                     <div>
                         <h2>3</h2>
                         <img src="https://cdn.myanimelist.net/images/anime/11/39717.jpg">
-                        <span>Sword Art Online</span>
+                        <div>Sword Art Online</div>
                     </div>
                     <div>
                         <h2>4</h2>
                         <img src="https://cdn.myanimelist.net/images/anime/6/73245.jpg">
-                        <span>One Punch Man</span>
+                        <div>One Punch Man</div>
                     </div>
                 </div>
             </div>

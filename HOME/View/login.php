@@ -33,8 +33,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
 
             if (mysqli_num_rows($checkResult) == 0) {
                 $insertUserSettingQuery = "INSERT INTO user_settings (user_id, theme_mode) VALUES (" . $_SESSION['user_id'] . ", 'light')";
-                mysqli_query($conn, $insertUserSettingQuery);
+                mysqli_query($conn, query: $insertUserSettingQuery);
                 $_SESSION['theme_mode'] = 'light';
+                echo "<script>localStorage.setItem('theme', 'light');</script>";
+            }
+            else {
+                $settingRow = mysqli_fetch_assoc($checkResult);
+                $_SESSION['theme_mode'] = $settingRow['theme_mode'];
+                echo "<script>localStorage.setItem('theme', '" . $settingRow['theme_mode'] . "');</script>";
             }
 
             header("Location: home.php");
