@@ -1,34 +1,48 @@
 :root {
-    --color-primary_brand: #2e51a2;
-    --color-primary_brand-dark-variant: #1a3274;
-    --color-primary_brand-light-variant: #E1E7F5;
-    --color-background_white: #F6F6F6;
-    --color-text-dark_white: #323232;
-    --color-text-muted: #707070; 
-    --color-border_white: #e0e0e0;
-    --color-devider:#4a6fc7;
+    --mal-blue: #2e51a2;
+    --mal-footer: #2e51a2;
+    --mal-blue-dark: #1a3274;
+    --mal-blue-light: #e1e7f5;
+
+    --bg-page: #f6f6f6;
+    --bg-card: #ffffff;
+    --bg-sidebar: #e2e5e6;
+    --bg-hover: #e9eef9;
+    --color-divider: #4a6fc7;
+
+    --text-primary: #1f1f1f;
+    --text-secondary: #555;
+    --text-muted: #888;
+
+    --border: #d0d7e2;
+
+    --card-border-radius: 0.35rem;
     --border-radius-1: 0.2rem;
-    --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    
-    --color-bg-card: #ffffff;
-    --color-bg-comment: #f4f4f4;
-    --color-bg-input: #ffffff;
-    --color-bg-bar: #ebebeb;
+    --border-radius-2: 0.4rem;
+    --border-radius-3: 0.8rem;
 }
 
+html.dark-theme,
 body.dark-theme {
-    --color-background_white: #121212;
-    --color-text-dark_white: #e7eaf0;
-    --color-text-muted: #b0b6c3; 
-    --color-border_white: #2e3545;
-    --color-primary_brand-light-variant: #182033;
-    
-    --color-bg-card: #1a1f2b;
-    --color-bg-comment: #161b25;
-    --color-bg-input: #161b25;
-    --color-bg-bar: #2e3545;
+    --bg-page: #121212;
+    --bg-card: #181818;
+    --bg-sidebar: #161b25;
+    --bg-hover: #263149;
+    --mal-blue-light: #182033;
+    --mal-footer: #182033;
+
+    --text-primary: #e7eaf0;
+    --text-secondary: #b0b6c3;
+    --text-muted: #7b8190;
+
+    --border: #2e3545;
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     background-color: var(--bg-page);
@@ -64,7 +78,8 @@ header {
 
 .logo {
     width: 200px;
-    height: 50px;;
+    height: 50px;
+    ;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -75,7 +90,6 @@ header {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white);
 }
 
 .profile {
@@ -86,20 +100,34 @@ header {
     font-weight: bold;
 }
 
-.devider1 {
-    height: 30px;
-    color: var(--color-devider);
-    margin: 10px;
-    border: 1px solid;
+.profile-name {
+    margin-right: 10px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--color-text-dark_white);
+    font-weight: bold;
+    margin-left: 10px;
 }
 
 .profile img {
     width: 30px;
-    height: auto;
+    height: 30px;
     border-radius: var(--border-radius-1);
-    border: 1px solid var(--border);
-    margin-left: 10px;
+    border: 1px solid var(--color-border_white);
+    margin-right: 10px;
 }
+
+.devider1 {
+    height: 30px;
+    color: var(--color-divider);
+    margin: 10px;
+    border: 1px solid;
+}
+
 
 .login-link-Log-out {
     display: inline-block;
@@ -432,15 +460,18 @@ input::placeholder {
 
 
 }
+
 .admin-box table tbody tr:nth-child(even) {
     background-color: var(--bg-hover);
     color: black;
 }
+
 .admin-box table tbody tr:hover {
     background-color: var(--mal-blue-dark);
     color: white;
 }
-.greyButton{
+
+.greyButton {
     background-color: rgb(69, 82, 124);
     color: white;
     border: none;
@@ -454,6 +485,7 @@ input::placeholder {
     cursor: pointer;
     border-radius: var(--border-radius-2);
 }
-.greyButton:hover{
+
+.greyButton:hover {
     background-color: rgb(130, 139, 164);
 }
