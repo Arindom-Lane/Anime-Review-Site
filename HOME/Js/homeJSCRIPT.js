@@ -68,12 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 });
-const serverTheme = localStorage.getItem('theme');
 
-if (serverTheme === 'dark') {
-    document.documentElement.classList.add('dark-theme');
-} else {
-    document.documentElement.classList.remove('dark-theme');
-}
 
 
