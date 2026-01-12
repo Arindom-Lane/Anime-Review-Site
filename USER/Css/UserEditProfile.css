@@ -65,7 +65,7 @@ header {
 .topButton span { color: white; padding: 10px 13px; font-size: 12px; font-weight: bold; display: block; cursor: pointer; }
 .topButton span:hover { background-color: var(--color-primary_brand-dark-variant); border-radius: var(--border-radius-1); }
 
-.search-bar .search { padding: 0 6px; border-radius: var(--border-radius-1); border: .5px solid var(--color-border_white); font-size: 11px; width: 100%; height: 25px; margin-right: 90px; }
+.search-bar .search { padding: 0 6px; border-radius: var(--border-radius-1); border: .5px solid var(--color-border_white); font-size: 11px; width: 100%; height: 25px; margin-right: 90px;background-color: var(--color-input-bg);color: var(--color-text-dark_white); }
 
 .header-lower {
     background-color: var(--color-primary_brand-light-variant);
@@ -77,17 +77,17 @@ header {
     height: 40px;
     padding: 0 11px;
 }
-.header-lower span { font-size: large; font-weight: bold; color: black; }
+.header-lower span { font-size: large; font-weight: bold; color: var(--color-text-dark_white); }
 .header-lower img { height: 30px; width: 30px; cursor: pointer; }
 
 
 main {
     margin: 0 13%; 
-    background-color: #ffffff;
+    background-color: var(--color-bg-card);
     padding: 40px;
     min-height: 500px;
-    border-left: 1px solid #e0e0e0;
-    border-right: 1px solid #e0e0e0;
+    border-left: 1px solid var(--color-border_white);
+    border-right: 1px solid var(--color-border_white);
 }
 
 
