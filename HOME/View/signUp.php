@@ -146,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
 
         .logo {
             width: 300px;
-            height: auto;
+            height: 100px;
             align-items: center;
             cursor: pointer;
             margin: 0 auto;
