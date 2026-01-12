@@ -197,5 +197,6 @@
     </main>
 
     <script src="../Js/UserEditProfile.js"></script>
+    <script src="../Js/homeJSCRIPT.js"></script>
 </body>
 </html>
