@@ -51,7 +51,7 @@ if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
     <link rel="stylesheet" href="../Css/favourite.css">    
     <link rel="stylesheet" href="../../HOME/Css/searchBar.css">
 </head>
-<body>
+<body class="<?php echo (isset($_SESSION['theme_mode']) && $_SESSION['theme_mode'] === 'dark') ? 'dark-theme' : ''; ?>">
     <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='../../HOME/View/home.php'">
@@ -99,7 +99,6 @@ if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
         </div>
         <div class="header-lower">
             <span>Welcome <?php echo $_SESSION['username'];?></span>
-            <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png" alt="Menu">
         </div>
     </header>
 
