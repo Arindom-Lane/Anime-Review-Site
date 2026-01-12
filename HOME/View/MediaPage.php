@@ -57,6 +57,7 @@ elseif(isset($_GET["idTopAnime"])){
         header("Location: home.php");
         exit();
     }
+    $media_id = $media['media_id'];
 }
 
 else{
@@ -122,6 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_review'])) {
     }
 }
 
+// --- 5. HANDLE FAVORITES  ---
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['toggle_favorite'])) {
     if ($user_id) {
         $check_fav = mysqli_query($conn, "SELECT favorite_id FROM Favorites WHERE user_id = '$user_id' AND media_id = '$media_id'");
