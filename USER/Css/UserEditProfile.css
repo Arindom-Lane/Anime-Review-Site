@@ -130,6 +130,10 @@ main {
     background-color: var(--color-input-bg);
     color: var(--color-text-dark_white);
 }
+.feild input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.7;
+}
 
 .feild input:focus {
     border-color: var(--color-primary_brand);
