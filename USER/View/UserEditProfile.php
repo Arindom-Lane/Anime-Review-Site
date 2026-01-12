@@ -2,6 +2,13 @@
     session_start();
     include("../../HOME/Model/db.php"); 
 
+    if (isset($_POST['theme-toggle'])) {
+    $newTheme = $_POST['theme-toggle'] == '1' ? 'dark' : 'light';
+    $_SESSION['theme_mode'] = $newTheme;
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit();
+}
+
     if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
        header('Location: ../../HOME/View/login.php');
        exit();
