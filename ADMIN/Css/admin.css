@@ -1,10 +1,8 @@
-/* ===== MAL COLOR SYSTEM ===== */
 :root {
     --mal-blue: #2e51a2;
     --mal-blue-dark: #1a3274;
     --mal-blue-light: #e1e7f5;
 
-    /* Light Theme */
     --bg-page: #f6f6f6;
     --bg-card: #ffffff;
     --bg-sidebar: #e2e5e6;
@@ -22,12 +20,12 @@
     --border-radius-3: 0.8rem;
 }
 
-/* ===== DARK THEME ===== */
 body.dark-theme {
-    --bg-page: #0f141c;
+    --bg-page: #121212;
     --bg-card: #1a1f2b;
     --bg-sidebar: #161b25;
     --bg-hover: #263149;
+    --mal-blue-light: #182033;
 
     --text-primary: #e7eaf0;
     --text-secondary: #b0b6c3;
