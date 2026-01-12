@@ -95,8 +95,7 @@
     <link rel="stylesheet" href="../Css/UserEditProfile.css">  
     <link rel="stylesheet" href="../../HOME/Css/searchBar.css">  
 </head>
-<body>
-    <header>
+<body class="<?php echo (isset($_SESSION['theme_mode']) && $_SESSION['theme_mode'] == 'dark') ? 'dark-theme' : ''; ?>">    <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='../../HOME/View/home.php'">
                 <img src="../../HOME/Images/download.png" alt="Logo">
