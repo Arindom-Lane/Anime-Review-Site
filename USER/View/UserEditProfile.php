@@ -99,19 +99,19 @@
             </div>
             <div class="profile">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
-                <div class="devider1"></div>
-                <span class="profile-name" onclick="window.location.href='userDashboard.php'">
-                    <?php echo $_SESSION['username']; ?>
-                </span>
-                <img src="<?php echo $_SESSION['profileImage']; ?>" onclick="window.location.href='../../USER/View/userDashboard.php'" alt="Profile">
-                <a href="../../HOME/Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
+                    <div class="devider1"></div>
+                    <span class="profile-name">
+                        <?php echo $_SESSION['username']; ?>
+                    </span>
+                    <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='../../USER/View/userDashboard.php'">
+                    <a href="../../HOME/Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
                 <?php endif; ?>
             </div>
         </div>
         <div class="header-middle">
             <div class="topButton">
-                <span>TOP ANIME</span>
-                <span>TOP MANGA</span>
+                <span onclick="window.location.href='../../HOME/View/top-Anime.php'">TOP ANIME</span>
+                <span onclick="window.location.href='../../HOME/View/top-Manga.php'">TOP MANGA</span>
             </div>
             <div class="search-bar">
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
