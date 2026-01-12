@@ -11,6 +11,7 @@
     --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     
     --color-bg-card: #ffffff;
+    --color-bg-hover: #f2f6ff;      
     --color-bg-comment: #f4f4f4;
     --color-bg-input: #ffffff;
     --color-bg-bar: #ebebeb;
@@ -22,8 +23,9 @@ body.dark-theme {
     --color-text-muted: #b0b6c3; 
     --color-border_white: #2e3545;
     --color-primary_brand-light-variant: #182033;
-    
+
     --color-bg-card: #1a1f2b;
+    --color-bg-hover: #232a3a;
     --color-bg-comment: #161b25;
     --color-bg-input: #161b25;
     --color-bg-bar: #2e3545;
@@ -31,13 +33,12 @@ body.dark-theme {
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: var(--bg-page);
-    color: var(--text-primary);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--color-background_white);
+    color: var(--color-text-dark_white);
+    font-family: var(--font-main);
     letter-spacing: .8px;
-    scroll-behavior: smooth;
+    scroll-behavior:smooth;
     text-decoration: none;
-    overflow-x: hidden;
 }
 
 
