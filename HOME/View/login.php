@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['email'] = $user['email'];
 
-            $chceckQuery = "SELECT * FROM user_settings WHERE user_id = " . $_SESSION['user_id'];
+            $chceckQuery = "SELECT * FROM user_settings WHERE user_id = '" . $_SESSION['user_id'] . "'";
             $checkResult = mysqli_query($conn, $chceckQuery);
 
 
@@ -35,12 +35,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
                 $insertUserSettingQuery = "INSERT INTO user_settings (user_id, theme_mode) VALUES (" . $_SESSION['user_id'] . ", 'light')";
                 mysqli_query($conn, query: $insertUserSettingQuery);
                 $_SESSION['theme_mode'] = 'light';
-                echo "<script>localStorage.setItem('theme', 'light');</script>";
-            }
-            else {
+                echo "<script>
+                localStorage.setItem('theme', 'light');
+                document.body.classList.remove('dark-theme');
+                </script>";
+                
+            } else {
                 $settingRow = mysqli_fetch_assoc($checkResult);
-                $_SESSION['theme_mode'] = $settingRow['theme_mode'];
-                echo "<script>localStorage.setItem('theme', '" . $settingRow['theme_mode'] . "');</script>";
+                if($settingRow['theme_mode'] == 'dark'){
+                    $_SESSION['theme_mode'] = 'dark';
+                    echo "<script>
+                    localStorage.setItem('theme', 'dark');
+                    document.body.classList.add('dark-theme');
+                    </script>";
+                }
+                else{
+                    $_SESSION['theme_mode'] = 'light';
+                    echo "<script>
+                    localStorage.setItem('theme', 'light');
+                    document.body.classList.remove('dark-theme');
+                    </script>";
+                }
             }
 
             header("Location: home.php");
@@ -172,6 +187,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
             cursor: pointer;
             margin: 0 auto;
         }
+
         .logo img {
             width: 100%;
             height: 100%;

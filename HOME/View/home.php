@@ -156,9 +156,9 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                     ?>
-                        <a href="MediaPage.php?title=<?php echo $row['title']; ?>">
-                            <img src="<?php echo $row['poster_image_link']; ?>" alt="<?php echo $row['title']; ?>">
-                        </a>
+                            <a href="MediaPage.php?title=<?php echo $row['title']; ?>">
+                                <img src="<?php echo $row['poster_image_link']; ?>" alt="<?php echo $row['title']; ?>">
+                            </a>
                     <?php
                         }
                     } else {
@@ -174,15 +174,14 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
                 <span class="left-arrowlatest">&lt;</span>
                 <span class="right-arrowlatest">&gt;</span>
                 <div class="latestList">
-                    <?php 
+                    <?php
                     $topUpcoming = 'SELECT * FROM TopUpcoming';
                     $topUpcomingResult = mysqli_query($conn, $topUpcoming);
                     if (mysqli_num_rows($topUpcomingResult) > 0) {
                         while ($row = mysqli_fetch_assoc($topUpcomingResult)) {
                             echo '<img href="MediaPage.php?title=' . $row['title'] . '" src="' . $row['poster_image_link'] . '" alt="Anime Image">';
                         }
-                    }
-                    else {
+                    } else {
                         echo "<p>No media found.</p>";
                     }
                     ?>
@@ -195,7 +194,7 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
                 <span class="left-arrowTrailers">&lt;</span>
                 <span class="right-arrowTrailers">&gt;</span>
                 <div class="TrailersList">
-                    <?php 
+                    <?php
                     $trailersQuery = 'SELECT * FROM trailers';
                     $trailersResult = mysqli_query($conn, $trailersQuery);
                     if (mysqli_num_rows($trailersResult) > 0) {
@@ -204,8 +203,7 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
                             echo '<img src="' . $row['image_url'] . '" alt="Trailer Image">';
                             echo '</a>';
                         }
-                    }
-                    else {
+                    } else {
                         echo "<p>No trailers found.</p>";
                     }
                     ?>
@@ -321,6 +319,25 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
 
         </div>
     </main>
+
+
+    <footer>
+        <div class="footer-block">
+                <div class="footer-links">
+                    <p>Follow Us</p>
+                    <a href="https://github.com/Arindom-Lane">ARINDOM</a>
+                    <a href="https://github.com/ReDThunDeR33">ARKO</a>
+                    <a href="https://github.com/Arindom-Lane/Anime-Review-Site">PROJECT REPO</a>
+                </div>
+
+            <div class="copyright">
+                MyAnimeList.net is a property of MyAnimeList Co., Ltd. ©2026 All Rights Reserved.
+            </div>
+            <div id="recaptcha-terms">
+                This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.
+            </div>
+        </div>
+    </footer>
 
     <script src="../Js/homeJSCRIPT.js"></script>
 </body>

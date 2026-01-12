@@ -1,5 +1,6 @@
 :root {
     --mal-blue: #2e51a2;
+    --mal-footer: #2e51a2;
     --mal-blue-dark: #1a3274;
     --mal-blue-light: #e1e7f5;
 
@@ -26,6 +27,7 @@ body.dark-theme {
     --bg-sidebar: #161b25;
     --bg-hover: #263149;
     --mal-blue-light: #182033;
+    --mal-footer: #182033;
 
     --text-primary: #e7eaf0;
     --text-secondary: #b0b6c3;
@@ -36,14 +38,13 @@ body.dark-theme {
 
 * {
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
     
 body {
     background-color: var(--bg-page);
     color: var(--text-primary);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: Verdana, Arial;
     letter-spacing: .8px;
     scroll-behavior: smooth;
     text-decoration: none;
@@ -497,4 +498,36 @@ main {
 .login-link-Log-out:hover {
     background-color: rgb(255, 210, 210);
     color: #4f0909;
+}
+
+footer {
+    display: block;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--mal-footer);
+    font-size: 11px;
+    
+    text-align: center;
+}
+
+.footer-block{
+    padding: 32px 0 15px 0;
+    color: var(--text-primary);
+}
+
+.footer-links {
+    margin-bottom: 15px;
+    
+}
+.footer-links a {
+    margin: 0 10px;
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: medium;
+}
+.footer-links p {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: whitesmoke;
+    font-size: medium;
 }
