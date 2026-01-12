@@ -2,6 +2,17 @@
 session_start();
 include("../../HOME/Model/db.php"); 
 
+if (isset($_POST['theme-toggle'])) {
+    if (!isset($_SESSION['theme_mode']) || $_SESSION['theme_mode'] == 'light') {
+        $_SESSION['theme_mode'] = 'dark';
+    } else {
+        $_SESSION['theme_mode'] = 'light';
+    }
+    // Refresh to apply changes and prevent form resubmission
+    header("Location: " . $_SERVER['REQUEST_URI']);
+    exit();
+}
+
 // Initialize default stats
 $animeStats = [
     'watching' => 0, 'completed' => 0, 'dropped' => 0, 'plan_to_watch' => 0, 
@@ -160,7 +171,7 @@ $mangaPct = calculatePercentages($mangaStats);
     <link rel="stylesheet" href="../../HOME/Css/searchBar.css">
 </head>
 
-<body>
+<body class="<?php echo (isset($_SESSION['theme_mode']) && $_SESSION['theme_mode'] === 'dark') ? 'dark-theme' : ''; ?>">
     <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='../../HOME/View/home.php'">
@@ -215,7 +226,16 @@ $mangaPct = calculatePercentages($mangaStats);
         </div>
         <div class="header-lower">
             <span>My Panel</span>
-            <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png" alt="Menu">
+            
+            <form method="POST">
+                <button type="submit" name="theme-toggle" class="login-link" style="background:none; border:none; font-size: 20px; cursor: pointer;">
+                    <?php if (isset($_SESSION['theme_mode']) && $_SESSION['theme_mode'] == 'dark') {
+                        echo '☀️';
+                    } else {
+                        echo '🌙';
+                    } ?>
+                </button>
+            </form>
         </div>
     </header>
 
@@ -274,11 +294,9 @@ $mangaPct = calculatePercentages($mangaStats);
                 <div class="stats-data-col">
                     <div class="stats-header-row">
                         <h3>Anime Stats</h3>
-                        <a href="#">All Anime Stats</a>
                     </div>
 
                     <div class="days-score-row">
-                        <span>Days: <strong>0.0</strong></span>
                         <span>Mean Score: <strong><?php echo $animeStats['mean_score']; ?></strong></span>
                     </div>
 
@@ -322,11 +340,9 @@ $mangaPct = calculatePercentages($mangaStats);
                 <div class="stats-data-col">
                     <div class="stats-header-row">
                         <h3>Manga Stats</h3>
-                        <a href="#">All Manga Stats</a>
                     </div>
 
                     <div class="days-score-row">
-                        <span>Days: <strong>0.0</strong></span>
                         <span>Mean Score: <strong><?php echo $mangaStats['mean_score']; ?></strong></span>
                     </div>
 
@@ -405,6 +421,7 @@ $mangaPct = calculatePercentages($mangaStats);
         </div>
 
         <script src="../Js/userDashboard_search.js"></script>
+        <script src="../Js/homeJSCRIPT.js"></script>
     </main>
 </body>
 
