@@ -58,7 +58,14 @@ if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
                 <img src="../../HOME/Images/download.png" alt="Logo">
             </div>
             <div class="profile">
-                <a href="../../HOME/Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
+                <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
+                    <div class="devider1"></div>
+                    <span class="profile-name" onclick="window.location.href='../../USER/View/userDashboard.php'">
+                        <?php echo $_SESSION['username']; ?>
+                    </span>
+                    <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='../../USER/View/userDashboard.php'">
+                    <a href="../../HOME/Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
+                <?php endif; ?>
             </div>
         </div>
         <div class="header-middle">
