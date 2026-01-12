@@ -183,5 +183,6 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
     </main>
     
     <script src="../Js/favouriteList.js"></script>
+    <script src="../Js/homeJSCRIPT.js"></script>
 </body>
 </html>
