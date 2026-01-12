@@ -14,7 +14,17 @@ include("../Model/db.php");
     <title>My AnimeList Dashboard</title>
     <link rel="stylesheet" href="../Css/topAnime-MangaPage.css">
     <link rel="stylesheet" href="../Css/searchBar.css">
-    <script src="../../ADMIN/Js/admin.js" defer></script>
+    <script>
+        const serverTheme = '<?php echo $_SESSION["theme_mode"] ?? "light"; ?>';
+        localStorage.setItem('theme', serverTheme);
+        if (serverTheme === 'dark') {
+            document.documentElement.classList.add('dark-theme');
+        } else {
+            document.documentElement.classList.remove('dark-theme');
+        }
+    </script>
+    <script src="../Js/homeJSCRIPT.js" defer></script>
+    
 </head>
 
 <body>
@@ -55,36 +65,37 @@ include("../Model/db.php");
                 <span onclick="window.location.href='top-Manga.php'">TOP MANGA</span>
             </div>
             <div class="search-bar">
-<div class="search-bar">
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                <form method="POST">
-                    <input class="search" id="search" type="text" name="search" placeholder="Search...">
-                </form>
-                <div class="search-results" id="search-results">
-                    
+                <div class="search-bar">
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <form method="POST">
+                        <input class="search" id="search" type="text" name="search" placeholder="Search...">
+                    </form>
+                    <div class="search-results" id="search-results">
+
+                    </div>
                 </div>
-            </div>
-            <script>
-                $(document).ready(function() {
-                    $('#search').on('input', function() {
-                        var query = $(this).val();
-                        if (query.length > 2) {
-                            $.ajax({
-                                url: 'searchBarLogic.php',
-                                method: 'POST',
-                                data: {
-                                    search: query
-                                },
-                                success: function(data) {
-                                    $('#search-results').html(data).show();
-                                }
-                            });
-                        } else {
-                            $('#search-results').hide();
-                        }
+                <script>
+                    $(document).ready(function() {
+                        $('#search').on('input', function() {
+                            var query = $(this).val();
+                            if (query.length > 2) {
+                                $.ajax({
+                                    url: 'searchBarLogic.php',
+                                    method: 'POST',
+                                    data: {
+                                        search: query
+                                    },
+                                    success: function(data) {
+                                        $('#search-results').html(data).show();
+                                    }
+                                });
+                            } else {
+                                $('#search-results').hide();
+                            }
+                        });
                     });
-                });
-            </script>            </div>
+                </script>
+            </div>
         </div>
     </header>
 
@@ -107,14 +118,14 @@ include("../Model/db.php");
                             <tr>
                                 <td>
                                     <a href="MediaPage.php?idTopAnime=<?php echo $row['media_id']; ?>" class="mediaClick">
-                                    <strong><?php echo $row['title'] ?></strong><br><br>
-                                    <?php echo $row['description'] ?><br><br>
-                                    <hr>
-                                    <strong>score:</strong> <?php echo $row['score'] ?>,
-                                    <strong>type:</strong> <?php echo $row['type'] ?>,
-                                    <strong>studio:</strong> <?php echo $row['studio'] ?>,
-                                    <strong>source:</strong> <?php echo $row['source'] ?>
-                                    <hr>
+                                        <strong><?php echo $row['title'] ?></strong><br><br>
+                                        <?php echo $row['description'] ?><br><br>
+                                        <hr>
+                                        <strong>score:</strong> <?php echo $row['score'] ?>,
+                                        <strong>type:</strong> <?php echo $row['type'] ?>,
+                                        <strong>studio:</strong> <?php echo $row['studio'] ?>,
+                                        <strong>source:</strong> <?php echo $row['source'] ?>
+                                        <hr>
                                 </td>
                                 <td><img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:100px; height:auto;"></td>
                                 <td style="display: flex;">

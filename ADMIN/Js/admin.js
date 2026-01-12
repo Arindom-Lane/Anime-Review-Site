@@ -1,13 +1,6 @@
 const themeToggleBtn = document.getElementById('theme-toggle');
 const body = document.body;
 
-if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark-theme');
-}
-else {
-    body.classList.remove('dark-theme');
-}
-
 themeToggleBtn.addEventListener('click', () => {
     body.classList.toggle('dark-theme');
 
@@ -17,4 +10,9 @@ themeToggleBtn.addEventListener('click', () => {
         localStorage.setItem('theme', 'light');
     }
 });
-
+if (localStorage.getItem('theme') == 'dark') {
+    body.classList.add('dark-theme');
+}
+if (localStorage.getItem('theme') == 'light'){
+    body.classList.remove('dark-theme');
+}

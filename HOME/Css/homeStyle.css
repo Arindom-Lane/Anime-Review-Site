@@ -20,7 +20,7 @@
     --border-radius-2: 0.4rem;
     --border-radius-3: 0.8rem;
 }
-
+html.dark-theme,
 body.dark-theme {
     --bg-page: #121212;
     --bg-card: #181818;
@@ -530,4 +530,13 @@ footer {
     font-weight: bold;
     color: whitesmoke;
     font-size: medium;
+}
+.github-icon {
+    width: 20px;
+    height: 20px;
+    
+    cursor: pointer;
+}
+.copyright{
+    color: var(--text-primary);
 }

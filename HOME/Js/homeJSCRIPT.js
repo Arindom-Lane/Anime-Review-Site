@@ -1,3 +1,13 @@
+(function applyThemeEarly() {
+    const theme = localStorage.getItem('theme');
+
+    if (theme === 'dark') {
+        document.documentElement.classList.add('dark-theme');
+    } else {
+        document.documentElement.classList.remove('dark-theme');
+    }
+})();
+
 
 const fallList = document.querySelector(".fallList");
 const rightArrowFallList = document.querySelector(".right-arrowfallList");
@@ -15,6 +25,9 @@ const scrollAmount = 600;
 
 
 const goTOprofilePage = document.querySelector(".profile");
+
+
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -59,15 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             trailersList.scrollLeft += scrollAmount;
         })
     }
-})
+});
 
-const body = document.body;
-
-if (localStorage.getItem('theme') == 'dark') {
-    body.classList.add('dark-theme');
-}
-else {
-    body.classList.remove('dark-theme');
-}
 
 

@@ -37,24 +37,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
                 $_SESSION['theme_mode'] = 'light';
                 echo "<script>
                 localStorage.setItem('theme', 'light');
-                document.body.classList.remove('dark-theme');
+                
                 </script>";
                 
             } else {
                 $settingRow = mysqli_fetch_assoc($checkResult);
                 if($settingRow['theme_mode'] == 'dark'){
                     $_SESSION['theme_mode'] = 'dark';
-                    echo "<script>
-                    localStorage.setItem('theme', 'dark');
-                    document.body.classList.add('dark-theme');
-                    </script>";
                 }
                 else{
                     $_SESSION['theme_mode'] = 'light';
-                    echo "<script>
-                    localStorage.setItem('theme', 'light');
-                    document.body.classList.remove('dark-theme');
-                    </script>";
                 }
             }
 
