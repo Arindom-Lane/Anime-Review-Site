@@ -17,9 +17,7 @@ include("../Model/db.php");
     <link rel="stylesheet" href="../Css/searchBar.css">
     <script>
         const serverTheme = '<?php echo $_SESSION["theme_mode"] ?? "light"; ?>';
-        
         localStorage.setItem('theme', serverTheme);
-
         if (serverTheme === 'dark') {
             document.documentElement.classList.add('dark-theme');
         } else {
