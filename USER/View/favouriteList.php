@@ -2,6 +2,13 @@
 session_start();
 include("../../HOME/Model/db.php");
 
+if (isset($_POST['theme-toggle'])) {
+    $newTheme = $_POST['theme-toggle'] == '1' ? 'dark' : 'light';
+    $_SESSION['theme_mode'] = $newTheme;
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit();
+}
+
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
     header('Location: ../../HOME/View/login.php');
     exit();
@@ -17,7 +24,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
     <link rel="stylesheet" href="../../HOME/Css/topAnime-MangaPage.css"> 
     <link rel="stylesheet" href="../../HOME/Css/searchBar.css">  
 </head>
-<body>
+<body class="<?php echo (isset($_SESSION['theme_mode']) && $_SESSION['theme_mode'] === 'dark') ? 'dark-theme' : ''; ?>">
     <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='../../HOME/View/home.php'">
