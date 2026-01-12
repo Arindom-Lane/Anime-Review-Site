@@ -13,7 +13,8 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="../Css/userDash.css">  
+    <link rel="stylesheet" href="../Css/userDash.css"> 
+    <link rel="stylesheet" href="../../HOME/Css/topAnime-MangaPage.css"> 
     <link rel="stylesheet" href="../../HOME/Css/searchBar.css">  
 </head>
 <body>
