@@ -12,6 +12,7 @@
     --color-bg-card: #ffffff;
     --color-bg-hover: #f9f9f9;
     --color-input-bg: #ffffff;
+    --color-text-muted: #888888;
 }
 
 body.dark-theme {
@@ -23,6 +24,8 @@ body.dark-theme {
     --color-bg-card: #1a1f2b;
     --color-bg-hover: #263149;
     --color-input-bg: #161b25;
+    --color-text-muted: #b0b6c3; 
+
 }
 
 
@@ -82,12 +85,14 @@ header {
 
 
 main {
-    margin: 0 13%; 
+    width: 90%; /* Use 90% of the screen width */
+    max-width: 1200px; /* Stop it from getting too wide on huge screens */
+    margin: 20px auto; /* Center it horizontally */
     background-color: var(--color-bg-card);
     padding: 40px;
     min-height: 500px;
-    border-left: 1px solid var(--color-border_white);
-    border-right: 1px solid var(--color-border_white);
+    border: 1px solid var(--color-border_white); /* Full border looks better with this layout */
+    border-radius: var(--border-radius-1); /* Slight rounding */
 }
 
 
