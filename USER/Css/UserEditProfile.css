@@ -85,14 +85,12 @@ header {
 
 
 main {
-    width: 90%; /* Use 90% of the screen width */
-    max-width: 1200px; /* Stop it from getting too wide on huge screens */
-    margin: 20px auto; /* Center it horizontally */
+    margin: 0 13%; 
     background-color: var(--color-bg-card);
     padding: 40px;
     min-height: 500px;
-    border: 1px solid var(--color-border_white); /* Full border looks better with this layout */
-    border-radius: var(--border-radius-1); /* Slight rounding */
+    border-left: 1px solid var(--color-border_white);
+    border-right: 1px solid var(--color-border_white);
 }
 
 
