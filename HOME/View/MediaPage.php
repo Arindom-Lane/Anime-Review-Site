@@ -114,8 +114,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_review'])) {
         $review_text = mysqli_real_escape_string($conn, $_POST['review_text']);
         
         $insert_review = "INSERT INTO Reviews (user_id, media_id, review_text, rating, status) VALUES ('$user_id', '$media_id', '$review_text', '$rating', 'approved')";
+        
         if(mysqli_query($conn, $insert_review)){
-             $msg = "Review added!";
+             header("Location: MediaPage.php?id=" . $media_id);
+             exit();
+        } else {
+             $msg = "Error adding review.";
         }
     } else {
         header("Location: login.php");
@@ -331,15 +335,18 @@ $reviews_result = mysqli_query($conn, $reviews_query);
                 <div class="reviews-list">
                     <?php if (mysqli_num_rows($reviews_result) > 0): ?>
                         <?php while ($review = mysqli_fetch_assoc($reviews_result)): ?>
-                            <div class="review-item">
+                                                        <div class="review-item">
                                 <div class="review-avatar">
                                     <img src="<?php echo !empty($review['profile_image_link']) ? $review['profile_image_link'] : 'https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg'; ?>" alt="User">
                                 </div>
                                 <div class="review-content">
                                     <div class="review-meta">
                                         <span class="review-author"><?php echo htmlspecialchars($review['username']); ?></span>
-                                        <!-- Added Rating Back -->
-                                        <div class="review-rating-badge" style="display:inline-block; background:#333; color:#fff; padding:2px 6px; border-radius:4px; font-size:12px; margin:0 5px;"><?php echo $review['rating']; ?></div>
+                                        
+                                        <div class="review-rating-badge" style="display:inline-block; background:#333; color:#fff; padding:2px 6px; border-radius:4px; font-size:12px; margin:0 5px;">
+                                            <?php echo htmlspecialchars($review['rating']); ?>
+                                        </div>
+                                        
                                         <span class="review-date"><?php echo date('M d, Y', strtotime($review['created_at'])); ?></span>
                                         
                                         <?php if ($user_id && $review['user_id'] == $user_id): ?>
@@ -349,7 +356,7 @@ $reviews_result = mysqli_query($conn, $reviews_query);
                                             </form>
                                         <?php endif; ?>
                                     </div>
-                                    <!-- Added Review Text Back -->
+                                    
                                     <div class="review-body" style="margin-top:10px;">
                                         <?php echo nl2br(htmlspecialchars($review['review_text'])); ?>
                                     </div>
