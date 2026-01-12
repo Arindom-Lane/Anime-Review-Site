@@ -4,6 +4,9 @@ const body = document.body;
 if (localStorage.getItem('theme') === 'dark') {
     body.classList.add('dark-theme');
 }
+else {
+    body.classList.remove('dark-theme');
+}
 
 themeToggleBtn.addEventListener('click', () => {
     body.classList.toggle('dark-theme');
