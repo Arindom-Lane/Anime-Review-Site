@@ -6,6 +6,36 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
     header('Location: ../../HOME/View/login.php');
     exit();
 }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $title = $_POST['title'];
+    $type = $_POST['type'];
+    $poster = $_POST['poster'];
+    $studio = $_POST['studio'];
+    $producer = $_POST['producer'];
+    $genre = $_POST['genre'];
+    $duration = $_POST['duration'];
+    $source = $_POST['source'];
+    $description = $_POST['description'];
+    $requested_by = $_SESSION['username'];
+
+    if (!empty($title) && !empty($type) && !empty($poster) && !empty($studio) && !empty($producer) && !empty($genre) && !empty($duration) && !empty($source)) {
+        
+        $sql = "INSERT INTO requestmedia (title, type, poster, studio, producer, genre, duration, source, description, requested_by) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssssssssss", $title, $type, $poster, $studio, $producer, $genre, $duration, $source, $description, $requested_by);
+        
+        if ($stmt->execute()) {
+            echo '<script>alert("Request Sent Successfully!");</script>';
+        } else {
+            $_SESSION['CreateError'] = true;
+        }
+        $stmt->close();
+    } else {
+        echo '<script>alert("Please fill up all required sections!");</script>';
+    }
+}
 
 if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
     echo '<script>alert("Media Creation Error!");</script>';
@@ -99,7 +129,7 @@ if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
         <div class="admin-box">
             <h2 class="main-header">Create Media</h2>
             <div class="media-overview">
-                <form method="POST" action="../../ADMIN/View/adminCreate.php">
+                <form method="POST" action="../../USER/View/ReqMed.php">
                    <input name="title" placeholder="Title">
                     <select name="type">
                         <option value="movie">Movie</option>
