@@ -193,7 +193,7 @@ $reviews_result = mysqli_query($conn, $reviews_query);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
 </head>
-<body>
+<body<?php echo (isset($_SESSION['theme_mode']) && $_SESSION['theme_mode'] === 'dark') ? ' class="dark-theme"' : ''; ?>>
 
     <header>
         <div class="header-upper">
