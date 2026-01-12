@@ -14,20 +14,24 @@ include("../Model/db.php");
     <title>My AnimeList Dashboard</title>
     <link rel="stylesheet" href="../Css/topAnime-MangaPage.css">
     <link rel="stylesheet" href="../Css/searchBar.css">
-    <script>
-        const serverTheme = '<?php echo $_SESSION["theme_mode"] ?? "light"; ?>';
-        localStorage.setItem('theme', serverTheme);
+
+    <script src="../Js/homeJSCRIPT.js" defer></script>
+
+</head>
+
+<body>
+    <?php if (isset($_SESSION['theme_mode'])): ?>
+        <script>
+            localStorage.setItem('theme', '<?php echo $_SESSION['theme_mode']; ?>');
+            const serverTheme = localStorage.getItem('theme');
         if (serverTheme === 'dark') {
             document.documentElement.classList.add('dark-theme');
         } else {
             document.documentElement.classList.remove('dark-theme');
         }
-    </script>
-    <script src="../Js/homeJSCRIPT.js" defer></script>
-    
-</head>
+        </script>
+    <?php endif; ?>
 
-<body>
     <header>
         <div class="header-upper">
             <div class="logo" onclick="window.location.href='home.php'">
