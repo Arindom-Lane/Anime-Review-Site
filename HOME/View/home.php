@@ -345,10 +345,6 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
                 <a href="https://github.com/Arindom-Lane/Anime-Review-Site">PROJECT REPO</a>
                 <img src="../Images/github.png" alt="GitHub" class="github-icon" onclick="window.location.href='https://github.com/Arindom-Lane/Anime-Review-Site'">
             </div>
-
-            <div class="copyright">
-                MyAnimeList.net is a property of MyAnimeList Co., Ltd. ©2026 All Rights Reserved.
-            </div>
         </div>
     </footer>
 
