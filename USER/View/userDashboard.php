@@ -161,15 +161,28 @@ $mangaPct = calculatePercentages($mangaStats);
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
     $commentText = htmlspecialchars(trim($_POST['user_comment']));
     if (!empty($commentText)) {
-        $user_id = $userId; // already fetched above!
+        $user_id = $userId; 
         $stmt = $conn->prepare("INSERT INTO Comments (user_id, comment_text) VALUES (?, ?)");
         $stmt->bind_param("is", $user_id, $commentText);
         $stmt->execute();
         $stmt->close();
-        header("Location: " . $_SERVER["REQUEST_URI"]); // Refresh to show
+        header("Location: " . $_SERVER["REQUEST_URI"]); 
         exit();
     }
 }
+
+// Delete Comment
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
+    $comment_id = intval($_POST['comment_id']);
+    $user_id = $userId;
+    $stmt = $conn->prepare("DELETE FROM Comments WHERE comment_id = ? AND user_id = ?");
+    $stmt->bind_param("ii", $comment_id, $user_id);
+    $stmt->execute();
+    $stmt->close();
+    header("Location: " . $_SERVER["REQUEST_URI"]); 
+    exit();
+}
+
 
 
 
