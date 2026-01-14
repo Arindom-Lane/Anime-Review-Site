@@ -79,7 +79,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
         </div>
         <div class="header-lower">
             <span>My Panel</span>
-            <img src="https://cdn-icons-png.freepik.com/512/14911/14911421.png" alt="Menu">
+            
         </div>
     </header>
 
@@ -128,10 +128,57 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
                         <tr>
                             <th>Title</th>
                             <th>Poster</th>
-                            <th>Action</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
-                    
+                    <tbody>
+                        <?php
+                        $curr_user = $_SESSION['username'];
+                        $u_sql = "SELECT user_id FROM Users WHERE username = '$curr_user'";
+                        $u_res = mysqli_query($conn, $u_sql);
+                        $u_row = mysqli_fetch_assoc($u_res);
+                        $user_id = $u_row['user_id'];
+                        
+                        $query = "SELECT m.*, w.status AS watch_status FROM Watchlist w 
+                                  JOIN Media m ON w.media_id = m.media_id 
+                                  WHERE w.user_id = '$user_id'";
+                        $result = mysqli_query($conn, $query);
+
+                        if (mysqli_num_rows($result) > 0) {
+                            foreach ($result as $row) {
+                        ?>
+                                <tr>
+                                    <td>
+                                        <a href="../../HOME/View/MediaPage.php?id=<?php echo $row['media_id']; ?>" class="mediaClick">
+                                            <strong><?php echo $row['title'] ?></strong><br><br>
+                                            <?php echo substr($row['description'], 0, 150) . '...'; ?><br><br>
+                                            <hr>
+                                            <strong>Score:</strong> <?php echo $row['score'] ?>,
+                                            <strong>Type:</strong> <?php echo $row['type'] ?>,
+                                            <strong>Studio:</strong> <?php echo $row['studio'] ?>
+                                            <hr>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:100px; height:auto;">
+                                    </td>
+                                    <td>
+                                        <?php echo ucfirst(str_replace('_', ' ', $row['watch_status'])); ?>
+                                    </td>
+                                    
+                                </tr>
+                        <?php
+                            }
+                        } else {
+                        ?>
+                            <tr>
+                                <td colspan="4" style="text-align:center;">Your anime list is currently empty.</td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
             </div> 
                  
                 
