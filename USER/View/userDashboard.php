@@ -183,6 +183,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
     exit();
 }
 
+// Delete Comment
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
+    $comment_id = intval($_POST['comment_id']);
+    // Only allow user to delete their own comment
+    $user_id = $userId;
+    $stmt = $conn->prepare("DELETE FROM Comments WHERE comment_id = ? AND user_id = ?");
+    $stmt->bind_param("ii", $comment_id, $user_id);
+    $stmt->execute();
+    $stmt->close();
+    header("Location: " . $_SERVER["REQUEST_URI"]); 
+    exit();
+}
+
+// Fetch all comments for display (latest first)
+$comments = [];
+$sqlComments = "SELECT c.comment_id, c.comment_text, c.created_at, u.username
+                FROM Comments c
+                JOIN Users u ON c.user_id = u.user_id
+                ORDER BY c.created_at DESC";
+$resultComments = mysqli_query($conn, $sqlComments);
+if ($resultComments && mysqli_num_rows($resultComments) > 0) {
+    while ($row = mysqli_fetch_assoc($resultComments)) {
+        $comments[] = $row;
+    }
+}
 
 
 
@@ -448,29 +473,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
                 </form>
 
                 <div class="comments-display" style="margin-top: 20px;">
-                    <?php
-                    if (isset($_SESSION['post_comments']) && !empty($_SESSION['post_comments'])) {
-                        $comments = array_reverse($_SESSION['post_comments']);
-
-                        foreach ($comments as $comment) {
-                            echo '<div class="comment-item" >';
-                            echo '<div class="comment-header">';
-                            echo '<div><strong>' . $comment['user'] . '</strong> <span class="comment-date">(' . $comment['date'] . ')</span></div>';
-
-
-                            if ($comment['user'] === $_SESSION['username']) {
-                                echo '<form action="" method="POST" class="delete-form">';
-                                echo '<input type="hidden" name="comment_id" value="' . $comment['id'] . '">';
-                                echo '<button type="submit" name="delete_comment" class="delete-btn">Delete</button>';
-                                echo '</form>';
-                            }
-                            echo '</div>';
-                            echo '<p class="comment-text">' . $comment['text'] . '</p>';
-                            echo '</div>';
+                <?php
+                if (!empty($comments)) {
+                    foreach ($comments as $comment) {
+                        echo '<div class="comment-item">';
+                        echo '<div class="comment-header">';
+                        echo '<div><strong>' . htmlspecialchars($comment['username']) . '</strong> <span class="comment-date">(' . date("M d, Y H:i", strtotime($comment['created_at'])) . ')</span></div>';
+                        if (isset($_SESSION['username']) && $comment['username'] === $_SESSION['username']) {
+                            echo '<form action="" method="POST" class="delete-form">';
+                            echo '<input type="hidden" name="comment_id" value="' . $comment['comment_id'] . '">';
+                            echo '<button type="submit" name="delete_comment" class="delete-btn">Delete</button>';
+                            echo '</form>';
                         }
+                        echo '</div>';
+                        echo '<p class="comment-text">' . htmlspecialchars($comment['comment_text']) . '</p>';
+                        echo '</div>';
                     }
-                    ?>
-                </div>
+                } else {
+                    echo '<div class="no-updates">No comments yet.</div>';
+                }
+                ?>
+</div>
             </div>
 
 
