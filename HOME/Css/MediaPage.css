@@ -436,6 +436,7 @@ input:-webkit-autofill:active {
     grid-template-columns: 1fr 1fr;
     gap: 10px 30px;
     font-size: 13px;
+    color: var(--text-primary);
 }
 
 .detail-item {
@@ -470,6 +471,7 @@ input:-webkit-autofill:active {
 
 .review-content {
     flex: 1;
+    
 }
 
 .review-meta {
@@ -483,6 +485,7 @@ input:-webkit-autofill:active {
     font-weight: bold;
     color: var(--bg-page);
     font-size: 13px;
+    color: var(--text-primary);
 }
 
 .review-rating-badge {
