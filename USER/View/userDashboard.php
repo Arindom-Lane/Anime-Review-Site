@@ -372,10 +372,10 @@ if ($resultComments && mysqli_num_rows($resultComments) > 0) {
                     </div>
                 </div>
 
-                <!-- Recent Anime Updates -->
+                <!-- Recent Anime Visited -->
                 <div class="stats-updates-col">
                     <div class="stats-header-row">
-                        <h3>Recent Anime Updates</h3>
+                        <h3>Recent Anime Visited</h3>
                     </div>
                     <div>
                         <?php
@@ -434,10 +434,10 @@ if ($resultComments && mysqli_num_rows($resultComments) > 0) {
                     </div>
                 </div>
 
-                <!-- Recent Manga Updates -->
+                <!-- Recent Manga Visited -->
                 <div class="stats-updates-col">
                     <div class="stats-header-row">
-                        <h3>Recent Manga Updates</h3>
+                        <h3>Recent Manga Visited</h3>
                     </div>
                     <div>
                         <?php
