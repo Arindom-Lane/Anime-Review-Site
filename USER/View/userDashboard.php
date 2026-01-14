@@ -8,12 +8,10 @@ if (isset($_POST['theme-toggle'])) {
     } else {
         $_SESSION['theme_mode'] = 'light';
     }
-    // Refresh to apply changes and prevent form resubmission
     header("Location: " . $_SERVER['REQUEST_URI']);
     exit();
 }
 
-// Initialize default stats
 $animeStats = [
     'watching' => 0, 'completed' => 0, 'dropped' => 0, 'plan_to_watch' => 0, 
     'total' => 0, 'mean_score' => 0.00
