@@ -157,6 +157,22 @@ $animePct = calculatePercentages($animeStats);
 // Get Manga Percentages
 $mangaPct = calculatePercentages($mangaStats);
 
+//add comments
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
+    $commentText = htmlspecialchars(trim($_POST['user_comment']));
+    if (!empty($commentText)) {
+        $user_id = $userId; // already fetched above!
+        $stmt = $conn->prepare("INSERT INTO Comments (user_id, comment_text) VALUES (?, ?)");
+        $stmt->bind_param("is", $user_id, $commentText);
+        $stmt->execute();
+        $stmt->close();
+        header("Location: " . $_SERVER["REQUEST_URI"]); // Refresh to show
+        exit();
+    }
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
