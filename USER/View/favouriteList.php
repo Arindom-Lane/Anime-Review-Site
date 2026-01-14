@@ -107,7 +107,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
                     <div class="sidebar-divider"></div>
                     
                     <div class="sidebar-menu">
-                        <input type="button" value="Favorites" class="statbtn">
+                        <input type="button" value="Favorites" class="statbtn" location="favouriteList.php" onclick="window.location.href='favouriteList.php'">
                     </div>
 
                     <br>
@@ -121,7 +121,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
         </div>
 
         <!-- RIGHT MAIN CONTENT -->
-        <div class="rightsection">
+        <div class="rightSection">
                         <div class="admin-box">
                 <table>
                     <thead>
