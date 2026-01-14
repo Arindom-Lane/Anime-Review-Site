@@ -3,6 +3,100 @@ session_start();
 include("../Model/db.php");
 $media_id = NULL;
 
+//Anime and Manga fetching
+
+if(isset($_GET['id'])){
+    $media_id = $_GET['id'];
+    $sql = "SELECT * FROM Media WHERE media_id = $media_id";
+    $result = mysqli_query($conn,$sql);
+    $media = mysqli_fetch_assoc($result);
+
+    if(!$media){
+        header("Location: home.php");
+        exit();
+    }
+    
+}
+elseif(isset($_GET["title"])){
+    $title = $_GET["title"];
+    $sql = "SELECT * FROM Media WHERE title = '$title'";
+    $result = mysqli_query($conn,$sql);
+    $media = mysqli_fetch_assoc($result);
+    
+
+    if(!$media){
+        header("Location: home.php");
+        exit();
+    }
+    $media_id = $media['media_id'];
+}
+elseif(isset($_GET["idTopManga"])){
+    $temp_id = $_GET["idTopManga"];
+    $sql = "SELECT * FROM TopManga WHERE media_id = '$temp_id'";
+    $result = mysqli_query($conn,$sql);
+    $media = mysqli_fetch_assoc($result);
+    $sql = "SELECT * FROM Media WHERE title = '$media[title]'";
+    $result = mysqli_query($conn,$sql);
+    $media = mysqli_fetch_assoc($result);
+
+    if(!$media){
+        header("Location: home.php");
+        exit();
+    }
+    $media_id = $media['media_id'];
+}
+elseif(isset($_GET["idTopAnime"])){
+    $temp_id = $_GET["idTopAnime"];
+    
+    $sql = "SELECT * FROM TopAnime WHERE media_id = '$temp_id'";
+    $result = mysqli_query($conn,$sql);
+    $media = mysqli_fetch_assoc($result);
+    $sql = "SELECT * FROM Media WHERE title = '$media[title]'";
+    $result = mysqli_query($conn,$sql);
+    $media = mysqli_fetch_assoc($result);
+
+    if(!$media){
+        header("Location: home.php");
+        exit();
+    }
+    $media_id = $media['media_id'];
+}
+else{
+    header("Location: home.php");
+    exit();
+}
+
+
+if (isset($media['type']) && isset($media['title']) && $media_id) {
+    if (strtolower($media['type']) == 'manga') {
+        if(!isset($_SESSION['recent_manga'])) $_SESSION['recent_manga'] = [];
+        $entry = [
+            'media_id' => $media_id,
+            'title'    => $media['title'],
+            'poster'   => $media['poster_image_link'],
+            'link'     => "MediaPage.php?id=" . $media_id
+        ];
+        $_SESSION['recent_manga'] = array_values(array_filter($_SESSION['recent_manga'], function($a) use ($media_id) {
+            return $a['media_id'] != $media_id;
+        }));
+        array_unshift($_SESSION['recent_manga'], $entry);
+        $_SESSION['recent_manga'] = array_slice($_SESSION['recent_manga'], 0, 3);
+    } else { // treat any other type as anime
+        if(!isset($_SESSION['recent_anime'])) $_SESSION['recent_anime'] = [];
+        $entry = [
+            'media_id' => $media_id,
+            'title'    => $media['title'],
+            'poster'   => $media['poster_image_link'],
+            'link'     => "MediaPage.php?id=" . $media_id
+        ];
+        $_SESSION['recent_anime'] = array_values(array_filter($_SESSION['recent_anime'], function($a) use ($media_id) {
+            return $a['media_id'] != $media_id;
+        }));
+        array_unshift($_SESSION['recent_anime'], $entry);
+        $_SESSION['recent_anime'] = array_slice($_SESSION['recent_anime'], 0, 3);
+    }
+}
+////////////
 if(isset($_GET['id'])){
     $media_id = $_GET['id'];
     $sql = "SELECT * FROM Media WHERE media_id = $media_id";
