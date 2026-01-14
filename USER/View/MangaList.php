@@ -129,6 +129,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
                             <th>Title</th>
                             <th>Poster</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -139,9 +140,9 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
                         $u_row = mysqli_fetch_assoc($u_res);
                         $user_id = $u_row['user_id'];
                         
-                        $query = "SELECT m.*, w.status AS watch_status FROM Watchlist w 
+                        $query = "SELECT m.*, w.status AS read_status FROM Watchlist w 
                                   JOIN Media m ON w.media_id = m.media_id 
-                                  WHERE w.user_id = '$user_id'";
+                                  WHERE w.user_id = '$user_id' AND m.type = 'manga'";
                         $result = mysqli_query($conn, $query);
 
                         if (mysqli_num_rows($result) > 0) {
@@ -163,16 +164,16 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
                                         <img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:100px; height:auto;">
                                     </td>
                                     <td>
-                                        <?php echo ucfirst(str_replace('_', ' ', $row['watch_status'])); ?>
+                                        <?php echo ucfirst(str_replace('_', ' ', $row['read_status'])); ?>
                                     </td>
-                                    
+
                                 </tr>
                         <?php
                             }
                         } else {
                         ?>
                             <tr>
-                                <td colspan="4" style="text-align:center;">Your anime list is currently empty.</td>
+                                <td colspan="4" style="text-align:center;">Your manga list is currently empty.</td>
                             </tr>
                         <?php
                         }
