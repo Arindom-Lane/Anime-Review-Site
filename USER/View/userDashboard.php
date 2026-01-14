@@ -289,6 +289,7 @@ $mangaPct = calculatePercentages($mangaStats);
                 <div class="stats-data-col">
                     <div class="stats-header-row">
                         <h3>Anime Stats</h3>
+                        <a href="AnimeList.php">All Anime Stats</a>
                     </div>
 
                     <div class="days-score-row">
@@ -350,6 +351,7 @@ $mangaPct = calculatePercentages($mangaStats);
                 <div class="stats-data-col">
                     <div class="stats-header-row">
                         <h3>Manga Stats</h3>
+                        <a href="MangaList.php">All Manga Stats</a>
                     </div>
 
                     <div class="days-score-row">
