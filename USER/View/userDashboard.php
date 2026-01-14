@@ -317,29 +317,28 @@ $mangaPct = calculatePercentages($mangaStats);
                     </div>
                 </div>
 
-                <!-- Last Anime Updates -->
+                <!-- Recent Anime Updates -->
                 <div class="stats-updates-col">
                     <div class="stats-header-row">
-                        <h3>Last Anime Updates</h3>
+                        <h3>Recent Anime Updates</h3>
                     </div>
                     <div>
                         <?php
                         $animeExist = false;
                         if(!empty($_SESSION['recent_anime'])) {
                             foreach ($_SESSION['recent_anime'] as $anime) {
-                                // Basic check: If there's a 'media_id' and title, display as anime update
                                 $animeExist = true;
-                                echo '<div style="display:flex;align-items:center;margin-bottom:14px;">';
-                                echo '<img src="' . htmlspecialchars($anime['poster']) . '" alt="' . htmlspecialchars($anime['title']) . '" style="width:38px;height:52px;object-fit:cover;border-radius:5px;border:1px solid #ccc;margin-right:10px;">';
-                                echo '<div style="flex:1 1 auto;">';
-                                echo '<a href="../../HOME/View/' . htmlspecialchars($anime['link']) . '" style="font-weight:bold;font-size:13px;color:#0080ff;text-decoration:none;display:inline-block;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' . htmlspecialchars($anime['title']) . '</a>';
-                                echo '<div style="font-size:11px;color:#888;">Visited</div>';
+                                echo '<div class="stats-update-row">';
+                                echo '<img src="' . htmlspecialchars($anime['poster']) . '" alt="' . htmlspecialchars($anime['title']) . '" class="stats-update-cover">';
+                                echo '<div class="stats-update-info">';
+                                echo '<a href="../../HOME/View/' . htmlspecialchars($anime['link']) . '" class="stats-update-title">' . htmlspecialchars($anime['title']) . '</a>';
+                                echo '<div class="stats-update-date">Visited</div>';
                                 echo '</div>';
                                 echo '</div>';
                             }
                         }
                         if(!$animeExist) {
-                            echo '<div class="no-updates">No updates yet. <a href="#">Edit list now.</a></div>';
+                            echo '<div class="no-updates">No updates yet.</div>';
                         }
                         ?>
                     </div>
@@ -379,29 +378,28 @@ $mangaPct = calculatePercentages($mangaStats);
                     </div>
                 </div>
 
-                <!-- Last Manga Updates -->
+                <!-- Recent Manga Updates -->
                 <div class="stats-updates-col">
                     <div class="stats-header-row">
-                        <h3>Last Manga Updates</h3>
+                        <h3>Recent Manga Updates</h3>
                     </div>
                     <div>
                         <?php
-                        // Try to show last visited manga if you expand your `$_SESSION` logic
                         $hadManga = false;
                         if(!empty($_SESSION['recent_manga'])) {
                             foreach ($_SESSION['recent_manga'] as $manga) {
                                 $hadManga = true;
-                                echo '<div style="display:flex;align-items:center;margin-bottom:14px;">';
-                                echo '<img src="' . htmlspecialchars($manga['poster']) . '" alt="' . htmlspecialchars($manga['title']) . '" style="width:38px;height:52px;object-fit:cover;border-radius:5px;border:1px solid #ccc;margin-right:10px;">';
-                                echo '<div style="flex:1 1 auto;">';
-                                echo '<a href="../../HOME/View/' . htmlspecialchars($manga['link']) . '" style="font-weight:bold;font-size:13px;color:#0080ff;text-decoration:none;display:inline-block;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' . htmlspecialchars($manga['title']) . '</a>';
-                                echo '<div style="font-size:11px;color:#888;">Visited</div>';
+                                echo '<div class="stats-update-row">';
+                                echo '<img src="' . htmlspecialchars($manga['poster']) . '" alt="' . htmlspecialchars($manga['title']) . '" class="stats-update-cover">';
+                                echo '<div class="stats-update-info">';
+                                echo '<a href="../../HOME/View/' . htmlspecialchars($manga['link']) . '" class="stats-update-title">' . htmlspecialchars($manga['title']) . '</a>';
+                                echo '<div class="stats-update-date">Visited</div>';
                                 echo '</div>';
                                 echo '</div>';
                             }
                         }
                         if(!$hadManga) {
-                            echo '<div class="no-updates">No updates yet. <a href="#">Edit list now.</a></div>';
+                            echo '<div class="no-updates">No updates yet.</div>';
                         }
                         ?>
                     </div>
