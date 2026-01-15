@@ -130,6 +130,7 @@ include("../Model/db.php");
                                         <hr>
                                     </a>
                                 </td>
+                                <td><a href="MediaPage.php?id=<?php echo $row['media_id']; ?>"><img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:100px; height:auto;"></a></td>
                                 
 
                             </tr>

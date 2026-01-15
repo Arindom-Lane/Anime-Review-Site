@@ -43,8 +43,8 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
         </div>
         <div class="header-middle">
             <div class="topButton">
-                <span>TOP ANIME</span>
-                <span>TOP MANGA</span>
+                <span onclick="window.location.href='../../HOME/View/top-Anime.php'">TOP ANIME</span>
+                <span onclick="window.location.href='../../HOME/View/top-Manga.php'">TOP MANGA</span>
             </div>
             <div class="search-bar">
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
