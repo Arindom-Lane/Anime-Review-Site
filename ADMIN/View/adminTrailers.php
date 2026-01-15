@@ -45,17 +45,15 @@ if (isset($_SESSION['editUserMessage'])) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['create_article'])) {
     $image_url = $_POST['image_url'];
-    $video_url = $_POST['article_url'];
+    $video_url = $_POST['video_url'];
 
     $insertQuery = "INSERT INTO trailers (image_url, video_url) VALUES ( $image_url,$video_url)";
-    if ($stmt->execute()) {
-        $_SESSION['CreateError'] = "success";
+    if (mysqli_query($conn, $insertQuery)) {
+        echo "<script>alert('Trailer added successfully!');</script>";
     } else {
-        $_SESSION['CreateError'] = "error";
+        echo "<script>alert('Error adding trailer. Please try again later.');</script>";
     }
-    $stmt->close();
-    header('Location: adminArticles.php');
-    exit();
+    
 }
 ?>
 

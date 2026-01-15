@@ -54,6 +54,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
         $error = true;
     }
 }
+
+
+$bg = array(
+        "../Images/1.gif",
+        "../Images/2.gif",
+        "../Images/3.gif",
+        "../Images/4.gif",
+        "../Images/5.jpg",
+        "../Images/6.gif",
+        "../Images/7.gif",
+        "../Images/8.gif",
+        "../Images/9.gif",
+        "../Images/10.jpg",
+        "../Images/11.gif",
+        "../Images/11.jpg",
+        "../Images/12.gif"
+    );
+    if(!isset($_COOKIE["bgImage"])){
+        setcookie("bgImage", $bg[0], time() + 86400 * 30);
+        $_COOKIE["bgImage"] = $bg[0];
+    }
+
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ChangeBG"])){
+    
+    
+    $index = array_search($_COOKIE["bgImage"], $bg);
+    if($index === false || $index === count($bg) - 1){
+        $index = 0;
+    }
+    else{
+        $index++;
+    }
+    setcookie("bgImage", $bg[$index], time() + 86400 * 30);
+    $_COOKIE["bgImage"] = $bg[$index];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -63,128 +99,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sing Up</title>
-    <style>
-        .error-bar {
-            background-color: #f8d7da;
-            /* Light red background */
-            color: #721c24;
-            /* Dark red text */
-            border: 1px solid #f5c6cb;
-            /* Soft red border */
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 0.5em;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #F6F6F6;
-            grid-auto-rows: auto;
-            justify-items: center;
-            align-content: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        .signup-box {
-            width: 350px;
-            border: 1px solid #ddd;
-            padding: 20px;
-            text-align: center;
-            background-color: #2e51a2;
-            border-radius: .5em;
-        }
-
-        h2 {
-            color: #f1f5feff;
-            font-size: 18px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-
-        .feild {
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            font-size: 18px;
-            margin-bottom: 5px;
-            color: #eef2fbff;
-        }
-
-        input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-            border-radius: .5em;
-        }
-
-        input:focus {
-            border-color: #4a78e4ff;
-            outline: none;
-        }
-
-        .btn-create {
-            width: 64%;
-            padding: 10px;
-            background-color: #ebebeb;
-            border: 1px solid #2f48a1ff;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: .5em;
-        }
-
-        .btn-create:hover {
-            background-color: #d2dfffff;
-        }
-
-        .login-link {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 8px 25px;
-            background-color: #f0f4ffff;
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 13px;
-            border-radius: .5em;
-        }
-
-        .login-link:hover {
-            background-color: #d2dfffff;
-        }
-
-        .divider {
-            margin-top: 15px;
-            font-size: 12px;
-            color: #ffffffff;
-        }
-
-        .logo {
-            width: 300px;
-            height: 100px;
-            align-items: center;
-            cursor: pointer;
-            margin: 0 auto;
-        }
-
-        .logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white);
-        }
-    </style>
+    <link rel="stylesheet" href="../Css/logIn-SignUp.css">
 </head>
 
 <body>
+    <form method="POST" class="change-background">
+        <button type="submit" class="ChangeBG" name="ChangeBG">Change Background</button>
+    </form>
+    <img class="back" src="<?php echo $_COOKIE["bgImage"] ?? $bg[0]; ?>" alt="background image">
     <?php if ($error == true) { ?>
         <div class="error-bar">
             <?php echo "User not found"; ?>
@@ -195,11 +117,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
 
         <form method="POST">
             <div class="logo">
-                <img src="../Images/download.png">
+                <img onclick="window.location.href='home.php'" src="../Images/download.png">
             </div>
             <div class="feild">
                 <label>User name</label>
-                <input type="text" name="username" required>
+                <input type="text" name="username" placeholder="Roni, tony...">
             </div>
 
             <div class="feild">
