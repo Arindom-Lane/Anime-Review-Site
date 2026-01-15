@@ -31,6 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
         }
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a32b2c267cd0b13ea12a257aae1c03b4138c3275
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sing Up</title>
+<<<<<<< HEAD
     <style>
         .error-bar {
             background-color: #f8d7da;
@@ -159,6 +164,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
             filter: drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white);
         }
     </style>
+=======
+    
+    <link rel="stylesheet" href="../Css/logIn-SignUp.css">
+>>>>>>> a32b2c267cd0b13ea12a257aae1c03b4138c3275
 </head>
 
 <body>
@@ -172,7 +181,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
 
         <form method="POST">
             <div class="logo">
+<<<<<<< HEAD
                 <img src="../Images/download.png">
+=======
+                <img onclick="window.location.href='home.php'" src="../Images/download.png">
+>>>>>>> a32b2c267cd0b13ea12a257aae1c03b4138c3275
             </div>
             <div class="feild">
                 <label>Username</label>

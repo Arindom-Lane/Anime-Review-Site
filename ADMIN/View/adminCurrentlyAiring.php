@@ -213,7 +213,11 @@ if (isset($_SESSION['editUserMessage'])) {
             <div class="admin-box"><!-- Create media form -->
                 <h2 class="main-header">Add to currently Airing Media Table</h2>
                 <div class="media-overview">
+<<<<<<< HEAD
                     <form method="POST" action="adminCreate.php">
+=======
+                    <form method="POST" action="../Controler/adminCreate.php">
+>>>>>>> a32b2c267cd0b13ea12a257aae1c03b4138c3275
                         <input name="title" placeholder="Title">
                         <select name="type">
                             <option value="movie">Movie</option>

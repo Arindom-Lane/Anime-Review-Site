@@ -54,6 +54,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
         $error = true;
     }
 }
+<<<<<<< HEAD
+=======
+
+
+$bg = array(
+        "../Images/1.gif",
+        "../Images/2.gif",
+        "../Images/3.gif",
+        "../Images/4.gif",
+        "../Images/5.jpg",
+        "../Images/6.gif",
+        "../Images/7.gif",
+        "../Images/8.gif",
+        "../Images/9.gif",
+        "../Images/10.jpg",
+        "../Images/11.gif",
+        "../Images/11.jpg",
+        "../Images/12.gif"
+    );
+    if(!isset($_COOKIE["bgImage"])){
+        setcookie("bgImage", $bg[0], time() + 86400 * 30);
+        $_COOKIE["bgImage"] = $bg[0];
+    }
+
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ChangeBG"])){
+    
+    
+    $index = array_search($_COOKIE["bgImage"], $bg);
+    if($index === false || $index === count($bg) - 1){
+        $index = 0;
+    }
+    else{
+        $index++;
+    }
+    setcookie("bgImage", $bg[$index], time() + 86400 * 30);
+    $_COOKIE["bgImage"] = $bg[$index];
+}
+
+>>>>>>> a32b2c267cd0b13ea12a257aae1c03b4138c3275
 ?>
 
 <!DOCTYPE html>
@@ -63,6 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sing Up</title>
+<<<<<<< HEAD
     <style>
         .error-bar {
             background-color: #f8d7da;
@@ -185,6 +225,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
 </head>
 
 <body>
+=======
+    <link rel="stylesheet" href="../Css/logIn-SignUp.css">
+</head>
+
+<body>
+    <form method="POST" class="change-background">
+        <button type="submit" class="ChangeBG" name="ChangeBG">Change Background</button>
+    </form>
+    <img class="back" src="<?php echo $_COOKIE["bgImage"] ?? $bg[0]; ?>" alt="background image">
+>>>>>>> a32b2c267cd0b13ea12a257aae1c03b4138c3275
     <?php if ($error == true) { ?>
         <div class="error-bar">
             <?php echo "User not found"; ?>
@@ -195,11 +245,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
 
         <form method="POST">
             <div class="logo">
+<<<<<<< HEAD
                 <img src="../Images/download.png">
             </div>
             <div class="feild">
                 <label>User name</label>
                 <input type="text" name="username" required>
+=======
+                <img onclick="window.location.href='home.php'" src="../Images/download.png">
+            </div>
+            <div class="feild">
+                <label>User name</label>
+                <input type="text" name="username" placeholder="Roni, tony...">
+>>>>>>> a32b2c267cd0b13ea12a257aae1c03b4138c3275
             </div>
 
             <div class="feild">
