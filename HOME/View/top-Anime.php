@@ -110,7 +110,7 @@ include("../Model/db.php");
                     <tr>
                         <th>Title</th>
                         <th>Poster</th>
-                        <th>Staus</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -132,9 +132,7 @@ include("../Model/db.php");
                                         <hr>
                                 </td>
                                 <td><img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:100px; height:auto;"></td>
-                                <td style="display: flex;">
-                                    <a href="NONE .php?id=<?php echo $row['media_id']; ?>" name="editMediaData" class="editProfileHREF" style="width: 150px; height: auto; text-align: center; margin-right: 10px;">Edit</a>
-                                </td>
+                                
                             </tr>
                         <?php
                         }

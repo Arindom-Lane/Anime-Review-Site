@@ -276,7 +276,7 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
             <div class="mostPopuar">
                 <div class="mostPopuarHeading">
                     <h3>Most Popular Anime</h3>
-                    <span>.</span>
+                    <a href="top-Manga.php">More</a>
                 </div>
                 <div class="mostPopuarImagesGrid">
                     <div>
@@ -305,7 +305,7 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["loggedIn"]) && $_SESSION["log
             <div class="mostPopularManga">
                 <div class="mostPopuarMangaHeading">
                     <h3>Most Popular Manga</h3>
-                    <span>More</span>
+                    <a href="top-Manga.php">More</a>
                 </div>
                 <div class="mostPopularMangaImagesGrid">
                     <div>
