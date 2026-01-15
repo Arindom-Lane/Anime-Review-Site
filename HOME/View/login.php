@@ -54,9 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
         $error = true;
     }
 }
-<<<<<<< HEAD
-=======
-
 
 $bg = array(
         "../Images/1.gif",
@@ -92,7 +89,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ChangeBG"])){
     $_COOKIE["bgImage"] = $bg[$index];
 }
 
->>>>>>> a32b2c267cd0b13ea12a257aae1c03b4138c3275
 ?>
 
 <!DOCTYPE html>
@@ -101,131 +97,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ChangeBG"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sing Up</title>
-<<<<<<< HEAD
-    <style>
-        .error-bar {
-            background-color: #f8d7da;
-            /* Light red background */
-            color: #721c24;
-            /* Dark red text */
-            border: 1px solid #f5c6cb;
-            /* Soft red border */
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 0.5em;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #F6F6F6;
-            grid-auto-rows: auto;
-            justify-items: center;
-            align-content: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        .signup-box {
-            width: 350px;
-            border: 1px solid #ddd;
-            padding: 20px;
-            text-align: center;
-            background-color: #2e51a2;
-            border-radius: .5em;
-        }
-
-        h2 {
-            color: #f1f5feff;
-            font-size: 18px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-
-        .feild {
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            font-size: 18px;
-            margin-bottom: 5px;
-            color: #eef2fbff;
-        }
-
-        input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-            border-radius: .5em;
-        }
-
-        input:focus {
-            border-color: #4a78e4ff;
-            outline: none;
-        }
-
-        .btn-create {
-            width: 64%;
-            padding: 10px;
-            background-color: #ebebeb;
-            border: 1px solid #2f48a1ff;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: .5em;
-        }
-
-        .btn-create:hover {
-            background-color: #d2dfffff;
-        }
-
-        .login-link {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 8px 25px;
-            background-color: #f0f4ffff;
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 13px;
-            border-radius: .5em;
-        }
-
-        .login-link:hover {
-            background-color: #d2dfffff;
-        }
-
-        .divider {
-            margin-top: 15px;
-            font-size: 12px;
-            color: #ffffffff;
-        }
-
-        .logo {
-            width: 300px;
-            height: 100px;
-            align-items: center;
-            cursor: pointer;
-            margin: 0 auto;
-        }
-
-        .logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white);
-        }
-    </style>
-</head>
-
-<body>
-=======
+    <title>Log Up</title>
     <link rel="stylesheet" href="../Css/logIn-SignUp.css">
 </head>
 
@@ -234,7 +106,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ChangeBG"])){
         <button type="submit" class="ChangeBG" name="ChangeBG">Change Background</button>
     </form>
     <img class="back" src="<?php echo $_COOKIE["bgImage"] ?? $bg[0]; ?>" alt="background image">
->>>>>>> a32b2c267cd0b13ea12a257aae1c03b4138c3275
     <?php if ($error == true) { ?>
         <div class="error-bar">
             <?php echo "User not found"; ?>
@@ -244,20 +115,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ChangeBG"])){
         <h2>Start Using MyAnimeList</h2>
 
         <form method="POST">
-            <div class="logo">
-<<<<<<< HEAD
-                <img src="../Images/download.png">
-            </div>
-            <div class="feild">
-                <label>User name</label>
-                <input type="text" name="username" required>
-=======
-                <img onclick="window.location.href='home.php'" src="../Images/download.png">
-            </div>
             <div class="feild">
                 <label>User name</label>
                 <input type="text" name="username" placeholder="Roni, tony...">
->>>>>>> a32b2c267cd0b13ea12a257aae1c03b4138c3275
             </div>
 
             <div class="feild">
