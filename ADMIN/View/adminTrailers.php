@@ -45,19 +45,6 @@ if (isset($_SESSION['editUserMessage'])) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['create_article'])) {
     $image_url = $_POST['image_url'];
-<<<<<<< HEAD
-    $video_url = $_POST['article_url'];
-
-    $insertQuery = "INSERT INTO trailers (image_url, video_url) VALUES ( $image_url,$video_url)";
-    if ($stmt->execute()) {
-        $_SESSION['CreateError'] = "success";
-    } else {
-        $_SESSION['CreateError'] = "error";
-    }
-    $stmt->close();
-    header('Location: adminArticles.php');
-    exit();
-=======
     $video_url = $_POST['video_url'];
 
     $insertQuery = "INSERT INTO trailers (image_url, video_url) VALUES ( $image_url,$video_url)";
@@ -67,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['create_article'])) {
         echo "<script>alert('Error adding trailer. Please try again later.');</script>";
     }
     
->>>>>>> a32b2c267cd0b13ea12a257aae1c03b4138c3275
 }
 ?>
 

@@ -112,7 +112,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ChangeBG"])){
         </div>
     <?php } ?>
     <div class="signup-box">
-        <h2>Start Using MyAnimeList</h2>
+        <h2>ANIDB</h2>
 
         <form method="POST">
             <div class="feild">
