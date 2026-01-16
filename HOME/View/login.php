@@ -37,10 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
                 $_SESSION['theme_mode'] = 'light';
             } else {
                 $settingRow = mysqli_fetch_assoc($checkResult);
-                if($settingRow['theme_mode'] == 'dark'){
+                if ($settingRow['theme_mode'] == 'dark') {
                     $_SESSION['theme_mode'] = 'dark';
-                }
-                else{
+                } else {
                     $_SESSION['theme_mode'] = 'light';
                 }
             }
@@ -56,38 +55,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
 }
 
 $bg = array(
-        "../Images/1.gif",
-        "../Images/2.gif",
-        "../Images/3.gif",
-        "../Images/4.gif",
-        "../Images/5.jpg",
-        "../Images/6.gif",
-        "../Images/7.gif",
-        "../Images/8.gif",
-        "../Images/9.gif",
-        "../Images/10.jpg",
-        "../Images/11.gif",
-        "../Images/11.jpg",
-        "../Images/12.gif"
-    );
-    if(!isset($_COOKIE["bgImage"])){
-        setcookie("bgImage", $bg[0], time() + 86400 * 30);
-        $_COOKIE["bgImage"] = $bg[0];
-    }
+    "../Images/1.gif",
+    "../Images/2.gif",
+    "../Images/3.gif",
+    "../Images/4.gif",
+    "../Images/5.jpg",
+    "../Images/6.gif",
+    "../Images/7.gif",
+    "../Images/8.gif",
+    "../Images/9.gif",
+    "../Images/10.jpg",
+    "../Images/11.gif",
+    "../Images/11.jpg",
+    "../Images/12.gif"
+);
+if (!isset($_COOKIE["bgImage"])) {
+    setcookie("bgImage", $bg[0], time() + 86400 * 30);
+}
 
-if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ChangeBG"])){
-    
-    
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["ChangeBG"])) {
+
+
     $index = array_search($_COOKIE["bgImage"], $bg);
-    if($index === false || $index === count($bg) - 1){
+    if ($index === false || $index === count($bg) - 1) {
         $index = 0;
-    }
-    else{
+    } else {
         $index++;
     }
     setcookie("bgImage", $bg[$index], time() + 86400 * 30);
-    $_COOKIE["bgImage"] = $bg[$index];
-}
+    header("Location: login.php");
+    exit();
+    }
 
 ?>
 
@@ -97,12 +95,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ChangeBG"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log Up</title>
+    <title>Log In</title>
     <link rel="stylesheet" href="../Css/logIn-SignUp.css">
 </head>
 
 <body>
-    <form method="POST" class="change-background">
+    <form method="GET" class="change-background">
         <button type="submit" class="ChangeBG" name="ChangeBG">Change Background</button>
     </form>
     <img class="back" src="<?php echo $_COOKIE["bgImage"] ?? $bg[0]; ?>" alt="background image">
@@ -112,8 +110,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ChangeBG"])){
         </div>
     <?php } ?>
     <div class="signup-box">
-        <h2>ANIDB</h2>
-
         <form method="POST">
             <div class="feild">
                 <label>User name</label>
@@ -123,7 +119,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ChangeBG"])){
             <div class="feild">
                 <label>Password</label>
                 <input type="password" name="password" minlength="8" placeholder="minimum 8 character" required>
-            </div>
+            </div> <br>
 
             <button type="submit" name="btn-create" class="btn-create">Login</button>
         </form>
