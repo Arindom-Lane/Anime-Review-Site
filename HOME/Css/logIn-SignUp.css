@@ -35,7 +35,6 @@ body {
 
 .signup-box {
     box-shadow: inset 0 0 10px rgba(255,255,255,0.2);
-
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
     width: 350px;
@@ -43,6 +42,7 @@ body {
     padding: 20px;
     text-align: center;
     border-radius: .5em;
+    margin: 0 auto;
 }
 
 h2 {
