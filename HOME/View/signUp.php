@@ -61,17 +61,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
                 <input type="text" name="username" maxlength="50" required>
             </div>
             <div class="feild">
-                <label>Email</label>
-                <input type="email" name="email" placeholder="e.g. abc@email.com" required>
+            <label>Email</label>
+            <input type="email" id="email" name="email" placeholder="e.g. abc@email.com" required>
+            <div id="email-msg"></div>
             </div>
 
             <div class="feild">
                 <label>Password</label>
-                <input type="password" name="password" minlength="8" placeholder="minimum 8 character" required>
+                <input type="password" id="password" name="password" minlength="8" placeholder="minimum 8 character" required>
+                <div id="password-msg"></div>
             </div>
             <div class="feild">
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password" minlength="8" placeholder="minimum 8 character" required>
+            <label>Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" minlength="8" placeholder="minimum 8 character" required>
+            <div id="pass-msg"></div>
             </div>
 
             <div class="feild">
@@ -86,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
             <a href="login.php" class="login-link">Login</a>
         </div>
     </div>
-
+<script src="../Js/sign_Ajax.js"></script>
 </body>
 
 </html>

@@ -165,3 +165,14 @@ input:focus {
     object-fit: contain;
     filter: drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white);
 }
+
+.msg-success {
+        color: #28a745;
+        font-size: 14px;
+        margin-top: 3px;
+    }
+    .msg-error {
+        color: #dc3545;
+        font-size: 14px;
+        margin-top: 3px;
+    }
