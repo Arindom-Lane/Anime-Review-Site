@@ -152,12 +152,15 @@ if (isset($_SESSION['editUserMessage'])) {
 
             <div class="admin-box"> <!-- show media count div-->
                 <h2>Site Overview</h2>
-                <div class="media-overview">
-                    <span>Users: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users")); ?></span>
-                    <span>Media: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT * FROM media")); ?></span>
-                    <span>TV-shows: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT * FROM media WHERE type = 'tvshow'")); ?></span>
-                    <span>Mangas: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT * FROM media WHERE type = 'manga'")); ?></span>
-                </div>
+                <?php 
+                    $file = file_get_contents('../Controler/adminStatus.php');
+                    $data = json_decode($file, true);
+
+                ?>
+                <span>Total Users: <?php echo $data["user"]; ?></span>
+                <span>Total Media: <?php echo $data["media"]; ?></span>
+                <span>Total TV Shows: <?php echo $data["tvShows"]; ?></span>
+                <span>Total Manga: <?php echo $data["manga"]; ?></span>
             </div>
             <div class="admin-box"><!-- User Management div-->
                 <h2 class="main-header">User Management</h2>
