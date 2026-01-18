@@ -51,3 +51,41 @@ passwordInput.addEventListener('input', function() {
         passwordMsg.className = 'msg-success';
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const signupForm = document.getElementById('signup-form');
+    const ajaxMsg = document.getElementById('ajax-msg');
+
+    if (signupForm) {
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            ajaxMsg.textContent = ""; // Clear previous messages
+
+            const formData = new FormData(signupForm);
+
+            fetch('../View/signUp.php', {
+                method: 'POST',
+                body: formData,
+                headers: {'X-Requested-With': 'XMLHttpRequest'}
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    ajaxMsg.className = 'msg-success';
+                    ajaxMsg.textContent = 'Sign up successful! Redirecting...';
+                    setTimeout(() => {
+                        window.location.href = 'login.php';
+                    }, 1500);
+                } else {
+                    ajaxMsg.className = 'msg-error';
+                    ajaxMsg.textContent = data.error || 'Signup failed. Please try again.';
+                }
+            })
+            .catch(() => {
+                ajaxMsg.className = 'msg-error';
+                ajaxMsg.textContent = 'An error occurred. Please try again.';
+            });
+        });
+    }
+});

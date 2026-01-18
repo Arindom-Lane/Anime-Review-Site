@@ -31,6 +31,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
         }
     }
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+    strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
+
+    header('Content-Type: application/json');
+
+    $response = ['success' => false, 'debug' => [], 'post' => $_POST];
+    $name = $_POST["username"] ?? '';
+    $email = $_POST["email"] ?? '';
+    $password = $_POST["password"] ?? '';
+    $password_confirm = $_POST["confirm_password"] ?? '';
+    $profileImage = $_POST['profile_image_link'] ?? '';
+
+    $response['debug'][] = "Step: values read";
+    $response['debug'][] = "name: $name, email: $email";
+
+    if ($password !== $password_confirm) {
+        $response['error'] = "Passwords do not match.";
+    } elseif (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `email` = '$email'")) > 0) {
+        $response['error'] = "Email already exists!";
+    } else {
+        $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+        if ($profileImage == '') {
+            $profileImage = "https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg";
+        }
+        $query = "INSERT INTO `users` (`username`, `email`, `password`, `profile_image_link`) VALUES ('$name','$email','$hashPassword','$profileImage')";
+        $result = mysqli_query($conn, $query);
+
+        $response['debug'][] = "Query: $query";
+        if ($result) {
+            $response['success'] = true;
+        } else {
+            $response['error'] = "Query Failed: " . mysqli_error($conn);
+        }
+    }
+    echo json_encode($response);
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
     <div class="signup-box">
         <h2>Start Using MyAnimeList</h2>
 
-        <form method="POST">
+       <form id="signup-form" method="POST" autocomplete="off">
             <div class="logo">
                 <img onclick="window.location.href='home.php'" src="../Images/download.png">
             </div>
@@ -82,6 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
                 <input type="url" name="profile_image_link" placeholder="Plase use a direct image link">
             </div><br>
             <button type="submit" name="btn-create" class="btn-create">Create Account</button>
+            <div id="ajax-msg"></div>
         </form>
 
         <div class="divider">
