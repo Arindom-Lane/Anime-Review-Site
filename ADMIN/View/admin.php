@@ -41,6 +41,22 @@ if (isset($_SESSION['editUserMessage'])) {
     }
     unset($_SESSION['editUserMessage']);
 }
+
+$admin_file = 'admins.json'; 
+
+$adminQuery = "SELECT user_id, username, email FROM users WHERE role = 'admin'";
+$adminResult = mysqli_query($conn, $adminQuery);
+
+$adminArray = [];
+while($row = mysqli_fetch_assoc($adminResult)) {
+    $adminArray[] = $row;
+}
+
+file_put_contents($admin_file, json_encode($adminArray, JSON_PRETTY_PRINT));
+
+$jsonString = file_get_contents($admin_file);
+$admins = json_decode($jsonString, true);
+
 ?>
 
 
@@ -262,6 +278,27 @@ if (isset($_SESSION['editUserMessage'])) {
                 </table>
 
             </div>
+
+            <div class="admin-box">
+                <h2>Admin Accounts</h2>
+                <table class="admin-acc">
+                    <thead>
+                <tr >
+                    <th>User ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <?php foreach ($admins as $a): ?>
+                <tr>
+                    <td><?= htmlspecialchars($a['user_id']) ?></td>
+                    <td><?= htmlspecialchars($a['username']) ?></td>
+                    <td><?= htmlspecialchars($a['email']) ?></td>
+                </tr>
+
+                <?php endforeach; ?>
+                </table>
+                </div>
 
         </div>
 

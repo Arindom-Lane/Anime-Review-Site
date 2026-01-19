@@ -470,3 +470,33 @@ input::placeholder {
 .greyButton:hover{
     background-color: rgb(130, 139, 164);
 }
+.admin-acc table {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.admin-acc table thead {
+    background-color: var(--mal-blue);
+    color: white;
+}
+
+.admin-acc table th,
+.admin-acc table td {
+    padding: 12px 15px;
+    text-align: left;
+
+
+}
+.admin-acc table tbody tr:nth-child(even) {
+    background-color: var(--bg-hover);
+    color: black;
+}
+.admin-acc table tbody tr:hover {
+    background-color: var(--mal-blue-dark);
+    color: white;
+}
