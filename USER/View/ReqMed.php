@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../../HOME/Model/db.php"); 
+include("../../HOME/Model/db.php");
 
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
     header('Location: ../../HOME/View/login.php');
@@ -19,13 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $requested_by = $_SESSION['username'];
 
     if (!empty($title) && !empty($type) && !empty($poster) && !empty($studio) && !empty($producer) && !empty($genre) && !empty($duration) && !empty($source)) {
-        
+
         $sql = "INSERT INTO requestmedia (title, type, poster, studio, producer, genre, duration, source, description, requested_by) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        
+
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssssssssss", $title, $type, $poster, $studio, $producer, $genre, $duration, $source, $description, $requested_by);
-        
+
         if ($stmt->execute()) {
             echo '<script>alert("Request Sent Successfully!");</script>';
         } else {
@@ -37,20 +37,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
+if (isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true) {
     echo '<script>alert("Media Creation Error!");</script>';
     $_SESSION['CreateError'] = false;
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="../Css/favourite.css">    
+    <link rel="stylesheet" href="../Css/favourite.css">
     <link rel="stylesheet" href="../../HOME/Css/searchBar.css">
 </head>
+
 <body class="<?php echo (isset($_SESSION['theme_mode']) && $_SESSION['theme_mode'] === 'dark') ? 'dark-theme' : ''; ?>">
     <header>
         <div class="header-upper">
@@ -63,7 +65,8 @@ if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
                     <span class="profile-name" onclick="window.location.href='../../USER/View/userDashboard.php'">
                         <?php echo $_SESSION['username']; ?>
                     </span>
-                    <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='../../USER/View/userDashboard.php'">
+                    <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile"
+                        onclick="window.location.href='../../USER/View/userDashboard.php'">
                     <a href="../../HOME/Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
                 <?php endif; ?>
             </div>
@@ -79,12 +82,12 @@ if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
                     <input class="search" id="search" type="text" name="search" placeholder="Search...">
                 </form>
                 <div class="search-results" id="search-results">
-                   
+
                 </div>
             </div>
             <script>
-                $(document).ready(function() {
-                    $('#search').on('input', function() {
+                $(document).ready(function () {
+                    $('#search').on('input', function () {
                         var query = $(this).val();
                         if (query.length > 2) {
                             $.ajax({
@@ -93,7 +96,7 @@ if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
                                 data: {
                                     search: query
                                 },
-                                success: function(data) {
+                                success: function (data) {
                                     $('#search-results').html(data).show();
                                 }
                             });
@@ -105,7 +108,7 @@ if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
             </script>
         </div>
         <div class="header-lower">
-            <span>Welcome <?php echo $_SESSION['username'];?></span>
+            <span>Welcome <?php echo $_SESSION['username']; ?></span>
         </div>
     </header>
 
@@ -116,12 +119,12 @@ if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
                     <img src="<?PHP echo $_SESSION['profileImage']; ?>">
                 </div>
                 <div class="sidebar-row">
-                        <span>ROLE</span>
-                        <span class="status-online" style="color: Green;">Registered User</span>
+                    <span>ROLE</span>
+                    <span class="status-online" style="color: Green;">Registered User</span>
                 </div>
                 <div class="sidebar-row">
-                        <span>STATUS</span>
-                        <span class="status-online" style="color: GREEN;">ONLINE</span>
+                    <span>STATUS</span>
+                    <span class="status-online" style="color: GREEN;">ONLINE</span>
                 </div>
                 <div class="editProfile">
                     <a href="UserEditProfile.php" class="editProfileHREF">Edit Profile</a>
@@ -131,31 +134,33 @@ if(isset($_SESSION['CreateError']) && $_SESSION['CreateError'] == true){
 
         <div class="rightsection">
 
-        
-        <div class="admin-box">
-            <h2 class="main-header">Create Media</h2>
-            <div class="media-overview">
-                <form method="POST" action="../../USER/View/ReqMed.php">
-                   <input name="title" placeholder="Title">
-                    <select name="type">
-                        <option value="movie">Movie</option>
-                        <option value="tvshow">TV Show</option>
-                        <option value="manga">Manga</option>
-                    </select>
-                    <input name="poster" placeholder="Poster URL" class="Poster">
-                    <input name="studio" placeholder="Studio" class="Studio">
-                    <input name="producer" placeholder="Producer" class="Producer">
-                    <input name="genre" placeholder="Genre" class="Genre">
-                    <input name="duration" placeholder="Duration" class="Duration">
-                    <input name="source" placeholder="Source" class="Source">
-                    <textarea name="description" placeholder="Description. HTMl syntax (Optional)" class="Description"></textarea>
-                    <button type="submit" class="admin-save">Request Access</button> 
-                </form>
-            </div>
-        </div>
 
-        <script src="../Js/ReqMed.js"></script>
-        <script src="../Js/homeJSCRIPT.js"></script>
+            <div class="admin-box">
+                <h2 class="main-header">Create Media</h2>
+                <div class="media-overview">
+                    <form method="POST" action="../../USER/View/ReqMed.php">
+                        <input name="title" placeholder="Title">
+                        <select name="type">
+                            <option value="movie">Movie</option>
+                            <option value="tvshow">TV Show</option>
+                            <option value="manga">Manga</option>
+                        </select>
+                        <input name="poster" placeholder="Poster URL" class="Poster">
+                        <input name="studio" placeholder="Studio" class="Studio">
+                        <input name="producer" placeholder="Producer" class="Producer">
+                        <input name="genre" placeholder="Genre" class="Genre">
+                        <input name="duration" placeholder="Duration" class="Duration">
+                        <input name="source" placeholder="Source" class="Source">
+                        <textarea name="description" placeholder="Description. HTMl syntax (Optional)"
+                            class="Description"></textarea>
+                        <button type="submit" class="admin-save">Request Access</button>
+                    </form>
+                </div>
+            </div>
+
+            <script src="../Js/ReqMed.js"></script>
+            <script src="../Js/homeJSCRIPT.js"></script>
     </main>
 </body>
+
 </html>

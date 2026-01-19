@@ -16,14 +16,16 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="../Css/userDash.css"> 
-    <link rel="stylesheet" href="../../HOME/Css/topAnime-MangaPage.css"> 
-    <link rel="stylesheet" href="../../HOME/Css/searchBar.css">  
+    <link rel="stylesheet" href="../Css/userDash.css">
+    <link rel="stylesheet" href="../../HOME/Css/topAnime-MangaPage.css">
+    <link rel="stylesheet" href="../../HOME/Css/searchBar.css">
 </head>
+
 <body class="<?php echo (isset($_SESSION['theme_mode']) && $_SESSION['theme_mode'] === 'dark') ? 'dark-theme' : ''; ?>">
     <header>
         <div class="header-upper">
@@ -32,12 +34,13 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
             </div>
             <div class="profile">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
-                <div class="devider1"></div>
-                <span class="profile-name" onclick="window.location.href='userDashboard.php'">
-                    <?php echo $_SESSION['username']; ?>
-                </span>
-                <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='../../USER/View/userDashboard.php'">
-                <a href="../../HOME/Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
+                    <div class="devider1"></div>
+                    <span class="profile-name" onclick="window.location.href='userDashboard.php'">
+                        <?php echo $_SESSION['username']; ?>
+                    </span>
+                    <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile"
+                        onclick="window.location.href='../../USER/View/userDashboard.php'">
+                    <a href="../../HOME/Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -52,12 +55,12 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
                     <input class="search" id="search" type="text" name="search" placeholder="Search...">
                 </form>
                 <div class="search-results" id="search-results">
-                    
+
                 </div>
             </div>
             <script>
-                $(document).ready(function() {
-                    $('#search').on('input', function() {
+                $(document).ready(function () {
+                    $('#search').on('input', function () {
                         var query = $(this).val();
                         if (query.length > 2) {
                             $.ajax({
@@ -66,7 +69,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
                                 data: {
                                     search: query
                                 },
-                                success: function(data) {
+                                success: function (data) {
                                     $('#search-results').html(data).show();
                                 }
                             });
@@ -79,7 +82,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
         </div>
         <div class="header-lower">
             <span>My Panel</span>
-            
+
         </div>
     </header>
 
@@ -88,11 +91,11 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
         <div class="leftSection">
             <fieldset class="sidebar-fieldset">
                 <?php if (isset($_SESSION['username']) && $_SESSION['loggedIn'] === true): ?>
-                <div class="user-avatar-container">
-                    <img src="<?php echo $_SESSION['profileImage']; ?>" class="user-avatar-img" alt="User Avatar">
-                </div>
+                    <div class="user-avatar-container">
+                        <img src="<?php echo $_SESSION['profileImage']; ?>" class="user-avatar-img" alt="User Avatar">
+                    </div>
                 <?php endif; ?>
-                
+
                 <div class="sidebar-content">
                     <div class="sidebar-row">
                         <span>Last Online</span>
@@ -105,15 +108,16 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
 
 
                     <div class="sidebar-divider"></div>
-                    
+
                     <div class="sidebar-menu">
-                        <input type="button" value="Favorites" class="statbtn" location="favouriteList.php" onclick="window.location.href='favouriteList.php'">
+                        <input type="button" value="Favorites" class="statbtn" location="favouriteList.php"
+                            onclick="window.location.href='favouriteList.php'">
                     </div>
 
                     <br>
-                    
+
                 </div>
-                
+
                 <div class="edit-profile-wrapper" onclick="window.location.href='UserEditProfile.php'">
                     <input type="button" value="Edit Profile" class="editbtn">
                 </div>
@@ -122,14 +126,14 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
 
         <!-- RIGHT MAIN CONTENT -->
         <div class="rightsection">
-                        <div class="admin-box">
+            <div class="admin-box">
                 <table>
                     <thead>
                         <tr>
                             <th>Title</th>
                             <th>Poster</th>
                             <th>Status</th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
@@ -139,7 +143,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
                         $u_res = mysqli_query($conn, $u_sql);
                         $u_row = mysqli_fetch_assoc($u_res);
                         $user_id = $u_row['user_id'];
-                        
+
                         $query = "SELECT m.*, w.status AS read_status FROM Watchlist w 
                                   JOIN Media m ON w.media_id = m.media_id 
                                   WHERE w.user_id = '$user_id' AND m.type = 'manga'";
@@ -147,10 +151,11 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
 
                         if (mysqli_num_rows($result) > 0) {
                             foreach ($result as $row) {
-                        ?>
+                                ?>
                                 <tr>
                                     <td>
-                                        <a href="../../HOME/View/MediaPage.php?id=<?php echo $row['media_id']; ?>" class="mediaClick">
+                                        <a href="../../HOME/View/MediaPage.php?id=<?php echo $row['media_id']; ?>"
+                                            class="mediaClick">
                                             <strong><?php echo $row['title'] ?></strong><br><br>
                                             <?php echo substr($row['description'], 0, 150) . '...'; ?><br><br>
                                             <hr>
@@ -161,33 +166,35 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
                                         </a>
                                     </td>
                                     <td>
-                                        <img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:100px; height:auto;">
+                                        <img src="<?php echo $row['poster_image_link'] ?>" alt="Poster"
+                                            style="width:100px; height:auto;">
                                     </td>
                                     <td>
                                         <?php echo ucfirst(str_replace('_', ' ', $row['read_status'])); ?>
                                     </td>
 
                                 </tr>
-                        <?php
+                                <?php
                             }
                         } else {
-                        ?>
+                            ?>
                             <tr>
                                 <td colspan="4" style="text-align:center;">Your manga list is currently empty.</td>
                             </tr>
-                        <?php
+                            <?php
                         }
                         ?>
                     </tbody>
                 </table>
-            </div> 
-                 
-                
+            </div>
+
+
         </div>
-            
+
     </main>
-    
+
     <script src="../Js/favouriteList.js"></script>
     <script src="../Js/homeJSCRIPT.js"></script>
 </body>
+
 </html>

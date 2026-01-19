@@ -1,92 +1,93 @@
 <?php
-    session_start();
-    include("../../HOME/Model/db.php"); 
+session_start();
+include("../../HOME/Model/db.php");
 
 
 
-    if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
-       header('Location: ../../HOME/View/login.php');
-       exit();
+if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
+    header('Location: ../../HOME/View/login.php');
+    exit();
+}
+
+$message = "";
+$error = "";
+
+if (isset($_POST["btn-create"])) {
+    $currentUser = $_SESSION['username'];
+
+    if (!empty($_POST["username"])) {
+        $name = $_POST["username"];
+    } else {
+        $name = $_SESSION['username'];
     }
 
-    $message = "";
-    $error = "";
+    if (!empty($_POST["email"])) {
+        $email = $_POST["email"];
+    } else {
+        $email = $_SESSION['email'];
+    }
 
-    if(isset($_POST["btn-create"])){
-        $currentUser = $_SESSION['username']; 
-        
-        if (!empty($_POST["username"])) {
-            $name = $_POST["username"];
-        } else {
-            $name = $_SESSION['username']; 
-        }
+    if (!empty($_POST['profileImage'])) {
+        $profileImage = $_POST['profileImage'];
+    } else {
+        $profileImage = $_SESSION['profileImage'];
+    }
 
-        if (!empty($_POST["email"])) {
-            $email = $_POST["email"];
-        } else {
-            $email = $_SESSION['email']; 
-        }
 
-        if (!empty($_POST['profileImage'])) {
-            $profileImage = $_POST['profileImage'];
-        } else {
-            $profileImage = $_SESSION['profileImage']; 
-        }
+    $sqlFetch = "SELECT password FROM users WHERE username = '$currentUser'";
+    $resFetch = mysqli_query($conn, $sqlFetch);
 
-       
-        $sqlFetch = "SELECT password FROM users WHERE username = '$currentUser'";
-        $resFetch = mysqli_query($conn, $sqlFetch);
-        
-        if($resFetch && mysqli_num_rows($resFetch) > 0){
-            $row = mysqli_fetch_assoc($resFetch);
-            $finalPassword = $row['password']; 
-        } else {
-            $error = "User not found.";
-            $finalPassword = ""; 
-        }
+    if ($resFetch && mysqli_num_rows($resFetch) > 0) {
+        $row = mysqli_fetch_assoc($resFetch);
+        $finalPassword = $row['password'];
+    } else {
+        $error = "User not found.";
+        $finalPassword = "";
+    }
 
-        if (!empty($_POST["password"])) {
-            $finalPassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
-        }
+    if (!empty($_POST["password"])) {
+        $finalPassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    }
 
-       
-        if(empty($error)){
-            $query = "UPDATE `users` SET 
+
+    if (empty($error)) {
+        $query = "UPDATE `users` SET 
                     `username` = '$name', 
                     `email` = '$email', 
                     `password` = '$finalPassword', 
                     `profile_image_link` = '$profileImage' 
                     WHERE `username` = '$currentUser'";
 
-            $result = mysqli_query($conn, $query);
+        $result = mysqli_query($conn, $query);
 
-            if($result){
-                $_SESSION['username'] = $name;
-                $_SESSION['email'] = $email;
-                $_SESSION['profileImage'] = $profileImage;
-                
-                $message = "Profile updated successfully!";
-            }
-            else {
-                $error = "Query Failed: " . mysqli_error($conn);
-            }
+        if ($result) {
+            $_SESSION['username'] = $name;
+            $_SESSION['email'] = $email;
+            $_SESSION['profileImage'] = $profileImage;
+
+            $message = "Profile updated successfully!";
+        } else {
+            $error = "Query Failed: " . mysqli_error($conn);
         }
     }
+}
 
-    $showDetails = false;
-    if (isset($_POST['btn-show-details'])) {
-        $showDetails = true;
-    }
+$showDetails = false;
+if (isset($_POST['btn-show-details'])) {
+    $showDetails = true;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AnimeList Dashboard</title>
-    <link rel="stylesheet" href="../Css/UserEditProfile.css">  
-    <link rel="stylesheet" href="../../HOME/Css/searchBar.css">  
+    <link rel="stylesheet" href="../Css/UserEditProfile.css">
+    <link rel="stylesheet" href="../../HOME/Css/searchBar.css">
 </head>
+
 <body class="<?php echo (isset($_SESSION['theme_mode']) && $_SESSION['theme_mode'] === 'dark') ? 'dark-theme' : ''; ?>">
 
     <header>
@@ -100,7 +101,8 @@
                     <span class="profile-name">
                         <?php echo $_SESSION['username']; ?>
                     </span>
-                    <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile" onclick="window.location.href='../../USER/View/userDashboard.php'">
+                    <img src="<?php echo $_SESSION['profileImage']; ?>" alt="Profile"
+                        onclick="window.location.href='../../USER/View/userDashboard.php'">
                     <a href="../../HOME/Controler/destorySession.php" class="login-link-Log-out">Log Out</a>
                 <?php endif; ?>
             </div>
@@ -116,12 +118,12 @@
                     <input class="search" id="search" type="text" name="search" placeholder="Search...">
                 </form>
                 <div class="search-results" id="search-results">
-                    
+
                 </div>
             </div>
             <script>
-                $(document).ready(function() {
-                    $('#search').on('input', function() {
+                $(document).ready(function () {
+                    $('#search').on('input', function () {
                         var query = $(this).val();
                         if (query.length > 2) {
                             $.ajax({
@@ -130,7 +132,7 @@
                                 data: {
                                     search: query
                                 },
-                                success: function(data) {
+                                success: function (data) {
                                     $('#search-results').html(data).show();
                                 }
                             });
@@ -147,49 +149,49 @@
     </header>
     <main>
         <form method="POST">
-        <div class="feild">
-            <label>Change User Name</label>
-            <input type="text" name="username" >
-            <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
-        </div>
-        
-        <div class="feild">
-            <label>Change Password</label>
-            <input type="password"name="password" minlength="8" placeholder="minimum 8 character" >
-            <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
-        </div>
-        <div class="feild">
-            <label>Change Profile Image URL</label>
-            <input type="text" name="profileImage" >
-            <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
-            
-        </div>
-        <div class="feild">
-            <label>Change Email</label>
-            <input type="text" name="email" >
-            <button type="submit" name="btn-create" class="btn-create">Edit</button>
-        </div>  
-    </form>
+            <div class="feild">
+                <label>Change User Name</label>
+                <input type="text" name="username">
+                <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
+            </div>
 
-    <div class="show-details">
+            <div class="feild">
+                <label>Change Password</label>
+                <input type="password" name="password" minlength="8" placeholder="minimum 8 character">
+                <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
+            </div>
+            <div class="feild">
+                <label>Change Profile Image URL</label>
+                <input type="text" name="profileImage">
+                <button type="submit" name="btn-create" class="btn-create-name">Edit</button>
+
+            </div>
+            <div class="feild">
+                <label>Change Email</label>
+                <input type="text" name="email">
+                <button type="submit" name="btn-create" class="btn-create">Edit</button>
+            </div>
+        </form>
+
+        <div class="show-details">
             <form method="POST">
-                <input type="submit" name="btn-show-details" class="show details-btn" value="Show Details" >
-                 <input type="submit" name="btn-hide-details" class="show details-btn" value="Hide Details" >
+                <input type="submit" name="btn-show-details" class="show details-btn" value="Show Details">
+                <input type="submit" name="btn-hide-details" class="show details-btn" value="Hide Details">
             </form>
         </div>
 
         <?php if ($showDetails && isset($_SESSION['username'])): ?>
-            <div class="user-details-box" >
+            <div class="user-details-box">
                 <h3>Your Profile Details</h3>
                 <p><strong>Username:</strong> <?php echo htmlspecialchars($_SESSION['username']); ?></p>
-                
+
                 <?php if (isset($_SESSION['email'])): ?>
                     <p><strong>Email:</strong> <?php echo htmlspecialchars($_SESSION['email']); ?></p>
                 <?php endif; ?>
 
                 <div style="margin-top: 10px;">
                     <p><strong>Profile Image:</strong></p>
-                    <img src="<?php echo htmlspecialchars($_SESSION['profileImage']); ?>" alt="Profile" >
+                    <img src="<?php echo htmlspecialchars($_SESSION['profileImage']); ?>" alt="Profile">
                 </div>
             </div>
         <?php endif; ?>
@@ -198,4 +200,5 @@
     <script src="../Js/UserEditProfile.js"></script>
     <script src="../Js/homeJSCRIPT.js"></script>
 </body>
+
 </html>
