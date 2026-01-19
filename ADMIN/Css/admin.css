@@ -451,7 +451,7 @@ input::placeholder {
 
 .admin-box table tbody tr:nth-child(even) {
     background-color: var(--bg-hover);
-    color: black;
+    /* color: black; */
 }
 
 .admin-box table tbody tr:hover {
