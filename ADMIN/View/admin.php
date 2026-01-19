@@ -230,7 +230,7 @@ $admins = json_decode($jsonString, true);
                 <h2>DB & Home Page Control Board</h2>
                 <br>
                 <button class="greyButton" onclick="window.location.href='adminCurrentlyAiring.php'">Currently Airing</button>
-                <button class="greyButton">Top Upcoming</button>
+                <!-- <button class="greyButton">Top Upcoming</button> -->
                 <button class="greyButton" onclick="window.location.href='adminArticles.php'">Articles</button>
                 <button class="greyButton" onclick="window.location.href='adminTrailers.php'">Trailers</button>
             </div>
