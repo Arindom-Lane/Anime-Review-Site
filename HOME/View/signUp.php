@@ -8,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
     $password = $_POST["password"];
     $password_confirm = $_POST["confirm_password"];
     $profileImage = $_POST['profile_image_link'];
+    
 
     if ($password !== $password_confirm) {
         echo "<script>alert('Passwords do not match. Please try again.');</script>";
@@ -17,6 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
         if ($profileImage == '') {
             $profileImage = "https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg";
         } elseif (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `email` = '$email'")) > 0) {
+            $exists = true;
+        }
+        elseif (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `username` = '$name'")) > 0) {
             $exists = true;
         } else {
             $query = "INSERT INTO `users`( `username`, `email`, `password`, `profile_image_link`) VALUES ('$name','$email','$hassPassword','$profileImage')";
@@ -51,8 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
         </div>
     <?php } ?>
     <div class="signup-box">
-       
-
         <form id="signup-form" method="POST">
             
             <div class="feild">
