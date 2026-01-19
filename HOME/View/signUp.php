@@ -91,40 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
         </div>
     </div>
 
-    <script>
-        const name = document.getElementById('username');
-        const emailValue = document.getElementById('email').value;
-        const passwordValue = document.getElementById('password').value;
-        const confirm_passwordValue = document.getElementById('confirm_password').value;
-
-        const email_msg = document.getElementById('email-msg');
-        const name_msg = document.getElementById('name-msg');
-        const password_msg = document.getElementById('password-msg');
-        const pass_msg = document.getElementById('pass-msg');
-        const ajax_msg = document.getElementById('ajax-msg');
-
-
-
-        name.addEventListener('input', function() {
-            const nameValue = document.getElementById('username').value;
-
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState === 4 && this.status === 200) {
-                    if (nameValue.length < 4) {
-                        name_msg.innerHTML = "Username must be at least 4 characters long.";
-                    } else {
-                        name_msg.style.color = "#90EE90";
-                        name_msg.innerHTML = "perfect!";
-                    }
-
-                }
-            };
-            xhttp.open("POST", "signUp.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("username=" + encodeURIComponent(nameValue));
-        });
-    </script>
+    <script src="../Js/inputCheck.js"></script>
 </body>
 
 </html>
