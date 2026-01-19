@@ -42,7 +42,7 @@ if (isset($_SESSION['editUserMessage'])) {
     unset($_SESSION['editUserMessage']);
 }
 
-$admin_file = 'admins.json'; 
+$admin_file = '../Model/admins.json'; 
 
 $adminQuery = "SELECT user_id, username, email FROM users WHERE role = 'admin'";
 $adminResult = mysqli_query($conn, $adminQuery);
@@ -230,7 +230,7 @@ $admins = json_decode($jsonString, true);
                 <h2>DB & Home Page Control Board</h2>
                 <br>
                 <button class="greyButton" onclick="window.location.href='adminCurrentlyAiring.php'">Currently Airing</button>
-                <button class="greyButton">Top Upcoming</button>
+                <!-- <button class="greyButton">Top Upcoming</button> -->
                 <button class="greyButton" onclick="window.location.href='adminArticles.php'">Articles</button>
                 <button class="greyButton" onclick="window.location.href='adminTrailers.php'">Trailers</button>
             </div>
