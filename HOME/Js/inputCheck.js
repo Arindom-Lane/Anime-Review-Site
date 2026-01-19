@@ -21,7 +21,10 @@ name.addEventListener('input', function () {
                 name_msg.style.removeProperty("color");
                 name_msg.style.color = "#c5c5c5";
                 name_msg.innerHTML = "Username should be at least 4 characters long.";
-            } else {
+            }else if(nameValue.length == 0){
+                name_msg.innerHTML = "";
+            }
+             else {
                 name_msg.style.removeProperty("color");
                 name_msg.style.color = "#90EE90";
                 name_msg.innerHTML = "perfect!";
