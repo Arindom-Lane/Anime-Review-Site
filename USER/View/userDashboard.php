@@ -48,7 +48,6 @@ if ($conn) {
     function getMediaStats($conn, $uId, $types) {
         $typeString = "'" . implode("','", $types) . "'";
         
-        // 1. Get Counts per Status
         $sql = "SELECT w.status, COUNT(*) as count 
                 FROM Watchlist w 
                 JOIN Media m ON w.media_id = m.media_id 
@@ -89,13 +88,10 @@ if ($conn) {
         ];
     }
 
-    // --- EXECUTE FOR ANIME ---
     $animeStats = getMediaStats($conn, $userId, ['movie', 'tvshow']);
 
-    // --- EXECUTE FOR MANGA ---
     $mangaData = getMediaStats($conn, $userId, ['manga']);
     
-    // Map keys for Manga
     $mangaStats = [
         'reading'      => $mangaData['watching'],
         'completed'    => $mangaData['completed'],
@@ -123,12 +119,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_comment'])) {
     }
 }
 
-// --- CALCULATE BAR WIDTHS ---
 
 function calculatePercentages($stats) {
     $total = $stats['total'];
     
-    // Avoid division by zero
     if ($total == 0) {
         return [
             'watching' => 0, 'completed' => 0, 
@@ -136,13 +130,10 @@ function calculatePercentages($stats) {
         ];
     }
 
-    // FIX: Check if 'watching' key exists, otherwise use 'reading' (for Manga)
     $watchingCount = isset($stats['watching']) ? $stats['watching'] : (isset($stats['reading']) ? $stats['reading'] : 0);
     
-    // FIX: Check if 'plan_to_watch' key exists, otherwise use 'plan_to_read'
     $planCount = isset($stats['plan_to_watch']) ? $stats['plan_to_watch'] : (isset($stats['plan_to_read']) ? $stats['plan_to_read'] : 0);
 
-    // Return an array of percentages
     return [
         'watching'  => ($watchingCount / $total) * 100,
         'completed' => ($stats['completed'] / $total) * 100,
@@ -151,10 +142,8 @@ function calculatePercentages($stats) {
     ];
 }
 
-// Get Anime Percentages
 $animePct = calculatePercentages($animeStats);
 
-// Get Manga Percentages
 $mangaPct = calculatePercentages($mangaStats);
 
 //add comments
@@ -183,20 +172,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
     exit();
 }
 
-// Delete Comment
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_comment'])) {
-    $comment_id = intval($_POST['comment_id']);
-    // Only allow user to delete their own comment
-    $user_id = $userId;
-    $stmt = $conn->prepare("DELETE FROM Comments WHERE comment_id = ? AND user_id = ?");
-    $stmt->bind_param("ii", $comment_id, $user_id);
-    $stmt->execute();
-    $stmt->close();
-    header("Location: " . $_SERVER["REQUEST_URI"]); 
-    exit();
-}
 
-// Fetch all comments for display (latest first)
+
 $comments = [];
 $sqlComments = "SELECT c.comment_id, c.comment_text, c.created_at, u.username
                 FROM Comments c

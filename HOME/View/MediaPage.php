@@ -3,7 +3,6 @@ session_start();
 include("../Model/db.php");
 $media_id = NULL;
 
-//Anime and Manga fetching
 
 if(isset($_GET['id'])){
     $media_id = $_GET['id'];
@@ -81,7 +80,7 @@ if (isset($media['type']) && isset($media['title']) && $media_id) {
         }));
         array_unshift($_SESSION['recent_manga'], $entry);
         $_SESSION['recent_manga'] = array_slice($_SESSION['recent_manga'], 0, 3);
-    } else { // treat any other type as anime
+    } else { 
         if(!isset($_SESSION['recent_anime'])) $_SESSION['recent_anime'] = [];
         $entry = [
             'media_id' => $media_id,
@@ -96,7 +95,6 @@ if (isset($media['type']) && isset($media['title']) && $media_id) {
         $_SESSION['recent_anime'] = array_slice($_SESSION['recent_anime'], 0, 3);
     }
 }
-////////////
 if(isset($_GET['id'])){
     $media_id = $_GET['id'];
     $sql = "SELECT * FROM Media WHERE media_id = $media_id";
@@ -178,7 +176,6 @@ if (isset($_SESSION['username'])) {
 
 $msg = "";
 
-// --- 3. HANDLE WATCHLIST UPDATE ---
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_watchlist'])) {
     if ($user_id) {
         $status = mysqli_real_escape_string($conn, $_POST['status']);
@@ -192,7 +189,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_watchlist'])) {
             $insert_wl = "INSERT INTO Watchlist (user_id, media_id, status) VALUES ('$user_id', '$media_id', '$status')";
             mysqli_query($conn, $insert_wl);
         }
-        // Redirect with ID
         header("Location: MediaPage.php?id=" . $media_id);
         exit();
     } else {
@@ -201,7 +197,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_watchlist'])) {
     }
 }
 
-// --- 4. HANDLE REVIEW SUBMISSION ---
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_review'])) {
     if ($user_id) {
         $rating = intval($_POST['rating']);
@@ -221,11 +216,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_review'])) {
     }
 }
 
-// --- 6. HANDLE REVIEW DELETION ---
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_review'])) {
     if ($user_id) {
         $review_id = intval($_POST['review_id']);
-        // Delete only if the review belongs to the current logged-in user
         $delete_sql = "DELETE FROM Reviews WHERE review_id = '$review_id' AND user_id = '$user_id'";
         mysqli_query($conn, $delete_sql);
         header("Location: MediaPage.php?id=" . $media_id);
@@ -233,7 +226,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete_review'])) {
     }
 }
 
-// --- 5. HANDLE FAVORITES  ---
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['toggle_favorite'])) {
     if ($user_id) {
         $check_fav = mysqli_query($conn, "SELECT favorite_id FROM Favorites WHERE user_id = '$user_id' AND media_id = '$media_id'");
@@ -244,6 +236,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['toggle_favorite'])) {
             mysqli_query($conn, "INSERT INTO Favorites (user_id, media_id) VALUES ('$user_id', '$media_id')");
         }
         header("Location: MediaPage.php?id=" . $media_id);
+        exit();
     } else {
         header("Location: login.php");
         exit();

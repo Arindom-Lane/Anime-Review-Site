@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         signupForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            ajaxMsg.textContent = ""; // Clear previous messages
+            ajaxMsg.textContent = ""; 
 
             const formData = new FormData(signupForm);
 

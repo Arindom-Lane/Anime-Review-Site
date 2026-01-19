@@ -15,21 +15,18 @@
     if(isset($_POST["btn-create"])){
         $currentUser = $_SESSION['username']; 
         
-        // 1. Handle Username
         if (!empty($_POST["username"])) {
             $name = $_POST["username"];
         } else {
             $name = $_SESSION['username']; 
         }
 
-        // 2. Handle Email
         if (!empty($_POST["email"])) {
             $email = $_POST["email"];
         } else {
             $email = $_SESSION['email']; 
         }
 
-        // 3. Handle Profile Image
         if (!empty($_POST['profileImage'])) {
             $profileImage = $_POST['profileImage'];
         } else {
