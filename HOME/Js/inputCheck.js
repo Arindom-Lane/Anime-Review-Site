@@ -1,7 +1,7 @@
 const name = document.getElementById('username');
-const emailValue = document.getElementById('email').value;
-const passwordValue = document.getElementById('password').value;
-const confirm_passwordValue = document.getElementById('confirm_password').value;
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+const confirm_password = document.getElementById('confirm_password');
 
 const email_msg = document.getElementById('email-msg');
 const name_msg = document.getElementById('name-msg');
@@ -9,20 +9,18 @@ const password_msg = document.getElementById('password-msg');
 const pass_msg = document.getElementById('pass-msg');
 const ajax_msg = document.getElementById('ajax-msg');
 
-
-
 name.addEventListener('input', function () {
     const nameValue = document.getElementById('username').value;
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            if (nameValue.length < 4) {
+            if (nameValue.length == 0) {
+                name_msg.innerHTML = "";
+            }else if(nameValue.length < 4){
                 name_msg.style.removeProperty("color");
                 name_msg.style.color = "#c5c5c5";
                 name_msg.innerHTML = "Username should be at least 4 characters long.";
-            }else if(nameValue.length == 0){
-                name_msg.innerHTML = "";
             }
              else {
                 name_msg.style.removeProperty("color");
@@ -109,12 +107,12 @@ confirm_password.addEventListener('input', function () {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            if (passwordValue !== confirm_passwordValue) {
+            if (confirm_passwordValue.length == 0) {
+                pass_msg.innerHTML = "";
+            }else if(passwordValue !== confirm_passwordValue){
                 pass_msg.style.removeProperty("color");
                 pass_msg.style.color = "#c5c5c5";
                 pass_msg.innerHTML = "Passwords do not match.";
-            }else if(confirm_passwordValue.length === 0){
-                pass_msg.innerHTML = "";
             } 
             else {
                 pass_msg.style.removeProperty("color");

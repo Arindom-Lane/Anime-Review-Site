@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
             
             <div class="feild">
                 <label>Username</label>
-                <input type="text" name="username" id="username" maxlength="50" required>
+                <input type="text" name="username" id="username" minlength="4" maxlength="50" required>
                 <div id="name-msg"></div>
             </div>
             <div class="feild">
