@@ -1,6 +1,8 @@
 /* ===== MAL COLOR SYSTEM ===== */
 :root {
     --mal-blue: #2e51a2;
+    --mal-footer: #2e51a2;
+
     --mal-blue-dark: #1a3274;
     --mal-blue-light: #e1e7f5;
 
@@ -16,9 +18,9 @@
 
     --border: #d0d7e2;
 
-    --card-border-radius: 0.35rem; 
-    --border-radius-1: 0.2rem; 
-    --border-radius-2: 0.4rem; 
+    --card-border-radius: 0.35rem;
+    --border-radius-1: 0.2rem;
+    --border-radius-2: 0.4rem;
     --border-radius-3: 0.8rem;
 }
 
@@ -41,7 +43,7 @@ body.dark-theme {
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     font-size: medium;
 }
 
@@ -72,7 +74,7 @@ header {
 
 .header-upper {
     width: 100%;
-    height: auto; 
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -84,22 +86,19 @@ header {
     display: flex;
     align-items: center;
     cursor: pointer;
-    
+
 }
 
 .logo img {
     width: 100%;
     height: 100%;
-    object-fit: contain;   
-    filter: drop-shadow(1px 0 0 white) 
-            drop-shadow(-1px 0 0 white) 
-            drop-shadow(0 1px 0 white) 
-            drop-shadow(0 -1px 0 white);
+    object-fit: contain;
+    filter: drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white);
 }
 
 .profile {
     display: flex;
-    align-items: center;   
+    align-items: center;
     cursor: pointer;
     color: var(--text-primary);
     font-weight: bold;
@@ -119,6 +118,7 @@ header {
     border: 1px solid var(--border);
     margin-left: 10px;
 }
+
 .login-link-Log-out {
     display: inline-block;
     padding: 8px 25px;
@@ -135,6 +135,7 @@ header {
     background-color: rgb(255, 210, 210);
     color: #4f0909;
 }
+
 .login-link {
     display: inline-block;
     padding: 8px 25px;
@@ -157,7 +158,8 @@ header {
 
 
 .header-middle {
-    background-color: var(--mal-blue);;
+    background-color: var(--mal-blue);
+    ;
     border-top-left-radius: var(--border-radius-1);
     border-top-right-radius: var(--border-radius-1);
     color: var(--text-primary);
@@ -209,7 +211,7 @@ header {
     font-size: 11px;
     width: 300px;
     height: 25px;
-    
+
 }
 
 .search::placeholder {
@@ -227,7 +229,7 @@ body.dark-theme .header-lower {
 
 main {
     position: relative;
-    margin: 0 1%; 
+    margin: 0 1%;
     margin-bottom: 150px;
     display: grid;
     background: var(--bg-page);
@@ -254,25 +256,29 @@ main {
 .admin-box table td {
     padding: 12px 15px;
     text-align: left;
-    border-right:1px solid var(--border);
-    border-left:1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-left: 1px solid var(--border);
 
 }
+
 .admin-box table th:hover,
 .admin-box table td:hover {
-    border-right:1px solid whitesmoke;
-    border-left:1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
+    border-left: 1px solid whitesmoke;
 
 }
+
 .admin-box table tbody tr:nth-child(even) {
     background-color: var(--bg-hover);
     color: var(--text-primary);
 }
+
 .admin-box table tbody tr:hover {
     background-color: var(--mal-blue-dark);
     color: white;
-    
+
 }
+
 .editProfileHREF {
     display: block;
     padding: 8px 25px;
@@ -294,9 +300,55 @@ main {
     text-decoration: none;
     color: var(--text-primary);
 }
+
 .admin-box table tbody tr:hover td,
 .admin-box table tbody tr:hover td a {
     color: white;
     cursor: pointer;
 }
 
+
+footer {
+    display: block;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--mal-footer);
+    font-size: 11px;
+
+    text-align: center;
+}
+
+.footer-block {
+    padding: 32px 0 15px 0;
+    color: var(--text-primary);
+}
+
+.footer-links {
+    margin-bottom: 15px;
+
+}
+
+.footer-links a {
+    margin: 0 10px;
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: medium;
+}
+
+.footer-links p {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: whitesmoke;
+    font-size: medium;
+}
+
+.github-icon {
+    width: 20px;
+    height: 20px;
+
+    cursor: pointer;
+}
+
+.copyright {
+    color: var(--text-primary);
+}

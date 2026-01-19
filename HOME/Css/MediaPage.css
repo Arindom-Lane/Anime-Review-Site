@@ -1,5 +1,7 @@
 :root {
     --mal-blue: #2e51a2;
+    --mal-footer: #2e51a2;
+
     --mal-blue-dark: #1a3274;
     --mal-blue-light: #e1e7f5;
 
@@ -183,7 +185,8 @@ header {
     cursor: pointer;
 }
 
-.login-link, .login-link-Log-out {
+.login-link,
+.login-link-Log-out {
     display: inline-block;
     margin-top: 15px;
     padding: 8px 25px;
@@ -326,6 +329,7 @@ input:-webkit-autofill:active {
     transition: opacity 0.2s, background 0.2s;
     text-align: center;
 }
+
 .btn-action:hover {
     background: var(--mal-blue-dark);
     opacity: 0.9;
@@ -334,6 +338,7 @@ input:-webkit-autofill:active {
 .btn-blue {
     background-color: var(--mal-blue);
 }
+
 .btn-blue:hover {
     background-color: var(--mal-blue-dark);
 }
@@ -342,6 +347,7 @@ input:-webkit-autofill:active {
     background-color: #ff6b81;
     margin-top: 5px;
 }
+
 .btn-pink:hover {
     background-color: #e0556d;
 }
@@ -378,7 +384,7 @@ input:-webkit-autofill:active {
 
 .score-container {
     text-align: center;
-    
+
 }
 
 .score-label {
@@ -472,7 +478,7 @@ input:-webkit-autofill:active {
 
 .review-content {
     flex: 1;
-    
+
 }
 
 .review-meta {
@@ -533,4 +539,50 @@ input:-webkit-autofill:active {
 
 .text-blue {
     color: blue;
+}
+
+
+footer {
+    display: block;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--mal-footer);
+    font-size: 11px;
+
+    text-align: center;
+}
+
+.footer-block {
+    padding: 32px 0 15px 0;
+    color: var(--text-primary);
+}
+
+.footer-links {
+    margin-bottom: 15px;
+
+}
+
+.footer-links a {
+    margin: 0 10px;
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: medium;
+}
+
+.footer-links p {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: whitesmoke;
+    font-size: medium;
+}
+
+.github-icon {
+    width: 20px;
+    height: 20px;
+
+    cursor: pointer;
+}
+
+.copyright {
+    color: var(--text-primary);
 }
