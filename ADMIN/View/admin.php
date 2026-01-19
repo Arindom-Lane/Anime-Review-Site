@@ -42,7 +42,7 @@ if (isset($_SESSION['editUserMessage'])) {
     unset($_SESSION['editUserMessage']);
 }
 
-$admin_file = 'admins.json'; 
+$admin_file = '../Model/admins.json'; 
 
 $adminQuery = "SELECT user_id, username, email FROM users WHERE role = 'admin'";
 $adminResult = mysqli_query($conn, $adminQuery);
