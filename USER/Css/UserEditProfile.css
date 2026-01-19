@@ -15,6 +15,7 @@
     --color-bg-comment: #f4f4f4;
     --color-bg-input: #ffffff;
     --color-bg-bar: #ebebeb;
+    --mal-footer: #2e51a2;
 }
 
 body.dark-theme {
@@ -233,4 +234,44 @@ main {
 .login-link-Log-out:hover {
     background-color: rgb(255, 210, 210);
     color: #4f0909;
+}
+footer {
+    display: block;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--mal-footer);
+    font-size: 11px;
+    
+    text-align: center;
+}
+
+.footer-block{
+    padding: 32px 0 15px 0;
+    color: var(--text-primary);
+}
+
+.footer-links {
+    margin-bottom: 15px;
+    
+}
+.footer-links a {
+    margin: 0 10px;
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: medium;
+}
+.footer-links p {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: whitesmoke;
+    font-size: medium;
+}
+.github-icon {
+    width: 20px;
+    height: 20px;
+    
+    cursor: pointer;
+}
+.copyright{
+    color: var(--text-primary);
 }
