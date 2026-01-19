@@ -24,11 +24,11 @@ include("../Model/db.php");
         <script>
             localStorage.setItem('theme', '<?php echo $_SESSION['theme_mode']; ?>');
             const serverTheme = localStorage.getItem('theme');
-        if (serverTheme === 'dark') {
-            document.documentElement.classList.add('dark-theme');
-        } else {
-            document.documentElement.classList.remove('dark-theme');
-        }
+            if (serverTheme === 'dark') {
+                document.documentElement.classList.add('dark-theme');
+            } else {
+                document.documentElement.classList.remove('dark-theme');
+            }
         </script>
     <?php endif; ?>
 
@@ -110,7 +110,7 @@ include("../Model/db.php");
                     <tr>
                         <th>Title</th>
                         <th>Poster</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -132,7 +132,7 @@ include("../Model/db.php");
                                         <hr>
                                 </td>
                                 <td><img src="<?php echo $row['poster_image_link'] ?>" alt="Poster" style="width:100px; height:auto;"></td>
-                                
+
                             </tr>
                         <?php
                         }
@@ -152,7 +152,17 @@ include("../Model/db.php");
 
     </main>
 
-
+    <footer>
+        <div class="footer-block">
+            <div class="footer-links">
+                <p style="border-bottom: 1px solid white; padding: 5px; width: 200px; margin: 0 auto;">Follow Us</p>
+                <a href="https://github.com/Arindom-Lane">ARINDOM</a> <strong style="color: azure;">|</strong>
+                <a href="https://github.com/ReDThunDeR33">ARKO</a> <strong style="color: azure;">|</strong>
+                <a href="https://github.com/Arindom-Lane/Anime-Review-Site">PROJECT REPO</a>
+                <img src="../Images/github.png" alt="GitHub" class="github-icon" onclick="window.location.href='https://github.com/Arindom-Lane/Anime-Review-Site'">
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

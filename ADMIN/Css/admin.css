@@ -1,5 +1,7 @@
 :root {
     --mal-blue: #2e51a2;
+    --mal-footer: #2e51a2;
+
     --mal-blue-dark: #1a3274;
     --mal-blue-light: #e1e7f5;
 
@@ -77,7 +79,8 @@ header {
 
 .logo {
     width: 200px;
-    height: 50px;;
+    height: 50px;
+    ;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -445,15 +448,18 @@ input::placeholder {
 
 
 }
+
 .admin-box table tbody tr:nth-child(even) {
     background-color: var(--bg-hover);
     color: black;
 }
+
 .admin-box table tbody tr:hover {
     background-color: var(--mal-blue-dark);
     color: white;
 }
-.greyButton{
+
+.greyButton {
     background-color: rgb(69, 82, 124);
     color: white;
     border: none;
@@ -467,9 +473,11 @@ input::placeholder {
     cursor: pointer;
     border-radius: var(--border-radius-2);
 }
-.greyButton:hover{
+
+.greyButton:hover {
     background-color: rgb(130, 139, 164);
 }
+
 .admin-acc table {
     background-color: var(--bg-card);
     color: var(--text-primary);
@@ -492,11 +500,58 @@ input::placeholder {
 
 
 }
+
 .admin-acc table tbody tr:nth-child(even) {
     background-color: var(--bg-hover);
     color: black;
 }
+
 .admin-acc table tbody tr:hover {
     background-color: var(--mal-blue-dark);
     color: white;
+}
+
+footer {
+    display: block;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--mal-footer);
+    font-size: 11px;
+
+    text-align: center;
+}
+
+.footer-block {
+    padding: 32px 0 15px 0;
+    color: var(--text-primary);
+}
+
+.footer-links {
+    margin-bottom: 15px;
+
+}
+
+.footer-links a {
+    margin: 0 10px;
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: medium;
+}
+
+.footer-links p {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: whitesmoke;
+    font-size: medium;
+}
+
+.github-icon {
+    width: 20px;
+    height: 20px;
+
+    cursor: pointer;
+}
+
+.copyright {
+    color: var(--text-primary);
 }
