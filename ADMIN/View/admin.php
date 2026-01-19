@@ -310,7 +310,7 @@ $admins = json_decode($jsonString, true);
                 <a href="https://github.com/Arindom-Lane">ARINDOM</a> <strong style="color: azure;">|</strong>
                 <a href="https://github.com/ReDThunDeR33">ARKO</a> <strong style="color: azure;">|</strong>
                 <a href="https://github.com/Arindom-Lane/Anime-Review-Site">PROJECT REPO</a>
-                <img src="../Images/github.png" alt="GitHub" class="github-icon" onclick="window.location.href='https://github.com/Arindom-Lane/Anime-Review-Site'">
+                <img src="../../HOME/Images/github.png" alt="GitHub" class="github-icon" onclick="window.location.href='https://github.com/Arindom-Lane/Anime-Review-Site'">
             </div>
         </div>
     </footer>
