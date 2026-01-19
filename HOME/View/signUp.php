@@ -31,45 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-create"])) {
         }
     }
 }
-if (
-    $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
-    strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest'
-) {
-
-    header('Content-Type: application/json');
-
-    $response = ['success' => false, 'debug' => [], 'post' => $_POST];
-    $name = $_POST["username"] ?? '';
-    $email = $_POST["email"] ?? '';
-    $password = $_POST["password"] ?? '';
-    $password_confirm = $_POST["confirm_password"] ?? '';
-    $profileImage = $_POST['profile_image_link'] ?? '';
-
-    $response['debug'][] = "Step: values read";
-    $response['debug'][] = "name: $name, email: $email";
-
-    if ($password !== $password_confirm) {
-        $response['error'] = "Passwords do not match.";
-    } elseif (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `email` = '$email'")) > 0) {
-        $response['error'] = "Email already exists!";
-    } else {
-        $hashPassword = password_hash($password, PASSWORD_DEFAULT);
-        if ($profileImage == '') {
-            $profileImage = "https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg";
-        }
-        $query = "INSERT INTO `users` (`username`, `email`, `password`, `profile_image_link`) VALUES ('$name','$email','$hashPassword','$profileImage')";
-        $result = mysqli_query($conn, $query);
-
-        $response['debug'][] = "Query: $query";
-        if ($result) {
-            $response['success'] = true;
-        } else {
-            $response['error'] = "Query Failed: " . mysqli_error($conn);
-        }
-    }
-    echo json_encode($response);
-    exit();
-}
 ?>
 
 
@@ -84,52 +45,20 @@ if (
 </head>
 
 <body>
-    <script>
-        const name = document.getElementById('username');
-        const emailValue = document.getElementById('email').value;
-        const passwordValue = document.getElementById('password').value;
-        const confirm_passwordValue = document.getElementById('confirm_password').value;
-
-        const email_msg = document.getElementById('email-msg');
-        const password_msg = document.getElementById('password-msg');
-        const pass_msg = document.getElementById('pass-msg');
-        const ajax_msg = document.getElementById('ajax-msg');
-
-
-
-        name.addEventListener('input', function() {
-            const nameValue = document.getElementById('username').value;
-
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState === 4 && this.status === 200) {
-                    if (nameValue.length < 4) {
-                        email_msg.innerHTML = "Username must be at least 3 characters long.";
-                    } else {
-                        email_msg.innerHTML = "";
-                    }
-                }
-            };
-            xhttp.open("POST", "signUp.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("username=" + nameValue);
-        });
-    </script>
     <?php if ($exists == true) { ?>
         <div class="error-bar">
             Username/email already exists! Please choose another.
         </div>
     <?php } ?>
     <div class="signup-box">
-        <h2>Start Using MyAnimeList</h2>
+       
 
         <form id="signup-form" method="POST">
-            <div class="logo">
-                <img onclick="window.location.href='home.php'" src="../Images/download.png">
-            </div>
+            
             <div class="feild">
                 <label>Username</label>
                 <input type="text" name="username" id="username" maxlength="50" required>
+                <div id="name-msg"></div>
             </div>
             <div class="feild">
                 <label>Email</label>
@@ -162,6 +91,40 @@ if (
         </div>
     </div>
 
+    <script>
+        const name = document.getElementById('username');
+        const emailValue = document.getElementById('email').value;
+        const passwordValue = document.getElementById('password').value;
+        const confirm_passwordValue = document.getElementById('confirm_password').value;
+
+        const email_msg = document.getElementById('email-msg');
+        const name_msg = document.getElementById('name-msg');
+        const password_msg = document.getElementById('password-msg');
+        const pass_msg = document.getElementById('pass-msg');
+        const ajax_msg = document.getElementById('ajax-msg');
+
+
+
+        name.addEventListener('input', function() {
+            const nameValue = document.getElementById('username').value;
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    if (nameValue.length < 4) {
+                        name_msg.innerHTML = "Username must be at least 4 characters long.";
+                    } else {
+                        name_msg.style.color = "#90EE90";
+                        name_msg.innerHTML = "perfect!";
+                    }
+
+                }
+            };
+            xhttp.open("POST", "signUp.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("username=" + encodeURIComponent(nameValue));
+        });
+    </script>
 </body>
 
 </html>
